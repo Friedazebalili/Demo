@@ -3,948 +3,431 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pro Duplicator - Premium Industrial Duplication Systems</title>
+    <title>M.2 PCIe SATA/NVMe Duplicators & Sanitizers | Pro Duplicator</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..700;1,400..700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* --- BRAND PALETTE & VARIABLES --- */
+        /* --- BRAND PROFILE CONFIGURATION --- */
         :root {
             --bg-dark: #071120;
             --bg-light: #ffffff;
-            --bg-muted: #fcfbfa;
+            --bg-muted: #f8fafc;
             --primary-gold: #cfa851;
             --primary-gold-hover: #b89340;
-            --text-dark: #0b1523;
-            --text-light: #ffffff;
-            --text-muted: #677487;
+            --text-dark: #0f172a;
+            --text-muted: #64748b;
             --border-color: #e2e8f0;
-            --glass-bg: rgba(255, 255, 255, 0.03);
-            --glass-border: rgba(255, 255, 255, 0.08);
             --font-serif: 'Playfair Display', serif;
             --font-sans: 'Plus Jakarta Sans', sans-serif;
         }
 
-        /* --- RESET & BASE STYLES --- */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-        body {
-            font-family: var(--font-sans);
-            color: var(--text-dark);
-            background-color: var(--bg-light);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-        a {
-            text-decoration: none;
-            color: inherit;
-            transition: all 0.3s ease;
-        }
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-        }
-        ul {
-            list-style: none;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: var(--font-sans); color: var(--text-dark); background: var(--bg-light); line-height: 1.5; }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
 
-        /* --- REUSABLE UTILITIES --- */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-        .section-tag {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--primary-gold);
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            display: block;
-        }
-        .section-title {
-            font-family: var(--font-serif);
-            font-size: 2.5rem;
-            color: var(--text-dark);
-            font-weight: 700;
-            margin-bottom: 2rem;
-            line-height: 1.2;
-        }
-        .btn {
-            display: inline-flex;
-            align-items: center;
+        /* --- PREVIEW VIEW SWITCHER BAR --- */
+        .view-switcher {
+            background: #0f172a;
+            padding: 0.75rem;
+            display: flex;
             justify-content: center;
-            padding: 0.85rem 2rem;
-            font-weight: 600;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .btn-gold {
-            background-color: var(--primary-gold);
-            color: var(--text-light);
-        }
-        .btn-gold:hover {
-            background-color: var(--primary-gold-hover);
-        }
-        .btn-outline {
-            background-color: transparent;
-            border: 1px solid var(--text-dark);
-            color: var(--text-dark);
-        }
-        .btn-outline:hover {
-            background-color: var(--text-dark);
-            color: var(--text-light);
-        }
-        .btn-outline-white {
-            background-color: transparent;
-            border: 1px solid var(--text-light);
-            color: var(--text-light);
-        }
-        .btn-outline-white:hover {
-            background-color: var(--text-light);
-            color: var(--text-dark);
-        }
-
-        /* --- HEADER & NAVIGATION (DESKTOP) --- */
-        header {
-            background-color: var(--bg-light);
-            border-bottom: 1px solid var(--border-color);
+            gap: 1rem;
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 1000;
+            border-bottom: 2px solid var(--primary-gold);
         }
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 80px;
-        }
-        .logo img {
-            height: 45px;
-        }
-        .nav-menu {
-            display: flex;
-            gap: 2.5rem;
-        }
-        .nav-menu a {
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: var(--text-dark);
-        }
-        .nav-menu a:hover {
-            color: var(--primary-gold);
-        }
-        .nav-icons {
-            display: flex;
-            gap: 1.5rem;
-            align-items: center;
-        }
-        .nav-icons svg {
-            width: 20px;
-            height: 20px;
-            cursor: pointer;
-            fill: none;
-            stroke: var(--text-dark);
-            stroke-width: 2;
-        }
-        .mobile-menu-toggle {
-            display: none;
-        }
-
-        /* --- HERO SECTION --- */
-        .hero {
-            background-color: var(--bg-muted);
-            padding: 5rem 0;
-        }
-        .hero .container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            align-items: center;
-            gap: 4rem;
-        }
-        .hero-content {
-            max-width: 520px;
-        }
-        .hero-content .section-title {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-        }
-        .hero-subtitle {
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            margin-bottom: 2.5rem;
-        }
-        .hero-img img {
-            width: 100%;
-            mix-blend-mode: multiply;
-        }
-
-        /* --- TRUST / METRICS STRIP --- */
-        .metrics-strip {
-            background-color: var(--bg-dark);
-            color: var(--text-light);
-            padding: 3rem 0;
-        }
-        .metrics-grid {
-            display: flex;
-            justify-content: space-around;
-            text-align: center;
-        }
-        .metric-item .number {
-            font-family: var(--font-serif);
-            font-size: 2.5rem;
-            color: var(--text-light);
-            display: block;
-            margin-bottom: 0.25rem;
-        }
-        .metric-item .number span {
-            color: var(--primary-gold);
-        }
-        .metric-item .label {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: rgba(255,255,255,0.6);
-        }
-
-        /* --- PRODUCT CATALOG SECTION --- */
-        .catalog-section {
-            padding: 6rem 0;
-        }
-        .catalog-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            margin-bottom: 3rem;
-        }
-        .catalog-header .section-title {
-            margin-bottom: 0;
-        }
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-        .product-card {
-            background: var(--bg-light);
-            border: 1px solid var(--border-color);
-            padding: 1.5rem;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        .product-badge {
-            position: absolute;
-            top: 1rem;
-            left: 1rem;
-            font-size: 0.65rem;
-            text-transform: uppercase;
-            font-weight: 700;
-            padding: 0.25rem 0.6rem;
-            background: #e2e8f0;
-            letter-spacing: 1px;
-        }
-        .product-badge.best-seller {
-            background-color: #dfba6b;
+        .view-btn {
+            background: rgba(255,255,255,0.1);
             color: #fff;
-        }
-        .product-badge.popular {
-            background-color: #caa049;
-            color: #fff;
-        }
-        .product-badge.new {
-            background-color: #213a5f;
-            color: #fff;
-        }
-        .product-img {
-            height: 180px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-        }
-        .product-img img {
-            max-height: 100%;
-            object-fit: contain;
-        }
-        .product-title {
-            font-size: 1.05rem;
+            border: none;
+            padding: 0.5rem 1.5rem;
+            font-family: var(--font-sans);
             font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-        .product-desc {
             font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-bottom: 1.5rem;
-        }
-        .product-link {
-            font-size: 0.8rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            color: var(--primary-gold);
-            display: inline-flex;
-            align-items: center;
-            gap: 0.25rem;
-        }
-
-        /* --- FEATURE PROMO BANNER 1 --- */
-        .promo-banner-dark {
-            background-color: #1a2536;
-            color: var(--text-light);
-            border-radius: 8px;
-            overflow: hidden;
-            margin-bottom: 4rem;
-        }
-        .promo-banner-dark .inner-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            align-items: center;
-        }
-        .promo-content {
-            padding: 4rem;
-        }
-        .promo-content .section-title {
-            color: var(--text-light);
-        }
-        .promo-content p {
-            color: rgba(255,255,255,0.7);
-            margin-bottom: 2rem;
-            font-size: 1rem;
-        }
-        .promo-img-bg {
-            background-size: cover;
-            background-position: center;
-            height: 100%;
-            min-height: 350px;
-        }
-
-        /* --- FEATURE PROMO BANNER 2 --- */
-        .promo-banner-split {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-            padding: 4rem 0;
-        }
-        .promo-split-img img {
-            width: 100%;
-            border-radius: 4px;
-        }
-        .promo-split-content .btn-group {
-            display: flex;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-
-        /* --- SECTOR VERTICAL TABS SECTION --- */
-        .sectors-section {
-            background-color: var(--bg-dark);
-            color: var(--text-light);
-            padding: 6rem 0;
-        }
-        .sectors-section .section-title {
-            color: var(--text-light);
-        }
-        .sectors-grid {
-            display: grid;
-            grid-template-columns: 1fr 1.5fr;
-            gap: 4rem;
-            align-items: start;
-        }
-        .sectors-list {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-        .sector-tab {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            padding: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
             cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        .sector-tab.active, .sector-tab:hover {
-            background: rgba(255,255,255,0.08);
-            border-color: var(--primary-gold);
-        }
-        .sector-tab img {
-            width: 60px;
-            height: 60px;
-            object-fit: cover;
             border-radius: 4px;
+            transition: all 0.2s ease;
         }
-        .sector-tab h4 {
-            font-size: 1.1rem;
-            font-weight: 500;
-            margin-bottom: 0.25rem;
+        .view-btn.active, .view-btn:hover {
+            background: var(--primary-gold);
+            color: var(--bg-dark);
         }
-        .sector-tab p {
-            font-size: 0.85rem;
-            color: rgba(255,255,255,0.5);
-        }
-        .sector-display-panel {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            padding: 3rem;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-        .sector-display-panel h3 {
-            font-family: var(--font-serif);
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-        .sector-display-panel p {
+
+        /* --- UTILITY & CONTAINERS --- */
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
+        .hidden { display: none !important; }
+
+        /* --- GLOBAL UTILITY UTILS --- */
+        .top-utility-bar {
+            background: #0b131f;
             color: rgba(255,255,255,0.7);
-            margin-bottom: 2rem;
-        }
-
-        /* --- TESTIMONIALS SECTION --- */
-        .testimonials-section {
-            padding: 6rem 0;
-            background-color: var(--bg-muted);
-        }
-        .testimonials-section .section-title {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-        }
-        .testimonial-card {
-            background: var(--bg-light);
-            border: 1px solid var(--border-color);
-            padding: 2.5rem;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
-        }
-        .testi-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1.5rem;
-        }
-        .testi-user h4 {
-            font-size: 1rem;
-            font-weight: 600;
-        }
-        .testi-user span {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-        }
-        .stars {
-            color: var(--primary-gold);
-            font-size: 0.85rem;
-            letter-spacing: 1px;
-        }
-        .testimonial-card p {
-            font-size: 0.95rem;
-            color: #4a5568;
-            font-style: italic;
-        }
-
-        /* --- FOOTER --- */
-        footer {
-            background-color: #040a14;
-            color: var(--text-light);
-            padding: 5rem 0 2rem 0;
-            font-size: 0.9rem;
-        }
-        .footer-main {
-            display: grid;
-            grid-template-columns: 1.5fr repeat(3, 1fr);
-            gap: 4rem;
-            margin-bottom: 4rem;
-        }
-        .footer-brand p {
-            color: rgba(255,255,255,0.6);
-            margin: 1.5rem 0;
-            max-width: 300px;
-            font-size: 0.85rem;
-        }
-        .social-icons {
-            display: flex;
-            gap: 1rem;
-        }
-        .social-icons a {
-            width: 32px;
-            height: 32px;
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: rgba(255,255,255,0.6);
-        }
-        .social-icons a:hover {
-            border-color: var(--primary-gold);
-            color: var(--primary-gold);
-        }
-        .footer-col h5 {
             font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--primary-gold);
-            margin-bottom: 1.5rem;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
         }
-        .footer-col ul {
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
+        .top-utility-inner { display: flex; justify-content: space-between; align-items: center; }
+
+        /* --- STICKY NAVIGATION --- */
+        .main-header {
+            background: var(--bg-light);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 45px; /* accounts for preview bar */
+            z-index: 99;
         }
-        .footer-col ul a {
-            color: rgba(255,255,255,0.6);
-        }
-        .footer-col ul a:hover {
-            color: var(--text-light);
-        }
-        .footer-bottom {
-            border-top: 1px solid rgba(255,255,255,0.05);
-            padding-top: 2rem;
-            display: flex;
-            justify-content: space-between;
-            color: rgba(255,255,255,0.4);
-            font-size: 0.8rem;
-        }
+        .nav-inner { display: flex; justify-content: space-between; align-items: center; height: 80px; }
+        .logo { font-family: var(--font-serif); font-size: 1.4rem; font-weight: 700; color: var(--bg-dark); display: flex; align-items: center; gap: 0.5rem; }
+        .logo span { color: var(--primary-gold); }
+        .nav-links { display: flex; gap: 2.5rem; font-weight: 500; font-size: 0.9rem; }
+        .nav-links a:hover { color: var(--primary-gold); }
+        .search-container { position: relative; display: flex; align-items: center; }
+        .search-input { padding: 0.5rem 1rem; border: 1px solid var(--border-color); border-radius: 4px; font-size: 0.85rem; width: 220px; }
 
-        /* ------------------------------------------------------------- */
-        /* --- RESPONSIVE MEDIA QUERY: MATCHING YOUR MOBILE SCREENSHOT --- */
-        /* ------------------------------------------------------------- */
-        @media (max-width: 768px) {
-            /* General Typography Adaptations */
-            .section-title {
-                font-size: 1.85rem !important;
-                margin-bottom: 1.5rem;
-            }
-            .container {
-                padding: 0 1.25rem;
-            }
+        /* --- ARCHITECTURE BLOCK 1: EXACT CATALOG LAYOUT --- */
+        .catalog-hero { background: var(--bg-muted); padding: 3.5rem 0; text-align: center; border-bottom: 1px solid var(--border-color); }
+        .catalog-hero h1 { font-family: var(--font-serif); font-size: 2.5rem; margin-bottom: 0.5rem; color: var(--bg-dark); }
+        .catalog-hero p { color: var(--text-muted); font-size: 1rem; }
 
-            /* Nav adjustments to mirror your screen header look */
-            .nav-menu {
-                display: none; /* Hidden on mobile view natively */
-            }
-            .mobile-menu-toggle {
-                display: block;
-            }
-            
-            /* Hero Transformation */
-            .hero {
-                padding: 3rem 0;
-                text-align: center;
-            }
-            .hero .container {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-            .hero-content {
-                max-width: 100%;
-            }
-            .hero-content .section-title {
-                font-size: 2.2rem !important;
-            }
-            /* Match the full width mobile look button */
-            .hero-content .btn {
-                width: 100%;
-            }
+        .series-section { padding: 4rem 0 2rem 0; border-bottom: 1px solid var(--border-color); }
+        .series-section:last-of-type { border-bottom: none; }
+        .series-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 2rem; border-left: 4px solid var(--primary-gold); padding-left: 1rem; }
+        .series-title { font-family: var(--font-serif); font-size: 1.6rem; color: var(--bg-dark); }
+        .series-speed { font-size: 0.85rem; background: var(--bg-dark); color: #fff; padding: 0.25rem 0.75rem; font-weight: 600; border-radius: 2px; }
+        
+        .product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+        .product-card { background: #fff; border: 1px solid var(--border-color); border-radius: 6px; padding: 2rem; display: flex; flex-direction: column; justify-content: space-between; transition: box-shadow 0.3s ease; }
+        .product-card:hover { box-shadow: 0 10px 25px rgba(0,0,0,0.04); }
+        .product-img-holder { height: 220px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; background: var(--bg-muted); border-radius: 4px; overflow: hidden; }
+        .product-img-holder img { max-height: 80%; object-fit: contain; }
+        .product-info h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--text-dark); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; height: 3.1rem; }
+        .product-meta { display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem; border-top: 1px solid var(--border-color); padding-top: 1.25rem; }
+        .product-price { font-family: var(--font-sans); font-size: 1.2rem; font-weight: 700; color: var(--primary-gold); }
+        .view-details-btn { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; color: var(--bg-dark); border-bottom: 2px solid var(--primary-gold); padding-bottom: 2px; }
 
-            /* Metrics Strip Stacked */
-            .metrics-grid {
-                flex-direction: column;
-                gap: 2rem;
-            }
+        /* --- ARCHITECTURE BLOCK 2: PREMIUM HIGH-END PRODUCT PAGE --- */
+        .product-page-wrapper { padding: 4rem 0; background: #fff; }
+        .breadcrumb { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 2rem; }
+        .product-main-layout { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 4rem; }
+        
+        .product-gallery { position: sticky; top: 150px; }
+        .main-stage-img { background: var(--bg-muted); border: 1px solid var(--border-color); border-radius: 8px; padding: 3rem; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; }
+        .thumb-strip { display: flex; gap: 1rem; }
+        .thumb-item { width: 80px; height: 80px; border: 1px solid var(--border-color); border-radius: 4px; padding: 0.5rem; cursor: pointer; display: flex; align-items: center; justify-content: center; background: #fff; }
+        .thumb-item.active { border-color: var(--primary-gold); }
 
-            /* Catalog Header & Grid Stacked */
-            .catalog-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 1rem;
-            }
-            .catalog-header .btn {
-                display: none; /* Moved to bottom button in image view */
-            }
-            .product-grid {
-                grid-template-columns: 1fr; /* Single column flow like screenshot */
-                gap: 1.5rem;
-            }
-            .view-all-mobile-btn {
-                display: block !important;
-                width: 100%;
-                text-align: center;
-                margin-top: 1rem;
-            }
+        .product-details-panel .part-number { font-size: 0.8rem; font-weight: 600; text-transform: uppercase; color: var(--text-muted); letter-spacing: 1px; margin-bottom: 0.5rem; }
+        .product-details-panel h1 { font-family: var(--font-serif); font-size: 2.2rem; line-height: 1.2; margin-bottom: 1rem; }
+        .product-specs-pill-strip { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+        .spec-pill { background: #f1f5f9; color: #475569; font-size: 0.75rem; font-weight: 600; padding: 0.25rem 0.75rem; border-radius: 50px; }
+        
+        .price-box-wrapper { background: var(--bg-muted); border: 1px solid var(--border-color); border-radius: 6px; padding: 2rem; margin: 2rem 0; }
+        .price-row { display: flex; align-items: baseline; gap: 1rem; margin-bottom: 1rem; }
+        .main-price { font-size: 2rem; font-weight: 700; color: var(--bg-dark); }
+        .availability { display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: #16a34a; font-weight: 600; }
+        
+        .action-group { display: flex; gap: 1rem; margin-top: 1.5rem; }
+        .btn-primary { flex: 1; background: var(--primary-gold); color: #fff; border: none; padding: 1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; border-radius: 4px; text-align: center; }
+        .btn-primary:hover { background: var(--primary-gold-hover); }
+        .btn-secondary { flex: 1; background: var(--bg-dark); color: #fff; border: none; padding: 1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; border-radius: 4px; text-align: center; }
+        .btn-secondary:hover { background: #111e30; }
 
-            /* Promo Banners Stacked */
-            .promo-banner-dark .inner-grid {
-                grid-template-columns: 1fr;
-            }
-            .promo-content {
-                padding: 2rem 1.5rem;
-            }
-            .promo-content .btn {
-                width: 100%;
-            }
-            .promo-img-bg {
-                height: 220px;
-                order: -1; /* Image on top format */
-            }
+        .tech-spec-table { width: 100%; border-collapse: collapse; margin-top: 3rem; }
+        .tech-spec-table th { font-family: var(--font-serif); text-align: left; padding: 1rem 0; font-size: 1.2rem; border-bottom: 2px solid var(--bg-dark); }
+        .tech-spec-table td { padding: 1rem 0; border-bottom: 1px solid var(--border-color); font-size: 0.9rem; }
+        .tech-spec-table td:first-child { font-weight: 600; color: var(--text-muted); width: 35%; }
 
-            .promo-banner-split {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-                padding: 2rem 0;
-            }
-            .promo-split-content .btn-group {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            .promo-split-content .btn {
-                width: 100%;
-            }
-
-            /* Vertically integrated elements matching screenshot */
-            .sectors-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-            .sector-display-panel {
-                display: none; /* Handled gracefully on mobile via text visibility */
-            }
-            .sectors-section .btn-group-mobile {
-                display: flex !important;
-                flex-direction: column;
-                gap: 1rem;
-                margin-top: 2rem;
-            }
-            .sectors-section .btn-group-mobile .btn {
-                width: 100%;
-            }
-
-            /* Testimonials Stacked */
-            .testimonials-grid {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-            .testimonial-card {
-                padding: 1.5rem;
-            }
-
-            /* Footer Mobile Flow */
-            .footer-main {
-                grid-template-columns: 1fr;
-                gap: 2.5rem;
-            }
-            .footer-bottom {
-                flex-direction: column;
-                gap: 1rem;
-                text-align: center;
-            }
-        }
-
-        /* Fallback elements for crisp cross-rendering toggles */
-        .view-all-mobile-btn, .sectors-section .btn-group-mobile {
-            display: none;
-        }
+        /* --- FOOTER COMPONENT --- */
+        footer { background: #040a14; color: #fff; padding: 5rem 0 2rem 0; border-top: 4px solid var(--primary-gold); margin-top: 5rem; }
+        .footer-grid { display: grid; grid-template-columns: 1.5fr repeat(3, 1fr); gap: 4rem; margin-bottom: 4rem; }
+        .footer-logo { font-family: var(--font-serif); font-size: 1.5rem; margin-bottom: 1rem; }
+        .footer-col h5 { color: var(--primary-gold); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1.5rem; }
+        .footer-col ul { display: flex; flex-direction: column; gap: 0.75rem; font-size: 0.85rem; }
+        .footer-col a { color: rgba(255,255,255,0.6); }
+        .footer-col a:hover { color: #fff; }
+        .footer-badges { display: flex; gap: 1rem; align-items: center; margin-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 1.5rem; justify-content: center; }
+        .badge-item { background: rgba(255,255,255,0.05); padding: 0.5rem 1rem; font-size: 0.75rem; border-radius: 4px; font-weight: 600; border: 1px solid rgba(255,255,255,0.1); }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="container nav-container">
-            <div class="logo">
-                <img src="https://via.placeholder.com/180x45/071120/ffffff?text=PRO+DUPLICATOR" alt="Pro Duplicator Logo">
-            </div>
-            <nav class="nav-menu">
-                <a href="#">Products</a>
-                <a href="#">Sectors</a>
-                <a href="#">Knowledge Base</a>
-                <a href="#">Support</a>
-                <a href="#">Contact</a>
+    <div class="view-switcher">
+        <button class="view-btn active" onclick="switchView('catalog')">1. Catalog Collection Page (From Photo)</button>
+        <button class="view-btn" onclick="switchView('product')">2. Individual Hardware Product Page</button>
+    </div>
+
+    <div class="top-utility-bar">
+        <div class="container top-utility-inner">
+            <div>Industrial-Grade Automated Data Deployment Solutions</div>
+            <div>📞 Technical Support Hotline: 1-800-801-4384</div>
+        </div>
+    </div>
+
+    <header class="main-header">
+        <div class="container nav-inner">
+            <div class="logo">PRO<span>DUPLICATOR</span></div>
+            <nav class="nav-links">
+                <a href="#" onclick="switchView('catalog')">M.2 Duplicators</a>
+                <a href="#">SATA Systems</a>
+                <a href="#">Sanitizers</a>
+                <a href="#">Gov / School Orders</a>
+                <a href="#">Knowledge Hub</a>
             </nav>
-            <div class="nav-icons">
-                <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
-                <div class="mobile-menu-toggle">
-                    <svg viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-                </div>
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Search system specifications...">
             </div>
         </div>
     </header>
 
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <span class="section-tag">Featured Collection</span>
-                <h1 class="section-title">M.2 NVMe PCIe</h1>
-                <p class="hero-subtitle">Duplicators & Sanitizers engineered for high-velocity industrial processing workflows.</p>
-                <button class="btn btn-gold">Shop Now &rarr;</button>
-            </div>
-            <div class="hero-img">
-                <img src="https://via.placeholder.com/500x350/fcfbfa/000000?text=NVMe+Duplicator+Hardware" alt="M.2 NVMe Hardware">
-            </div>
-        </div>
-    </section>
-
-    <section class="metrics-strip">
-        <div class="container metrics-grid">
-            <div class="metric-item">
-                <span class="number">25<span>+</span></span>
-                <span class="label">Years of Excellence</span>
-            </div>
-            <div class="metric-item">
-                <span class="number">50k<span>+</span></span>
-                <span class="label">Units Distributed</span>
-            </div>
-            <div class="metric-item">
-                <span class="number">A<span>+</span></span>
-                <span class="label">BBB Rating</span>
-            </div>
-        </div>
-    </section>
-
-    <section class="catalog-section">
-        <div class="container">
-            <div class="catalog-header">
-                <div>
-                    <span class="section-tag">Our Catalogue</span>
-                    <h2 class="section-title">Popular Products</h2>
-                </div>
-                <button class="btn btn-outline">View All Products &rarr;</button>
-            </div>
-
-            <div class="product-grid">
-                <div class="product-card">
-                    <span class="product-badge best-seller">Best Seller</span>
-                    <div class="product-img">
-                        <img src="https://via.placeholder.com/160x130/ffffff/000000?text=NVMe+DualCore" alt="Product">
-                    </div>
-                    <div>
-                        <h3 class="product-title">NVMe/M.2 PCIe DualCore</h3>
-                        <p class="product-desc">Supports NVMe & M.2 PCIe cross-interface duplication layouts.</p>
-                        <a href="#" class="product-link">Details &rarr;</a>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <span class="product-badge popular">Popular</span>
-                    <div class="product-img">
-                        <img src="https://via.placeholder.com/160x130/ffffff/000000?text=SATA+Duplicator" alt="Product">
-                    </div>
-                    <div>
-                        <h3 class="product-title">Pocket HDD/SSD Duplicator</h3>
-                        <p class="product-desc">Ultra-slim structure with seamless field service capabilities.</p>
-                        <a href="#" class="product-link">Details &rarr;</a>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <span class="product-badge new">New</span>
-                    <div class="product-img">
-                        <img src="https://via.placeholder.com/160x130/ffffff/000000?text=SATA+HighSpeed" alt="Product">
-                    </div>
-                    <div>
-                        <h3 class="product-title">SATA HDD/SSD Duplicator</h3>
-                        <p class="product-desc">Heavy industrial multi-slot platform for scaling distribution target targets.</p>
-                        <a href="#" class="product-link">Details &rarr;</a>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-img">
-                        <img src="https://via.placeholder.com/160x130/ffffff/000000?text=USB+Drive+Rack" alt="Product">
-                    </div>
-                    <div>
-                        <h3 class="product-title">USB Drive Duplicator</h3>
-                        <p class="product-desc">Premium asynchronous thumb-drive flash system matching accurate bit layouts.</p>
-                        <a href="#" class="product-link">Details &rarr;</a>
-                    </div>
-                </div>
-            </div>
-
-            <button class="btn btn-outline view-all-mobile-btn">View All Products &rarr;</button>
-        </div>
-    </section>
-
-    <div class="container">
-        <section class="promo-banner-dark">
-            <div class="inner-grid">
-                <div class="promo-content">
-                    <span class="section-tag" style="color: #dfba6b;">Smart Technology</span>
-                    <h2 class="section-title">Standalone Cloning for NVMe, HDD & Flash Media</h2>
-                    <p>Over 25 years building hardware architectures that IT professionals trust for precise, high-speed automated deployment cycle after cycle.</p>
-                    <button class="btn btn-gold">Shop Now &rarr;</button>
-                </div>
-                <div class="promo-img-bg" style="background-image: url('https://via.placeholder.com/600x400/1a2536/ffffff?text=Hardware+Array+SaaS');"></div>
+    <div id="catalog-view">
+        <section class="catalog-hero">
+            <div class="container">
+                <h1>M.2 PCIe SATA/NVMe Duplicators & Sanitizers</h1>
+                <p>High-volume commercial hardware platforms engineered for rapid multi-target deployment pipelines.</p>
             </div>
         </section>
+
+        <div class="container">
+            <section class="series-section">
+                <div class="series-header">
+                    <h2 class="series-title">NX Series Layout</h2>
+                    <span class="series-speed">24 GB/min (M.2)</span>
+                </div>
+                <div class="product-grid">
+                    <div class="product-card">
+                        <div class="product-img-holder"><img src="https://via.placeholder.com/220x160/f8fafc/0f172a?text=NX-Target-1" alt="Duplicator"></div>
+                        <div class="product-info">
+                            <h3>1 to 4 M.2 NVMe PCIe / SATA SSD Duplicator Sanitizer Tower</h3>
+                            <div class="product-meta">
+                                <div class="product-price">$1,850.00</div>
+                                <a href="#" class="view-details-btn" onclick="switchView('product')">Configure</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-img-holder"><img src="https://via.placeholder.com/220x160/f8fafc/0f172a?text=NX-Target-2" alt="Duplicator"></div>
+                        <div class="product-info">
+                            <h3>1 to 9 M.2 NVMe PCIe / SATA SSD Duplicator Sanitizer Tower</h3>
+                            <div class="product-meta">
+                                <div class="product-price">$3,240.00</div>
+                                <a href="#" class="view-details-btn" onclick="switchView('product')">Configure</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-img-holder"><img src="https://via.placeholder.com/220x160/f8fafc/0f172a?text=NX-Target-3" alt="Duplicator"></div>
+                        <div class="product-info">
+                            <h3>1 to 19 M.2 NVMe PCIe / SATA SSD Duplicator Sanitizer Tower</h3>
+                            <div class="product-meta">
+                                <div class="product-price">$5,980.00</div>
+                                <a href="#" class="view-details-btn" onclick="switchView('product')">Configure</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="series-section">
+                <div class="series-header">
+                    <h2 class="series-title">TL Series Layout</h2>
+                    <span class="series-speed">30 GB/min (M.2 & SATA SSD/HDD)</span>
+                </div>
+                <div class="product-grid">
+                    <div class="product-card">
+                        <div class="product-img-holder"><img src="https://via.placeholder.com/220x160/f8fafc/0f172a?text=TL-System-A" alt="Duplicator"></div>
+                        <div class="product-info">
+                            <h3>1 to 5 M.2 NVMe PCIe cross-interface Production Array</h3>
+                            <div class="product-meta">
+                                <div class="product-price">$2,410.00</div>
+                                <a href="#" class="view-details-btn" onclick="switchView('product')">Configure</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-img-holder"><img src="https://via.placeholder.com/220x160/f8fafc/0f172a?text=TL-System-B" alt="Duplicator"></div>
+                        <div class="product-info">
+                            <h3>1 to 11 M.2 NVMe PCIe Smart Server Deployment Deck</h3>
+                            <div class="product-meta">
+                                <div class="product-price">$4,150.00</div>
+                                <a href="#" class="view-details-btn" onclick="switchView('product')">Configure</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-img-holder"><img src="https://via.placeholder.com/220x160/f8fafc/0f172a?text=TL-System-C" alt="Duplicator"></div>
+                        <div class="product-info">
+                            <h3>1 to 23 M.2 Master Multi-Slot Industrial Station</h3>
+                            <div class="product-meta">
+                                <div class="product-price">$7,890.00</div>
+                                <a href="#" class="view-details-btn" onclick="switchView('product')">Configure</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="series-section">
+                <div class="series-header">
+                    <h2 class="series-title">PE Series Layout</h2>
+                    <span class="series-speed">15 GB/min (M.2)</span>
+                </div>
+                <div class="product-grid">
+                    <div class="product-card">
+                        <div class="product-img-holder"><img src="https://via.placeholder.com/220x160/f8fafc/0f172a?text=PE-Mini-1" alt="Duplicator"></div>
+                        <div class="product-info">
+                            <h3>1 to 3 Standalone PCIe M.2 SSD Field Duplicator Module</h3>
+                            <div class="product-meta">
+                                <div class="product-price">$1,120.00</div>
+                                <a href="#" class="view-details-btn" onclick="switchView('product')">Configure</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-img-holder"><img src="https://via.placeholder.com/220x160/f8fafc/0f172a?text=PE-Mini-2" alt="Duplicator"></div>
+                        <div class="product-info">
+                            <h3>1 to 7 Standalone PCIe M.2 SSD Enterprise Deck</h3>
+                            <div class="product-meta">
+                                <div class="product-price">$1,980.00</div>
+                                <a href="#" class="view-details-btn" onclick="switchView('product')">Configure</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
     </div>
 
-    <div class="container">
-        <section class="promo-banner-split">
-            <div class="promo-split-img">
-                <img src="https://via.placeholder.com/600x380/e2e8f0/071120?text=Hardware+Duplication+Chips" alt="Hardware Stack components">
-            </div>
-            <div class="promo-split-content">
-                <span class="section-tag">Standalone Deployment</span>
-                <h2 class="section-title">Hardware-Based Duplication</h2>
-                <p>Unlike software cloning, our standalone engineering lines completely bypass computer configurations, sheltering internal files from network exposures and malware infection profiles flawlessly.</p>
-                <div class="btn-group">
-                    <button class="btn btn-gold">Shop Now &rarr;</button>
-                    <button class="btn btn-outline">Find Out More</button>
+    <div id="product-view" class="product-page-wrapper hidden">
+        <div class="container">
+            <div class="breadcrumb">Products / M.2 PCIe NVMe Duplicators / NX Series / 1-9 Master Tower</div>
+            
+            <div class="product-main-layout">
+                <div class="product-gallery">
+                    <div class="main-stage-img">
+                        <img src="https://via.placeholder.com/450x350/f8fafc/0f172a?text=NX-9-Tower-System" alt="Industrial Hardware Master System">
+                    </div>
+                    <div class="thumb-strip">
+                        <div class="thumb-item active"><img src="https://via.placeholder.com/60x60/fff/000?text=View+1"></div>
+                        <div class="thumb-item"><img src="https://via.placeholder.com/60x60/fff/000?text=Ports"></div>
+                        <div class="thumb-item"><img src="https://via.placeholder.com/60x60/fff/000?text=Interface"></div>
+                    </div>
+                </div>
+
+                <div class="product-details-panel">
+                    <span class="part-number">SKU: NX-NVME-09T</span>
+                    <h1>1 to 9 M.2 NVMe PCIe / SATA SSD Standalone Duplicator and DoD Sanitizer Tower</h1>
+                    
+                    <div class="product-specs-pill-strip">
+                        <span class="spec-pill">24 GB/min Content Speeds</span>
+                        <span class="spec-pill">Standalone Operation (No OS Needed)</span>
+                        <span class="spec-pill">DoD 5220.22-M Wipe Protocols</span>
+                        <span class="spec-pill">Cross-Interface Compatible</span>
+                    </div>
+
+                    <p style="color: var(--text-muted); margin-bottom: 1.5rem;">
+                        Engineered specifically for heavy industrial test environments. Fully runs target deployment speeds up to 24 GB/min across all channels simultaneously without transmission loss.
+                    </p>
+
+                    <div class="price-box-wrapper">
+                        <div class="price-row">
+                            <span class="main-price">$3,240.00</span>
+                            <span class="availability">✓ Systems In Stock</span>
+                        </div>
+                        <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1.5rem;">Corporate procurement financing plans available upon account setup verify validation.</p>
+                        
+                        <div class="action-group">
+                            <button class="btn-primary">Add To Corporate Cart</button>
+                            <button class="btn-secondary">Request Bulk Quote</button>
+                        </div>
+                    </div>
+
+                    <table class="tech-spec-table">
+                        <thead>
+                            <tr><th colspan="2">System Engineering Specifications</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Target Ports</td><td>1 Master Slot to 9 Target Channels</td></tr>
+                            <tr><td>Transfer Peak Velocity</td><td>24 GB per minute asynchronous operation</td></tr>
+                            <tr><td>Supported Standards</td><td>M.2 NVMe (PCIe Gen3/Gen4/Gen5 Architecture), M.2 SATA SSD</td></tr>
+                            <tr><td>Sanitization Standards</td><td>Quick Erase, Full Erase, DoD 3-Pass, DoD 7-Pass Secure Wipe</td></tr>
+                            <tr><td>Display Output</td><td>Backlit Monochrome Component LCD Layout Control Center</td></tr>
+                            <tr><td>Power Configuration</td><td>Universal 115V/230V High-Output Switching Supply Unit</td></tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
-        </section>
+        </div>
     </div>
-
-    <section class="sectors-section">
-        <div class="container">
-            <span class="section-tag">Industries We Resource</span>
-            <h2 class="section-title">Serving Enterprise, Education & Government</h2>
-            
-            <div class="sectors-grid">
-                <div class="sectors-list">
-                    <div class="sector-tab active">
-                        <img src="https://via.placeholder.com/600x400/071120/ffffff?text=Corporate" alt="IT Depts">
-                        <div>
-                            <h4>IT Departments</h4>
-                            <p>Deploy pristine operating system structures across large grids safely.</p>
-                        </div>
-                    </div>
-                    <div class="sector-tab">
-                        <img src="https://via.placeholder.com/600x400/071120/ffffff?text=Education" alt="Edu">
-                        <div>
-                            <h4>Education & Government</h4>
-                            <p>Keep continuous control over active device systems effortlessly.</p>
-                        </div>
-                    </div>
-                    <div class="sector-tab">
-                        <img src="https://via.placeholder.com/600x400/071120/ffffff?text=Media" alt="Media production">
-                        <div>
-                            <h4>Media Production Houses</h4>
-                            <p>Duplicate digital video assets rapidly securely.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="sector-display-panel">
-                    <h3>Enterprise Infrastructure Performance</h3>
-                    <p>Designed explicitly for fast configurations, data backup management execution, and high-volume deployment tasks across specialized modern enterprise units.</p>
-                    <button class="btn btn-gold" style="align-self: flex-start;">Learn More &rarr;</button>
-                </div>
-            </div>
-
-            <div class="btn-group-mobile">
-                <button class="btn btn-gold">Learn More &rarr;</button>
-                <button class="btn btn-outline-white">Shop Now &rarr;</button>
-            </div>
-        </div>
-    </section>
-
-    <section class="testimonials-section">
-        <div class="container">
-            <span class="section-tag" style="text-align: center;">Client Praise</span>
-            <h2 class="section-title">Testimonials</h2>
-            
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <div class="testi-header">
-                        <div class="testi-user">
-                            <h4>Michael B.</h4>
-                            <span>IT Director</span>
-                        </div>
-                        <div class="stars">★★★★★</div>
-                    </div>
-                    <p>"We replicated 500 devices in a single day without a single failure. The operation delivered exactly what they promised—solid, steady time-saving value."</p>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testi-header">
-                        <div class="testi-user">
-                            <h4>Sarah M.</h4>
-                            <span>Systems Administrator</span>
-                        </div>
-                        <div class="stars">★★★★★</div>
-                    </div>
-                    <p>"The setup process was seamless. Our internal clients get systems quickly, and the hardware units have been running continuously for over two years now."</p>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testi-header">
-                        <div class="testi-user">
-                            <h4>James T.</h4>
-                            <span>Production Manager</span>
-                        </div>
-                        <div class="stars">★★★★★</div>
-                    </div>
-                    <p>"This platform eliminated cloning latency for multimedia distribution completely. Unmatched hardware stability combined with responsive, professional support staff."</p>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <footer>
         <div class="container">
-            <div class="footer-main">
-                <div class="footer-brand">
-                    <img src="https://via.placeholder.com/180x45/040a14/ffffff?text=PRO+DUPLICATOR" alt="Pro Duplicator Footer Logo">
-                    <p>Industrial-grade media duplication for IT specialists and production hubs worldwide since 1999.</p>
-                    <div class="social-icons">
-                        <a href="#">f</a>
-                        <a href="#">t</a>
-                        <a href="#">in</a>
-                        <a href="#">y</a>
-                    </div>
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-logo">PRO<span>DUPLICATOR</span></div>
+                    <p style="color: rgba(255,255,255,0.5); font-size: 0.85rem; line-height: 1.6;">
+                        High-volume corporate automated physical media engineering array platforms since 1999.
+                    </p>
                 </div>
-                
                 <div class="footer-col">
-                    <h5>Company</h5>
+                    <h5>Equipment Matrix</h5>
                     <ul>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Knowledge Base</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Shipping Policy</a></li>
+                        <li><a href="#">M.2 NVMe Towers</a></li>
+                        <li><a href="#">PCIe Production Arrays</a></li>
+                        <li><a href="#">SATA SSD Hot-Swap Decks</a></li>
                     </ul>
                 </div>
-
                 <div class="footer-col">
-                    <h5>Quick Links</h5>
+                    <h5>Procurement Support</h5>
                     <ul>
-                        <li><a href="#">Gov & School Orders</a></li>
-                        <li><a href="#">Customer Reviews</a></li>
-                        <li><a href="#">Air Riding</a></li>
-                        <li><a href="#">Manuals & Guides</a></li>
+                        <li><a href="#">Government RFQ Orders</a></li>
+                        <li><a href="#">School Purchase Orders</a></li>
+                        <li><a href="#">Financing Layout Options</a></li>
                     </ul>
                 </div>
-
                 <div class="footer-col">
-                    <h5>Contact</h5>
-                    <ul style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">
-                        <li>📞 800-801-4384 (Toll Free)</li>
-                        <li>✉️ tech@produplicator.com</li>
-                        <li>🕒 Mon-Fri 8:30 AM - 5 PM PST</li>
+                    <h5>Technical Center</h5>
+                    <ul>
+                        <li><a href="#">System Firmware Upgrades</a></li>
+                        <li><a href="#">DoD Sanitization Records</a></li>
+                        <li><a href="#">Contact Engineering Team</a></li>
                     </ul>
                 </div>
             </div>
 
-            <div class="footer-bottom">
-                <p>&copy; 2026 Pro Duplicator. All rights reserved.</p>
-                <p>Payments Secured via Visa, Mastercard, AMEX, PayPal</p>
+            <div class="footer-badges">
+                <span class="badge-item">ISO 9001 Quality Certified</span>
+                <span class="badge-item">DoD Secure Compliant System Layouts</span>
+                <span class="badge-item">A+ BBB Corporate Accredited</span>
             </div>
+            
+            <p style="text-align: center; color: rgba(255,255,255,0.3); font-size: 0.75rem; margin-top: 2rem;">
+                &copy; 2026 Pro Duplicator Inc. Systems Layout Profiles. All Rights Reserved.
+            </p>
         </div>
     </footer>
 
+    <script>
+        function switchView(viewId) {
+            const catalogView = document.getElementById('catalog-view');
+            const productView = document.getElementById('product-view');
+            const buttons = document.querySelectorAll('.view-btn');
+
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            if(viewId === 'catalog') {
+                catalogView.classList.remove('hidden');
+                productView.classList.add('hidden');
+                buttons[0].classList.add('active');
+                window.scrollTo({top: 0, behavior: 'smooth'});
+            } else {
+                productView.classList.remove('hidden');
+                catalogView.classList.add('hidden');
+                buttons[1].classList.add('active');
+                window.scrollTo({top: 0, behavior: 'smooth'});
+            }
+        }
+    </script>
 </body>
 </html>
