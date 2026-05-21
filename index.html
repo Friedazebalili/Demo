@@ -1,250 +1,950 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SEO & Performance Web Solutions</title>
-  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pro Duplicator - Premium Industrial Duplication Systems</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..700;1,400..700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- BRAND PALETTE & VARIABLES --- */
+        :root {
+            --bg-dark: #071120;
+            --bg-light: #ffffff;
+            --bg-muted: #fcfbfa;
+            --primary-gold: #cfa851;
+            --primary-gold-hover: #b89340;
+            --text-dark: #0b1523;
+            --text-light: #ffffff;
+            --text-muted: #677487;
+            --border-color: #e2e8f0;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        /* --- RESET & BASE STYLES --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: var(--font-sans);
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        ul {
+            list-style: none;
+        }
+
+        /* --- REUSABLE UTILITIES --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        .section-tag {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--primary-gold);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        .section-title {
+            font-family: var(--font-serif);
+            font-size: 2.5rem;
+            color: var(--text-dark);
+            font-weight: 700;
+            margin-bottom: 2rem;
+            line-height: 1.2;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.85rem 2rem;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .btn-gold {
+            background-color: var(--primary-gold);
+            color: var(--text-light);
+        }
+        .btn-gold:hover {
+            background-color: var(--primary-gold-hover);
+        }
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid var(--text-dark);
+            color: var(--text-dark);
+        }
+        .btn-outline:hover {
+            background-color: var(--text-dark);
+            color: var(--text-light);
+        }
+        .btn-outline-white {
+            background-color: transparent;
+            border: 1px solid var(--text-light);
+            color: var(--text-light);
+        }
+        .btn-outline-white:hover {
+            background-color: var(--text-light);
+            color: var(--text-dark);
+        }
+
+        /* --- HEADER & NAVIGATION (DESKTOP) --- */
+        header {
+            background-color: var(--bg-light);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+        .logo img {
+            height: 45px;
+        }
+        .nav-menu {
+            display: flex;
+            gap: 2.5rem;
+        }
+        .nav-menu a {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+        .nav-menu a:hover {
+            color: var(--primary-gold);
+        }
+        .nav-icons {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+        .nav-icons svg {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            fill: none;
+            stroke: var(--text-dark);
+            stroke-width: 2;
+        }
+        .mobile-menu-toggle {
+            display: none;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            background-color: var(--bg-muted);
+            padding: 5rem 0;
+        }
+        .hero .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 4rem;
+        }
+        .hero-content {
+            max-width: 520px;
+        }
+        .hero-content .section-title {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+        }
+        .hero-img img {
+            width: 100%;
+            mix-blend-mode: multiply;
+        }
+
+        /* --- TRUST / METRICS STRIP --- */
+        .metrics-strip {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            padding: 3rem 0;
+        }
+        .metrics-grid {
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+        }
+        .metric-item .number {
+            font-family: var(--font-serif);
+            font-size: 2.5rem;
+            color: var(--text-light);
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+        .metric-item .number span {
+            color: var(--primary-gold);
+        }
+        .metric-item .label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: rgba(255,255,255,0.6);
+        }
+
+        /* --- PRODUCT CATALOG SECTION --- */
+        .catalog-section {
+            padding: 6rem 0;
+        }
+        .catalog-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 3rem;
+        }
+        .catalog-header .section-title {
+            margin-bottom: 0;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        .product-card {
+            background: var(--bg-light);
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .product-badge {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            padding: 0.25rem 0.6rem;
+            background: #e2e8f0;
+            letter-spacing: 1px;
+        }
+        .product-badge.best-seller {
+            background-color: #dfba6b;
+            color: #fff;
+        }
+        .product-badge.popular {
+            background-color: #caa049;
+            color: #fff;
+        }
+        .product-badge.new {
+            background-color: #213a5f;
+            color: #fff;
+        }
+        .product-img {
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+        .product-img img {
+            max-height: 100%;
+            object-fit: contain;
+        }
+        .product-title {
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        .product-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+        .product-link {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--primary-gold);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        /* --- FEATURE PROMO BANNER 1 --- */
+        .promo-banner-dark {
+            background-color: #1a2536;
+            color: var(--text-light);
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 4rem;
+        }
+        .promo-banner-dark .inner-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+        }
+        .promo-content {
+            padding: 4rem;
+        }
+        .promo-content .section-title {
+            color: var(--text-light);
+        }
+        .promo-content p {
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 2rem;
+            font-size: 1rem;
+        }
+        .promo-img-bg {
+            background-size: cover;
+            background-position: center;
+            height: 100%;
+            min-height: 350px;
+        }
+
+        /* --- FEATURE PROMO BANNER 2 --- */
+        .promo-banner-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            padding: 4rem 0;
+        }
+        .promo-split-img img {
+            width: 100%;
+            border-radius: 4px;
+        }
+        .promo-split-content .btn-group {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        /* --- SECTOR VERTICAL TABS SECTION --- */
+        .sectors-section {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            padding: 6rem 0;
+        }
+        .sectors-section .section-title {
+            color: var(--text-light);
+        }
+        .sectors-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 4rem;
+            align-items: start;
+        }
+        .sectors-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .sector-tab {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .sector-tab.active, .sector-tab:hover {
+            background: rgba(255,255,255,0.08);
+            border-color: var(--primary-gold);
+        }
+        .sector-tab img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+        .sector-tab h4 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+        .sector-tab p {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.5);
+        }
+        .sector-display-panel {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            padding: 3rem;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .sector-display-panel h3 {
+            font-family: var(--font-serif);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        .sector-display-panel p {
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 2rem;
+        }
+
+        /* --- TESTIMONIALS SECTION --- */
+        .testimonials-section {
+            padding: 6rem 0;
+            background-color: var(--bg-muted);
+        }
+        .testimonials-section .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        .testimonial-card {
+            background: var(--bg-light);
+            border: 1px solid var(--border-color);
+            padding: 2.5rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+        }
+        .testi-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        .testi-user h4 {
+            font-size: 1rem;
+            font-weight: 600;
+        }
+        .testi-user span {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+        .stars {
+            color: var(--primary-gold);
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+        .testimonial-card p {
+            font-size: 0.95rem;
+            color: #4a5568;
+            font-style: italic;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #040a14;
+            color: var(--text-light);
+            padding: 5rem 0 2rem 0;
+            font-size: 0.9rem;
+        }
+        .footer-main {
+            display: grid;
+            grid-template-columns: 1.5fr repeat(3, 1fr);
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+        .footer-brand p {
+            color: rgba(255,255,255,0.6);
+            margin: 1.5rem 0;
+            max-width: 300px;
+            font-size: 0.85rem;
+        }
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+        }
+        .social-icons a {
+            width: 32px;
+            height: 32px;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255,255,255,0.6);
+        }
+        .social-icons a:hover {
+            border-color: var(--primary-gold);
+            color: var(--primary-gold);
+        }
+        .footer-col h5 {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--primary-gold);
+            margin-bottom: 1.5rem;
+        }
+        .footer-col ul {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        .footer-col ul a {
+            color: rgba(255,255,255,0.6);
+        }
+        .footer-col ul a:hover {
+            color: var(--text-light);
+        }
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            color: rgba(255,255,255,0.4);
+            font-size: 0.8rem;
+        }
+
+        /* ------------------------------------------------------------- */
+        /* --- RESPONSIVE MEDIA QUERY: MATCHING YOUR MOBILE SCREENSHOT --- */
+        /* ------------------------------------------------------------- */
+        @media (max-width: 768px) {
+            /* General Typography Adaptations */
+            .section-title {
+                font-size: 1.85rem !important;
+                margin-bottom: 1.5rem;
+            }
+            .container {
+                padding: 0 1.25rem;
+            }
+
+            /* Nav adjustments to mirror your screen header look */
+            .nav-menu {
+                display: none; /* Hidden on mobile view natively */
+            }
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            /* Hero Transformation */
+            .hero {
+                padding: 3rem 0;
+                text-align: center;
+            }
+            .hero .container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .hero-content {
+                max-width: 100%;
+            }
+            .hero-content .section-title {
+                font-size: 2.2rem !important;
+            }
+            /* Match the full width mobile look button */
+            .hero-content .btn {
+                width: 100%;
+            }
+
+            /* Metrics Strip Stacked */
+            .metrics-grid {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            /* Catalog Header & Grid Stacked */
+            .catalog-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+            .catalog-header .btn {
+                display: none; /* Moved to bottom button in image view */
+            }
+            .product-grid {
+                grid-template-columns: 1fr; /* Single column flow like screenshot */
+                gap: 1.5rem;
+            }
+            .view-all-mobile-btn {
+                display: block !important;
+                width: 100%;
+                text-align: center;
+                margin-top: 1rem;
+            }
+
+            /* Promo Banners Stacked */
+            .promo-banner-dark .inner-grid {
+                grid-template-columns: 1fr;
+            }
+            .promo-content {
+                padding: 2rem 1.5rem;
+            }
+            .promo-content .btn {
+                width: 100%;
+            }
+            .promo-img-bg {
+                height: 220px;
+                order: -1; /* Image on top format */
+            }
+
+            .promo-banner-split {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                padding: 2rem 0;
+            }
+            .promo-split-content .btn-group {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .promo-split-content .btn {
+                width: 100%;
+            }
+
+            /* Vertically integrated elements matching screenshot */
+            .sectors-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .sector-display-panel {
+                display: none; /* Handled gracefully on mobile via text visibility */
+            }
+            .sectors-section .btn-group-mobile {
+                display: flex !important;
+                flex-direction: column;
+                gap: 1rem;
+                margin-top: 2rem;
+            }
+            .sectors-section .btn-group-mobile .btn {
+                width: 100%;
+            }
+
+            /* Testimonials Stacked */
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            .testimonial-card {
+                padding: 1.5rem;
+            }
+
+            /* Footer Mobile Flow */
+            .footer-main {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+        }
+
+        /* Fallback elements for crisp cross-rendering toggles */
+        .view-all-mobile-btn, .sectors-section .btn-group-mobile {
+            display: none;
+        }
+    </style>
 </head>
-<body class="bg-[#121d2f] text-slate-200 font-sans antialiased selection:bg-[#00c2ff] selection:text-[#121d2f]">
+<body>
 
-  <header class="relative overflow-hidden pt-32 pb-24 lg:pt-40 lg:pb-32 border-b border-[#1b2b42]">
-    <div class="absolute top-0 left-1/4 -z-10 h-[400px] w-[400px] rounded-full bg-[#00c2ff]/10 blur-[120px]"></div>
-    <div class="absolute top-1/3 right-1/4 -z-10 h-[300px] w-[300px] rounded-full bg-blue-500/10 blur-[100px]"></div>
-
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="flex items-center gap-2 text-xs font-mono text-slate-400 mb-6">
-        <a href="/" class="hover:text-[#00c2ff] transition-colors">Services</a>
-        <span>/</span>
-        <span class="text-white">SEO & Web Development</span>
-      </div>
-
-      <div class="text-center lg:text-left grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-        <div class="lg:col-span-7">
-          <span class="inline-block px-4 py-1.5 mb-6 text-xs font-semibold tracking-wider text-[#00c2ff] uppercase bg-[#00c2ff]/10 border border-[#00c2ff]/30 rounded-full backdrop-blur-md">
-            Built for Growth — Not Just Another Template
-          </span>
-          
-          <h1 class="text-4xl md:text-6xl font-black tracking-tight text-white leading-[1.15]">
-            Websites That <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#00c2ff] to-blue-400 drop-shadow-[0_0_30px_rgba(0,194,255,0.2)]">Rank Higher</span> and Turn Visitors Into Customers
-          </h1>
-          
-          <p class="mt-6 text-lg text-slate-300 max-w-2xl mx-auto lg:mx-0 font-medium">
-            Your website should do more than just look good. We build fast, SEO-focused websites designed to help your business get found on Google, generate leads, and increase sales.
-          </p>
-
-          <div class="mt-10 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-            <a href="#audit" class="w-full sm:w-auto px-8 py-4 bg-[#00c2ff] text-white font-bold rounded shadow-[0_0_20px_rgba(0,194,255,0.3)] hover:scale-[1.02] transition-all duration-300 text-center">
-              Book a Free Website & SEO Audit
-            </a>
-            <div class="w-full sm:w-auto text-center">
-              <a href="#strategy" class="inline-block w-full sm:w-auto px-8 py-4 bg-transparent text-[#00c2ff] font-semibold border border-white hover:bg-white/5 transition-all duration-300">
-                Schedule a Free Strategy Call &rarr;
-              </a>
-              <span class="block text-[11px] text-slate-400 mt-1">Première consultation gratuite</span>
+    <header>
+        <div class="container nav-container">
+            <div class="logo">
+                <img src="https://via.placeholder.com/180x45/071120/ffffff?text=PRO+DUPLICATOR" alt="Pro Duplicator Logo">
             </div>
-          </div>
-          
-          <p class="mt-6 text-xs text-slate-400">Whether you run a local business, Shopify store, clinic, or startup—performance is built-in from day one.</p>
-        </div>
-
-        <div class="lg:col-span-5 bg-[#1b2b42]/40 border border-[#243b5c]/80 p-6 rounded-2xl backdrop-blur-md text-left">
-          <h3 class="text-sm font-bold tracking-wider text-[#00c2ff] uppercase mb-4 pb-2 border-b border-[#243b5c]">✔ What You Get</h3>
-          <ul class="space-y-3 text-xs text-slate-200">
-            <li class="flex items-start gap-2.5"><span class="text-[#00c2ff] font-bold">✔</span> Custom website design and development</li>
-            <li class="flex items-start gap-2.5"><span class="text-[#00c2ff] font-bold">✔</span> SEO-ready structure built for Google rankings</li>
-            <li class="flex items-start gap-2.5"><span class="text-[#00c2ff] font-bold">✔</span> Fast-loading and mobile-optimized pages</li>
-            <li class="flex items-start gap-2.5"><span class="text-[#00c2ff] font-bold">✔</span> Conversion-focused layouts that generate leads</li>
-            <li class="flex items-start gap-2.5"><span class="text-[#00c2ff] font-bold">✔</span> Shopify development and optimization</li>
-            <li class="flex items-start gap-2.5"><span class="text-[#00c2ff] font-bold">✔</span> Local SEO strategies for Maps and local search</li>
-            <li class="flex items-start gap-2.5"><span class="text-[#00c2ff] font-bold">✔</span> Ongoing support and website improvements</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <section class="py-24 max-w-6xl mx-auto px-6 relative">
-    <div class="absolute bottom-0 right-0 -z-10 h-[250px] w-[250px] rounded-full bg-[#00c2ff]/5 blur-[100px]"></div>
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-      <div class="lg:col-span-5">
-        <span class="text-xs font-bold uppercase tracking-wider text-[#00c2ff]">Why Businesses Choose Us</span>
-        <h2 class="text-3xl md:text-4xl font-bold text-white mt-2 leading-tight">
-          Most websites fail because they focus only on design.
-        </h2>
-        <p class="mt-4 text-slate-300 text-sm leading-relaxed">
-          We take a different approach. Your website is strategically developed to become a business growth engine, not just a static asset.
-        </p>
-      </div>
-      
-      <div class="lg:col-span-7 bg-gradient-to-b from-[#1b2b42]/60 to-[#1b2b42]/20 border border-[#243b5c] p-8 rounded-2xl backdrop-blur-xl relative">
-        <div class="absolute -top-3 -left-3 px-3 py-1 bg-[#121d2f] border border-[#243b5c] text-[10px] text-slate-400 font-mono tracking-widest uppercase rounded">Strategic-Focus Blueprint</div>
-        <ul class="space-y-6">
-          <li class="flex items-start gap-4">
-            <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#00c2ff]/10 text-[#00c2ff] text-xs font-bold border border-[#00c2ff]/20">1</span>
-            <div>
-              <h4 class="text-white font-semibold text-sm">Rank better on search engines</h4>
-              <p class="text-xs text-slate-300 mt-1">Clean code architectures and native schema structures to ensure Google reads your content efficiently.</p>
+            <nav class="nav-menu">
+                <a href="#">Products</a>
+                <a href="#">Sectors</a>
+                <a href="#">Knowledge Base</a>
+                <a href="#">Support</a>
+                <a href="#">Contact</a>
+            </nav>
+            <div class="nav-icons">
+                <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                <div class="mobile-menu-toggle">
+                    <svg viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                </div>
             </div>
-          </li>
-          <li class="flex items-start gap-4">
-            <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#00c2ff]/10 text-[#00c2ff] text-xs font-bold border border-[#00c2ff]/20">2</span>
-            <div>
-              <h4 class="text-white font-semibold text-sm">Load faster on all devices</h4>
-              <p class="text-xs text-slate-300 mt-1">Lightweight frameworks engineered to pass Core Web Vitals checks and retain mobile visitors.</p>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <span class="section-tag">Featured Collection</span>
+                <h1 class="section-title">M.2 NVMe PCIe</h1>
+                <p class="hero-subtitle">Duplicators & Sanitizers engineered for high-velocity industrial processing workflows.</p>
+                <button class="btn btn-gold">Shop Now &rarr;</button>
             </div>
-          </li>
-          <li class="flex items-start gap-4">
-            <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#00c2ff]/10 text-[#00c2ff] text-xs font-bold border border-[#00c2ff]/20">3</span>
-            <div>
-              <h4 class="text-white font-semibold text-sm">Keep visitors engaged longer</h4>
-              <p class="text-xs text-slate-300 mt-1">Intent-mapped user interfaces tailored around clear information paths.</p>
+            <div class="hero-img">
+                <img src="https://via.placeholder.com/500x350/fcfbfa/000000?text=NVMe+Duplicator+Hardware" alt="M.2 NVMe Hardware">
             </div>
-          </li>
-          <li class="flex items-start gap-4">
-            <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#00c2ff]/10 text-[#00c2ff] text-xs font-bold border border-[#00c2ff]/20">4</span>
-            <div>
-              <h4 class="text-white font-semibold text-sm">Convert traffic into calls, bookings, and sales</h4>
-              <p class="text-xs text-slate-300 mt-1">Action items placed natively to clear all friction from lead capture flows.</p>
+        </div>
+    </section>
+
+    <section class="metrics-strip">
+        <div class="container metrics-grid">
+            <div class="metric-item">
+                <span class="number">25<span>+</span></span>
+                <span class="label">Years of Excellence</span>
             </div>
-          </li>
-        </ul>
-      </div>
+            <div class="metric-item">
+                <span class="number">50k<span>+</span></span>
+                <span class="label">Units Distributed</span>
+            </div>
+            <div class="metric-item">
+                <span class="number">A<span>+</span></span>
+                <span class="label">BBB Rating</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="catalog-section">
+        <div class="container">
+            <div class="catalog-header">
+                <div>
+                    <span class="section-tag">Our Catalogue</span>
+                    <h2 class="section-title">Popular Products</h2>
+                </div>
+                <button class="btn btn-outline">View All Products &rarr;</button>
+            </div>
+
+            <div class="product-grid">
+                <div class="product-card">
+                    <span class="product-badge best-seller">Best Seller</span>
+                    <div class="product-img">
+                        <img src="https://via.placeholder.com/160x130/ffffff/000000?text=NVMe+DualCore" alt="Product">
+                    </div>
+                    <div>
+                        <h3 class="product-title">NVMe/M.2 PCIe DualCore</h3>
+                        <p class="product-desc">Supports NVMe & M.2 PCIe cross-interface duplication layouts.</p>
+                        <a href="#" class="product-link">Details &rarr;</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <span class="product-badge popular">Popular</span>
+                    <div class="product-img">
+                        <img src="https://via.placeholder.com/160x130/ffffff/000000?text=SATA+Duplicator" alt="Product">
+                    </div>
+                    <div>
+                        <h3 class="product-title">Pocket HDD/SSD Duplicator</h3>
+                        <p class="product-desc">Ultra-slim structure with seamless field service capabilities.</p>
+                        <a href="#" class="product-link">Details &rarr;</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <span class="product-badge new">New</span>
+                    <div class="product-img">
+                        <img src="https://via.placeholder.com/160x130/ffffff/000000?text=SATA+HighSpeed" alt="Product">
+                    </div>
+                    <div>
+                        <h3 class="product-title">SATA HDD/SSD Duplicator</h3>
+                        <p class="product-desc">Heavy industrial multi-slot platform for scaling distribution target targets.</p>
+                        <a href="#" class="product-link">Details &rarr;</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://via.placeholder.com/160x130/ffffff/000000?text=USB+Drive+Rack" alt="Product">
+                    </div>
+                    <div>
+                        <h3 class="product-title">USB Drive Duplicator</h3>
+                        <p class="product-desc">Premium asynchronous thumb-drive flash system matching accurate bit layouts.</p>
+                        <a href="#" class="product-link">Details &rarr;</a>
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn btn-outline view-all-mobile-btn">View All Products &rarr;</button>
+        </div>
+    </section>
+
+    <div class="container">
+        <section class="promo-banner-dark">
+            <div class="inner-grid">
+                <div class="promo-content">
+                    <span class="section-tag" style="color: #dfba6b;">Smart Technology</span>
+                    <h2 class="section-title">Standalone Cloning for NVMe, HDD & Flash Media</h2>
+                    <p>Over 25 years building hardware architectures that IT professionals trust for precise, high-speed automated deployment cycle after cycle.</p>
+                    <button class="btn btn-gold">Shop Now &rarr;</button>
+                </div>
+                <div class="promo-img-bg" style="background-image: url('https://via.placeholder.com/600x400/1a2536/ffffff?text=Hardware+Array+SaaS');"></div>
+            </div>
+        </section>
     </div>
-  </section>
 
-  <section class="py-24 bg-[#16243a]/40 border-t border-b border-[#243b5c]/60 relative">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="text-center max-w-2xl mx-auto mb-16">
-        <span class="text-xs font-bold uppercase tracking-wider text-[#00c2ff]">Our Pillars</span>
-        <h2 class="text-3xl md:text-4xl font-bold text-white mt-2">Services Built For Performance</h2>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div class="p-8 bg-[#1b2b42]/40 border border-[#243b5c]/60 rounded-2xl backdrop-blur-md hover:border-[#00c2ff]/40 transition-all duration-300 group">
-          <div class="h-10 w-10 bg-[#00c2ff]/10 rounded-lg border border-[#00c2ff]/20 flex items-center justify-center text-[#00c2ff] mb-6 font-mono group-hover:bg-[#00c2ff] group-hover:text-[#121d2f] transition-all">01</div>
-          <h3 class="text-lg font-bold text-white group-hover:text-[#00c2ff] transition-colors">SEO-Focused Web Development</h3>
-          <p class="mt-3 text-xs text-slate-300 leading-relaxed">Modern websites built with clean code, fast performance, and SEO foundations that help your business compete online.</p>
-        </div>
-        <div class="p-8 bg-[#1b2b42]/40 border border-[#243b5c]/60 rounded-2xl backdrop-blur-md hover:border-[#00c2ff]/40 transition-all duration-300 group">
-          <div class="h-10 w-10 bg-[#00c2ff]/10 rounded-lg border border-[#00c2ff]/20 flex items-center justify-center text-[#00c2ff] mb-6 font-mono group-hover:bg-[#00c2ff] group-hover:text-[#121d2f] transition-all">02</div>
-          <h3 class="text-lg font-bold text-white group-hover:text-[#00c2ff] transition-colors">Shopify Development & Optimization</h3>
-          <p class="mt-3 text-xs text-slate-300 leading-relaxed">Custom Shopify stores designed to increase conversions, improve speed, and help your products rank better in search results.</p>
-        </div>
-        <div class="p-8 bg-[#1b2b42]/40 border border-[#243b5c]/60 rounded-2xl backdrop-blur-md hover:border-[#00c2ff]/40 transition-all duration-300 group">
-          <div class="h-10 w-10 bg-[#00c2ff]/10 rounded-lg border border-[#00c2ff]/20 flex items-center justify-center text-[#00c2ff] mb-6 font-mono group-hover:bg-[#00c2ff] group-hover:text-[#121d2f] transition-all">03</div>
-          <h3 class="text-lg font-bold text-white group-hover:text-[#00c2ff] transition-colors">Local SEO</h3>
-          <p class="mt-3 text-xs text-slate-300 leading-relaxed">Help your business appear on Google Search and Google Maps when customers search for services in your area.</p>
-        </div>
-        <div class="p-8 bg-[#1b2b42]/40 border border-[#243b5c]/60 rounded-2xl backdrop-blur-md hover:border-[#00c2ff]/40 transition-all duration-300 group">
-          <div class="h-10 w-10 bg-[#00c2ff]/10 rounded-lg border border-[#00c2ff]/20 flex items-center justify-center text-[#00c2ff] mb-6 font-mono group-hover:bg-[#00c2ff] group-hover:text-[#121d2f] transition-all">04</div>
-          <h3 class="text-lg font-bold text-white group-hover:text-[#00c2ff] transition-colors">Website Redesigns</h3>
-          <p class="mt-3 text-xs text-slate-300 leading-relaxed">Outdated website? We redesign websites to improve speed, user experience, and lead generation without losing indexing history.</p>
-        </div>
-        <div class="p-8 bg-[#1b2b42]/40 border border-[#243b5c]/60 rounded-2xl backdrop-blur-md hover:border-[#00c2ff]/40 transition-all duration-300 group md:col-span-2 lg:col-span-2">
-          <div class="h-10 w-10 bg-[#00c2ff]/10 rounded-lg border border-[#00c2ff]/20 flex items-center justify-center text-[#00c2ff] mb-6 font-mono group-hover:bg-[#00c2ff] group-hover:text-[#121d2f] transition-all">05</div>
-          <h3 class="text-lg font-bold text-white group-hover:text-[#00c2ff] transition-colors">Technical SEO Optimization</h3>
-          <p class="mt-3 text-xs text-slate-300 leading-relaxed">From site structure layouts to background database or database speed assets optimization, we clean up all technical parameters holding your rankings back.</p>
-        </div>
-      </div>
+    <div class="container">
+        <section class="promo-banner-split">
+            <div class="promo-split-img">
+                <img src="https://via.placeholder.com/600x380/e2e8f0/071120?text=Hardware+Duplication+Chips" alt="Hardware Stack components">
+            </div>
+            <div class="promo-split-content">
+                <span class="section-tag">Standalone Deployment</span>
+                <h2 class="section-title">Hardware-Based Duplication</h2>
+                <p>Unlike software cloning, our standalone engineering lines completely bypass computer configurations, sheltering internal files from network exposures and malware infection profiles flawlessly.</p>
+                <div class="btn-group">
+                    <button class="btn btn-gold">Shop Now &rarr;</button>
+                    <button class="btn btn-outline">Find Out More</button>
+                </div>
+            </div>
+        </section>
     </div>
-  </section>
 
-  <section class="py-24 max-w-6xl mx-auto px-6">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-      <div class="lg:col-span-6 space-y-4">
-        <span class="text-xs font-bold uppercase tracking-wider text-[#00c2ff]">Who We Help</span>
-        <h2 class="text-2xl md:text-3xl font-bold text-white">Targeted Systems Built For Growing Sectors</h2>
-        
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-          <div class="p-4 bg-[#1b2b42]/30 border border-[#243b5c]/60 rounded-xl">
-            <h4 class="text-white font-bold text-sm">Local Businesses</h4>
-            <p class="text-[11px] text-slate-400 mt-1">Restaurants, contractors, clinics looking to dominate map packs and local radiuses.</p>
-          </div>
-          <div class="p-4 bg-[#1b2b42]/30 border border-[#243b5c]/60 rounded-xl">
-            <h4 class="text-white font-bold text-sm">Shopify Brands</h4>
-            <p class="text-[11px] text-slate-400 mt-1">Store owners tracking fast response times, high mobile checkouts, and collection traffic.</p>
-          </div>
-          <div class="p-4 bg-[#1b2b42]/30 border border-[#243b5c]/60 rounded-xl">
-            <h4 class="text-white font-bold text-sm">Professional Services</h4>
-            <p class="text-[11px] text-slate-400 mt-1">Lawyers, dentists, and agencies needing clean, authority-building discovery assets.</p>
-          </div>
-          <div class="p-4 bg-[#1b2b42]/30 border border-[#243b5c]/60 rounded-xl">
-            <h4 class="text-white font-bold text-sm">Startups</h4>
-            <p class="text-[11px] text-slate-400 mt-1">Scalable, modern frameworks designed to easily expand codebases and scale organic volume.</p>
-          </div>
+    <section class="sectors-section">
+        <div class="container">
+            <span class="section-tag">Industries We Resource</span>
+            <h2 class="section-title">Serving Enterprise, Education & Government</h2>
+            
+            <div class="sectors-grid">
+                <div class="sectors-list">
+                    <div class="sector-tab active">
+                        <img src="https://via.placeholder.com/600x400/071120/ffffff?text=Corporate" alt="IT Depts">
+                        <div>
+                            <h4>IT Departments</h4>
+                            <p>Deploy pristine operating system structures across large grids safely.</p>
+                        </div>
+                    </div>
+                    <div class="sector-tab">
+                        <img src="https://via.placeholder.com/600x400/071120/ffffff?text=Education" alt="Edu">
+                        <div>
+                            <h4>Education & Government</h4>
+                            <p>Keep continuous control over active device systems effortlessly.</p>
+                        </div>
+                    </div>
+                    <div class="sector-tab">
+                        <img src="https://via.placeholder.com/600x400/071120/ffffff?text=Media" alt="Media production">
+                        <div>
+                            <h4>Media Production Houses</h4>
+                            <p>Duplicate digital video assets rapidly securely.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sector-display-panel">
+                    <h3>Enterprise Infrastructure Performance</h3>
+                    <p>Designed explicitly for fast configurations, data backup management execution, and high-volume deployment tasks across specialized modern enterprise units.</p>
+                    <button class="btn btn-gold" style="align-self: flex-start;">Learn More &rarr;</button>
+                </div>
+            </div>
+
+            <div class="btn-group-mobile">
+                <button class="btn btn-gold">Learn More &rarr;</button>
+                <button class="btn btn-outline-white">Shop Now &rarr;</button>
+            </div>
         </div>
-      </div>
+    </section>
 
-      <div class="lg:col-span-6 p-8 bg-gradient-to-br from-[#1b2b42]/60 to-[#121d2f] border border-[#243b5c] rounded-2xl relative">
-        <span class="text-xs font-bold text-[#00c2ff] uppercase tracking-wider">Results That Matter</span>
-        <h3 class="text-xl md:text-2xl font-bold text-white mt-2 mb-4">Qualified traffic designed to generate revenue.</h3>
-        <ul class="space-y-3 text-xs text-slate-200">
-          <li class="flex items-center gap-2"><span class="text-[#00c2ff]">✦</span> Increase inquiries and high-quality leads</li>
-          <li class="flex items-center gap-2"><span class="text-[#00c2ff]">✦</span> Systematic improvements in Google search index ranks</li>
-          <li class="flex items-center gap-2"><span class="text-[#00c2ff]">✦</span> Drastic drops in landing page bounce rates</li>
-          <li class="flex items-center gap-2"><span class="text-[#00c2ff]">✦</span> Frictionless mobile conversion configurations</li>
-          <li class="flex items-center gap-2"><span class="text-[#00c2ff]">✦</span> Consistent, scalable organic pipeline visibility</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <section class="py-12 bg-[#16243a]/30 border-t border-[#243b5c]/40">
-    <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-6 text-xs italic text-slate-300">
-      <div class="p-5 bg-[#121d2f] border-l-2 border-[#00c2ff] rounded-r-xl">
-        “After redesigning our website and improving SEO, we started getting consistent local leads within weeks.”
-      </div>
-      <div class="p-5 bg-[#121d2f] border-l-2 border-[#00c2ff] rounded-r-xl">
-        “Our Shopify store became faster, easier to navigate, and conversions improved almost immediately.”
-      </div>
-    </div>
-  </section>
-
-  <div class="max-w-4xl mx-auto px-6 mt-16">
-    <div class="p-3 bg-amber-500/5 border border-amber-500/20 rounded-xl text-center">
-      <p class="text-xs text-amber-300 font-medium tracking-wide">
-        ⚠️ <span class="uppercase font-bold text-amber-400">Limited Project Availability:</span> We only take a selective amount of technical builds monthly to preserve high-tier optimization attention.
-      </p>
-    </div>
-  </div>
-
-  <section id="audit" class="py-16 max-w-5xl mx-auto px-6 mb-24">
-    <div class="relative p-8 md:p-12 bg-gradient-to-br from-[#1b2b42] to-[#121d2f] border border-[#243b5c] rounded-3xl shadow-xl overflow-hidden">
-      <div class="absolute top-0 right-0 h-[2px] w-32 bg-gradient-to-r from-transparent to-[#00c2ff]"></div>
-      <div class="absolute bottom-0 left-0 h-[2px] w-32 bg-gradient-to-r from-[#00c2ff] to-transparent"></div>
-
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
-        <div class="lg:col-span-7">
-          <h2 class="text-2xl md:text-3xl font-extrabold text-white tracking-tight">
-            Let’s Build a Website That Ranks and Converts
-          </h2>
-          <p class="mt-2 text-xs md:text-sm text-slate-300 leading-relaxed">
-            Get a professional website designed to attract traffic, generate leads, and help your business grow online.
-          </p>
-
-          <div class="mt-6 p-4 bg-white text-[#121d2f] rounded-xl shadow-lg">
-            <h5 class="text-xs font-bold uppercase tracking-wider text-[#00c2ff] mb-2">✅ Free Website & SEO Audit Included</h5>
-            <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-medium text-slate-800">
-              <li class="flex items-center gap-1.5"><span>•</span> Discover what's hurting your rankings</li>
-              <li class="flex items-center gap-1.5"><span>•</span> Find missed SEO opportunities</li>
-              <li class="flex items-center gap-1.5"><span>•</span> Get clear, actionable recommendations</li>
-              <li class="flex items-center gap-1.5"><span>•</span> Learn how to improve conversions</li>
-            </ul>
-          </div>
+    <section class="testimonials-section">
+        <div class="container">
+            <span class="section-tag" style="text-align: center;">Client Praise</span>
+            <h2 class="section-title">Testimonials</h2>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testi-header">
+                        <div class="testi-user">
+                            <h4>Michael B.</h4>
+                            <span>IT Director</span>
+                        </div>
+                        <div class="stars">★★★★★</div>
+                    </div>
+                    <p>"We replicated 500 devices in a single day without a single failure. The operation delivered exactly what they promised—solid, steady time-saving value."</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testi-header">
+                        <div class="testi-user">
+                            <h4>Sarah M.</h4>
+                            <span>Systems Administrator</span>
+                        </div>
+                        <div class="stars">★★★★★</div>
+                    </div>
+                    <p>"The setup process was seamless. Our internal clients get systems quickly, and the hardware units have been running continuously for over two years now."</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testi-header">
+                        <div class="testi-user">
+                            <h4>James T.</h4>
+                            <span>Production Manager</span>
+                        </div>
+                        <div class="stars">★★★★★</div>
+                    </div>
+                    <p>"This platform eliminated cloning latency for multimedia distribution completely. Unmatched hardware stability combined with responsive, professional support staff."</p>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <div class="lg:col-span-5 flex flex-col gap-3 w-full">
-          <a href="#" class="w-full text-center px-6 py-4 bg-[#00c2ff] text-white font-bold rounded shadow-lg hover:bg-[#009ecf] transition-all">
-            Book Your Free Audit Today
-          </a>
-          <a href="#" class="w-full text-center px-6 py-4 bg-transparent border border-white text-white font-semibold rounded hover:bg-white/5 transition-all">
-            Start Growing Online
-          </a>
+    <footer>
+        <div class="container">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <img src="https://via.placeholder.com/180x45/040a14/ffffff?text=PRO+DUPLICATOR" alt="Pro Duplicator Footer Logo">
+                    <p>Industrial-grade media duplication for IT specialists and production hubs worldwide since 1999.</p>
+                    <div class="social-icons">
+                        <a href="#">f</a>
+                        <a href="#">t</a>
+                        <a href="#">in</a>
+                        <a href="#">y</a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h5>Company</h5>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Knowledge Base</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Shipping Policy</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h5>Quick Links</h5>
+                    <ul>
+                        <li><a href="#">Gov & School Orders</a></li>
+                        <li><a href="#">Customer Reviews</a></li>
+                        <li><a href="#">Air Riding</a></li>
+                        <li><a href="#">Manuals & Guides</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h5>Contact</h5>
+                    <ul style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">
+                        <li>📞 800-801-4384 (Toll Free)</li>
+                        <li>✉️ tech@produplicator.com</li>
+                        <li>🕒 Mon-Fri 8:30 AM - 5 PM PST</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Pro Duplicator. All rights reserved.</p>
+                <p>Payments Secured via Visa, Mastercard, AMEX, PayPal</p>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </footer>
 
 </body>
 </html>
