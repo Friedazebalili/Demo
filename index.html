@@ -3,535 +3,815 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>M.2 PCIe SATA/NVMe Duplicators</title>
+    <title>M.2 PCIe SATA/NVMe Duplicators & Sanitizers | Pro Duplicator</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        /* --- STYLE SYSTEM CONFIGURATION --- */
         :root {
-            /* Exact color matching to your brand screenshots */
-            --brand-navy: #0b1a30;
-            --brand-gold: #d6a848;
-            --brand-gold-hover: #c49636;
-            --text-dark: #111827;
-            --text-gray: #4b5563;
-            --link-orange: #d97706; /* Matches the text links in your catalog photo */
-            --border-light: #e5e7eb;
-            --bg-white: #ffffff;
-            --bg-gray: #f9fafb;
+            --brand-navy: #0a1931;
+            --brand-navy-light: #15305b;
+            --brand-gold: #cfa851;
+            --brand-gold-hover: #b59043;
+            --text-dark: #0f172a;
+            --text-muted: #64748b;
+            --link-orange: #d97706;
+            --border-color: #e2e8f0;
+            --bg-light-gray: #f8fafc;
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Plus Jakarta Sans', sans-serif;
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Inter', sans-serif;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: var(--font-sans); color: var(--text-dark); background-color: #ffffff; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+        a { text-decoration: none; color: inherit; transition: color 0.2s ease; }
 
-        body {
-            background-color: var(--bg-white);
-            color: var(--text-dark);
-            line-height: 1.5;
-        }
+        /* --- LAYOUT UTILITIES --- */
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
+        .hidden { display: none !important; }
 
-        a {
-            text-decoration: none;
-            color: inherit;
+        /* --- TOP UTILITY BAND --- */
+        .top-utility-bar {
+            background-color: #050d1a;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.75rem;
+            padding: 0.6rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
+        .top-utility-inner { display: flex; justify-content: space-between; align-items: center; }
+        .utility-links { display: flex; gap: 1.5rem; }
+        .utility-links a:hover { color: var(--brand-gold); }
 
-        /* --- DEV TOGGLE BAR --- */
-        .dev-switcher {
-            background: #000;
-            padding: 10px;
-            text-align: center;
+        /* --- CORPORATE NAVIGATION HEADER --- */
+        .main-header {
+            background-color: #ffffff;
+            border-bottom: 1px solid var(--border-color);
             position: sticky;
             top: 0;
-            z-index: 1000;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+        }
+        .header-inner { display: flex; justify-content: space-between; align-items: center; height: 90px; }
+        
+        /* Brand Logo Design Layout */
+        .brand-logo {
             display: flex;
+            flex-direction: column;
             justify-content: center;
-            gap: 15px;
         }
-        .dev-switcher button {
-            background: #333;
-            color: white;
-            border: 1px solid #555;
-            padding: 8px 16px;
-            cursor: pointer;
-            font-size: 14px;
-            border-radius: 4px;
-            transition: 0.2s;
+        .logo-main {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--brand-navy);
+            letter-spacing: 0.5px;
+            line-height: 1.1;
         }
-        .dev-switcher button.active, .dev-switcher button:hover {
-            background: var(--brand-gold);
-            color: black;
-            border-color: var(--brand-gold);
+        .logo-sub {
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: var(--brand-gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 2px;
         }
 
-        /* --- HEADER --- */
-        .top-bar {
-            background: #000;
-            color: white;
-            font-size: 12px;
-            padding: 8px 20px;
-            display: flex;
-            justify-content: space-between;
+        /* Nav Menu Link Styles */
+        .nav-menu { display: flex; gap: 2rem; align-items: center; }
+        .nav-item { font-size: 0.85rem; font-weight: 600; color: var(--brand-navy); padding: 0.5rem 0; position: relative; cursor: pointer; }
+        .nav-item:hover, .nav-item.active { color: var(--brand-gold); }
+        .nav-item.active::after {
+            content: '';
+            position: absolute;
+            bottom: -22px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--brand-gold);
         }
-        .main-header {
-            border-bottom: 1px solid var(--border-light);
-            padding: 15px 40px;
+
+        /* Action Controls Layout */
+        .header-actions { display: flex; align-items: center; gap: 1.5rem; }
+        .search-box {
+            position: relative;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            background: var(--bg-white);
         }
-        .logo-area {
+        .search-box input {
+            padding: 0.55rem 1rem;
+            padding-right: 2.5rem;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-size: 0.8rem;
+            width: 240px;
+            background-color: var(--bg-light-gray);
+        }
+        .cart-icon-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            color: var(--brand-navy);
+            padding: 0.5rem;
+        }
+        .cart-badge {
+            position: absolute;
+            top: -2px;
+            right: -2px;
+            background-color: var(--brand-gold);
+            color: #fff;
+            font-size: 0.65rem;
+            font-weight: 700;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
-            gap: 20px;
-        }
-        .logo-area img {
-            height: 40px;
-        }
-        .nav-menu {
-            display: flex;
-            gap: 20px;
-            font-size: 13px;
-            font-weight: 600;
-        }
-        .nav-menu a:hover {
-            color: var(--brand-gold);
+            justify-content: center;
         }
 
         /* =========================================================
-           CATALOG VIEW (EXACT MATCH TO SECOND PHOTO)
+           VIEW 1: CLEAN HARDWARE SERIES CATEGORY CATALOG LAYOUT
            ========================================================= */
-        #catalog-view {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-
-        .page-title {
+        .catalog-container { padding: 3.5rem 0 5rem 0; }
+        .catalog-main-title {
+            font-family: var(--font-serif);
+            font-size: 2.2rem;
+            color: var(--brand-navy);
             text-align: center;
-            font-size: 24px;
+            margin-bottom: 3.5rem;
             font-weight: 700;
-            margin-bottom: 50px;
         }
 
-        .series-block {
-            margin-bottom: 60px;
+        .series-section { margin-bottom: 4.5rem; }
+        .series-section-header {
+            border-bottom: 2px solid var(--brand-navy);
+            padding-bottom: 0.5rem;
+            margin-bottom: 2rem;
         }
-
-        .series-title {
-            font-size: 18px;
+        .series-title-text {
+            font-family: var(--font-sans);
+            font-size: 1.15rem;
             font-weight: 700;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid var(--border-light);
+            color: var(--brand-navy);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
-        .catalog-grid {
+        /* Balanced Grid Layout Matching Your Grid Layout */
+        .hardware-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 40px;
-            row-gap: 50px;
+            gap: 2.5rem;
+            row-gap: 4rem;
+        }
+        .grid-triple {
+            grid-template-columns: repeat(3, 1fr);
         }
 
-        /* If there are 3 items in a row occasionally */
-        .grid-3 { grid-template-columns: repeat(3, 1fr); }
-
-        .catalog-item {
+        /* Exact Layout Card Mapping */
+        .hardware-card {
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
+            background: #ffffff;
         }
-
-        .catalog-image {
-            width: 250px;
-            height: 180px;
-            object-fit: cover;
-            margin-bottom: 15px;
-            border-radius: 4px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        .hardware-img-container {
+            width: 100%;
+            height: 240px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.25rem;
+            overflow: hidden;
+            background-color: #ffffff;
         }
-
-        .catalog-link {
-            font-size: 13px;
-            color: var(--link-orange);
-            margin-bottom: 8px;
-            line-height: 1.4;
+        .hardware-img-container img {
             max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            transition: transform 0.3s ease;
         }
-        .catalog-link:hover {
+        .hardware-card:hover .hardware-img-container img {
+            transform: scale(1.03);
+        }
+        .hardware-item-link {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--link-orange);
+            line-height: 1.45;
+            margin-bottom: 0.6rem;
+            max-width: 85%;
+            cursor: pointer;
+        }
+        .hardware-item-link:hover {
+            color: #b45309;
             text-decoration: underline;
         }
-
-        .catalog-price {
-            font-size: 14px;
+        .hardware-item-price {
+            font-size: 0.95rem;
             font-weight: 700;
-            color: #000;
+            color: #000000;
+            font-family: var(--font-sans);
         }
 
         /* =========================================================
-           UPGRADED PRODUCT PAGE VIEW (PREMIUM)
+           VIEW 2: PREMIUM HIGH-END PRODUCT SHOWCASE LAYOUT
            ========================================================= */
-        #product-view {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 40px 20px;
+        .product-page-container { padding: 3rem 0 5rem 0; }
+        
+        /* Functional Breadcrumb Strip */
+        .product-breadcrumb {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            font-weight: 500;
         }
+        .product-breadcrumb span { color: var(--brand-navy); font-weight: 600; }
 
-        .breadcrumb {
-            font-size: 13px;
-            color: var(--text-gray);
-            margin-bottom: 30px;
-        }
-
-        .product-container {
+        /* Multi-Column Workspace Grid */
+        .product-workspace-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 4rem;
+            align-items: start;
         }
 
-        /* Image Gallery */
-        .product-gallery {
-            position: sticky;
-            top: 60px;
-        }
-        .main-image {
+        /* Gallery Component Styles */
+        .gallery-sticky-deck { position: sticky; top: 130px; }
+        .gallery-main-display {
             width: 100%;
-            height: 500px;
-            object-fit: cover;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-        }
-        .thumbnail-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
-        }
-        .thumbnail {
-            width: 100%;
-            height: 100px;
-            object-fit: cover;
+            height: 480px;
+            background-color: var(--bg-light-gray);
+            border: 1px solid var(--border-color);
             border-radius: 6px;
-            cursor: pointer;
-            border: 2px solid transparent;
-            transition: 0.2s;
-        }
-        .thumbnail.active, .thumbnail:hover {
-            border-color: var(--brand-gold);
-        }
-
-        /* Product Details */
-        .product-info h1 {
-            font-size: 32px;
-            font-weight: 700;
-            color: var(--brand-navy);
-            margin-bottom: 10px;
-            line-height: 1.2;
-        }
-        .sku-brand {
-            font-size: 14px;
-            color: var(--text-gray);
-            margin-bottom: 25px;
-        }
-        .price-block {
-            font-size: 36px;
-            font-weight: 700;
-            color: var(--brand-navy);
-            margin-bottom: 30px;
             display: flex;
             align-items: center;
-            gap: 15px;
+            justify-content: center;
+            padding: 2rem;
+            margin-bottom: 1.25rem;
         }
-        .stock-badge {
-            font-size: 12px;
-            background: #dcfce7;
-            color: #166534;
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-weight: 600;
-            text-transform: uppercase;
+        .gallery-main-display img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        .gallery-thumb-strip {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+        }
+        .gallery-thumb-card {
+            height: 90px;
+            background-color: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            padding: 0.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+        .gallery-thumb-card img { max-width: 100%; max-height: 100%; object-fit: contain; }
+        .gallery-thumb-card:hover, .gallery-thumb-card.active {
+            border-color: var(--brand-gold);
+            background-color: var(--bg-light-gray);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
         }
 
-        /* Key Features */
-        .key-features {
-            background: var(--bg-gray);
-            padding: 25px;
-            border-radius: 8px;
-            margin-bottom: 30px;
-            border: 1px solid var(--border-light);
+        /* Right Panel Data Presentation Layer */
+        .product-specs-panel {}
+        .panel-sku-tag {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--brand-gold);
+            margin-bottom: 0.5rem;
+            display: block;
         }
-        .key-features h3 {
-            font-size: 16px;
-            margin-bottom: 15px;
+        .panel-main-title {
+            font-family: var(--font-serif);
+            font-size: 2rem;
+            line-height: 1.25;
             color: var(--brand-navy);
+            font-weight: 700;
+            margin-bottom: 1.25rem;
         }
-        .key-features ul {
-            list-style: none;
+        
+        /* Pricing & Status Matrix Box */
+        .panel-pricing-matrix {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
         }
-        .key-features li {
+        .matrix-price-display {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--brand-navy);
+            font-family: var(--font-sans);
+        }
+        .matrix-status-badge {
+            background-color: #e2fbe8;
+            color: #1e293b;
+            border: 1px solid #a7f3d0;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 0.35rem 0.8rem;
+            border-radius: 4px;
+            letter-spacing: 0.5px;
+        }
+
+        /* Highlights Control Container */
+        .system-highlights-card {
+            background-color: var(--bg-light-gray);
+            border-left: 4px solid var(--brand-gold);
+            padding: 1.5rem;
+            border-radius: 0 6px 6px 0;
+            margin-bottom: 2.5rem;
+        }
+        .highlights-heading {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--brand-navy);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 1rem;
+        }
+        .highlights-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+        .highlights-list li {
+            font-size: 0.88rem;
+            color: var(--text-dark);
             position: relative;
-            padding-left: 25px;
-            margin-bottom: 10px;
-            font-size: 14px;
-            color: var(--text-gray);
+            padding-left: 1.5rem;
         }
-        .key-features li::before {
-            content: '✓';
+        .highlights-list li::before {
+            content: "✓";
             position: absolute;
             left: 0;
             color: var(--brand-gold);
-            font-weight: bold;
+            font-weight: 700;
         }
 
-        /* Actions */
-        .action-area {
+        /* Procurement Action Handling Interface */
+        .procurement-panel {
             display: flex;
-            gap: 15px;
-            margin-bottom: 40px;
+            gap: 1rem;
+            margin-bottom: 3rem;
         }
-        .qty-input {
-            width: 80px;
-            padding: 15px;
-            border: 1px solid var(--border-light);
-            border-radius: 6px;
+        .quantity-spinner {
+            width: 70px;
+            padding: 0.8rem;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
             text-align: center;
-            font-size: 16px;
+            font-size: 0.95rem;
             font-weight: 600;
+            color: var(--brand-navy);
         }
-        .add-to-cart-btn {
+        .btn-action-primary {
             flex: 1;
-            background: var(--brand-gold);
-            color: #fff;
+            background-color: var(--brand-gold);
+            color: #ffffff;
             border: none;
-            border-radius: 6px;
-            font-size: 16px;
+            border-radius: 4px;
+            font-size: 0.9rem;
             font-weight: 700;
             text-transform: uppercase;
+            letter-spacing: 1px;
             cursor: pointer;
-            transition: background 0.3s;
+            transition: background-color 0.2s ease;
         }
-        .add-to-cart-btn:hover {
-            background: var(--brand-gold-hover);
+        .btn-action-primary:hover { background-color: var(--brand-gold-hover); }
+        .btn-action-secondary {
+            padding: 0 1.5rem;
+            background-color: var(--brand-navy);
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
         }
+        .btn-action-secondary:hover { background-color: var(--brand-navy-light); }
 
-        /* Specs Table */
-        .specs-table {
+        /* Engineering Parameters Data Grid */
+        .engineering-specs-table {
             width: 100%;
             border-collapse: collapse;
+            margin-top: 2rem;
         }
-        .specs-table th, .specs-table td {
-            padding: 15px;
+        .engineering-specs-table th {
+            font-family: var(--font-sans);
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--brand-navy);
             text-align: left;
-            border-bottom: 1px solid var(--border-light);
-            font-size: 14px;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--brand-navy);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
-        .specs-table th {
-            width: 30%;
-            background: var(--bg-gray);
-            color: var(--text-dark);
+        .engineering-specs-table td {
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.88rem;
+        }
+        .engineering-specs-table td.param-label {
             font-weight: 600;
+            color: var(--text-muted);
+            width: 35%;
         }
-        .specs-table td {
-            color: var(--text-gray);
+        .engineering-specs-table td.param-value {
+            color: var(--text-dark);
         }
 
-        /* Hidden Class for toggling */
-        .hidden { display: none !important; }
+        /* =========================================================
+           ENTERPRISE TERMINAL FOOTER COMPONENT
+           ========================================================= */
+        .site-footer {
+            background-color: #050d1a;
+            color: #ffffff;
+            padding: 5rem 0 3rem 0;
+            border-top: 3px solid var(--brand-gold);
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.50fr repeat(3, 1fr);
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+        .footer-brand-summary h4 { font-family: var(--font-serif); font-size: 1.35rem; margin-bottom: 1rem; color: #ffffff; }
+        .footer-brand-summary p { font-size: 0.85rem; color: rgba(255,255,255,0.5); line-height: 1.6; max-width: 90%; }
+        
+        .footer-column-menu h5 {
+            color: var(--brand-gold);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+        .footer-column-menu ul { list-style: none; display: flex; flex-direction: column; gap: 0.85rem; }
+        .footer-column-menu a { font-size: 0.85rem; color: rgba(255,255,255,0.6); }
+        .footer-column-menu a:hover { color: #ffffff; }
 
+        .footer-bottom-deck {
+            border-top: 1px solid rgba(255,255,255,0.06);
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.78rem;
+            color: rgba(255,255,255,0.4);
+        }
+        .footer-certification-badges { display: flex; gap: 1.5rem; }
+        .cert-badge { background-color: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 0.4rem 0.8rem; border-radius: 3px; font-size: 0.7rem; font-weight: 600; color: rgba(255,255,255,0.7); }
     </style>
 </head>
 <body>
 
-    <div class="dev-switcher">
-        <button id="btn-catalog" class="active" onclick="toggleView('catalog')">View 1: Category Catalog</button>
-        <button id="btn-product" onclick="toggleView('product')">View 2: Upgraded Product Page</button>
+    <div class="top-utility-bar">
+        <div class="container top-utility-inner">
+            <div>⚡ Industrial Media Duplication Array Deployments - High-Performance Bare-Metal Systems</div>
+            <div class="utility-links">
+                <a href="#">Government Procurement Portal</a>
+                <a href="#">Academic PO Center</a>
+                <a href="#">Technical Service Portal</a>
+            </div>
+        </div>
     </div>
 
-    <div class="top-bar">
-        <span>Cart | Login / Register</span>
-        <span>Search...</span>
-    </div>
     <header class="main-header">
-        <div class="logo-area">
-            <div style="background: #3b82f6; color: white; padding: 10px 20px; font-weight: bold; border-radius: 50px 50px 0 0;">PRO DUPLICATOR</div>
+        <div class="container header-inner">
+            <div class="brand-logo">
+                <div class="logo-main">PRO DUPLICATOR</div>
+                <div class="logo-sub">Industrial Hardware Arrays</div>
+            </div>
+            
+            <nav class="nav-menu">
+                <div class="nav-item active" onclick="activateView('catalog')">M.2 PCIe SATA/NVMe Duplicators</div>
+                <div class="nav-item" onclick="activateView('catalog')">Flash Memory Arrays</div>
+                <div class="nav-item" onclick="activateView('catalog')">Hard Drive Decks</div>
+                <div class="nav-item" onclick="activateView('catalog')">Sanitization Units</div>
+            </nav>
+
+            <div class="header-actions">
+                <div class="search-box">
+                    <input type="text" placeholder="Search operational matrices...">
+                </div>
+                <button class="cart-icon-btn">
+                    🛒
+                    <span class="cart-badge">2</span>
+                </button>
+            </div>
         </div>
-        <nav class="nav-menu">
-            <a href="#">M.2 NVMe PCIe SATA Duplicators</a>
-            <a href="#">Flash Media Duplicators</a>
-            <a href="#">Hard Drive Duplicators</a>
-            <a href="#">Media & Consumables</a>
-        </nav>
     </header>
 
-    <div id="catalog-view">
-        <h1 class="page-title">M.2 PCIe SATA/NVMe Duplicators & Sanitizers</h1>
+    <main>
+        <div id="catalog-view" class="container catalog-container">
+            <h1 class="catalog-main-title">M.2 PCIe SATA/NVMe Duplicators & Sanitizers</h1>
 
-        <div class="series-block">
-            <div class="series-title">NX Series - 24GB/min (M.2)</div>
-            <div class="catalog-grid grid-2">
-                <div class="catalog-item">
-                    <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=400&q=80" alt="NX Duplicator" class="catalog-image">
-                    <a href="#" class="catalog-link" onclick="toggleView('product')">1 to 3 M.2 NVMe PCIe & SATA SSD Duplicator / Sanitizer w/ PC-Link (NX-NVME-03P)</a>
-                    <div class="catalog-price">$1,750.00</div>
+            <section class="series-section">
+                <div class="series-section-header">
+                    <h2 class="series-title-text">NX Series - 24GB/min (M.2)</h2>
                 </div>
-                <div class="catalog-item">
-                    <img src="https://images.unsplash.com/photo-1597852074816-d933c7d2b988?auto=format&fit=crop&w=400&q=80" alt="NX Duplicator" class="catalog-image">
-                    <a href="#" class="catalog-link" onclick="toggleView('product')">1 to 5 M.2 NVMe PCIe & SATA SSD Duplicator / Sanitizer w/ PC-Link (NX-NVME-05P)</a>
-                    <div class="catalog-price">$2,840.00</div>
+                <div class="hardware-grid">
+                    <div class="hardware-card">
+                        <div class="hardware-img-container">
+                            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=450&q=80" alt="NX-NVME-03P Layout Deck">
+                        </div>
+                        <div class="hardware-item-link" onclick="openProductShowcase('1 to 3 M.2 NVMe PCIe & SATA SSD Duplicator / Sanitizer w/ PC-Link (NX-NVME-03P)', '$1,750.00', 'NX-NVME-03P', 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80')">
+                            1 to 3 M.2 NVMe PCIe & SATA SSD Duplicator / Sanitizer w/ PC-Link (NX-NVME-03P)
+                        </div>
+                        <div class="hardware-item-price">$1,750.00</div>
+                    </div>
+                    <div class="hardware-card">
+                        <div class="hardware-img-container">
+                            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=450&q=80" alt="NX-NVME-05P Layout Deck">
+                        </div>
+                        <div class="hardware-item-link" onclick="openProductShowcase('1 to 5 M.2 NVMe PCIe & SATA SSD Duplicator / Sanitizer w/ PC-Link (NX-NVME-05P)', '$2,840.00', 'NX-NVME-05P', 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80')">
+                            1 to 5 M.2 NVMe PCIe & SATA SSD Duplicator / Sanitizer w/ PC-Link (NX-NVME-05P)
+                        </div>
+                        <div class="hardware-item-price">$2,840.00</div>
+                    </div>
+                    <div class="hardware-card">
+                        <div class="hardware-img-container">
+                            <img src="https://images.unsplash.com/photo-1597852074816-d933c7d2b988?auto=format&fit=crop&w=450&q=80" alt="NX-NVME-07P Layout Deck">
+                        </div>
+                        <div class="hardware-item-link" onclick="openProductShowcase('1 to 7 M.2 NVMe PCIe & SATA SSD Duplicator / Sanitizer w/ PC-Link (NX-NVME-07P)', '$3,480.00', 'NX-NVME-07P', 'https://images.unsplash.com/photo-1597852074816-d933c7d2b988?auto=format&fit=crop&w=800&q=80')">
+                            1 to 7 M.2 NVMe PCIe & SATA SSD Duplicator / Sanitizer w/ PC-Link (NX-NVME-07P)
+                        </div>
+                        <div class="hardware-item-price">$3,480.00</div>
+                    </div>
+                    <div class="hardware-card">
+                        <div class="hardware-img-container">
+                            <img src="https://images.unsplash.com/photo-1620283085439-39620a1e21c4?auto=format&fit=crop&w=450&q=80" alt="NX-NVME-11P Layout Deck">
+                        </div>
+                        <div class="hardware-item-link" onclick="openProductShowcase('1 to 11 M.2 NVMe PCIe & SATA SSD Duplicator / Sanitizer w/ PC-Link (NX-NVME-11P)', '$5,280.00', 'NX-NVME-11P', 'https://images.unsplash.com/photo-1620283085439-39620a1e21c4?auto=format&fit=crop&w=800&q=80')">
+                            1 to 11 M.2 NVMe PCIe & SATA SSD Duplicator / Sanitizer w/ PC-Link (NX-NVME-11P)
+                        </div>
+                        <div class="hardware-item-price">$5,280.00</div>
+                    </div>
                 </div>
-                <div class="catalog-item">
-                    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=400&q=80" alt="NX Duplicator" class="catalog-image">
-                    <a href="#" class="catalog-link" onclick="toggleView('product')">1 to 7 M.2 NVMe PCIe & SATA SSD Duplicator / Sanitizer w/ PC-Link (NX-NVME-07P)</a>
-                    <div class="catalog-price">$3,480.00</div>
+            </section>
+
+            <section class="series-section">
+                <div class="series-section-header">
+                    <h2 class="series-title-text">YL Series - 30GB/min (M.2 & SATA SSD/HDD)</h2>
                 </div>
-                <div class="catalog-item">
-                    <img src="https://images.unsplash.com/photo-1620283085439-39620a1e21c4?auto=format&fit=crop&w=400&q=80" alt="NX Duplicator" class="catalog-image">
-                    <a href="#" class="catalog-link" onclick="toggleView('product')">1 to 11 M.2 NVMe PCIe & SATA SSD Duplicator / Sanitizer w/ PC-Link (NX-NVME-11P)</a>
-                    <div class="catalog-price">$5,280.00</div>
+                <div class="hardware-grid">
+                    <div class="hardware-card">
+                        <div class="hardware-img-container">
+                            <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=450&q=80" alt="YL-NVME-03 Deck Layout">
+                        </div>
+                        <div class="hardware-item-link" onclick="openProductShowcase('1 to 3 M.2 NVMe PCIe & SATA SSD / HDD Duplicator / Sanitizer (YL-NVME-03)', '$1,950.00', 'YL-NVME-03', 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=800&q=80')">
+                            1 to 3 M.2 NVMe PCIe & SATA SSD / HDD Duplicator / Sanitizer (YL-NVME-03)
+                        </div>
+                        <div class="hardware-item-price">$1,950.00</div>
+                    </div>
+                    <div class="hardware-card">
+                        <div class="hardware-img-container">
+                            <img src="https://images.unsplash.com/photo-1588508065123-287b28e0131b?auto=format&fit=crop&w=450&q=80" alt="YL-NVME-07 Deck Layout">
+                        </div>
+                        <div class="hardware-item-link" onclick="openProductShowcase('1 to 7 M.2 NVMe PCIe & SATA SSD / HDD Duplicator / Sanitizer (YL-NVME-07)', '$3,850.00', 'YL-NVME-07', 'https://images.unsplash.com/photo-1588508065123-287b28e0131b?auto=format&fit=crop&w=800&q=80')">
+                            1 to 7 M.2 NVMe PCIe & SATA SSD / HDD Duplicator / Sanitizer (YL-NVME-07)
+                        </div>
+                        <div class="hardware-item-price">$3,850.00</div>
+                    </div>
                 </div>
-            </div>
+            </section>
+
+            <section class="series-section">
+                <div class="series-section-header">
+                    <h2 class="series-title-text">YL Series - 15GB/min (M.2 & SATA SSD/HDD)</h2>
+                </div>
+                <div class="hardware-grid">
+                    <div class="hardware-card">
+                        <div class="hardware-img-container">
+                            <img src="https://images.unsplash.com/photo-1555680202-c86f0e12f086?auto=format&fit=crop&w=450&q=80" alt="YL-NVME-15-03 Deck Layout">
+                        </div>
+                        <div class="hardware-item-link" onclick="openProductShowcase('1 to 3 M.2 NVMe PCIe & SATA SSD / HDD Duplicator / Sanitizer (YL-NVME-15-03)', '$1,150.00', 'YL-NVME-15-03', 'https://images.unsplash.com/photo-1555680202-c86f0e12f086?auto=format&fit=crop&w=800&q=80')">
+                            1 to 3 M.2 NVMe PCIe & SATA SSD / HDD Duplicator / Sanitizer (YL-NVME-15-03)
+                        </div>
+                        <div class="hardware-item-price">$1,150.00</div>
+                    </div>
+                    <div class="hardware-card">
+                        <div class="hardware-img-container">
+                            <img src="https://images.unsplash.com/photo-1563207153-f403bf289096?auto=format&fit=crop&w=450&q=80" alt="YL-NVME-15-07 Deck Layout">
+                        </div>
+                        <div class="hardware-item-link" onclick="openProductShowcase('1 to 7 M.2 NVMe PCIe & SATA SSD / HDD Duplicator / Sanitizer (YL-NVME-15-07)', '$2,250.00', 'YL-NVME-15-07', 'https://images.unsplash.com/photo-1563207153-f403bf289096?auto=format&fit=crop&w=800&q=80')">
+                            1 to 7 M.2 NVMe PCIe & SATA SSD / HDD Duplicator / Sanitizer (YL-NVME-15-07)
+                        </div>
+                        <div class="hardware-item-price">$2,250.00</div>
+                    </div>
+                </div>
+            </section>
         </div>
 
-        <div class="series-block">
-            <div class="series-title">YL Series - 30GB/min (M.2 & SATA SSD/HDD)</div>
-            <div class="catalog-grid grid-2">
-                <div class="catalog-item">
-                    <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=400&q=80" alt="YL Duplicator" class="catalog-image">
-                    <a href="#" class="catalog-link">1 to 3 M.2 NVMe PCIe & SATA SSD / HDD Duplicator / Sanitizer (YL-NVME-03)</a>
-                    <div class="catalog-price">$1,950.00</div>
-                </div>
-                <div class="catalog-item">
-                    <img src="https://images.unsplash.com/photo-1588508065123-287b28e0131b?auto=format&fit=crop&w=400&q=80" alt="YL Duplicator" class="catalog-image">
-                    <a href="#" class="catalog-link">1 to 7 M.2 NVMe PCIe & SATA SSD / HDD Duplicator / Sanitizer (YL-NVME-07)</a>
-                    <div class="catalog-price">$3,850.00</div>
-                </div>
+        <div id="product-view" class="container product-page-container hidden">
+            <div class="product-breadcrumb">
+                Products / M.2 PCIe SATA/NVMe Duplicators / <span id="breadcrumb-current-sku">NX Series Deck</span>
             </div>
-        </div>
 
-        <div class="series-block">
-            <div class="series-title">YL Series - 15GB/min (M.2 & SATA SSD/HDD)</div>
-            <div class="catalog-grid grid-2">
-                <div class="catalog-item">
-                    <img src="https://images.unsplash.com/photo-1555680202-c86f0e12f086?auto=format&fit=crop&w=400&q=80" alt="YL Duplicator" class="catalog-image">
-                    <a href="#" class="catalog-link">1 to 3 M.2 NVMe PCIe & SATA SSD / HDD Duplicator / Sanitizer (YL-NVME-15-03)</a>
-                    <div class="catalog-price">$1,150.00</div>
-                </div>
-                <div class="catalog-item">
-                    <img src="https://images.unsplash.com/photo-1563207153-f403bf289096?auto=format&fit=crop&w=400&q=80" alt="YL Duplicator" class="catalog-image">
-                    <a href="#" class="catalog-link">1 to 7 M.2 NVMe PCIe & SATA SSD / HDD Duplicator / Sanitizer (YL-NVME-15-07)</a>
-                    <div class="catalog-price">$2,250.00</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <div id="product-view" class="hidden">
-        <div class="breadcrumb">Home / M.2 PCIe SATA/NVMe Duplicators / NX Series / NX-NVME-07P</div>
-
-        <div class="product-container">
-            
-            <div class="product-gallery">
-                <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80" alt="Product Main Image" class="main-image" id="main-product-img">
+            <div class="product-workspace-grid">
                 
-                <div class="thumbnail-grid">
-                    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=200&q=80" class="thumbnail active" alt="Thumb 1" onclick="changeImage(this)">
-                    <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=200&q=80" class="thumbnail" alt="Thumb 2" onclick="changeImage(this)">
-                    <img src="https://images.unsplash.com/photo-1597852074816-d933c7d2b988?auto=format&fit=crop&w=200&q=80" class="thumbnail" alt="Thumb 3" onclick="changeImage(this)">
-                    <img src="https://images.unsplash.com/photo-1620283085439-39620a1e21c4?auto=format&fit=crop&w=200&q=80" class="thumbnail" alt="Thumb 4" onclick="changeImage(this)">
+                <div class="gallery-sticky-deck">
+                    <div class="gallery-main-display">
+                        <img id="primary-viewfinder" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80" alt="Primary Structural Array Profile View">
+                    </div>
+                    <div class="gallery-thumb-strip">
+                        <div class="gallery-thumb-card active" onclick="updateViewfinder(this)">
+                            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=150&q=80" alt="View A">
+                        </div>
+                        <div class="gallery-thumb-card" onclick="updateViewfinder(this)">
+                            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=150&q=80" alt="View B">
+                        </div>
+                        <div class="gallery-thumb-card" onclick="updateViewfinder(this)">
+                            <img src="https://images.unsplash.com/photo-1597852074816-d933c7d2b988?auto=format&fit=crop&w=150&q=80" alt="View C">
+                        </div>
+                        <div class="gallery-thumb-card" onclick="updateViewfinder(this)">
+                            <img src="https://images.unsplash.com/photo-1620283085439-39620a1e21c4?auto=format&fit=crop&w=150&q=80" alt="View D">
+                        </div>
+                    </div>
                 </div>
+
+                <div class="product-specs-panel">
+                    <span class="panel-sku-tag" id="panel-target-sku">SKU: NX-NVME-07P</span>
+                    <h1 class="panel-main-title" id="panel-target-title">1 to 7 M.2 NVMe PCIe & SATA SSD Duplicator & Sanitizer Tower w/ PC-Link</h1>
+                    
+                    <div class="panel-pricing-matrix">
+                        <div class="matrix-price-display" id="panel-target-price">$3,480.00</div>
+                        <div class="matrix-status-badge">✓ Verified System Stock</div>
+                    </div>
+
+                    <div class="system-highlights-card">
+                        <div class="highlights-heading">System Core Highlights</div>
+                        <ul class="highlights-list">
+                            <li><strong>Synchronous Matrix Architecture:</strong> Achieves baseline verification speeds up to 24 GB/min synchronously across all ports without data throttling.</li>
+                            <li><strong>Standalone System Execution:</strong> Built-in multi-core processor runs without an external PC or operating system dependency.</li>
+                            <li><strong>Cross-Interface Support Matrix:</strong> Cross-duplication architecture converts automatically between M.2 NVMe and M.2 SATA form-factor drives.</li>
+                            <li><strong>DoD Sanitization Layer:</strong> Embedded erasure firmware handles secure overwrite runs via DoD 5220.22-M military benchmarks.</li>
+                            <li><strong>PC-Link Diagnostic Suite:</strong> Captures clear validation audit paths and handles real-time system log generation through standard USB interfaces.</li>
+                        </ul>
+                    </div>
+
+                    <div class="procurement-panel">
+                        <input type="number" class="quantity-spinner" value="1" min="1">
+                        <button class="btn-action-primary" onclick="alert('System configuration added to corporate deployment cart.')">Add to Deployment Cart</button>
+                        <button class="btn-action-secondary" onclick="alert('RFQ procurement request initiated. Our logistics engineers will contact you shortly.')">Request Bulk Quote</button>
+                    </div>
+
+                    <table class="engineering-specs-table">
+                        <thead>
+                            <tr>
+                                <th colspan="2">System Parameter Metrics</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="param-label">Target Port Arrays</td>
+                                <td class="param-value">1 Master Channel to Dedicated High-Output Sub-Slots</td>
+                            </tr>
+                            <tr>
+                                <td class="param-label">Transfer Peak Velocity</td>
+                                <td class="param-value">Up to 24.0 GB per minute continuous async load capacity</td>
+                            </tr>
+                            <tr>
+                                <td class="param-label">Supported Mediums</td>
+                                <td class="param-value">M.2 NVMe (PCIe Gen 3 / Gen 4 Architecture), M.2 SATA (B & M Key Protocols)</td>
+                            </tr>
+                            <tr>
+                                <td class="param-label">Erasure Certification</td>
+                                <td class="param-value">Quick Erase, Full Overwrite, DoD 3-Pass, DoD 7-Pass Clean, Secure NIST SP 800-88 Wipes</td>
+                            </tr>
+                            <tr>
+                                <td class="param-label">Power Distribution</td>
+                                <td class="param-value">115V - 230V High-Efficiency Internal Auto-Switching Power Module</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
             </div>
+        </div>
+    </main>
 
-            <div class="product-info">
-                <h1>1 to 7 M.2 NVMe PCIe & SATA SSD Duplicator & Sanitizer Tower w/ PC-Link</h1>
-                <div class="sku-brand">SKU: NX-NVME-07P | Brand: Pro Duplicator</div>
-
-                <div class="price-block">
-                    $3,480.00 <span class="stock-badge">In Stock</span>
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand-summary">
+                    <h4>PRO DUPLICATOR</h4>
+                    <p>High-volume commercial physical media verification arrays and data layer destruction platforms engineered for global tech infrastructure since 1999.</p>
                 </div>
-
-                <div class="key-features">
-                    <h3>System Highlights</h3>
+                <div class="footer-column-menu">
+                    <h5>Equipment Arrays</h5>
                     <ul>
-                        <li><strong>Extreme Speed:</strong> Transfers up to 24 GB/min synchronously without speed degradation.</li>
-                        <li><strong>Standalone Operation:</strong> No PC required for standard duplication or sanitization.</li>
-                        <li><strong>Cross-Interface:</strong> Automatically detects and copies between NVMe and SATA M.2 drives.</li>
-                        <li><strong>DoD Erase Compliant:</strong> Includes DoD 5220.22-M secure wipe standards.</li>
-                        <li><strong>PC-Link Software:</strong> Real-time monitoring and log report generation via USB connection.</li>
+                        <li><a href="#">NVMe Storage Towers</a></li>
+                        <li><a href="#">PCIe Production Rigs</a></li>
+                        <li><a href="#">SATA Hot-Swap Systems</a></li>
+                        <li><a href="#">Solid State Arrays</a></li>
                     </ul>
                 </div>
-
-                <div class="action-area">
-                    <input type="number" class="qty-input" value="1" min="1">
-                    <button class="add-to-cart-btn">Add to Cart</button>
+                <div class="footer-column-menu">
+                    <h5>Logistics Support</h5>
+                    <ul>
+                        <li><a href="#">Federal RFQ Portals</a></li>
+                        <li><a href="#">Institutional Invoicing</a></li>
+                        <li><a href="#">Financing Layout Plans</a></li>
+                        <li><a href="#">Enterprise Support</a></li>
+                    </ul>
                 </div>
-
-                <h3>Technical Specifications</h3>
-                <table class="specs-table">
-                    <tr>
-                        <th>Target Ports</th>
-                        <td>1 Master to 7 Targets (1:7)</td>
-                    </tr>
-                    <tr>
-                        <th>Transfer Speed</th>
-                        <td>Up to 24.0 GB/min (400 MB/sec)</td>
-                    </tr>
-                    <tr>
-                        <th>Supported Formats</th>
-                        <td>M.2 NVMe (PCIe), M.2 SATA (B & M Key), SSDs</td>
-                    </tr>
-                    <tr>
-                        <th>Operating Mode</th>
-                        <td>Standalone / PC-Link Monitoring</td>
-                    </tr>
-                    <tr>
-                        <th>Power Supply</th>
-                        <td>115V ~ 230V Auto Switching Power Supply</td>
-                    </tr>
-                </table>
+                <div class="footer-column-menu">
+                    <h5>Engineering Hub</h5>
+                    <ul>
+                        <li><a href="#">Firmware Repository</a></li>
+                        <li><a href="#">NIST Audit Logs</a></li>
+                        <li><a href="#">Hardware Servicing</a></li>
+                        <li><a href="#">Developer Portal</a></li>
+                    </ul>
+                </div>
             </div>
 
+            <div class="footer-bottom-deck">
+                <div>&copy; 2026 Pro Duplicator Inc. Infrastructure Systems Profiles. All Rights Reserved.</div>
+                <div class="footer-certification-badges">
+                    <span class="cert-badge">ISO 9001 Production Certified</span>
+                    <span class="cert-badge">NIST Compliant Logic Layers</span>
+                    <span class="cert-badge">DoD Secure Hardening Arrays</span>
+                </div>
+            </div>
         </div>
-    </div>
+    </footer>
 
     <script>
-        // Toggle between the two views
-        function toggleView(viewName) {
-            const catalog = document.getElementById('catalog-view');
-            const product = document.getElementById('product-view');
-            const btnCat = document.getElementById('btn-catalog');
-            const btnProd = document.getElementById('btn-product');
+        /**
+         * Smoothly updates main UI display cards between Catalog matrix lists 
+         * and the specialized hardware detail parameters sheet view.
+         */
+        function activateView(targetViewId) {
+            const catalogContainer = document.getElementById('catalog-view');
+            const productContainer = document.getElementById('product-view');
+            const menuNavigationTabs = document.querySelectorAll('.nav-item');
 
-            if (viewName === 'catalog') {
-                catalog.classList.remove('hidden');
-                product.classList.add('hidden');
-                btnCat.classList.add('active');
-                btnProd.classList.remove('active');
+            // Reset navigation highlight indices
+            menuNavigationTabs.forEach(tab => tab.classList.remove('active'));
+
+            if(targetViewId === 'catalog') {
+                catalogContainer.classList.remove('hidden');
+                productContainer.classList.add('hidden');
+                menuNavigationTabs[0].classList.add('active'); // Defaults active status block illumination
             } else {
-                product.classList.remove('hidden');
-                catalog.classList.add('hidden');
-                btnProd.classList.add('active');
-                btnCat.classList.remove('active');
+                productContainer.classList.remove('hidden');
+                catalogContainer.classList.add('hidden');
             }
-            window.scrollTo(0,0);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Simple Image Gallery Swap
-        function changeImage(element) {
-            const mainImg = document.getElementById('main-product-img');
-            mainImg.src = element.src;
+        /**
+         * Maps current selection data targets from product list into workspace panel inputs
+         */
+        function openProductShowcase(titleText, priceText, skuText, primaryImgUrl) {
+            document.getElementById('panel-target-title').innerText = titleText;
+            document.getElementById('panel-target-price').innerText = priceText;
+            document.getElementById('panel-target-sku').innerText = "SKU: " + skuText;
+            document.getElementById('breadcrumb-current-sku').innerText = skuText + " Specification Deck";
             
-            // remove active class from all thumbs
-            const thumbs = document.querySelectorAll('.thumbnail');
-            thumbs.forEach(thumb => thumb.classList.remove('active'));
+            // Re-map main stage viewport source address
+            const primaryViewfinder = document.getElementById('primary-viewfinder');
+            primaryViewfinder.src = primaryImgUrl;
+
+            // Reset active state across thumbnail nodes and populate first slot with current element
+            const galleryThumbnails = document.querySelectorAll('.gallery-thumb-card');
+            galleryThumbnails.forEach(thumbnail => thumbnail.classList.remove('active'));
+            galleryThumbnails[0].classList.add('active');
+            galleryThumbnails[0].querySelector('img').src = primaryImgUrl;
+
+            // Flip active panel state metrics
+            activateView('product');
+        }
+
+        /**
+         * Swaps primary view target sources with sub-angle thumbnail components
+         */
+        function updateViewfinder(clickedThumbnailElement) {
+            const primaryViewfinder = document.getElementById('primary-viewfinder');
+            const siblingThumbnails = document.querySelectorAll('.gallery-thumb-card');
             
-            // add to clicked
-            element.classList.add('active');
+            // Clean active border layers across node references
+            siblingThumbnails.forEach(thumb => thumb.classList.remove('active'));
+            
+            // Inject targeted source reference into view deck frame
+            clickedThumbnailElement.classList.add('active');
+            primaryViewfinder.src = clickedThumbnailElement.querySelector('img').src;
         }
     </script>
 </body>
