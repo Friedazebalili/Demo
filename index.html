@@ -3,816 +3,708 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>M.2 PCIe SATA/NVMe Duplicators & Sanitizers | Pro Duplicator</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>PRO DUPLICATOR | Premium Next-Gen Hardware</title>
+    <script src="https://cdn.jsdelivr.net/npm/lucide@0.344.0/dist/umd/lucide.min.js"></script>
     <style>
-        /* --- STYLE SYSTEM CONFIGURATION --- */
         :root {
-            --brand-navy: #0a1931;
-            --brand-navy-light: #15305b;
-            --brand-gold: #cfa851;
-            --brand-gold-hover: #b59043;
-            --text-dark: #0f172a;
-            --text-muted: #64748b;
-            --link-orange: #d97706;
-            --border-color: #e2e8f0;
-            --bg-light-gray: #f8fafc;
-            --font-serif: 'Playfair Display', serif;
-            --font-sans: 'Plus Jakarta Sans', sans-serif;
+            --bg-main: #0a0f1d;
+            --bg-card: rgba(20, 27, 45, 0.7);
+            --border-glass: rgba(0, 210, 255, 0.15);
+            --accent-blue: #00d2ff;
+            --accent-glow: rgba(0, 210, 255, 0.4);
+            --text-primary: #ffffff;
+            --text-secondary: #94a3b8;
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: var(--font-sans); color: var(--text-dark); background-color: #ffffff; line-height: 1.5; -webkit-font-smoothing: antialiased; }
-        a { text-decoration: none; color: inherit; transition: color 0.2s ease; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
 
-        /* --- LAYOUT UTILITIES --- */
-        .container { max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
-        .hidden { display: none !important; }
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            line-height: 1.5;
+        }
 
-        /* --- TOP UTILITY BAND --- */
-        .top-utility-bar {
-            background-color: #050d1a;
-            color: rgba(255, 255, 255, 0.7);
+        /* Utility Glassmorphism */
+        .glass-panel {
+            background: var(--bg-card);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border-glass);
+            border-radius: 12px;
+        }
+
+        .glow-button {
+            background: linear-gradient(135deg, #0072ff, var(--accent-blue));
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px var(--accent-glow);
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+        }
+
+        .glow-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 210, 255, 0.6);
+        }
+
+        /* Top Announcement Bar */
+        .announcement-bar {
+            background: linear-gradient(90deg, #001020, #002b47);
+            text-align: center;
+            padding: 8px;
             font-size: 0.75rem;
-            padding: 0.6rem 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            letter-spacing: 1px;
+            border-bottom: 1px solid var(--border-glass);
+            color: var(--accent-blue);
+            font-weight: 600;
         }
-        .top-utility-inner { display: flex; justify-content: space-between; align-items: center; }
-        .utility-links { display: flex; gap: 1.5rem; }
-        .utility-links a:hover { color: var(--brand-gold); }
 
-        /* --- CORPORATE NAVIGATION HEADER --- */
-        .main-header {
-            background-color: #ffffff;
-            border-bottom: 1px solid var(--border-color);
+        /* Navigation */
+        header {
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
-        }
-        .header-inner { display: flex; justify-content: space-between; align-items: center; height: 90px; }
-        
-        /* Brand Logo Design Layout */
-        .brand-logo {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-        .logo-main {
-            font-family: var(--font-serif);
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--brand-navy);
-            letter-spacing: 0.5px;
-            line-height: 1.1;
-        }
-        .logo-sub {
-            font-size: 0.65rem;
-            font-weight: 700;
-            color: var(--brand-gold);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-top: 2px;
+            background: rgba(10, 15, 29, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        /* Nav Menu Link Styles */
-        .nav-menu { display: flex; gap: 2rem; align-items: center; }
-        .nav-item { font-size: 0.85rem; font-weight: 600; color: var(--brand-navy); padding: 0.5rem 0; position: relative; cursor: pointer; }
-        .nav-item:hover, .nav-item.active { color: var(--brand-gold); }
-        .nav-item.active::after {
-            content: '';
-            position: absolute;
-            bottom: -22px;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background-color: var(--brand-gold);
-        }
-
-        /* Action Controls Layout */
-        .header-actions { display: flex; align-items: center; gap: 1.5rem; }
-        .search-box {
-            position: relative;
-            display: flex;
-            align-items: center;
-        }
-        .search-box input {
-            padding: 0.55rem 1rem;
-            padding-right: 2.5rem;
-            border: 1px solid var(--border-color);
-            border-radius: 4px;
-            font-size: 0.8rem;
-            width: 240px;
-            background-color: var(--bg-light-gray);
-        }
-        .cart-icon-btn {
-            background: none;
-            border: none;
-            cursor: pointer;
-            position: relative;
-            color: var(--brand-navy);
-            padding: 0.5rem;
-        }
-        .cart-badge {
-            position: absolute;
-            top: -2px;
-            right: -2px;
-            background-color: var(--brand-gold);
-            color: #fff;
-            font-size: 0.65rem;
-            font-weight: 700;
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* =========================================================
-           VIEW 1: CLEAN HARDWARE SERIES CATEGORY CATALOG LAYOUT
-           ========================================================= */
-        .catalog-container { padding: 3.5rem 0 5rem 0; }
-        .catalog-main-title {
-            font-family: var(--font-serif);
-            font-size: 2.2rem;
-            color: var(--brand-navy);
-            text-align: center;
-            margin-bottom: 3.5rem;
-            font-weight: 700;
-        }
-
-        .series-section { margin-bottom: 4.5rem; }
-        .series-section-header {
-            border-bottom: 2px solid var(--brand-navy);
-            padding-bottom: 0.5rem;
-            margin-bottom: 2rem;
-        }
-        .series-title-text {
-            font-family: var(--font-sans);
-            font-size: 1.15rem;
-            font-weight: 700;
-            color: var(--brand-navy);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        /* Balanced Grid Layout Matching Your Grid Layout */
-        .hardware-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2.5rem;
-            row-gap: 4rem;
-        }
-        .grid-triple {
-            grid-template-columns: repeat(3, 1fr);
-        }
-
-        /* Exact Layout Card Mapping */
-        .hardware-card {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            background: #ffffff;
-        }
-        .hardware-img-container {
-            width: 100%;
-            height: 240px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1.25rem;
-            overflow: hidden;
-            background-color: #ffffff;
-        }
-        .hardware-img-container img {
-            max-width: 90%;
-            max-height: 90%;
-            object-fit: contain;
-            transition: transform 0.3s ease;
-        }
-        .hardware-card:hover .hardware-img-container img {
-            transform: scale(1.03);
-        }
-        .hardware-item-link {
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: var(--link-orange);
-            line-height: 1.45;
-            margin-bottom: 0.6rem;
-            max-width: 85%;
-            cursor: pointer;
-        }
-        .hardware-item-link:hover {
-            color: #b45309;
-            text-decoration: underline;
-        }
-        .hardware-item-price {
-            font-size: 0.95rem;
-            font-weight: 700;
-            color: #000000;
-            font-family: var(--font-sans);
-        }
-
-        /* =========================================================
-           VIEW 2: PREMIUM HIGH-END PRODUCT SHOWCASE LAYOUT
-           ========================================================= */
-        .product-page-container { padding: 3rem 0 5rem 0; }
-        
-        /* Functional Breadcrumb Strip */
-        .product-breadcrumb {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            margin-bottom: 2.5rem;
-            font-weight: 500;
-        }
-        .product-breadcrumb span { color: var(--brand-navy); font-weight: 600; }
-
-        /* Multi-Column Workspace Grid */
-        .product-workspace-grid {
-            display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            gap: 4rem;
-            align-items: start;
-        }
-
-        /* Gallery Component Styles */
-        .gallery-sticky-deck { position: sticky; top: 130px; }
-        .gallery-main-display {
-            width: 100%;
-            height: 480px;
-            background-color: var(--bg-light-gray);
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
-            margin-bottom: 1.25rem;
-        }
-        .gallery-main-display img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-        }
-        .gallery-thumb-strip {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1rem;
-        }
-        .gallery-thumb-card {
-            height: 90px;
-            background-color: #ffffff;
-            border: 1px solid var(--border-color);
-            border-radius: 4px;
-            padding: 0.5rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.2s ease;
-        }
-        .gallery-thumb-card img { max-width: 100%; max-height: 100%; object-fit: contain; }
-        .gallery-thumb-card:hover, .gallery-thumb-card.active {
-            border-color: var(--brand-gold);
-            background-color: var(--bg-light-gray);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
-        }
-
-        /* Right Panel Data Presentation Layer */
-        .product-specs-panel {}
-        .panel-sku-tag {
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--brand-gold);
-            margin-bottom: 0.5rem;
-            display: block;
-        }
-        .panel-main-title {
-            font-family: var(--font-serif);
-            font-size: 2rem;
-            line-height: 1.25;
-            color: var(--brand-navy);
-            font-weight: 700;
-            margin-bottom: 1.25rem;
-        }
-        
-        /* Pricing & Status Matrix Box */
-        .panel-pricing-matrix {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid var(--border-color);
-        }
-        .matrix-price-display {
-            font-size: 2.2rem;
-            font-weight: 700;
-            color: var(--brand-navy);
-            font-family: var(--font-sans);
-        }
-        .matrix-status-badge {
-            background-color: #e2fbe8;
-            color: #1e293b;
-            border: 1px solid #a7f3d0;
-            font-size: 0.7rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            padding: 0.35rem 0.8rem;
-            border-radius: 4px;
-            letter-spacing: 0.5px;
-        }
-
-        /* Highlights Control Container */
-        .system-highlights-card {
-            background-color: var(--bg-light-gray);
-            border-left: 4px solid var(--brand-gold);
-            padding: 1.5rem;
-            border-radius: 0 6px 6px 0;
-            margin-bottom: 2.5rem;
-        }
-        .highlights-heading {
-            font-size: 0.9rem;
-            font-weight: 700;
-            color: var(--brand-navy);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 1rem;
-        }
-        .highlights-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
-        .highlights-list li {
-            font-size: 0.88rem;
-            color: var(--text-dark);
-            position: relative;
-            padding-left: 1.5rem;
-        }
-        .highlights-list li::before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: var(--brand-gold);
-            font-weight: 700;
-        }
-
-        /* Procurement Action Handling Interface */
-        .procurement-panel {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 3rem;
-        }
-        .quantity-spinner {
-            width: 70px;
-            padding: 0.8rem;
-            border: 1px solid var(--border-color);
-            border-radius: 4px;
-            text-align: center;
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: var(--brand-navy);
-        }
-        .btn-action-primary {
-            flex: 1;
-            background-color: var(--brand-gold);
-            color: #ffffff;
-            border: none;
-            border-radius: 4px;
-            font-size: 0.9rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            cursor: pointer;
-            transition: background-color 0.2s ease;
-        }
-        .btn-action-primary:hover { background-color: var(--brand-gold-hover); }
-        .btn-action-secondary {
-            padding: 0 1.5rem;
-            background-color: var(--brand-navy);
-            color: #ffffff;
-            border: none;
-            border-radius: 4px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background-color 0.2s ease;
-        }
-        .btn-action-secondary:hover { background-color: var(--brand-navy-light); }
-
-        /* Engineering Parameters Data Grid */
-        .engineering-specs-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 2rem;
-        }
-        .engineering-specs-table th {
-            font-family: var(--font-sans);
-            font-size: 0.95rem;
-            font-weight: 700;
-            color: var(--brand-navy);
-            text-align: left;
-            padding-bottom: 0.75rem;
-            border-bottom: 2px solid var(--brand-navy);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        .engineering-specs-table td {
-            padding: 1rem 0;
-            border-bottom: 1px solid var(--border-color);
-            font-size: 0.88rem;
-        }
-        .engineering-specs-table td.param-label {
-            font-weight: 600;
-            color: var(--text-muted);
-            width: 35%;
-        }
-        .engineering-specs-table td.param-value {
-            color: var(--text-dark);
-        }
-
-        /* =========================================================
-           ENTERPRISE TERMINAL FOOTER COMPONENT
-           ========================================================= */
-        .site-footer {
-            background-color: #050d1a;
-            color: #ffffff;
-            padding: 5rem 0 3rem 0;
-            border-top: 3px solid var(--brand-gold);
-        }
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 1.50fr repeat(3, 1fr);
-            gap: 4rem;
-            margin-bottom: 4rem;
-        }
-        .footer-brand-summary h4 { font-family: var(--font-serif); font-size: 1.35rem; margin-bottom: 1rem; color: #ffffff; }
-        .footer-brand-summary p { font-size: 0.85rem; color: rgba(255,255,255,0.5); line-height: 1.6; max-width: 90%; }
-        
-        .footer-column-menu h5 {
-            color: var(--brand-gold);
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-bottom: 1.5rem;
-            font-weight: 700;
-        }
-        .footer-column-menu ul { list-style: none; display: flex; flex-direction: column; gap: 0.85rem; }
-        .footer-column-menu a { font-size: 0.85rem; color: rgba(255,255,255,0.6); }
-        .footer-column-menu a:hover { color: #ffffff; }
-
-        .footer-bottom-deck {
-            border-top: 1px solid rgba(255,255,255,0.06);
-            padding-top: 2rem;
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 0.78rem;
-            color: rgba(255,255,255,0.4);
+            padding: 20px;
         }
-        .footer-certification-badges { display: flex; gap: 1.5rem; }
-        .cert-badge { background-color: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 0.4rem 0.8rem; border-radius: 3px; font-size: 0.7rem; font-weight: 600; color: rgba(255,255,255,0.7); }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            background: linear-gradient(135deg, #fff, var(--accent-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+        }
+
+        nav ul li a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            color: var(--accent-blue);
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 20px;
+            color: var(--text-secondary);
+        }
+
+        .nav-actions i {
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .nav-actions i:hover {
+            color: var(--accent-blue);
+        }
+
+        /* Viewport Wrapper */
+        .page-view {
+            display: none;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            animation: fadeIn 0.4s ease-in-out forwards;
+        }
+
+        .page-view.active-view {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- HOME VIEW --- */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            padding: 60px 0;
+            min-height: 500px;
+        }
+
+        .hero-content {
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .hero-tag {
+            color: var(--accent-blue);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        .hero p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 32px;
+        }
+
+        .hero-image-pane {
+            flex: 1;
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero-image-pane .mock-device {
+            width: 100%;
+            max-width: 480px;
+            height: 320px;
+            border-radius: 16px;
+            background: linear-gradient(145deg, #1e293b, #0f172a);
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5), 0 0 40px rgba(0, 210, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 30px;
+        }
+
+        /* Features/Trust Ribbons */
+        .trust-ribbon {
+            display: grid;
+            grid-template-columns: repeat(4, 10fr);
+            gap: 20px;
+            margin: 40px 0 80px 0;
+        }
+
+        .trust-card {
+            padding: 24px;
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .trust-card i {
+            color: var(--accent-blue);
+        }
+
+        .trust-card h3 {
+            font-size: 1rem;
+            margin-bottom: 4px;
+        }
+
+        .trust-card p {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+        }
+
+        /* Shared Grid Headers */
+        .section-header {
+            margin-bottom: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .section-header h2 {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        /* Category Grid Layout */
+        .grid-categories {
+            display: grid;
+            grid-template-columns: repeat(3, 10fr);
+            gap: 24px;
+            margin-bottom: 80px;
+        }
+
+        .cat-card {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            height: 340px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 30px;
+        }
+
+        .cat-card:hover {
+            border-color: var(--accent-blue);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0, 210, 255, 0.1);
+        }
+
+        .cat-img-placeholder {
+            height: 140px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px dashed rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.2);
+        }
+
+        .cat-card:hover .cat-img-placeholder {
+            color: var(--accent-blue);
+            border-color: rgba(0, 210, 255, 0.3);
+        }
+
+        .cat-card h3 {
+            font-size: 1.2rem;
+            margin-top: 15px;
+        }
+
+        .cat-card p {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+        }
+
+        .cat-link {
+            color: var(--accent-blue);
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* --- PRODUCT DETAIL VIEW --- */
+        .product-template {
+            display: flex;
+            gap: 60px;
+            padding: 40px 0;
+        }
+
+        .product-gallery {
+            flex: 1.2;
+        }
+
+        .main-stage-image {
+            width: 100%;
+            height: 450px;
+            border-radius: 16px;
+            background: linear-gradient(145deg, #111827, #1f2937);
+            border: 1px solid var(--border-glass);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+
+        .hardware-accent-lines {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 80px;
+            height: 40px;
+            border-left: 3px solid var(--accent-blue);
+            border-top: 3px solid var(--accent-blue);
+            opacity: 0.6;
+        }
+
+        .product-info-pane {
+            flex: 1;
+        }
+
+        .sys-badge {
+            background: rgba(0, 210, 255, 0.1);
+            color: var(--accent-blue);
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            display: inline-block;
+            margin-bottom: 16px;
+        }
+
+        .product-info-pane h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+
+        .sku {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin-bottom: 24px;
+        }
+
+        .price-tag {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .price-tag span {
+            font-size: 1rem;
+            color: #10b981;
+            background: rgba(16, 185, 129, 0.1);
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+
+        .spec-list {
+            margin: 32px 0;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding-top: 24px;
+        }
+
+        .spec-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            font-size: 0.9rem;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+        }
+
+        .spec-label {
+            color: var(--text-secondary);
+        }
+
+        .purchase-control {
+            display: flex;
+            gap: 16px;
+            margin-top: 30px;
+        }
+
+        .qty-input {
+            width: 70px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-glass);
+            border-radius: 6px;
+            color: white;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            background: #05070f;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding: 60px 20px 30px 20px;
+            margin-top: 100px;
+        }
+
+        .footer-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr repeat(3, 10fr);
+            gap: 40px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .footer-col h4 {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col ul li a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--accent-blue);
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 30px auto 0 auto;
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
     </style>
 </head>
 <body>
 
-    <div class="top-utility-bar">
-        <div class="container top-utility-inner">
-            <div>⚡ Industrial Media Duplication Array Deployments - High-Performance Bare-Metal Systems</div>
-            <div class="utility-links">
-                <a href="#">Government Procurement Portal</a>
-                <a href="#">Academic PO Center</a>
-                <a href="#">Technical Service Portal</a>
-            </div>
-        </div>
+    <div class="announcement-bar">
+        ⚡ ENTERPRISE-GRADE HIGH-SPEED HARDWARE REPLICATION SYSTEMS & FORENSICS LAB SOLUTIONS
     </div>
 
-    <header class="main-header">
-        <div class="container header-inner">
-            <div class="brand-logo">
-                <div class="logo-main">PRO DUPLICATOR</div>
-                <div class="logo-sub">Industrial Hardware Arrays</div>
+    <header>
+        <div class="nav-container">
+            <div class="logo" onclick="switchView('home')">
+                <i data-lucide="layers"></i> PRO DUPLICATOR
             </div>
-            
-            <nav class="nav-menu">
-                <div class="nav-item active" onclick="activateView('catalog')">M.2 PCIe SATA/NVMe Duplicators</div>
-                <div class="nav-item" onclick="activateView('catalog')">Flash Memory Arrays</div>
-                <div class="nav-item" onclick="activateView('catalog')">Hard Drive Decks</div>
-                <div class="nav-item" onclick="activateView('catalog')">Sanitization Units</div>
+            <nav>
+                <ul>
+                    <li><a id="nav-home" class="active" onclick="switchView('home')">Home</a></li>
+                    <li><a id="nav-categories" onclick="switchView('categories')">Hardware Categories</a></li>
+                    <li><a id="nav-product" onclick="switchView('product')">Featured Product</a></li>
+                </ul>
             </nav>
-
-            <div class="header-actions">
-                <div class="search-box">
-                    <input type="text" placeholder="Search operational matrices...">
-                </div>
-                <button class="cart-icon-btn">
-                    🛒
-                    <span class="cart-badge">2</span>
-                </button>
+            <div class="nav-actions">
+                <i data-lucide="search"></i>
+                <i data-lucide="shopping-cart"></i>
+                <i data-lucide="user"></i>
             </div>
         </div>
     </header>
 
-    <main>
-        <div id="catalog-view" class="container catalog-container">
-            <h1 class="catalog-main-title">M.2 PCIe SATA/NVMe Duplicators & Sanitizers</h1>
+    <main id="view-home" class="page-view active-view">
+        <section class="hero">
+            <div class="hero-content">
+                <div class="hero-tag">Industrial Duplication Systems</div>
+                <h1>Expert Solutions You Can Rely On.</h1>
+                <p>High-speed, standalone media replication, complete physical sanitation, and rigorous computer digital forensics. Designed for performance accuracy since 1997.</p>
+                <button class="glow-button" onclick="switchView('categories')">Explore Systems</button>
+            </div>
+            <div class="hero-image-pane">
+                <div class="mock-device">
+                    <div style="display:flex; justify-content:space-between; align-items:center;">
+                        <span style="color:var(--accent-blue); font-size:0.75rem; font-weight:700;">SYS-STATUS: READY</span>
+                        <div style="width:8px; height:8px; background:#10b981; border-radius:50%; box-shadow:0 0 8px #10b981;"></div>
+                    </div>
+                    <div style="text-align:center; margin: 20px 0;">
+                        <i data-lucide="cpu" style="width:64px; height:64px; color:rgba(0, 210, 255, 0.4)"></i>
+                        <div style="font-size:1.1rem; font-weight:700; margin-top:10px;">M.2 NVMe PCIe G4</div>
+                    </div>
+                    <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:6px; font-family:monospace; font-size:0.75rem; color:var(--text-secondary)">
+                        > Target Speed: 24GB/min <br>
+                        > Verification Mode: Bit-for-Bit CRC
+                    </div>
+                </div>
+            </div>
+        </section>
 
-            <section class="series-section">
-                <div class="series-section-header">
-                    <h2 class="series-title-text">NX Series - 24GB/min (M.2)</h2>
+        <section class="trust-ribbon">
+            <div class="trust-card glass-panel">
+                <i data-lucide="zap"></i>
+                <div>
+                    <h3>Ultra Performance</h3>
+                    <p>Up to 24GB/min concurrent speed transfer.</p>
                 </div>
-                <div class="hardware-grid">
-                    <div class="hardware-card">
-                        <div class="hardware-img-container">
-                            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=450&q=80" alt="NX-NVME-03P Layout Deck">
-                        </div>
-                        <div class="hardware-item-link" onclick="openProductShowcase('1 to 3 M.2 NVMe PCIe & SATA SSD Duplicator / Sanitizer w/ PC-Link (NX-NVME-03P)', '$1,750.00', 'NX-NVME-03P', 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80')">
-                            1 to 3 M.2 NVMe PCIe & SATA SSD Duplicator / Sanitizer w/ PC-Link (NX-NVME-03P)
-                        </div>
-                        <div class="hardware-item-price">$1,750.00</div>
-                    </div>
-                    <div class="hardware-card">
-                        <div class="hardware-img-container">
-                            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=450&q=80" alt="NX-NVME-05P Layout Deck">
-                        </div>
-                        <div class="hardware-item-link" onclick="openProductShowcase('1 to 5 M.2 NVMe PCIe & SATA SSD Duplicator / Sanitizer w/ PC-Link (NX-NVME-05P)', '$2,840.00', 'NX-NVME-05P', 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80')">
-                            1 to 5 M.2 NVMe PCIe & SATA SSD Duplicator / Sanitizer w/ PC-Link (NX-NVME-05P)
-                        </div>
-                        <div class="hardware-item-price">$2,840.00</div>
-                    </div>
-                    <div class="hardware-card">
-                        <div class="hardware-img-container">
-                            <img src="https://images.unsplash.com/photo-1597852074816-d933c7d2b988?auto=format&fit=crop&w=450&q=80" alt="NX-NVME-07P Layout Deck">
-                        </div>
-                        <div class="hardware-item-link" onclick="openProductShowcase('1 to 7 M.2 NVMe PCIe & SATA SSD Duplicator / Sanitizer w/ PC-Link (NX-NVME-07P)', '$3,480.00', 'NX-NVME-07P', 'https://images.unsplash.com/photo-1597852074816-d933c7d2b988?auto=format&fit=crop&w=800&q=80')">
-                            1 to 7 M.2 NVMe PCIe & SATA SSD Duplicator / Sanitizer w/ PC-Link (NX-NVME-07P)
-                        </div>
-                        <div class="hardware-item-price">$3,480.00</div>
-                    </div>
-                    <div class="hardware-card">
-                        <div class="hardware-img-container">
-                            <img src="https://images.unsplash.com/photo-1620283085439-39620a1e21c4?auto=format&fit=crop&w=450&q=80" alt="NX-NVME-11P Layout Deck">
-                        </div>
-                        <div class="hardware-item-link" onclick="openProductShowcase('1 to 11 M.2 NVMe PCIe & SATA SSD Duplicator / Sanitizer w/ PC-Link (NX-NVME-11P)', '$5,280.00', 'NX-NVME-11P', 'https://images.unsplash.com/photo-1620283085439-39620a1e21c4?auto=format&fit=crop&w=800&q=80')">
-                            1 to 11 M.2 NVMe PCIe & SATA SSD Duplicator / Sanitizer w/ PC-Link (NX-NVME-11P)
-                        </div>
-                        <div class="hardware-item-price">$5,280.00</div>
-                    </div>
+            </div>
+            <div class="trust-card glass-panel">
+                <i data-lucide="shield-check"></i>
+                <div>
+                    <h3>3-Year Warranty</h3>
+                    <p>Comprehensive protection on systems.</p>
                 </div>
-            </section>
+            </div>
+            <div class="trust-card glass-panel">
+                <i data-lucide="activity"></i>
+                <div>
+                    <h3>24/7 Operations</h3>
+                    <p>Built for continuous enterprise deployment.</p>
+                </div>
+            </div>
+            <div class="trust-card glass-panel">
+                <i data-lucide="headphones"></i>
+                <div>
+                    <h3>Expert Support</h3>
+                    <p>Direct tier-3 dedicated engineer support.</p>
+                </div>
+            </div>
+        </section>
 
-            <section class="series-section">
-                <div class="series-section-header">
-                    <h2 class="series-title-text">YL Series - 30GB/min (M.2 & SATA SSD/HDD)</h2>
-                </div>
-                <div class="hardware-grid">
-                    <div class="hardware-card">
-                        <div class="hardware-img-container">
-                            <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=450&q=80" alt="YL-NVME-03 Deck Layout">
-                        </div>
-                        <div class="hardware-item-link" onclick="openProductShowcase('1 to 3 M.2 NVMe PCIe & SATA SSD / HDD Duplicator / Sanitizer (YL-NVME-03)', '$1,950.00', 'YL-NVME-03', 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=800&q=80')">
-                            1 to 3 M.2 NVMe PCIe & SATA SSD / HDD Duplicator / Sanitizer (YL-NVME-03)
-                        </div>
-                        <div class="hardware-item-price">$1,950.00</div>
+        <section>
+            <div class="section-header">
+                <h2>Featured Products</h2>
+                <span style="color: var(--accent-blue); cursor:pointer;" onclick="switchView('product')">View Top Showcase Product &rarr;</span>
+            </div>
+            <div class="grid-categories" style="grid-template-columns: repeat(4, 10fr);">
+                <div class="cat-card glass-panel" onclick="switchView('product')">
+                    <div class="cat-img-placeholder">
+                        <i data-lucide="hard-drive" style="width:40px; height:40px;"></i>
                     </div>
-                    <div class="hardware-card">
-                        <div class="hardware-img-container">
-                            <img src="https://images.unsplash.com/photo-1588508065123-287b28e0131b?auto=format&fit=crop&w=450&q=80" alt="YL-NVME-07 Deck Layout">
+                    <div>
+                        <h3>M.2 NVMe PCIe Sanitizer</h3>
+                        <p style="margin: 5px 0 15px 0;">1 to 5 Target High-Speed System</p>
+                        <div style="display:flex; justify-content:space-between; align-items:center;">
+                            <span style="font-weight:700;">$2,775.00</span>
+                            <span class="cat-link">Inspect <i data-lucide="arrow-right" style="width:14px;"></i></span>
                         </div>
-                        <div class="hardware-item-link" onclick="openProductShowcase('1 to 7 M.2 NVMe PCIe & SATA SSD / HDD Duplicator / Sanitizer (YL-NVME-07)', '$3,850.00', 'YL-NVME-07', 'https://images.unsplash.com/photo-1588508065123-287b28e0131b?auto=format&fit=crop&w=800&q=80')">
-                            1 to 7 M.2 NVMe PCIe & SATA SSD / HDD Duplicator / Sanitizer (YL-NVME-07)
-                        </div>
-                        <div class="hardware-item-price">$3,850.00</div>
                     </div>
                 </div>
-            </section>
+                <div class="cat-card glass-panel" onclick="switchView('product')">
+                    <div class="cat-img-placeholder">
+                        <i data-lucide="database" style="width:40px; height:40px;"></i>
+                    </div>
+                    <div>
+                        <h3>SATA HDD/SSD Copier</h3>
+                        <p style="margin: 5px 0 15px 0;">Mixed Form-Factor SAS Compatible</p>
+                        <div style="display:flex; justify-content:space-between; align-items:center;">
+                            <span style="font-weight:700;">$5,450.00</span>
+                            <span class="cat-link">Inspect <i data-lucide="arrow-right" style="width:14px;"></i></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="cat-card glass-panel" onclick="switchView('product')">
+                    <div class="cat-img-placeholder">
+                        <i data-lucide="usb" style="width:40px; height:40px;"></i>
+                    </div>
+                    <div>
+                        <h3>USB Drive Tower Rack</h3>
+                        <p style="margin: 5px 0 15px 0;">1 to 31 Target Universal Mass Copier</p>
+                        <div style="display:flex; justify-content:space-between; align-items:center;">
+                            <span style="font-weight:700;">$3,200.00</span>
+                            <span class="cat-link">Inspect <i data-lucide="arrow-right" style="width:14px;"></i></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="cat-card glass-panel" onclick="switchView('product')">
+                    <div class="cat-img-placeholder">
+                        <i data-lucide="binary" style="width:40px; height:40px;"></i>
+                    </div>
+                    <div>
+                        <h3>Forensic Lab Deck</h3>
+                        <p style="margin: 5px 0 15px 0;">Write-Blocker Data Recovery Suite</p>
+                        <div style="display:flex; justify-content:space-between; align-items:center;">
+                            <span style="font-weight:700;">$8,900.00</span>
+                            <span class="cat-link">Inspect <i data-lucide="arrow-right" style="width:14px;"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
-            <section class="series-section">
-                <div class="series-section-header">
-                    <h2 class="series-title-text">YL Series - 15GB/min (M.2 & SATA SSD/HDD)</h2>
-                </div>
-                <div class="hardware-grid">
-                    <div class="hardware-card">
-                        <div class="hardware-img-container">
-                            <img src="https://images.unsplash.com/photo-1555680202-c86f0e12f086?auto=format&fit=crop&w=450&q=80" alt="YL-NVME-15-03 Deck Layout">
-                        </div>
-                        <div class="hardware-item-link" onclick="openProductShowcase('1 to 3 M.2 NVMe PCIe & SATA SSD / HDD Duplicator / Sanitizer (YL-NVME-15-03)', '$1,150.00', 'YL-NVME-15-03', 'https://images.unsplash.com/photo-1555680202-c86f0e12f086?auto=format&fit=crop&w=800&q=80')">
-                            1 to 3 M.2 NVMe PCIe & SATA SSD / HDD Duplicator / Sanitizer (YL-NVME-15-03)
-                        </div>
-                        <div class="hardware-item-price">$1,150.00</div>
-                    </div>
-                    <div class="hardware-card">
-                        <div class="hardware-img-container">
-                            <img src="https://images.unsplash.com/photo-1563207153-f403bf289096?auto=format&fit=crop&w=450&q=80" alt="YL-NVME-15-07 Deck Layout">
-                        </div>
-                        <div class="hardware-item-link" onclick="openProductShowcase('1 to 7 M.2 NVMe PCIe & SATA SSD / HDD Duplicator / Sanitizer (YL-NVME-15-07)', '$2,250.00', 'YL-NVME-15-07', 'https://images.unsplash.com/photo-1563207153-f403bf289096?auto=format&fit=crop&w=800&q=80')">
-                            1 to 7 M.2 NVMe PCIe & SATA SSD / HDD Duplicator / Sanitizer (YL-NVME-15-07)
-                        </div>
-                        <div class="hardware-item-price">$2,250.00</div>
-                    </div>
-                </div>
-            </section>
+    <main id="view-categories" class="page-view">
+        <div class="section-header">
+            <div>
+                <h2 style="margin-bottom:8px;">Shop by Hardware Classification</h2>
+                <p style="color: var(--text-secondary); font-size:0.95rem;">Select dedicated hardware architecture arrays built for scalable industrial use.</p>
+            </div>
         </div>
 
-        <div id="product-view" class="container product-page-container hidden">
-            <div class="product-breadcrumb">
-                Products / M.2 PCIe SATA/NVMe Duplicators / <span id="breadcrumb-current-sku">NX Series Deck</span>
+        <div class="grid-categories">
+            <div class="cat-card glass-panel" onclick="switchView('product')">
+                <div>
+                    <div class="cat-img-placeholder">
+                        <i data-lucide="cpu" style="width:36px; height:36px;"></i>
+                    </div>
+                    <h3>M.2 NVMe PCIe SSD Arrays</h3>
+                    <p>Professional NVMe arrays built for lightning fast deployment, cross-protocol verification, and safe erasure cycles.</p>
+                </div>
+                <span class="cat-link">Browse Series &rarr;</span>
             </div>
 
-            <div class="product-workspace-grid">
-                
-                <div class="gallery-sticky-deck">
-                    <div class="gallery-main-display">
-                        <img id="primary-viewfinder" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80" alt="Primary Structural Array Profile View">
+            <div class="cat-card glass-panel" onclick="switchView('product')">
+                <div>
+                    <div class="cat-img-placeholder">
+                        <i data-lucide="hard-drive" style="width:36px; height:36px;"></i>
                     </div>
-                    <div class="gallery-thumb-strip">
-                        <div class="gallery-thumb-card active" onclick="updateViewfinder(this)">
-                            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=150&q=80" alt="View A">
-                        </div>
-                        <div class="gallery-thumb-card" onclick="updateViewfinder(this)">
-                            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=150&q=80" alt="View B">
-                        </div>
-                        <div class="gallery-thumb-card" onclick="updateViewfinder(this)">
-                            <img src="https://images.unsplash.com/photo-1597852074816-d933c7d2b988?auto=format&fit=crop&w=150&q=80" alt="View C">
-                        </div>
-                        <div class="gallery-thumb-card" onclick="updateViewfinder(this)">
-                            <img src="https://images.unsplash.com/photo-1620283085439-39620a1e21c4?auto=format&fit=crop&w=150&q=80" alt="View D">
-                        </div>
-                    </div>
+                    <h3>Hard Drive HDD/SSD Towers</h3>
+                    <p>High performance mechanical drive & SSD units for legacy SAS/SATA infrastructure duplication and deep formatting.</p>
                 </div>
+                <span class="cat-link">Browse Series &rarr;</span>
+            </div>
 
-                <div class="product-specs-panel">
-                    <span class="panel-sku-tag" id="panel-target-sku">SKU: NX-NVME-07P</span>
-                    <h1 class="panel-main-title" id="panel-target-title">1 to 7 M.2 NVMe PCIe & SATA SSD Duplicator & Sanitizer Tower w/ PC-Link</h1>
-                    
-                    <div class="panel-pricing-matrix">
-                        <div class="matrix-price-display" id="panel-target-price">$3,480.00</div>
-                        <div class="matrix-status-badge">✓ Verified System Stock</div>
+            <div class="cat-card glass-panel" onclick="switchView('product')">
+                <div>
+                    <div class="cat-img-placeholder">
+                        <i data-lucide="usb" style="width:36px; height:36px;"></i>
                     </div>
-
-                    <div class="system-highlights-card">
-                        <div class="highlights-heading">System Core Highlights</div>
-                        <ul class="highlights-list">
-                            <li><strong>Synchronous Matrix Architecture:</strong> Achieves baseline verification speeds up to 24 GB/min synchronously across all ports without data throttling.</li>
-                            <li><strong>Standalone System Execution:</strong> Built-in multi-core processor runs without an external PC or operating system dependency.</li>
-                            <li><strong>Cross-Interface Support Matrix:</strong> Cross-duplication architecture converts automatically between M.2 NVMe and M.2 SATA form-factor drives.</li>
-                            <li><strong>DoD Sanitization Layer:</strong> Embedded erasure firmware handles secure overwrite runs via DoD 5220.22-M military benchmarks.</li>
-                            <li><strong>PC-Link Diagnostic Suite:</strong> Captures clear validation audit paths and handles real-time system log generation through standard USB interfaces.</li>
-                        </ul>
-                    </div>
-
-                    <div class="procurement-panel">
-                        <input type="number" class="quantity-spinner" value="1" min="1">
-                        <button class="btn-action-primary" onclick="alert('System configuration added to corporate deployment cart.')">Add to Deployment Cart</button>
-                        <button class="btn-action-secondary" onclick="alert('RFQ procurement request initiated. Our logistics engineers will contact you shortly.')">Request Bulk Quote</button>
-                    </div>
-
-                    <table class="engineering-specs-table">
-                        <thead>
-                            <tr>
-                                <th colspan="2">System Parameter Metrics</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="param-label">Target Port Arrays</td>
-                                <td class="param-value">1 Master Channel to Dedicated High-Output Sub-Slots</td>
-                            </tr>
-                            <tr>
-                                <td class="param-label">Transfer Peak Velocity</td>
-                                <td class="param-value">Up to 24.0 GB per minute continuous async load capacity</td>
-                            </tr>
-                            <tr>
-                                <td class="param-label">Supported Mediums</td>
-                                <td class="param-value">M.2 NVMe (PCIe Gen 3 / Gen 4 Architecture), M.2 SATA (B & M Key Protocols)</td>
-                            </tr>
-                            <tr>
-                                <td class="param-label">Erasure Certification</td>
-                                <td class="param-value">Quick Erase, Full Overwrite, DoD 3-Pass, DoD 7-Pass Clean, Secure NIST SP 800-88 Wipes</td>
-                            </tr>
-                            <tr>
-                                <td class="param-label">Power Distribution</td>
-                                <td class="param-value">115V - 230V High-Efficiency Internal Auto-Switching Power Module</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <h3>USB Flash Drive Multi-Ports</h3>
+                    <p>Standalone production hubs for distributed dynamic flash media drives. Ideal for content asset deployment.</p>
                 </div>
+                <span class="cat-link">Browse Series &rarr;</span>
+            </div>
 
+            <div class="cat-card glass-panel" onclick="switchView('product')">
+                <div>
+                    <div class="cat-img-placeholder">
+                        <i data-lucide="sd-card" style="width:36px; height:36px;"></i>
+                    </div>
+                    <h3>SD/microSD Array Units</h3>
+                    <p>Multi-socket portable platforms designed for rapid secure digital media flashing and partition checks.</p>
+                </div>
+                <span class="cat-link">Browse Series &rarr;</span>
+            </div>
+
+            <div class="cat-card glass-panel" onclick="switchView('product')">
+                <div>
+                    <div class="cat-img-placeholder">
+                        <i data-lucide="copy" style="width:36px; height:36px;"></i>
+                    </div>
+                    <h3>CompactFlash (CF) Decks</h3>
+                    <p>Industrial performance legacy architecture card copiers built for aviation, medical, and legacy machinery systems.</p>
+                </div>
+                <span class="cat-link">Browse Series &rarr;</span>
+            </div>
+
+            <div class="cat-card glass-panel" onclick="switchView('product')">
+                <div>
+                    <div class="cat-img-placeholder">
+                        <i data-lucide="layers" style="width:36px; height:36px;"></i>
+                    </div>
+                    <h3>All-In-One Hybrid Stations</h3>
+                    <p>Cross-interface masters mapping USB, SD, CF, and SATA simultaneously inside a single robust rack unit environment.</p>
+                </div>
+                <span class="cat-link">Browse Series &rarr;</span>
             </div>
         </div>
     </main>
-
-    <footer class="site-footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand-summary">
-                    <h4>PRO DUPLICATOR</h4>
-                    <p>High-volume commercial physical media verification arrays and data layer destruction platforms engineered for global tech infrastructure since 1999.</p>
-                </div>
-                <div class="footer-column-menu">
-                    <h5>Equipment Arrays</h5>
-                    <ul>
-                        <li><a href="#">NVMe Storage Towers</a></li>
-                        <li><a href="#">PCIe Production Rigs</a></li>
-                        <li><a href="#">SATA Hot-Swap Systems</a></li>
-                        <li><a href="#">Solid State Arrays</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column-menu">
-                    <h5>Logistics Support</h5>
-                    <ul>
-                        <li><a href="#">Federal RFQ Portals</a></li>
-                        <li><a href="#">Institutional Invoicing</a></li>
-                        <li><a href="#">Financing Layout Plans</a></li>
-                        <li><a href="#">Enterprise Support</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column-menu">
-                    <h5>Engineering Hub</h5>
-                    <ul>
-                        <li><a href="#">Firmware Repository</a></li>
-                        <li><a href="#">NIST Audit Logs</a></li>
-                        <li><a href="#">Hardware Servicing</a></li>
-                        <li><a href="#">Developer Portal</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="footer-bottom-deck">
-                <div>&copy; 2026 Pro Duplicator Inc. Infrastructure Systems Profiles. All Rights Reserved.</div>
-                <div class="footer-certification-badges">
-                    <span class="cert-badge">ISO 9001 Production Certified</span>
-                    <span class="cert-badge">NIST Compliant Logic Layers</span>
-                    <span class="cert-badge">DoD Secure Hardening Arrays</span>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        /**
-         * Smoothly updates main UI display cards between Catalog matrix lists 
-         * and the specialized hardware detail parameters sheet view.
-         */
-        function activateView(targetViewId) {
-            const catalogContainer = document.getElementById('catalog-view');
-            const productContainer = document.getElementById('product-view');
-            const menuNavigationTabs = document.querySelectorAll('.nav-item');
-
-            // Reset navigation highlight indices
-            menuNavigationTabs.forEach(tab => tab.classList.remove('active'));
-
-            if(targetViewId === 'catalog') {
-                catalogContainer.classList.remove('hidden');
-                productContainer.classList.add('hidden');
-                menuNavigationTabs[0].classList.add('active'); // Defaults active status block illumination
-            } else {
-                productContainer.classList.remove('hidden');
-                catalogContainer.classList.add('hidden');
-            }
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        /**
-         * Maps current selection data targets from product list into workspace panel inputs
-         */
-        function openProductShowcase(titleText, priceText, skuText, primaryImgUrl) {
-            document.getElementById('panel-target-title').innerText = titleText;
-            document.getElementById('panel-target-price').innerText = priceText;
-            document.getElementById('panel-target-sku').innerText = "SKU: " + skuText;
-            document.getElementById('breadcrumb-current-sku').innerText = skuText + " Specification Deck";
-            
-            // Re-map main stage viewport source address
-            const primaryViewfinder = document.getElementById('primary-viewfinder');
-            primaryViewfinder.src = primaryImgUrl;
-
-            // Reset active state across thumbnail nodes and populate first slot with current element
-            const galleryThumbnails = document.querySelectorAll('.gallery-thumb-card');
-            galleryThumbnails.forEach(thumbnail => thumbnail.classList.remove('active'));
-            galleryThumbnails[0].classList.add('active');
-            galleryThumbnails[0].querySelector('img').src = primaryImgUrl;
-
-            // Flip active panel state metrics
-            activateView('product');
-        }
-
-        /**
-         * Swaps primary view target sources with sub-angle thumbnail components
-         */
-        function updateViewfinder(clickedThumbnailElement) {
-            const primaryViewfinder = document.getElementById('primary-viewfinder');
-            const siblingThumbnails = document.querySelectorAll('.gallery-thumb-card');
-            
-            // Clean active border layers across node references
-            siblingThumbnails.forEach(thumb => thumb.classList.remove('active'));
-            
-            // Inject targeted source reference into view deck frame
-            clickedThumbnailElement.classList.add('active');
-            primaryViewfinder.src = clickedThumbnailElement.querySelector('img').src;
-        }
-    </script>
-</body>
-</html>
