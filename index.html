@@ -44,12 +44,9 @@
                 <button id="menu-open" class="lg:hidden p-1 text-gray-600 hover:text-[#0052cc] focus:outline-none" aria-label="Open Menu">
                     <i data-lucide="menu" class="w-6 h-6"></i>
                 </button>
-                <div class="flex items-center gap-2 flex-shrink-0">
-                    <div class="bg-[#0052cc] p-1.5 rounded-md text-white">
-                        <i data-lucide="layers" class="w-5 h-5"></i>
-                    </div>
-                    <span class="font-bold text-base md:text-lg text-slate-900 tracking-tight">ProDuplicator</span>
-                </div>
+                <a href="#" class="flex items-center flex-shrink-0">
+                    <img src="https://www.produplicator.com/cdn/shop/files/Produplicator_-_500_x_260_180x.png?v=1776179483" alt="ProDuplicator Logo" class="h-9 w-auto object-contain">
+                </a>
             </div>
 
             <!-- Desktop Nav Items -->
@@ -82,10 +79,7 @@
         <div id="menu-close-backdrop" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm"></div>
         <div class="fixed inset-y-0 left-0 w-full max-w-xs bg-white shadow-xl flex flex-col z-10 transform transition-transform duration-300">
             <div class="p-4 border-b border-gray-200 flex items-center justify-between">
-                <span class="font-bold text-slate-900 flex items-center gap-2">
-                    <div class="bg-[#0052cc] p-1 rounded text-white"><i data-lucide="layers" class="w-4 h-4"></i></div>
-                    Navigation Menu
-                </span>
+                <img src="https://www.produplicator.com/cdn/shop/files/Produplicator_-_500_x_260_180x.png?v=1776179483" alt="ProDuplicator Logo" class="h-8 w-auto object-contain">
                 <button id="menu-close" class="p-1 text-gray-500 hover:text-slate-900"><i data-lucide="x" class="w-6 h-6"></i></button>
             </div>
             <nav class="flex-1 overflow-y-auto p-4 space-y-1">
@@ -102,22 +96,35 @@
         </div>
     </div>
 
-    <!-- Hero Section -->
-    <section class="bg-gradient-to-b from-[#0b1e36] to-[#122e54] text-white py-14 md:py-20 px-4 text-center">
-        <div class="max-w-3xl mx-auto">
-            <h1 class="text-3xl md:text-5xl font-bold tracking-tight mb-3 leading-tight">Expert Support You Can Rely On</h1>
-            <p class="text-gray-300 text-xs md:text-base max-w-xl mx-auto mb-6 md:mb-8 font-light leading-relaxed">Quality Equipment. Competitive Pricing. Dedicated Customer Service.</p>
-            <div class="flex items-center justify-center gap-3">
-                <a href="#" class="bg-white text-slate-900 font-semibold text-xs md:text-sm px-5 md:px-6 py-2.5 rounded hover:bg-gray-100 transition shadow-sm">Shop Catalog</a>
-                <a href="#" class="border border-gray-400 text-white font-semibold text-xs md:text-sm px-5 md:px-6 py-2.5 rounded hover:bg-white/10 transition">Contact Us</a>
+    <!-- Enhanced Large Hero Section with Background Image Layout -->
+    <section class="relative bg-slate-900 bg-cover bg-center bg-no-repeat py-28 md:py-48 px-4 flex items-center justify-center min-h-[550px] md:min-h-[700px]" style="background-image: url('https://www.produplicator.com/cdn/shop/files/HDD_Duplicator.jpg?v=1770739680&width=2000');">
+        <!-- Overlay Layer for Content Separation -->
+        <div class="absolute inset-0 bg-gradient-to-r from-slate-950/80 via-slate-950/60 to-transparent"></div>
+        
+        <div class="relative max-w-4xl mx-auto text-center md:text-left z-10 w-full">
+            <div class="max-w-2xl bg-slate-950/50 p-6 md:p-10 rounded-2xl backdrop-blur-[2px] border border-white/5">
+                <h1 class="text-3xl md:text-6xl font-extrabold tracking-tight text-white mb-4 leading-tight">
+                    Expert Support You Can Rely On
+                </h1>
+                <p class="text-gray-200 text-sm md:text-lg mb-8 font-normal leading-relaxed max-w-xl">
+                    Quality Equipment. Competitive Pricing. Dedicated Customer Service. Discover our advanced standalone duplication environments.
+                </p>
+                <div class="flex flex-col sm:flex-row items-center gap-3.5">
+                    <a href="#" class="w-full sm:w-auto text-center bg-[#0052cc] text-white font-bold text-xs md:text-sm px-8 py-3.5 rounded hover:bg-blue-700 transition shadow-md tracking-wide uppercase">
+                        Shop Catalog
+                    </a>
+                    <a href="#" class="w-full sm:w-auto text-center border-2 border-white text-white font-bold text-xs md:text-sm px-8 py-3.5 rounded hover:bg-white hover:text-slate-900 transition tracking-wide uppercase">
+                        Contact Us
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Core Highlights Grid -->
-    <section class="max-w-6xl mx-auto px-4 -mt-6 md:-mt-8 mb-12 md:mb-16">
-        <div class="bg-white rounded-lg shadow-md border border-gray-100 grid grid-cols-2 lg:grid-cols-4 divide-y divide-x divide-gray-100 p-1 md:p-2">
-            <div class="p-3 md:p-4 flex items-start gap-2.5">
+    <section class="max-w-6xl mx-auto px-4 -mt-10 md:-mt-12 mb-12 md:mb-16 relative z-20">
+        <div class="bg-white rounded-xl shadow-xl border border-gray-100 grid grid-cols-2 lg:grid-cols-4 divide-y divide-x divide-gray-100 p-2 md:p-3">
+            <div class="p-3 md:p-4 flex items-start gap-2.5 border-t-0">
                 <i data-lucide="zap" class="w-4 h-4 md:w-5 md:h-5 text-blue-500 mt-0.5 flex-shrink-0"></i>
                 <div>
                     <h4 class="font-semibold text-[11px] md:text-xs text-slate-900">High Speed</h4>
@@ -148,60 +155,66 @@
         </div>
     </section>
 
-    <!-- Categories Grid -->
-    <section class="max-w-7xl mx-auto px-4 mb-16 md:mb-20 text-center">
-        <h2 class="text-xl md:text-2xl font-bold text-slate-900 mb-1">Shop by Categories</h2>
-        <p class="text-[11px] md:text-xs text-gray-500 mb-6 md:mb-10">Discover our collections</p>
+    <!-- Categories Section -->
+    <section class="max-w-7xl mx-auto px-4 mb-16 md:mb-20">
+        <div class="text-center mb-8 md:mb-12">
+            <h2 class="text-xl md:text-3xl font-bold text-slate-900 mb-2">Shop by Categories</h2>
+            <p class="text-xs md:text-sm text-gray-500">Discover our technical duplication collections</p>
+        </div>
 
-        <div class="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-6">
-            <div class="bg-white border border-gray-200 rounded-lg p-4 md:p-6 flex flex-col items-center shadow-sm">
-                <div class="w-full aspect-[4/3] bg-slate-50 border border-gray-100 rounded flex items-center justify-center mb-3">
-                    <i data-lucide="hard-drive" class="w-8 h-8 md:w-12 md:h-12 text-blue-500/80 stroke-[1.5]"></i>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            
+            <!-- Category Card 1 -->
+            <div class="bg-white border border-gray-100 rounded-2xl flex flex-col shadow-sm group hover:shadow-md hover:border-gray-200 transition duration-300">
+                <div class="w-full aspect-[4/3] bg-gradient-to-b from-gray-50 to-slate-100 rounded-t-2xl flex items-center justify-center relative p-6">
+                    <div class="text-blue-500/80 transition-transform duration-500 group-hover:scale-105">
+                        <i data-lucide="hard-drive" class="w-16 h-16 md:w-20 md:h-20 stroke-[1.25]"></i>
+                    </div>
                 </div>
-                <h3 class="font-semibold text-[11px] md:text-xs text-slate-900 tracking-tight text-center line-clamp-1 mb-1">M.2 NVMe SSDs</h3>
-                <p class="text-[10px] md:text-[11px] text-gray-500 hidden md:block max-w-xs mb-4">Professional M.2 NVMe/PCIe SSD duplicators for fast cloning.</p>
-                <a href="#" class="text-[#0052cc] text-[10px] md:text-xs font-semibold hover:underline inline-flex items-center gap-0.5 mt-auto">Shop Now <i data-lucide="arrow-right" class="w-2.5 h-2.5"></i></a>
-            </div>
-            <div class="bg-white border border-gray-200 rounded-lg p-4 md:p-6 flex flex-col items-center shadow-sm">
-                <div class="w-full aspect-[4/3] bg-slate-50 border border-gray-100 rounded flex items-center justify-center mb-3">
-                    <i data-lucide="database" class="w-8 h-8 md:w-12 md:h-12 text-blue-500/80 stroke-[1.5]"></i>
+                <div class="p-6 md:p-8 flex flex-col flex-1 text-left">
+                    <h3 class="font-bold text-base md:text-lg text-slate-900 tracking-tight mb-2">M.2 NVMe PCIe SSD Duplicators</h3>
+                    <p class="text-xs md:text-sm text-gray-500 leading-relaxed mb-6">Professional M.2 NVMe PCIe SSD duplicators for fast, secure, and reliable drive cloning.</p>
+                    <a href="#" class="inline-flex items-center gap-2 text-[#0052cc] text-xs md:text-sm font-bold tracking-wide uppercase mt-auto group/btn relative w-fit">
+                        <span class="relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-[#0052cc] group-hover/btn:after:w-full after:transition-all after:duration-300 pb-0.5">Shop Now</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4 transform transition-transform duration-300 group-hover/btn:translate-x-1.5"></i>
+                    </a>
                 </div>
-                <h3 class="font-semibold text-[11px] md:text-xs text-slate-900 tracking-tight text-center line-clamp-1 mb-1">HDD / SSD Units</h3>
-                <p class="text-[10px] md:text-[11px] text-gray-500 hidden md:block max-w-xs mb-4">High performance HDD duplicators for multi-drive systems.</p>
-                <a href="#" class="text-[#0052cc] text-[10px] md:text-xs font-semibold hover:underline inline-flex items-center gap-0.5 mt-auto">Shop Now <i data-lucide="arrow-right" class="w-2.5 h-2.5"></i></a>
             </div>
-            <div class="bg-white border border-gray-200 rounded-lg p-4 md:p-6 flex flex-col items-center shadow-sm">
-                <div class="w-full aspect-[4/3] bg-slate-50 border border-gray-100 rounded flex items-center justify-center mb-3">
-                    <i data-lucide="usb" class="w-8 h-8 md:w-12 md:h-12 text-blue-500/80 stroke-[1.5]"></i>
+
+            <!-- Category Card 2 -->
+            <div class="bg-white border border-gray-100 rounded-2xl flex flex-col shadow-sm group hover:shadow-md hover:border-gray-200 transition duration-300">
+                <div class="w-full aspect-[4/3] bg-gradient-to-b from-gray-50 to-slate-100 rounded-t-2xl flex items-center justify-center relative p-6">
+                    <div class="text-blue-500/80 transition-transform duration-500 group-hover:scale-105">
+                        <i data-lucide="database" class="w-16 h-16 md:w-20 md:h-20 stroke-[1.25]"></i>
+                    </div>
                 </div>
-                <h3 class="font-semibold text-[11px] md:text-xs text-slate-900 tracking-tight text-center line-clamp-1 mb-1">USB Duplicators</h3>
-                <p class="text-[10px] md:text-[11px] text-gray-500 hidden md:block max-w-xs mb-4">Professional standalone flash memory storage tools.</p>
-                <a href="#" class="text-[#0052cc] text-[10px] md:text-xs font-semibold hover:underline inline-flex items-center gap-0.5 mt-auto">Shop Now <i data-lucide="arrow-right" class="w-2.5 h-2.5"></i></a>
-            </div>
-            <div class="bg-white border border-gray-200 rounded-lg p-4 md:p-6 flex flex-col items-center shadow-sm">
-                <div class="w-full aspect-[4/3] bg-slate-50 border border-gray-100 rounded flex items-center justify-center mb-3">
-                    <i data-lucide="cpu" class="w-8 h-8 md:w-12 md:h-12 text-blue-500/80 stroke-[1.5]"></i>
+                <div class="p-6 md:p-8 flex flex-col flex-1 text-left">
+                    <h3 class="font-bold text-base md:text-lg text-slate-900 tracking-tight mb-2">Hard Drive HDD/SSD Units</h3>
+                    <p class="text-xs md:text-sm text-gray-500 leading-relaxed mb-6">High performance standalone mass storage drive platforms engineered for heavy sector workflows.</p>
+                    <a href="#" class="inline-flex items-center gap-2 text-[#0052cc] text-xs md:text-sm font-bold tracking-wide uppercase mt-auto group/btn relative w-fit">
+                        <span class="relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-[#0052cc] group-hover/btn:after:w-full after:transition-all after:duration-300 pb-0.5">Shop Now</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4 transform transition-transform duration-300 group-hover/btn:translate-x-1.5"></i>
+                    </a>
                 </div>
-                <h3 class="font-semibold text-[11px] md:text-xs text-slate-900 tracking-tight text-center line-clamp-1 mb-1">SD / microSD Cards</h3>
-                <p class="text-[10px] md:text-[11px] text-gray-500 hidden md:block max-w-xs mb-4">Professional systems supporting swift memory card builds.</p>
-                <a href="#" class="text-[#0052cc] text-[10px] md:text-xs font-semibold hover:underline inline-flex items-center gap-0.5 mt-auto">Shop Now <i data-lucide="arrow-right" class="w-2.5 h-2.5"></i></a>
             </div>
-            <div class="bg-white border border-gray-200 rounded-lg p-4 md:p-6 flex flex-col items-center shadow-sm">
-                <div class="w-full aspect-[4/3] bg-slate-50 border border-gray-100 rounded flex items-center justify-center mb-3">
-                    <i data-lucide="hard-drive" class="w-8 h-8 md:w-12 md:h-12 text-blue-500/80 stroke-[1.5]"></i>
+
+            <!-- Category Card 3 -->
+            <div class="bg-white border border-gray-100 rounded-2xl flex flex-col shadow-sm group hover:shadow-md hover:border-gray-200 transition duration-300">
+                <div class="w-full aspect-[4/3] bg-gradient-to-b from-gray-50 to-slate-100 rounded-t-2xl flex items-center justify-center relative p-6">
+                    <div class="text-blue-500/80 transition-transform duration-500 group-hover:scale-105">
+                        <i data-lucide="usb" class="w-16 h-16 md:w-20 md:h-20 stroke-[1.25]"></i>
+                    </div>
                 </div>
-                <h3 class="font-semibold text-[11px] md:text-xs text-slate-900 tracking-tight text-center line-clamp-1 mb-1">CompactFlash (CF)</h3>
-                <p class="text-[10px] md:text-[11px] text-gray-500 hidden md:block max-w-xs mb-4">Industrial standalone configurations engineered for accuracy.</p>
-                <a href="#" class="text-[#0052cc] text-[10px] md:text-xs font-semibold hover:underline inline-flex items-center gap-0.5 mt-auto">Shop Now <i data-lucide="arrow-right" class="w-2.5 h-2.5"></i></a>
-            </div>
-            <div class="bg-white border border-gray-200 rounded-lg p-4 md:p-6 flex flex-col items-center shadow-sm">
-                <div class="w-full aspect-[4/3] bg-slate-50 border border-gray-100 rounded flex items-center justify-center mb-3">
-                    <i data-lucide="boxes" class="w-8 h-8 md:w-12 md:h-12 text-blue-500/80 stroke-[1.5]"></i>
+                <div class="p-6 md:p-8 flex flex-col flex-1 text-left">
+                    <h3 class="font-bold text-base md:text-lg text-slate-900 tracking-tight mb-2">Flash Memory Storage Tools</h3>
+                    <p class="text-xs md:text-sm text-gray-500 leading-relaxed mb-6">Industrial USB, SD, and microSD synchronous duplication systems with integrated diagnostic monitoring.</p>
+                    <a href="#" class="inline-flex items-center gap-2 text-[#0052cc] text-xs md:text-sm font-bold tracking-wide uppercase mt-auto group/btn relative w-fit">
+                        <span class="relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-[#0052cc] group-hover/btn:after:w-full after:transition-all after:duration-300 pb-0.5">Shop Now</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4 transform transition-transform duration-300 group-hover/btn:translate-x-1.5"></i>
+                    </a>
                 </div>
-                <h3 class="font-semibold text-[11px] md:text-xs text-slate-900 tracking-tight text-center line-clamp-1 mb-1">All In One Arrays</h3>
-                <p class="text-[10px] md:text-[11px] text-gray-500 hidden md:block max-w-xs mb-4">Systems driving legacy and next gen multi-media formats together.</p>
-                <a href="#" class="text-[#0052cc] text-[10px] md:text-xs font-semibold hover:underline inline-flex items-center gap-0.5 mt-auto">Shop Now <i data-lucide="arrow-right" class="w-2.5 h-2.5"></i></a>
             </div>
+
         </div>
     </section>
 
@@ -226,7 +239,7 @@
         </div>
     </section>
 
-    <!-- UPDATED: Buttons removed on each container layout -->
+    <!-- Trusted Procurement Blocks -->
     <section class="max-w-7xl mx-auto px-4 mb-16 md:mb-24">
         <div class="text-center max-w-3xl mx-auto mb-8 md:mb-12">
             <span class="text-[9px] md:text-[10px] font-bold text-[#0052cc] bg-blue-50 px-2.5 py-1 rounded-full uppercase tracking-widest">Trusted Procurement</span>
@@ -236,7 +249,7 @@
 
         <div class="flex md:grid md:grid-cols-3 gap-5 md:gap-6 overflow-x-auto md:overflow-visible pb-6 md:pb-0 snap-x snap-mandatory no-scrollbar px-4 md:px-0 -mx-4 md:mx-0">
             
-            <!-- Card 1: Enterprise Infrastructure -->
+            <!-- Card 1: IT Departments -->
             <div class="min-w-[290px] sm:min-w-[340px] md:min-w-0 snap-center bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm flex flex-col group hover:border-[#0052cc] hover:shadow-md transition-all duration-300">
                 <div class="relative overflow-hidden aspect-[4/3] md:aspect-[16/10] bg-slate-900">
                     <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=600&q=80" alt="Enterprise Data Infrastructure" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90">
@@ -253,7 +266,7 @@
                 </div>
             </div>
 
-            <!-- Card 2: Specialized Lab / Government Facility -->
+            <!-- Card 2: Education & Government -->
             <div class="min-w-[290px] sm:min-w-[340px] md:min-w-0 snap-center bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm flex flex-col group hover:border-[#0052cc] hover:shadow-md transition-all duration-300">
                 <div class="relative overflow-hidden aspect-[4/3] md:aspect-[16/10] bg-slate-900">
                     <img src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=600&q=80" alt="Institutional Technology Deployment" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90">
@@ -270,7 +283,7 @@
                 </div>
             </div>
 
-            <!-- Card 3: Modern Digital Media Production Studio -->
+            <!-- Card 3: Production Houses -->
             <div class="min-w-[290px] sm:min-w-[340px] md:min-w-0 snap-center bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm flex flex-col group hover:border-[#0052cc] hover:shadow-md transition-all duration-300">
                 <div class="relative overflow-hidden aspect-[4/3] md:aspect-[16/10] bg-slate-900">
                     <img src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=600&q=80" alt="Professional Media Production Workstation" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90">
@@ -288,7 +301,6 @@
             </div>
         </div>
 
-        <!-- Centralized Call To Actions under the blocks -->
         <div class="flex items-center justify-center gap-3 mt-8 md:mt-12 px-2">
             <a href="#" class="flex-1 sm:flex-initial text-center bg-[#0052cc] hover:bg-blue-700 text-white font-semibold text-xs tracking-wider uppercase px-6 py-3 rounded transition shadow-sm">
                 Shop Catalog
@@ -440,17 +452,16 @@
         </div>
     </section>
 
-    <!-- RE-ENGINEERED: Premium Shopify-Style Footer with MOPs Badge Grid -->
+    <!-- Shopify-Style Footer with MOPs Badge Grid -->
     <footer class="bg-white text-slate-600 text-xs border-t border-gray-200 pt-16 pb-8">
         <div class="max-w-7xl mx-auto px-4">
             
             <!-- Shopify Newsletter & Branding Block row -->
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 pb-12 border-b border-gray-200 items-start">
-                <div class="lg:col-span-4 space-y-3">
-                    <div class="flex items-center gap-2 text-slate-950 font-bold text-base tracking-tight">
-                        <div class="bg-[#0052cc] p-1 rounded text-white"><i data-lucide="layers" class="w-4 h-4"></i></div>
-                        <span>ProDuplicator</span>
-                    </div>
+                <div class="lg:col-span-4 space-y-4">
+                    <a href="#" class="block">
+                        <img src="https://www.produplicator.com/cdn/shop/files/Produplicator_-_500_x_260_180x.png?v=1776179483" alt="ProDuplicator Logo" class="h-9 w-auto object-contain">
+                    </a>
                     <p class="text-gray-500 leading-relaxed max-w-sm text-[11px]">
                         Providing industry-grade duplication deployment frameworks, drive array erasure engines, and enterprise media engineering configurations safely since 1997.
                     </p>
@@ -515,7 +526,6 @@
                     </div>
                 </div>
 
-                <!-- Clean, crisp inline vector payment badge vectors -->
                 <div class="flex items-center flex-wrap gap-2 justify-center" aria-label="Available Payment Methods">
                     <!-- Visa -->
                     <svg class="w-8 h-5 border border-gray-200 bg-white rounded px-1" viewBox="0 0 24 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.4 12.3l1.4-8.4h2.2l-1.4 8.4H9.4zm7.9-8.1c-.4-.2-1.1-.4-1.9-.4-2.1 0-3.5 1.1-3.5 2.6 0 1.2 1 1.8 1.9 2.2.9.4 1.2.7 1.2 1.1 0 .6-.7.9-1.4.9-.9 0-1.6-.2-2-.4l-.3-.1-.3 1.8c.5.2 1.4.4 2.3.4 2.2 0 3.6-1.1 3.6-2.7 0-1-.6-1.7-1.9-2.3-.8-.4-1.3-.7-1.3-1.1 0-.4.4-.8 1.3-.8.7 0 1.3.1 1.7.3l.2.1.3-1.6zM22.1 3.9h-1.7c-.5 0-.9.3-1.1.7l-3.2 7.7h2.3l.5-1.3h2.8l.3 1.3h2l-1.9-8.4zm-2.7 5l1.1-3 1.1 3h-2.2zM5.3 3.9L3.1 9.8c-.2-.5-.4-.9-.8-1.3l-1.6-3.4c-.2-.4-.3-.6-.7-.6H0l.1.2 2.1 4.8-1 4.5h2.3l3.4-8.4H5.3z" fill="#0052cc"/></svg>
@@ -528,7 +538,7 @@
                     <!-- PayPal -->
                     <svg class="w-8 h-5 border border-gray-200 bg-white rounded px-1" viewBox="0 0 24 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18.5 4.5c.3-.1.6-.1.9-.1 1.6 0 2.6.8 2.3 2.5-.3 1.8-1.4 2.8-3 2.8h-1.4l-.7 4.1h-2l1.2-7.3h2.7zm-2.1 4.4h.8c.8 0 1.3-.4 1.5-1.2.2-1-.3-1.4-1.1-1.4h-.8l-.4 2.6z" fill="#003087"/><path d="M14.5 2.5c.3-.1.6-.1.9-.1 1.6 0 2.6.8 2.3 2.5-.3 1.8-1.4 2.8-3 2.8h-1.4l-.7 4.1h-2l1.2-7.3h2.7zm-2.1 4.4h.8c.8 0 1.3-.4 1.5-1.2.2-1-.3-1.4-1.1-1.4h-.8l-.4 2.6z" fill="#0079C1" fill-opacity="0.6"/></svg>
                     <!-- Apple Pay -->
-                    <svg class="w-8 h-5 border border-gray-200 bg-white rounded px-1" viewBox="0 0 24 15" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="15" rx="2" fill="#111"/><path d="M6.3 11c-.3 0-.6-.1-.8-.3-.3-.2-.5-.6-.5-1.1 0-.9.6-1.4 1.7-1.4H8v-.3c0-.5-.3-.7-.9-.7-.4 0-.8.1-1.1.3l-.2-.6c.4-.2.9-.3 1.4-.3 1 0 1.5.5 1.5 1.4v2.2c0 .4 0 .7.1.9h-.7l-.1-.4h-.1c-.2.3-.5.4-.8.4zm.2-.6c.2 0 .5-.1.6-.3.2-.2.3-.4.3-.7h-.5c-.7 0-1 .3-1 .8 0 .3.2.5.6.5zm4.8.5l-.1-.9H11c-.2.3-.5.5-.9.5-.6 0-1.1-.4-1.1-1.1 0-.8.5-1.2 1.3-1.2h.7v-.3c0-.4-.2-.6-.7-.6-.3 0-.6.1-.9.2l-.2-.5c.3-.2.7-.3 1.2-.3.9 0 1.3.4 1.3 1.2v2.3h-.7zm-.1-2.4h-.4c-.5 0-.8.2-.8.6s.3.5.7.5c.2 0 .4-.1.5-.3.1-.1.1-.3.1-.5v-.3zm4.5.6l-1 2.8h-.7l.3-.9-1.2-3.4h.8l.8 2.4h.1l.7-2.4h.7z" fill="white"/></svg>
+                    <svg class="w-8 h-5 border border-gray-200 bg-white rounded px-1" viewBox="0 0 24 15" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="15" rx="2" fill="#111"/><path d="M6.3 11c-.3 0-.6-.1-.8-.3-.3-.2-.5-.6-.5-1.1 0-.9.6-1.4 1.7-1.4H8v-.3c0-.5-.3-.7-.9-.7-.4 0-.8.1-1.1.3l-.2-.6c.4-.2.9-.3 1.4-.3 1 0 1.5.5 1.5 1.4v2.2c0 .4 0 .7.1.9h-.7l-.1-.4h-.1c-.2.3-.5.4-.8.4zm.2-.6c.2 0 .5-.1.6-.3.2-.2.3-.4.3-.7h-.5c-.7 0-1 .3-1 .8 0 .3.2.5.6.5zm4.8.5l-.1-.9H11c-.2.3-.5.5-.9.5-.6 0-1.1-.4-1.1-1.1 0-.8.5-1.2 1.3-1.2h.7v-.3c0-.4-.2-.6-.7-.6-.3 0-.6.1-.9.2l-.2-.5c.3-.2.7-.3 1.2-.3.9 0 1.3.4 1.3 1.2v2.3h-.7zm-.1-2.4h-.4c-.4 0-.6.2-.6.5s.2.4.5.4c.2 0 .4-.1.5-.2.1-.1.1-.2.1-.4v-.3zm4.2.6l-.9 2.5h-.7l.3-.8-1.1-3h.7l.7 2.1h.1l.6-2.1h.6z" fill="white"/></svg>
                     <!-- Google Pay -->
                     <svg class="w-8 h-5 border border-gray-200 bg-white rounded px-1" viewBox="0 0 24 15" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="15" rx="2" fill="#333"/><path d="M4.5 10V5h1.7c.6 0 1 .1 1.3.4.3.3.4.7.4 1.1s-.1.8-.4 1.1c-.3.3-.7.4-1.3.4H5.4v2H4.5zm.9-3.7h.8c.3 0 .5-.1.7-.2.2-.1.2-.3.2-.5s-.1-.4-.2-.5c-.2-.1-.4-.2-.7-.2h-.8v1.4zm5.7 3.7l-.1-.8h-.1c-.2.3-.5.5-.9.5-.5 0-.9-.4-.9-1 0-.7.5-1.1 1.4-1.1h.6v-.2c0-.3-.2-.5-.6-.5-.3 0-.6.1-.8.2l-.2-.5c.3-.2.7-.3 1.1-.3.8 0 1.2.4 1.2 1.1v2.6h-.7zm-.1-2.1h-.4c-.4 0-.6.2-.6.5s.2.4.5.4c.2 0 .4-.1.5-.2.1-.1.1-.2.1-.4v-.3zm4.2.6l-.9 2.5h-.7l.3-.8-1.1-3h.7l.7 2.1h.1l.6-2.1h.6z" fill="white"/></svg>
                 </div>
