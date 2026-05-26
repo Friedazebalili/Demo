@@ -6,7 +6,6 @@
     <title>ProDuplicator - Expert Support You Can Rely On</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
-    <!-- Custom Tailwind Configuration Extension for Infinite Carousel Animation -->
     <script>
         tailwind.config = {
             theme: {
@@ -24,22 +23,37 @@
             }
         }
     </script>
+    <style>
+        /* Hide scrollbars for the horizontal mobile swiper while keeping functionality */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans antialiased">
+<body class="bg-gray-50 text-gray-800 font-sans antialiased overflow-x-hidden">
 
-    <div class="bg-[#0052cc] text-white text-center py-1 text-xs font-semibold tracking-wider uppercase">
+    <!-- Top Announcement Bar -->
+    <div class="bg-[#0052cc] text-white text-center py-1.5 text-[10px] md:text-xs font-semibold tracking-wider uppercase px-4">
         Extra 10% Off On First Order
     </div>
 
+    <!-- Header Navigation -->
     <header class="bg-white border-b border-gray-200 sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between gap-4">
-            <div class="flex items-center gap-2 flex-shrink-0">
-                <div class="bg-[#0052cc] p-1.5 rounded-md text-white">
-                    <i data-lucide="layers" class="w-5 h-5"></i>
+            
+            <!-- Left Side: Mobile Menu Button & Brand Logo -->
+            <div class="flex items-center gap-3">
+                <button id="menu-open" class="lg:hidden p-1 text-gray-600 hover:text-[#0052cc] focus:outline-none" aria-label="Open Menu">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+                <div class="flex items-center gap-2 flex-shrink-0">
+                    <div class="bg-[#0052cc] p-1.5 rounded-md text-white">
+                        <i data-lucide="layers" class="w-5 h-5"></i>
+                    </div>
+                    <span class="font-bold text-base md:text-lg text-slate-900 tracking-tight">ProDuplicator</span>
                 </div>
-                <span class="font-bold text-lg text-slate-900 tracking-tight">ProDuplicator</span>
             </div>
 
+            <!-- Desktop Nav Items -->
             <nav class="hidden lg:flex items-center gap-6 text-xs font-semibold text-gray-600 uppercase tracking-wider">
                 <a href="#" class="hover:text-[#0052cc] transition">M.2 NVMe PCIe SATA</a>
                 <a href="#" class="hover:text-[#0052cc] transition">Hard Drive HDD/SSD</a>
@@ -48,11 +62,15 @@
                 <a href="#" class="hover:text-[#0052cc] transition">Media & Consumables</a>
             </nav>
 
-            <div class="flex items-center gap-4 flex-1 max-w-xs lg:max-w-sm justify-end">
+            <!-- Right Side Actions -->
+            <div class="flex items-center gap-3 md:gap-4 flex-1 justify-end max-w-xs">
+                <!-- Search (Desktop Only) -->
                 <div class="relative w-full hidden sm:block">
                     <input type="text" placeholder="Search the store..." class="w-full bg-gray-100 border border-gray-300 rounded-md py-1.5 pl-3 pr-9 text-sm focus:outline-none focus:border-[#0052cc]">
                     <i data-lucide="search" class="w-4 h-4 text-gray-400 absolute right-3 top-2.5"></i>
                 </div>
+                <!-- Search Trigger (Mobile Only) -->
+                <button class="sm:hidden text-gray-600 hover:text-[#0052cc]"><i data-lucide="search" class="w-5 h-5"></i></button>
                 <button class="text-gray-600 hover:text-[#0052cc]"><i data-lucide="user" class="w-5 h-5"></i></button>
                 <button class="text-gray-600 hover:text-[#0052cc] relative">
                     <i data-lucide="shopping-cart" class="w-5 h-5"></i>
@@ -62,292 +80,328 @@
         </div>
     </header>
 
-    <section class="bg-gradient-to-b from-[#0b1e36] to-[#122e54] text-white py-20 px-4 text-center">
+    <!-- Mobile Drawer Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 z-50 hidden" role="dialog" aria-modal="true">
+        <!-- Backdrop Backdrop -->
+        <div id="menu-close-backdrop" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm"></div>
+        
+        <!-- Drawer Body -->
+        <div class="fixed inset-y-0 left-0 w-full max-w-xs bg-white shadow-xl flex flex-col z-10 transform transition-transform duration-300">
+            <div class="p-4 border-b border-gray-200 flex items-center justify-between">
+                <span class="font-bold text-slate-900 flex items-center gap-2">
+                    <div class="bg-[#0052cc] p-1 rounded text-white"><i data-lucide="layers" class="w-4 h-4"></i></div>
+                    Navigation Menu
+                </span>
+                <button id="menu-close" class="p-1 text-gray-500 hover:text-slate-900"><i data-lucide="x" class="w-6 h-6"></i></button>
+            </div>
+            
+            <nav class="flex-1 overflow-y-auto p-4 space-y-1">
+                <a href="#" class="block px-3 py-2.5 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-[#0052cc] transition">M.2 NVMe PCIe SATA</a>
+                <a href="#" class="block px-3 py-2.5 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-[#0052cc] transition">Hard Drive HDD/SSD</a>
+                <a href="#" class="block px-3 py-2.5 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-[#0052cc] transition">Flash Media</a>
+                <a href="#" class="block px-3 py-2.5 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-[#0052cc] transition">CD DVD BD Blu-Ray</a>
+                <a href="#" class="block px-3 py-2.5 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-[#0052cc] transition">Media & Consumables</a>
+            </nav>
+            
+            <div class="p-4 border-t border-gray-200 bg-gray-50 space-y-2">
+                <a href="#" class="block w-full text-center bg-[#0052cc] text-white py-2 rounded text-xs font-semibold">Shop Catalog</a>
+                <a href="#" class="block w-full text-center border border-gray-300 text-gray-600 py-2 rounded text-xs font-semibold bg-white">Contact Support</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-b from-[#0b1e36] to-[#122e54] text-white py-14 md:py-20 px-4 text-center">
         <div class="max-w-3xl mx-auto">
-            <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-4">Expert Support You Can Rely On</h1>
-            <p class="text-gray-300 text-sm md:text-base max-w-xl mx-auto mb-8 font-light">Quality Equipment. Competitive Pricing. Dedicated Customer Service.</p>
-            <div class="flex flex-wrap justify-center gap-4">
-                <a href="#" class="bg-white text-slate-900 font-semibold text-sm px-6 py-2.5 rounded hover:bg-gray-100 transition shadow-sm">Shop Catalog</a>
-                <a href="#" class="border border-gray-400 text-white font-semibold text-sm px-6 py-2.5 rounded hover:bg-white/10 transition">Contact Us</a>
+            <h1 class="text-3xl md:text-5xl font-bold tracking-tight mb-3 leading-tight">Expert Support You Can Rely On</h1>
+            <p class="text-gray-300 text-xs md:text-base max-w-xl mx-auto mb-6 md:mb-8 font-light leading-relaxed">Quality Equipment. Competitive Pricing. Dedicated Customer Service.</p>
+            <div class="flex items-center justify-center gap-3">
+                <a href="#" class="bg-white text-slate-900 font-semibold text-xs md:text-sm px-5 md:px-6 py-2.5 rounded hover:bg-gray-100 transition shadow-sm">Shop Catalog</a>
+                <a href="#" class="border border-gray-400 text-white font-semibold text-xs md:text-sm px-5 md:px-6 py-2.5 rounded hover:bg-white/10 transition">Contact Us</a>
             </div>
         </div>
     </section>
 
-    <section class="max-w-6xl mx-auto px-4 -mt-8 mb-16">
-        <div class="bg-white rounded-lg shadow-md border border-gray-100 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 lg:divide-x divide-gray-100 p-2">
-            <div class="p-4 flex items-start gap-3">
-                <i data-lucide="zap" class="w-5 h-5 text-blue-500 mt-0.5 flex-shrink-0"></i>
+    <!-- Core Highlights Grid -->
+    <section class="max-w-6xl mx-auto px-4 -mt-6 md:-mt-8 mb-12 md:mb-16">
+        <div class="bg-white rounded-lg shadow-md border border-gray-100 grid grid-cols-2 lg:grid-cols-4 divide-y divide-x divide-gray-100 p-1 md:p-2">
+            <div class="p-3 md:p-4 flex items-start gap-2.5">
+                <i data-lucide="zap" class="w-4 h-4 md:w-5 md:h-5 text-blue-500 mt-0.5 flex-shrink-0"></i>
                 <div>
-                    <h4 class="font-semibold text-xs text-slate-900">High Speed Performance</h4>
-                    <p class="text-[11px] text-gray-500 mt-0.5">Up to 16GB/min throughput.</p>
+                    <h4 class="font-semibold text-[11px] md:text-xs text-slate-900">High Speed</h4>
+                    <p class="text-[9px] md:text-[11px] text-gray-500 mt-0.5">Up to 16GB/min rate.</p>
                 </div>
             </div>
-            <div class="p-4 flex items-start gap-3">
-                <i data-lucide="shield-check" class="w-5 h-5 text-blue-500 mt-0.5 flex-shrink-0"></i>
+            <div class="p-3 md:p-4 flex items-start gap-2.5 border-t-0">
+                <i data-lucide="shield-check" class="w-4 h-4 md:w-5 md:h-5 text-blue-500 mt-0.5 flex-shrink-0"></i>
                 <div>
-                    <h4 class="font-semibold text-xs text-slate-900">1 Year Warranty</h4>
-                    <p class="text-[11px] text-gray-500 mt-0.5">Comprehensive coverage on every unit.</p>
+                    <h4 class="font-semibold text-[11px] md:text-xs text-slate-900">1 Year Warranty</h4>
+                    <p class="text-[9px] md:text-[11px] text-gray-500 mt-0.5">Full unit coverage.</p>
                 </div>
             </div>
-            <div class="p-4 flex items-start gap-3">
-                <i data-lucide="refresh-cw" class="w-5 h-5 text-blue-500 mt-0.5 flex-shrink-0"></i>
+            <div class="p-3 md:p-4 flex items-start gap-2.5">
+                <i data-lucide="refresh-cw" class="w-4 h-4 md:w-5 md:h-5 text-blue-500 mt-0.5 flex-shrink-0"></i>
                 <div>
-                    <h4 class="font-semibold text-xs text-slate-900">24/7 Operations</h4>
-                    <p class="text-[11px] text-gray-500 mt-0.5">Built for continuous enterprise use.</p>
+                    <h4 class="font-semibold text-[11px] md:text-xs text-slate-900">24/7 Running</h4>
+                    <p class="text-[9px] md:text-[11px] text-gray-500 mt-0.5">Continuous execution.</p>
                 </div>
             </div>
-            <div class="p-4 flex items-start gap-3">
-                <i data-lucide="headphones" class="w-5 h-5 text-blue-500 mt-0.5 flex-shrink-0"></i>
+            <div class="p-3 md:p-4 flex items-start gap-2.5">
+                <i data-lucide="headphones" class="w-4 h-4 md:w-5 md:h-5 text-blue-500 mt-0.5 flex-shrink-0"></i>
                 <div>
-                    <h4 class="font-semibold text-xs text-slate-900">Expert Support</h4>
-                    <p class="text-[11px] text-gray-500 mt-0.5">Dedicated technician assistance.</p>
+                    <h4 class="font-semibold text-[11px] md:text-xs text-slate-900">Expert Care</h4>
+                    <p class="text-[9px] md:text-[11px] text-gray-500 mt-0.5">Dedicated technical staff.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="max-w-7xl mx-auto px-4 mb-20 text-center">
-        <h2 class="text-2xl font-bold text-slate-900 mb-1">Shop by Categories</h2>
-        <p class="text-xs text-gray-500 mb-10">Discover our collections</p>
+    <!-- Categories Grid -->
+    <section class="max-w-7xl mx-auto px-4 mb-16 md:mb-20 text-center">
+        <h2 class="text-xl md:text-2xl font-bold text-slate-900 mb-1">Shop by Categories</h2>
+        <p class="text-[11px] md:text-xs text-gray-500 mb-6 md:mb-10">Discover our collections</p>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="bg-white border border-gray-200 rounded-lg p-6 flex flex-col items-center shadow-sm">
-                <div class="w-full aspect-[4/3] bg-slate-50 border border-gray-100 rounded flex items-center justify-center mb-4">
-                    <i data-lucide="hard-drive" class="w-12 h-12 text-blue-500/80 stroke-[1.5]"></i>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-6">
+            <!-- Box 1 -->
+            <div class="bg-white border border-gray-200 rounded-lg p-4 md:p-6 flex flex-col items-center shadow-sm">
+                <div class="w-full aspect-[4/3] bg-slate-50 border border-gray-100 rounded flex items-center justify-center mb-3">
+                    <i data-lucide="hard-drive" class="w-8 h-8 md:w-12 md:h-12 text-blue-500/80 stroke-[1.5]"></i>
                 </div>
-                <h3 class="font-semibold text-xs text-slate-900 tracking-tight mb-2">M.2 NVMe PCIe SSD Duplicators</h3>
-                <p class="text-[11px] text-gray-500 max-w-xs mb-4">Professional M.2 NVMe/PCIe SSD duplicators for fast, secure, and reliable drive cloning.</p>
-                <a href="#" class="text-[#0052cc] text-xs font-semibold hover:underline inline-flex items-center gap-1 mt-auto">Shop Now <i data-lucide="arrow-right" class="w-3 h-3"></i></a>
+                <h3 class="font-semibold text-[11px] md:text-xs text-slate-900 tracking-tight text-center line-clamp-1 mb-1">M.2 NVMe SSDs</h3>
+                <p class="text-[10px] md:text-[11px] text-gray-500 hidden md:block max-w-xs mb-4">Professional M.2 NVMe/PCIe SSD duplicators for fast cloning.</p>
+                <a href="#" class="text-[#0052cc] text-[10px] md:text-xs font-semibold hover:underline inline-flex items-center gap-0.5 mt-auto">Shop Now <i data-lucide="arrow-right" class="w-2.5 h-2.5"></i></a>
             </div>
-            <div class="bg-white border border-gray-200 rounded-lg p-6 flex flex-col items-center shadow-sm">
-                <div class="w-full aspect-[4/3] bg-slate-50 border border-gray-100 rounded flex items-center justify-center mb-4">
-                    <i data-lucide="database" class="w-12 h-12 text-blue-500/80 stroke-[1.5]"></i>
+            <!-- Box 2 -->
+            <div class="bg-white border border-gray-200 rounded-lg p-4 md:p-6 flex flex-col items-center shadow-sm">
+                <div class="w-full aspect-[4/3] bg-slate-50 border border-gray-100 rounded flex items-center justify-center mb-3">
+                    <i data-lucide="database" class="w-8 h-8 md:w-12 md:h-12 text-blue-500/80 stroke-[1.5]"></i>
                 </div>
-                <h3 class="font-semibold text-xs text-slate-900 tracking-tight mb-2">Hard Drive HDD / SSD Duplicators</h3>
-                <p class="text-[11px] text-gray-500 max-w-xs mb-4">High performance HDD duplicators for fast, secure, and efficient multi-drive duplication.</p>
-                <a href="#" class="text-[#0052cc] text-xs font-semibold hover:underline inline-flex items-center gap-1 mt-auto">Shop Now <i data-lucide="arrow-right" class="w-3 h-3"></i></a>
+                <h3 class="font-semibold text-[11px] md:text-xs text-slate-900 tracking-tight text-center line-clamp-1 mb-1">HDD / SSD Units</h3>
+                <p class="text-[10px] md:text-[11px] text-gray-500 hidden md:block max-w-xs mb-4">High performance HDD duplicators for multi-drive systems.</p>
+                <a href="#" class="text-[#0052cc] text-[10px] md:text-xs font-semibold hover:underline inline-flex items-center gap-0.5 mt-auto">Shop Now <i data-lucide="arrow-right" class="w-2.5 h-2.5"></i></a>
             </div>
-            <div class="bg-white border border-gray-200 rounded-lg p-6 flex flex-col items-center shadow-sm">
-                <div class="w-full aspect-[4/3] bg-slate-50 border border-gray-100 rounded flex items-center justify-center mb-4">
-                    <i data-lucide="usb" class="w-12 h-12 text-blue-500/80 stroke-[1.5]"></i>
+            <!-- Box 3 -->
+            <div class="bg-white border border-gray-200 rounded-lg p-4 md:p-6 flex flex-col items-center shadow-sm">
+                <div class="w-full aspect-[4/3] bg-slate-50 border border-gray-100 rounded flex items-center justify-center mb-3">
+                    <i data-lucide="usb" class="w-8 h-8 md:w-12 md:h-12 text-blue-500/80 stroke-[1.5]"></i>
                 </div>
-                <h3 class="font-semibold text-xs text-slate-900 tracking-tight mb-2">USB Drive Duplicators</h3>
-                <p class="text-[11px] text-gray-500 max-w-xs mb-4">Professional standalone USB duplicators for fast, secure and reliable flash drive cloning.</p>
-                <a href="#" class="text-[#0052cc] text-xs font-semibold hover:underline inline-flex items-center gap-1 mt-auto">Shop Now <i data-lucide="arrow-right" class="w-3 h-3"></i></a>
+                <h3 class="font-semibold text-[11px] md:text-xs text-slate-900 tracking-tight text-center line-clamp-1 mb-1">USB Duplicators</h3>
+                <p class="text-[10px] md:text-[11px] text-gray-500 hidden md:block max-w-xs mb-4">Professional standalone flash memory storage tools.</p>
+                <a href="#" class="text-[#0052cc] text-[10px] md:text-xs font-semibold hover:underline inline-flex items-center gap-0.5 mt-auto">Shop Now <i data-lucide="arrow-right" class="w-2.5 h-2.5"></i></a>
             </div>
-            <div class="bg-white border border-gray-200 rounded-lg p-6 flex flex-col items-center shadow-sm">
-                <div class="w-full aspect-[4/3] bg-slate-50 border border-gray-100 rounded flex items-center justify-center mb-4">
-                    <i data-lucide="cpu" class="w-12 h-12 text-blue-500/80 stroke-[1.5]"></i>
+            <!-- Box 4 -->
+            <div class="bg-white border border-gray-200 rounded-lg p-4 md:p-6 flex flex-col items-center shadow-sm">
+                <div class="w-full aspect-[4/3] bg-slate-50 border border-gray-100 rounded flex items-center justify-center mb-3">
+                    <i data-lucide="cpu" class="w-8 h-8 md:w-12 md:h-12 text-blue-500/80 stroke-[1.5]"></i>
                 </div>
-                <h3 class="font-semibold text-xs text-slate-900 tracking-tight mb-2">SD / microSD Card Duplicators</h3>
-                <p class="text-[11px] text-gray-500 max-w-xs mb-4">Professional standalone duplicators for fast, secure, and reliable SD and microSD card cloning.</p>
-                <a href="#" class="text-[#0052cc] text-xs font-semibold hover:underline inline-flex items-center gap-1 mt-auto">Shop Now <i data-lucide="arrow-right" class="w-3 h-3"></i></a>
+                <h3 class="font-semibold text-[11px] md:text-xs text-slate-900 tracking-tight text-center line-clamp-1 mb-1">SD / microSD Cards</h3>
+                <p class="text-[10px] md:text-[11px] text-gray-500 hidden md:block max-w-xs mb-4">Professional systems supporting swift memory card builds.</p>
+                <a href="#" class="text-[#0052cc] text-[10px] md:text-xs font-semibold hover:underline inline-flex items-center gap-0.5 mt-auto">Shop Now <i data-lucide="arrow-right" class="w-2.5 h-2.5"></i></a>
             </div>
-            <div class="bg-white border border-gray-200 rounded-lg p-6 flex flex-col items-center shadow-sm">
-                <div class="w-full aspect-[4/3] bg-slate-50 border border-gray-100 rounded flex items-center justify-center mb-4">
-                    <i data-lucide="hard-drive" class="w-12 h-12 text-blue-500/80 stroke-[1.5]"></i>
+            <!-- Box 5 -->
+            <div class="bg-white border border-gray-200 rounded-lg p-4 md:p-6 flex flex-col items-center shadow-sm">
+                <div class="w-full aspect-[4/3] bg-slate-50 border border-gray-100 rounded flex items-center justify-center mb-3">
+                    <i data-lucide="hard-drive" class="w-8 h-8 md:w-12 md:h-12 text-blue-500/80 stroke-[1.5]"></i>
                 </div>
-                <h3 class="font-semibold text-xs text-slate-900 tracking-tight mb-2">CompactFlash (CF) Card Duplicators</h3>
-                <p class="text-[11px] text-gray-500 max-w-xs mb-4">Professional standalone CompactFlash duplicators for fast, secure, and reliable flash cloning.</p>
-                <a href="#" class="text-[#0052cc] text-xs font-semibold hover:underline inline-flex items-center gap-1 mt-auto">Shop Now <i data-lucide="arrow-right" class="w-3 h-3"></i></a>
+                <h3 class="font-semibold text-[11px] md:text-xs text-slate-900 tracking-tight text-center line-clamp-1 mb-1">CompactFlash (CF)</h3>
+                <p class="text-[10px] md:text-[11px] text-gray-500 hidden md:block max-w-xs mb-4">Industrial standalone configurations engineered for accuracy.</p>
+                <a href="#" class="text-[#0052cc] text-[10px] md:text-xs font-semibold hover:underline inline-flex items-center gap-0.5 mt-auto">Shop Now <i data-lucide="arrow-right" class="w-2.5 h-2.5"></i></a>
             </div>
-            <div class="bg-white border border-gray-200 rounded-lg p-6 flex flex-col items-center shadow-sm">
-                <div class="w-full aspect-[4/3] bg-slate-50 border border-gray-100 rounded flex items-center justify-center mb-4">
-                    <i data-lucide="boxes" class="w-12 h-12 text-blue-500/80 stroke-[1.5]"></i>
+            <!-- Box 6 -->
+            <div class="bg-white border border-gray-200 rounded-lg p-4 md:p-6 flex flex-col items-center shadow-sm">
+                <div class="w-full aspect-[4/3] bg-slate-50 border border-gray-100 rounded flex items-center justify-center mb-3">
+                    <i data-lucide="boxes" class="w-8 h-8 md:w-12 md:h-12 text-blue-500/80 stroke-[1.5]"></i>
                 </div>
-                <h3 class="font-semibold text-xs text-slate-900 tracking-tight mb-2">All in One – USB / SD / CF / MMC / SD</h3>
-                <p class="text-[11px] text-gray-500 max-w-xs mb-4">Standalone systems supporting HDD, SSD, MMC, and Blu-ray duplication in one compact solution.</p>
-                <a href="#" class="text-[#0052cc] text-xs font-semibold hover:underline inline-flex items-center gap-1 mt-auto">Shop Now <i data-lucide="arrow-right" class="w-3 h-3"></i></a>
+                <h3 class="font-semibold text-[11px] md:text-xs text-slate-900 tracking-tight text-center line-clamp-1 mb-1">All In One Arrays</h3>
+                <p class="text-[10px] md:text-[11px] text-gray-500 hidden md:block max-w-xs mb-4">Systems driving legacy and next gen multi-media formats together.</p>
+                <a href="#" class="text-[#0052cc] text-[10px] md:text-xs font-semibold hover:underline inline-flex items-center gap-0.5 mt-auto">Shop Now <i data-lucide="arrow-right" class="w-2.5 h-2.5"></i></a>
             </div>
         </div>
     </section>
 
-    <!-- Upgraded Trust & Logo Slider Section -->
-    <section class="bg-white border-y border-gray-100 py-16 text-center px-4 mb-20 overflow-hidden">
+    <!-- Infinite Carousel Slider -->
+    <section class="bg-white border-y border-gray-100 py-10 md:py-16 text-center px-4 mb-16 md:mb-20 overflow-hidden">
         <div class="max-w-5xl mx-auto">
-            <p class="text-xs font-bold text-blue-600 uppercase tracking-widest mb-3">Trusted Worldwide Since 1997</p>
-            <h3 class="text-xl md:text-2xl font-bold text-slate-900 max-w-3xl mx-auto leading-snug mb-12">
+            <p class="text-[10px] md:text-xs font-bold text-blue-600 uppercase tracking-widest mb-2.5">Trusted Worldwide Since 1997</p>
+            <h3 class="text-base md:text-2xl font-bold text-slate-900 max-w-3xl mx-auto leading-snug mb-8 md:mb-12 px-2">
                 Delivering Industry-Leading Media Duplication, Testing, Erasure, Recovery, and Computer Forensics Solutions
             </h3>
             
-            <!-- Infinite Slider Frame -->
-            <div class="relative w-full overflow-hidden before:absolute before:left-0 before:top-0 before:z-10 before:h-full before:w-20 before:bg-gradient-to-r before:from-white before:to-transparent after:absolute after:right-0 after:top-0 after:z-10 after:h-full after:w-20 after:bg-gradient-to-l after:from-white after:to-transparent">
-                <!-- Track Container -->
-                <div class="flex w-[200%] animate-infinite-scroll items-center gap-16 text-sm font-black text-slate-400 uppercase tracking-widest select-none">
-                    <!-- Loop Group 1 -->
-                    <div class="flex w-1/2 justify-around items-center gap-12">
-                        <span class="hover:text-slate-600 transition-colors duration-300">Lockheed Martin</span>
-                        <span class="hover:text-slate-600 transition-colors duration-300">Oak Ridge</span>
-                        <span class="hover:text-slate-600 transition-colors duration-300">U.S. Army</span>
-                        <span class="hover:text-slate-600 transition-colors duration-300">General Dynamics</span>
-                        <span class="hover:text-slate-600 transition-colors duration-300">Raytheon</span>
-                        <span class="hover:text-slate-600 transition-colors duration-300">NASA</span>
+            <div class="relative w-full overflow-hidden before:absolute before:left-0 before:top-0 before:z-10 before:h-full before:w-12 md:before:w-20 before:bg-gradient-to-r before:from-white before:to-transparent after:absolute after:right-0 after:top-0 after:z-10 after:h-full after:w-12 md:after:w-20 after:bg-gradient-to-l after:from-white after:to-transparent">
+                <div class="flex w-[200%] animate-infinite-scroll items-center gap-10 md:gap-16 text-xs md:text-sm font-black text-slate-400 uppercase tracking-widest select-none">
+                    <div class="flex w-1/2 justify-around items-center gap-8">
+                        <span>Lockheed Martin</span><span>Oak Ridge</span><span>U.S. Army</span><span>General Dynamics</span><span>Raytheon</span><span>NASA</span>
                     </div>
-                    <!-- Loop Group 2 -->
-                    <div class="flex w-1/2 justify-around items-center gap-12" aria-hidden="true">
-                        <span class="hover:text-slate-600 transition-colors duration-300">Lockheed Martin</span>
-                        <span class="hover:text-slate-600 transition-colors duration-300">Oak Ridge</span>
-                        <span class="hover:text-slate-600 transition-colors duration-300">U.S. Army</span>
-                        <span class="hover:text-slate-600 transition-colors duration-300">General Dynamics</span>
-                        <span class="hover:text-slate-600 transition-colors duration-300">Raytheon</span>
-                        <span class="hover:text-slate-600 transition-colors duration-300">NASA</span>
+                    <div class="flex w-1/2 justify-around items-center gap-8" aria-hidden="true">
+                        <span>Lockheed Martin</span><span>Oak Ridge</span><span>U.S. Army</span><span>General Dynamics</span><span>Raytheon</span><span>NASA</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Re-engineered Segment from image_db14d5.png (Matches site structure & brand colors perfectly) -->
-    <section class="max-w-7xl mx-auto px-4 mb-24">
-        <div class="text-center max-w-3xl mx-auto mb-12">
-            <span class="text-[10px] font-bold text-[#0052cc] bg-blue-50 px-2.5 py-1 rounded-full uppercase tracking-widest">Trusted Nationwide</span>
-            <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mt-3 mb-2">Serving Enterprise, Education & Government</h2>
-            <p class="text-xs text-gray-500 max-w-xl mx-auto leading-relaxed">Procurement matters as much as performance. ProDuplicator is a trusted partner across industries.</p>
+    <!-- Refined Sectors Section (Image Block Component with Mobile Native Gestures) -->
+    <section class="max-w-7xl mx-auto px-4 mb-16 md:mb-24">
+        <div class="text-center max-w-3xl mx-auto mb-6 md:mb-12">
+            <span class="text-[9px] md:text-[10px] font-bold text-[#0052cc] bg-blue-50 px-2.5 py-1 rounded-full uppercase tracking-widest">Trusted Nationwide</span>
+            <h2 class="text-xl md:text-3xl font-bold text-slate-900 mt-2.5 mb-1.5 px-2">Serving Enterprise, Education & Government</h2>
+            <p class="text-[11px] md:text-xs text-gray-500 max-w-md mx-auto leading-relaxed">Procurement matters as much as performance. ProDuplicator is a trusted partner across industries.</p>
         </div>
 
-        <!-- Cohesive Structural Grid Setup -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+        <!-- Horizontal Smooth Swiper wrapper for Mobile / Standard Layout for Desktop -->
+        <div class="flex md:grid md:grid-cols-3 gap-4 md:gap-6 overflow-x-auto md:overflow-visible pb-4 md:pb-0 snap-x snap-mandatory no-scrollbar px-1 -mx-4 md:mx-0 px-4 md:px-0">
+            
             <!-- Card 1 -->
-            <div class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm flex flex-col group hover:border-[#0052cc] hover:shadow-md transition-all duration-300">
+            <div class="min-w-[280px] sm:min-w-[320px] md:min-w-0 snap-start bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm flex flex-col group hover:border-[#0052cc] hover:shadow-md transition-all duration-300">
                 <div class="relative overflow-hidden aspect-[16/10]">
                     <img src="https://images.unsplash.com/photo-1600132806370-bf17e65e942f?auto=format&fit=crop&w=400&q=80" alt="IT Departments" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                 </div>
-                <div class="p-5 flex-1 flex flex-col">
-                    <h3 class="font-semibold text-xs text-slate-900 tracking-tight uppercase mb-1">IT Departments</h3>
-                    <p class="text-[11px] text-gray-500 leading-relaxed mb-4">Rapid system deployment and OS imaging at scale.</p>
-                    <a href="#" class="text-[#0052cc] text-[11px] font-semibold inline-flex items-center gap-1 mt-auto group-hover:underline">Learn More <i data-lucide="chevron-right" class="w-3 h-3"></i></a>
+                <div class="p-4 md:p-5 flex-1 flex flex-col">
+                    <h3 class="font-bold text-[11px] md:text-xs text-slate-900 tracking-tight uppercase mb-1">IT Departments</h3>
+                    <p class="text-[10px] md:text-[11px] text-gray-500 leading-relaxed mb-3 md:mb-4">Rapid system deployment and OS imaging at scale.</p>
+                    <a href="#" class="text-[#0052cc] text-[10px] md:text-[11px] font-semibold inline-flex items-center gap-1 mt-auto group-hover:underline">Learn More <i data-lucide="chevron-right" class="w-3 h-3"></i></a>
                 </div>
             </div>
 
             <!-- Card 2 -->
-            <div class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm flex flex-col group hover:border-[#0052cc] hover:shadow-md transition-all duration-300">
+            <div class="min-w-[280px] sm:min-w-[320px] md:min-w-0 snap-start bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm flex flex-col group hover:border-[#0052cc] hover:shadow-md transition-all duration-300">
                 <div class="relative overflow-hidden aspect-[16/10]">
                     <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=400&q=80" alt="Education & Government" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                 </div>
-                <div class="p-5 flex-1 flex flex-col">
-                    <h3 class="font-semibold text-xs text-slate-900 tracking-tight uppercase mb-1">Education & Government</h3>
-                    <p class="text-[11px] text-gray-500 leading-relaxed mb-4">Easy Purchase Order (PO) processing available natively.</p>
-                    <a href="#" class="text-[#0052cc] text-[11px] font-semibold inline-flex items-center gap-1 mt-auto group-hover:underline">Learn More <i data-lucide="chevron-right" class="w-3 h-3"></i></a>
+                <div class="p-4 md:p-5 flex-1 flex flex-col">
+                    <h3 class="font-bold text-[11px] md:text-xs text-slate-900 tracking-tight uppercase mb-1">Education & Government</h3>
+                    <p class="text-[10px] md:text-[11px] text-gray-500 leading-relaxed mb-3 md:mb-4">Easy Purchase Order (PO) processing available natively.</p>
+                    <a href="#" class="text-[#0052cc] text-[10px] md:text-[11px] font-semibold inline-flex items-center gap-1 mt-auto group-hover:underline">Learn More <i data-lucide="chevron-right" class="w-3 h-3"></i></a>
                 </div>
             </div>
 
             <!-- Card 3 -->
-            <div class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm flex flex-col group hover:border-[#0052cc] hover:shadow-md transition-all duration-300">
+            <div class="min-w-[280px] sm:min-w-[320px] md:min-w-0 snap-start bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm flex flex-col group hover:border-[#0052cc] hover:shadow-md transition-all duration-300">
                 <div class="relative overflow-hidden aspect-[16/10]">
                     <img src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=400&q=80" alt="Production Houses" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                 </div>
-                <div class="p-5 flex-1 flex flex-col">
-                    <h3 class="font-semibold text-xs text-slate-900 tracking-tight uppercase mb-1">Production Houses</h3>
-                    <p class="text-[11px] text-gray-500 leading-relaxed mb-4">Reliable, large-scale digital media distribution ecosystems.</p>
-                    <a href="#" class="text-[#0052cc] text-[11px] font-semibold inline-flex items-center gap-1 mt-auto group-hover:underline">Learn More <i data-lucide="chevron-right" class="w-3 h-3"></i></a>
+                <div class="p-4 md:p-5 flex-1 flex flex-col">
+                    <h3 class="font-bold text-[11px] md:text-xs text-slate-900 tracking-tight uppercase mb-1">Production Houses</h3>
+                    <p class="text-[10px] md:text-[11px] text-gray-500 leading-relaxed mb-3 md:mb-4">Reliable, large-scale digital media distribution ecosystems.</p>
+                    <a href="#" class="text-[#0052cc] text-[10px] md:text-[11px] font-semibold inline-flex items-center gap-1 mt-auto group-hover:underline">Learn More <i data-lucide="chevron-right" class="w-3 h-3"></i></a>
                 </div>
             </div>
         </div>
 
-        <!-- On-Brand Matched Call To Action Row -->
-        <div class="flex justify-center items-center gap-3">
-            <a href="#" class="bg-[#0052cc] hover:bg-blue-700 text-white font-semibold text-xs tracking-wider uppercase px-6 py-2.5 rounded transition shadow-sm">
+        <!-- Action Grid Elements -->
+        <div class="flex items-center justify-center gap-3 mt-4 md:mt-8 px-2">
+            <a href="#" class="flex-1 sm:flex-initial text-center bg-[#0052cc] hover:bg-blue-700 text-white font-semibold text-[11px] md:text-xs tracking-wider uppercase px-5 md:px-6 py-2.5 rounded transition shadow-sm">
                 Shop Catalog
             </a>
-            <a href="#" class="border border-gray-300 hover:border-gray-400 text-gray-600 font-semibold text-xs tracking-wider uppercase px-6 py-2.5 rounded transition bg-white">
-                Contact Procurement
+            <a href="#" class="flex-1 sm:flex-initial text-center border border-gray-300 hover:border-gray-400 text-gray-600 font-semibold text-[11px] md:text-xs tracking-wider uppercase px-5 md:px-6 py-2.5 rounded transition bg-white">
+                Procurement
             </a>
         </div>
     </section>
 
-    <section class="max-w-7xl mx-auto px-4 mb-20">
-        <h2 class="text-xl font-bold text-center text-slate-900 uppercase tracking-wider mb-10">Featured Products</h2>
+    <!-- Featured Products Section -->
+    <section class="max-w-7xl mx-auto px-4 mb-16 md:mb-20">
+        <h2 class="text-base md:text-xl font-bold text-center text-slate-900 uppercase tracking-wider mb-6 md:mb-10">Featured Products</h2>
         
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div class="bg-white border border-gray-200 rounded-lg p-4 flex flex-col shadow-sm">
-                <div class="w-full aspect-square bg-slate-50 border border-gray-100 rounded flex items-center justify-center mb-4">
-                    <i data-lucide="server" class="w-16 h-16 text-blue-500/60 stroke-[1.25]"></i>
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6">
+            <!-- Item 1 -->
+            <div class="bg-white border border-gray-200 rounded-lg p-3 md:p-4 flex flex-col shadow-sm">
+                <div class="w-full aspect-square bg-slate-50 border border-gray-100 rounded flex items-center justify-center mb-3">
+                    <i data-lucide="server" class="w-10 h-10 md:w-16 md:h-16 text-blue-500/60 stroke-[1.25]"></i>
                 </div>
-                <span class="text-[10px] uppercase font-bold tracking-wider text-gray-400 mb-1">Epson 1 to 1 NVMe/SATA</span>
-                <h4 class="font-medium text-xs text-slate-900 line-clamp-2 mb-1">Epson 1 to 1 NVMe/SATA M.2 Duplicator & Sanitizer - up to 16GB/Min</h4>
-                <p class="text-[10px] text-gray-400 mb-4">SKU: EP-NVME-11</p>
-                <p class="text-sm font-bold text-slate-900 mb-4">$1,808.80</p>
-                <button class="w-full bg-[#0052cc] text-white py-2 text-xs font-semibold rounded hover:bg-blue-700 transition mt-auto">SEE DETAILS</button>
+                <span class="text-[9px] md:text-[10px] uppercase font-bold tracking-wider text-gray-400 mb-0.5">Epson 1 to 1</span>
+                <h4 class="font-medium text-[11px] md:text-xs text-slate-900 line-clamp-2 mb-1">Epson 1 to 1 NVMe/SATA M.2 Duplicator</h4>
+                <p class="text-[9px] text-gray-400 mb-2 md:mb-4">SKU: EP-NVME-11</p>
+                <p class="text-xs md:text-sm font-bold text-slate-900 mb-3">$1,808.80</p>
+                <button class="w-full bg-[#0052cc] text-white py-1.5 md:py-2 text-[10px] md:text-xs font-semibold rounded hover:bg-blue-700 transition mt-auto">SEE DETAILS</button>
             </div>
-            <div class="bg-white border border-gray-200 rounded-lg p-4 flex flex-col shadow-sm">
-                <div class="w-full aspect-square bg-slate-50 border border-gray-100 rounded flex items-center justify-center mb-4">
-                    <i data-lucide="server" class="w-16 h-16 text-blue-500/60 stroke-[1.25]"></i>
+            <!-- Item 2 -->
+            <div class="bg-white border border-gray-200 rounded-lg p-3 md:p-4 flex flex-col shadow-sm">
+                <div class="w-full aspect-square bg-slate-50 border border-gray-100 rounded flex items-center justify-center mb-3">
+                    <i data-lucide="server" class="w-10 h-10 md:w-16 md:h-16 text-blue-500/60 stroke-[1.25]"></i>
                 </div>
-                <span class="text-[10px] uppercase font-bold tracking-wider text-gray-400 mb-1">Epson 1 to 15 NVMe/SATA</span>
-                <h4 class="font-medium text-xs text-slate-900 line-clamp-2 mb-1">Epson 1 to 15 M.2 SATA/NVMe Duplicator & Sanitizer - up to 16GB/Min</h4>
-                <p class="text-[10px] text-gray-400 mb-4">SKU: EP-NVME-115</p>
-                <p class="text-sm font-bold text-slate-900 mb-4">$14,835.80</p>
-                <button class="w-full bg-[#0052cc] text-white py-2 text-xs font-semibold rounded hover:bg-blue-700 transition mt-auto">SEE DETAILS</button>
+                <span class="text-[9px] md:text-[10px] uppercase font-bold tracking-wider text-gray-400 mb-0.5">Epson 1 to 15</span>
+                <h4 class="font-medium text-[11px] md:text-xs text-slate-900 line-clamp-2 mb-1">Epson 1 to 15 M.2 SATA/NVMe Duplicator</h4>
+                <p class="text-[9px] text-gray-400 mb-2 md:mb-4">SKU: EP-NVME-115</p>
+                <p class="text-xs md:text-sm font-bold text-slate-900 mb-3">$14,835.80</p>
+                <button class="w-full bg-[#0052cc] text-white py-1.5 md:py-2 text-[10px] md:text-xs font-semibold rounded hover:bg-blue-700 transition mt-auto">SEE DETAILS</button>
             </div>
-            <div class="bg-white border border-gray-200 rounded-lg p-4 flex flex-col shadow-sm">
-                <div class="w-full aspect-square bg-slate-50 border border-gray-100 rounded flex items-center justify-center mb-4">
-                    <i data-lucide="server" class="w-16 h-16 text-blue-500/60 stroke-[1.25]"></i>
+            <!-- Item 3 -->
+            <div class="bg-white border border-gray-200 rounded-lg p-3 md:p-4 flex flex-col shadow-sm">
+                <div class="w-full aspect-square bg-slate-50 border border-gray-100 rounded flex items-center justify-center mb-3">
+                    <i data-lucide="server" class="w-10 h-10 md:w-16 md:h-16 text-blue-500/60 stroke-[1.25]"></i>
                 </div>
-                <span class="text-[10px] uppercase font-bold tracking-wider text-gray-400 mb-1">Epson 1 to 4 NVMe/SATA</span>
-                <h4 class="font-medium text-xs text-slate-900 line-clamp-2 mb-1">Epson 1 to 4 M.2 SATA/NVMe Duplicator & Sanitizer - up to 16GB/Min</h4>
-                <p class="text-[10px] text-gray-400 mb-4">SKU: EP-NVME-14</p>
-                <p class="text-sm font-bold text-slate-900 mb-4">$4,408.80</p>
-                <button class="w-full bg-[#0052cc] text-white py-2 text-xs font-semibold rounded hover:bg-blue-700 transition mt-auto">SEE DETAILS</button>
+                <span class="text-[9px] md:text-[10px] uppercase font-bold tracking-wider text-gray-400 mb-0.5">Epson 1 to 4</span>
+                <h4 class="font-medium text-[11px] md:text-xs text-slate-900 line-clamp-2 mb-1">Epson 1 to 4 M.2 SATA/NVMe Duplicator</h4>
+                <p class="text-[9px] text-gray-400 mb-2 md:mb-4">SKU: EP-NVME-14</p>
+                <p class="text-xs md:text-sm font-bold text-slate-900 mb-3">$4,408.80</p>
+                <button class="w-full bg-[#0052cc] text-white py-1.5 md:py-2 text-[10px] md:text-xs font-semibold rounded hover:bg-blue-700 transition mt-auto">SEE DETAILS</button>
             </div>
-            <div class="bg-white border border-gray-200 rounded-lg p-4 flex flex-col shadow-sm">
-                <div class="w-full aspect-square bg-slate-50 border border-gray-100 rounded flex items-center justify-center mb-4">
-                    <i data-lucide="server" class="w-16 h-16 text-blue-500/60 stroke-[1.25]"></i>
+            <!-- Item 4 -->
+            <div class="bg-white border border-gray-200 rounded-lg p-3 md:p-4 flex flex-col shadow-sm">
+                <div class="w-full aspect-square bg-slate-50 border border-gray-100 rounded flex items-center justify-center mb-3">
+                    <i data-lucide="server" class="w-10 h-10 md:w-16 md:h-16 text-blue-500/60 stroke-[1.25]"></i>
                 </div>
-                <span class="text-[10px] uppercase font-bold tracking-wider text-gray-400 mb-1">Epson 1 to 23 NVMe/SATA</span>
-                <h4 class="font-medium text-xs text-slate-900 line-clamp-2 mb-1">Epson 1 to 23 M.2 SATA/NVMe Duplicator & Sanitizer - up to 24GB/Min</h4>
-                <p class="text-[10px] text-gray-400 mb-4">SKU: EP-NVME-123</p>
-                <p class="text-sm font-bold text-slate-900 mb-4">$21,571.80</p>
-                <button class="w-full bg-[#0052cc] text-white py-2 text-xs font-semibold rounded hover:bg-blue-700 transition mt-auto">SEE DETAILS</button>
+                <span class="text-[9px] md:text-[10px] uppercase font-bold tracking-wider text-gray-400 mb-0.5">Epson 1 to 23</span>
+                <h4 class="font-medium text-[11px] md:text-xs text-slate-900 line-clamp-2 mb-1">Epson 1 to 23 M.2 SATA/NVMe Array</h4>
+                <p class="text-[9px] text-gray-400 mb-2 md:mb-4">SKU: EP-NVME-123</p>
+                <p class="text-xs md:text-sm font-bold text-slate-900 mb-3">$21,571.80</p>
+                <button class="w-full bg-[#0052cc] text-white py-1.5 md:py-2 text-[10px] md:text-xs font-semibold rounded hover:bg-blue-700 transition mt-auto">SEE DETAILS</button>
             </div>
         </div>
     </section>
 
-    <section class="bg-gray-100 border-t border-gray-200 py-16 px-4 text-center">
-        <h2 class="text-xl font-bold text-slate-900 mb-2">What Our Customers Say</h2>
-        <div class="flex items-center justify-center gap-1 mb-10 text-sm font-semibold">
-            <div class="flex text-amber-400"><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i></div>
-            <span class="text-slate-900 ml-1">4.8</span> <span class="text-gray-400 font-normal text-xs">based on 61 verified reviews</span>
+    <!-- Testimonials Section -->
+    <section class="bg-gray-100 border-t border-gray-200 py-12 md:py-16 px-4 text-center">
+        <h2 class="text-lg md:text-xl font-bold text-slate-900 mb-1.5">What Our Customers Say</h2>
+        <div class="flex items-center justify-center gap-1 mb-8 md:mb-10 text-xs md:text-sm font-semibold">
+            <div class="flex text-amber-400"><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i></div>
+            <span class="text-slate-900 ml-1">4.8</span> <span class="text-gray-400 font-normal text-[11px] ml-1">based on 61 verified reviews</span>
         </div>
 
-        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-6 text-left">
-            <div class="bg-white p-5 border border-gray-200 rounded-lg flex flex-col justify-between shadow-sm">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 text-left">
+            <!-- Review 1 -->
+            <div class="bg-white p-4 md:p-5 border border-gray-200 rounded-lg flex flex-col justify-between shadow-sm">
                 <div>
-                    <div class="flex text-amber-400 mb-2"><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i></div>
-                    <h5 class="font-semibold text-xs text-slate-900 mb-1">Rock solid for high-volume duplication</h5>
-                    <p class="text-[11px] text-gray-500 leading-relaxed mb-4">We run the 1-to-15 NVMe unit daily across hundreds of drives. Zero failures in 18 months and the certification meets our DoD standards perfectly.</p>
+                    <div class="flex text-amber-400 mb-2"><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i></div>
+                    <h5 class="font-bold text-xs text-slate-900 mb-1">Rock solid configurations</h5>
+                    <p class="text-[11px] text-gray-500 leading-relaxed mb-4">We run the 1-to-15 NVMe unit daily across hundreds of drives. Zero failures in 18 months and perfect compliance processing.</p>
                 </div>
                 <div>
                     <p class="text-xs font-semibold text-slate-900">David P.</p>
                     <p class="text-[10px] text-blue-600 font-medium">Verified Purchase</p>
                 </div>
             </div>
-            <div class="bg-white p-5 border border-gray-200 rounded-lg flex flex-col justify-between shadow-sm">
+            <!-- Review 2 -->
+            <div class="bg-white p-4 md:p-5 border border-gray-200 rounded-lg flex flex-col justify-between shadow-sm">
                 <div>
-                    <div class="flex text-amber-400 mb-2"><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i></div>
-                    <h5 class="font-semibold text-xs text-slate-900 mb-1">Cut our cloning time in half</h5>
-                    <p class="text-[11px] text-gray-500 leading-relaxed mb-4">Switched from a PC-based workflow to the standalone 1-to-4 unit. Setup took 10 minutes and throughput jumped immediately. Best purchase our lab made.</p>
+                    <div class="flex text-amber-400 mb-2"><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i></div>
+                    <h5 class="font-bold text-xs text-slate-900 mb-1">Cut cloning time in half</h5>
+                    <p class="text-[11px] text-gray-500 leading-relaxed mb-4">Switched from a PC-based workflow to standalone. Setup took minutes and throughput jumped instantly. Highly optimized hardware.</p>
                 </div>
                 <div>
                     <p class="text-xs font-semibold text-slate-900">Nate C.</p>
                     <p class="text-[10px] text-blue-600 font-medium">Verified Purchase</p>
                 </div>
             </div>
-            <div class="bg-white p-5 border border-gray-200 rounded-lg flex flex-col justify-between shadow-sm">
+            <!-- Review 3 -->
+            <div class="bg-white p-4 md:p-5 border border-gray-200 rounded-lg flex flex-col justify-between shadow-sm">
                 <div>
-                    <div class="flex text-amber-400 mb-2"><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i></div>
-                    <h5 class="font-semibold text-xs text-slate-900 mb-1">Reliable and well supported</h5>
-                    <p class="text-[11px] text-gray-500 leading-relaxed mb-4">Support tech actually picked up the phone and knew the hardware. The 1-to-1 unit has been bulletproof for evidence cloning work.</p>
+                    <div class="flex text-amber-400 mb-2"><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i></div>
+                    <h5 class="font-bold text-xs text-slate-900 mb-1">Reliable engineering support</h5>
+                    <p class="text-[11px] text-gray-500 leading-relaxed mb-4">Support tech actually picked up the phone and guided our hardware questions. Incredible client relations management.</p>
                 </div>
                 <div>
                     <p class="text-xs font-semibold text-slate-900">James T.</p>
                     <p class="text-[10px] text-blue-600 font-medium">Verified Purchase</p>
                 </div>
             </div>
-            <div class="bg-white p-5 border border-gray-200 rounded-lg flex flex-col justify-between shadow-sm">
+            <!-- Review 4 -->
+            <div class="bg-white p-4 md:p-5 border border-gray-200 rounded-lg flex flex-col justify-between shadow-sm">
                 <div>
-                    <div class="flex text-amber-400 mb-2"><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i></div>
-                    <h5 class="font-semibold text-xs text-slate-900 mb-1">Excellent build quality</h5>
-                    <p class="text-[11px] text-gray-500 leading-relaxed mb-4">Solid metal chassis, clear LCD, and the menus are intuitive. Wish the cables were a bit longer but otherwise perfect.</p>
+                    <div class="flex text-amber-400 mb-2"><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i></div>
+                    <h5 class="font-bold text-xs text-slate-900 mb-1">Excellent overall build quality</h5>
+                    <p class="text-[11px] text-gray-500 leading-relaxed mb-4">Solid metal chassis, explicit parameters display layout, and highly reactive responsive input elements. Exceptional.</p>
                 </div>
                 <div>
                     <p class="text-xs font-semibold text-slate-900">Priya S.</p>
@@ -357,97 +411,104 @@
         </div>
     </section>
 
-    <section class="max-w-7xl mx-auto px-4 py-16 grid grid-cols-1 md:grid-cols-3 gap-6">
+    <!-- Marketing/Info Blocks -->
+    <section class="max-w-7xl mx-auto px-4 py-12 md:py-16 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
         <div class="bg-white border border-gray-200 rounded-lg overflow-hidden flex flex-col justify-between shadow-sm">
             <div>
-                <div class="bg-gradient-to-r from-[#0b1e36] to-[#122e54] h-20 p-4 flex items-end">
-                    <h4 class="text-white font-bold text-sm">Why Buy From Us?</h4>
+                <div class="bg-gradient-to-r from-[#0b1e36] to-[#122e54] h-16 p-4 flex items-end">
+                    <h4 class="text-white font-bold text-xs md:text-sm">Why Buy From Us?</h4>
                 </div>
-                <p class="p-5 text-xs text-gray-500 leading-relaxed">Trusted supplier of high-quality, certified products with competitive pricing, fast shipping, and reliable customer support you can depend on.</p>
+                <p class="p-4 md:p-5 text-[11px] md:text-xs text-gray-500 leading-relaxed">Trusted supplier of high-quality, certified items with competitive pricing and fast processing structures.</p>
             </div>
-            <div class="p-5 pt-0">
-                <button class="bg-[#0052cc] text-white px-4 py-1.5 text-xs font-semibold rounded hover:bg-blue-700 transition">LEARN WHY</button>
+            <div class="p-4 md:p-5 pt-0">
+                <button class="bg-[#0052cc] text-white px-4 py-1.5 text-[10px] md:text-xs font-semibold rounded hover:bg-blue-700 transition">LEARN WHY</button>
             </div>
         </div>
         <div class="bg-white border border-gray-200 rounded-lg overflow-hidden flex flex-col justify-between shadow-sm">
             <div>
-                <div class="bg-gradient-to-r from-[#0b1e36] to-[#122e54] h-20 p-4 flex items-end">
-                    <h4 class="text-white font-bold text-sm">Certifications</h4>
+                <div class="bg-gradient-to-r from-[#0b1e36] to-[#122e54] h-16 p-4 flex items-end">
+                    <h4 class="text-white font-bold text-xs md:text-sm">Certifications</h4>
                 </div>
-                <p class="p-5 text-xs text-gray-500 leading-relaxed">Industry-certified products meeting strict quality, safety, and compliance standards for reliable performance you can trust.</p>
+                <p class="p-4 md:p-5 text-[11px] md:text-xs text-gray-500 leading-relaxed">Industry-certified products meeting strict quality, safety, and operational compliance benchmarks.</p>
             </div>
-            <div class="p-5 pt-0">
-                <button class="bg-[#0052cc] text-white px-4 py-1.5 text-xs font-semibold rounded hover:bg-blue-700 transition">LEARN MORE</button>
+            <div class="p-4 md:p-5 pt-0">
+                <button class="bg-[#0052cc] text-white px-4 py-1.5 text-[10px] md:text-xs font-semibold rounded hover:bg-blue-700 transition">LEARN MORE</button>
             </div>
         </div>
         <div class="bg-white border border-gray-200 rounded-lg overflow-hidden flex flex-col justify-between shadow-sm">
             <div>
-                <div class="bg-gradient-to-r from-[#0b1e36] to-[#122e54] h-20 p-4 flex items-end">
-                    <h4 class="text-white font-bold text-sm">Government Procurement</h4>
+                <div class="bg-gradient-to-r from-[#0b1e36] to-[#122e54] h-16 p-4 flex items-end">
+                    <h4 class="text-white font-bold text-xs md:text-sm">Government Procurement</h4>
                 </div>
-                <p class="p-5 text-xs text-gray-500 leading-relaxed">Fully compliant with government procurement standards, ensuring credibility, track record and authorized operations.</p>
+                <p class="p-4 md:p-5 text-[11px] md:text-xs text-gray-500 leading-relaxed">Fully compliant with international procurement standards, ensuring execution validation protocols.</p>
             </div>
-            <div class="p-5 pt-0">
-                <button class="bg-[#0052cc] text-white px-4 py-1.5 text-xs font-semibold rounded hover:bg-blue-700 transition">LEARN HOW</button>
+            <div class="p-4 md:p-5 pt-0">
+                <button class="bg-[#0052cc] text-white px-4 py-1.5 text-[10px] md:text-xs font-semibold rounded hover:bg-blue-700 transition">LEARN HOW</button>
             </div>
         </div>
     </section>
 
-    <footer class="bg-[#0b1a30] text-gray-400 text-xs pt-16 pb-8 border-t border-slate-800">
-        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
-            <div>
-                <div class="flex items-center gap-2 text-white font-bold text-sm mb-4">
-                    <div class="bg-[#0052cc] p-1 rounded">
-                        <i data-lucide="layers" class="w-4 h-4"></i>
-                    </div>
+    <!-- Footer Elements -->
+    <footer class="bg-[#0b1a30] text-gray-400 text-xs pt-12 md:pt-16 pb-6 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 mb-10">
+            <div class="col-span-2 md:col-span-1">
+                <div class="flex items-center gap-2 text-white font-bold text-sm mb-3">
+                    <div class="bg-[#0052cc] p-1 rounded"><i data-lucide="layers" class="w-4 h-4"></i></div>
                     <span>ProDuplicator</span>
                 </div>
-                <p class="text-[11px] leading-relaxed mb-4 text-gray-400">Your trusted partner for enterprise-grade duplication hardware. Delivering speed, reliability, and precision since 1997.</p>
-                <div class="space-y-2 text-[11px]">
-                    <p class="flex items-center gap-2"><i data-lucide="phone" class="w-3.5 h-3.5"></i> 1-800-DUPLICATE (287-3422)</p>
+                <p class="text-[10px] md:text-[11px] leading-relaxed mb-4 text-gray-400">Enterprise-grade duplication hardware solutions since 1997.</p>
+                <div class="space-y-1.5 text-[10px] md:text-[11px]">
+                    <p class="flex items-center gap-2"><i data-lucide="phone" class="w-3.5 h-3.5"></i> 1-800-DUPLICATE</p>
                     <p class="flex items-center gap-2"><i data-lucide="mail" class="w-3.5 h-3.5"></i> sales@produplicator.com</p>
-                    <p class="flex items-center gap-2"><i data-lucide="map-pin" class="w-3.5 h-3.5"></i> 123 Tech Drive, Silicon Valley, CA 94025</p>
                 </div>
             </div>
             <div>
-                <h5 class="text-white font-semibold mb-4 tracking-wider uppercase text-[11px]">Shop</h5>
-                <ul class="space-y-2 text-[11px]">
-                    <li><a href="#" class="hover:text-white transition">HDD/SSD Duplicators</a></li>
+                <h5 class="text-white font-semibold mb-3 tracking-wider uppercase text-[10px] md:text-[11px]">Shop</h5>
+                <ul class="space-y-1.5 text-[10px] md:text-[11px]">
+                    <li><a href="#" class="hover:text-white transition">HDD Duplicators</a></li>
                     <li><a href="#" class="hover:text-white transition">USB Duplicators</a></li>
                     <li><a href="#" class="hover:text-white transition">SD/CF Duplicators</a></li>
-                    <li><a href="#" class="hover:text-white transition">Data Sanitizers</a></li>
-                    <li><a href="#" class="hover:text-white transition">Accessories</a></li>
                 </ul>
             </div>
             <div>
-                <h5 class="text-white font-semibold mb-4 tracking-wider uppercase text-[11px]">Support</h5>
-                <ul class="space-y-2 text-[11px]">
+                <h5 class="text-white font-semibold mb-3 tracking-wider uppercase text-[10px] md:text-[11px]">Support</h5>
+                <ul class="space-y-1.5 text-[10px] md:text-[11px]">
                     <li><a href="#" class="hover:text-white transition">Help Center</a></li>
                     <li><a href="#" class="hover:text-white transition">FAQs</a></li>
-                    <li><a href="#" class="hover:text-white transition">Warranty & Returns</a></li>
-                    <li><a href="#" class="hover:text-white transition">Contact Us</a></li>
-                    <li><a href="#" class="hover:text-white transition">Product Manuals</a></li>
+                    <li><a href="#" class="hover:text-white transition">Warranty</a></li>
                 </ul>
             </div>
             <div>
-                <h5 class="text-white font-semibold mb-4 tracking-wider uppercase text-[11px]">Company</h5>
-                <ul class="space-y-2 text-[11px]">
+                <h5 class="text-white font-semibold mb-3 tracking-wider uppercase text-[10px] md:text-[11px]">Company</h5>
+                <ul class="space-y-1.5 text-[10px] md:text-[11px]">
                     <li><a href="#" class="hover:text-white transition">About Us</a></li>
-                    <li><a href="#" class="hover:text-white transition">Careers</a></li>
-                    <li><a href="#" class="hover:text-white transition">Press & Media</a></li>
                     <li><a href="#" class="hover:text-white transition">Privacy Policy</a></li>
-                    <li><a href="#" class="hover:text-white transition">Terms of Service</a></li>
+                    <li><a href="#" class="hover:text-white transition">Terms</a></li>
                 </ul>
             </div>
         </div>
-        <div class="max-w-7xl mx-auto px-4 border-t border-slate-800 pt-6 flex flex-col sm:flex-row items-center justify-between text-[10px] text-gray-500 gap-4">
+        <div class="max-w-7xl mx-auto px-4 border-t border-slate-800 pt-5 flex flex-col sm:flex-row items-center justify-between text-[10px] text-gray-500 gap-3">
             <p>&copy; 2026 ProDuplicator. All rights reserved.</p>
             <p>Built with Lovable style</p>
         </div>
     </footer>
 
+    <!-- Simple Vanilla Script for Toggle Drawer Controls -->
     <script>
         lucide.createIcons();
+
+        const menuOpenBtn = document.getElementById('menu-open');
+        const menuCloseBtn = document.getElementById('menu-close');
+        const menuCloseBackdrop = document.getElementById('menu-close-backdrop');
+        const mobileMenuInstance = document.getElementById('mobile-menu');
+
+        function toggleMenu() {
+            mobileMenuInstance.classList.toggle('hidden');
+        }
+
+        menuOpenBtn.addEventListener('click', toggleMenu);
+        menuCloseBtn.addEventListener('click', toggleMenu);
+        menuCloseBackdrop.addEventListener('click', toggleMenu);
     </script>
 </body>
 </html>
