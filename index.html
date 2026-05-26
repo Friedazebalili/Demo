@@ -6,6 +6,24 @@
     <title>ProDuplicator - Expert Support You Can Rely On</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Custom Tailwind Configuration Extension for Infinite Carousel Animation -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    animation: {
+                        'infinite-scroll': 'infinite-scroll 25s linear infinite',
+                    },
+                    keyframes: {
+                        'infinite-scroll': {
+                            from: { transform: 'translateX(0)' },
+                            to: { transform: 'translateX(-50%)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans antialiased">
 
@@ -144,18 +162,37 @@
         </div>
     </section>
 
-    <section class="bg-white border-y border-gray-200 py-12 text-center px-4 mb-20">
-        <div class="max-w-4xl mx-auto">
-            <h3 class="text-sm font-semibold text-slate-700 max-w-2xl mx-auto leading-relaxed mb-8">
-                Delivering Industry-Leading Media Duplication, Testing, Erasure, Recovery, and Computer Forensics Solutions to Thousands of Organizations Worldwide Since 1997
+    <!-- Upgraded Trust & Logo Slider Section -->
+    <section class="bg-white border-y border-gray-100 py-16 text-center px-4 mb-20 overflow-hidden">
+        <div class="max-w-5xl mx-auto">
+            <p class="text-xs font-bold text-blue-600 uppercase tracking-widest mb-3">Trusted Worldwide Since 1997</p>
+            <h3 class="text-xl md:text-2xl font-bold text-slate-900 max-w-3xl mx-auto leading-snug mb-12">
+                Delivering Industry-Leading Media Duplication, Testing, Erasure, Recovery, and Computer Forensics Solutions
             </h3>
-            <div class="flex flex-wrap items-center justify-center gap-x-12 gap-y-6 text-xs font-bold text-gray-400 uppercase tracking-widest">
-                <span>Lockheed Martin</span>
-                <span>Oak Ridge</span>
-                <span>U.S. Army</span>
-                <span>General Dynamics</span>
-                <span>Raytheon</span>
-                <span>Nasa</span>
+            
+            <!-- Infinite Slider Frame -->
+            <div class="relative w-full overflow-hidden before:absolute before:left-0 before:top-0 before:z-10 before:h-full before:w-20 before:bg-gradient-to-r before:from-white before:to-transparent after:absolute after:right-0 after:top-0 after:z-10 after:h-full after:w-20 after:bg-gradient-to-l after:from-white after:to-transparent">
+                <!-- Track Container -->
+                <div class="flex w-[200%] animate-infinite-scroll items-center gap-16 text-sm font-black text-slate-400 uppercase tracking-widest select-none">
+                    <!-- Loop Group 1 -->
+                    <div class="flex w-1/2 justify-around items-center gap-12">
+                        <span class="hover:text-slate-600 transition-colors duration-300">Lockheed Martin</span>
+                        <span class="hover:text-slate-600 transition-colors duration-300">Oak Ridge</span>
+                        <span class="hover:text-slate-600 transition-colors duration-300">U.S. Army</span>
+                        <span class="hover:text-slate-600 transition-colors duration-300">General Dynamics</span>
+                        <span class="hover:text-slate-600 transition-colors duration-300">Raytheon</span>
+                        <span class="hover:text-slate-600 transition-colors duration-300">NASA</span>
+                    </div>
+                    <!-- Loop Group 2 -->
+                    <div class="flex w-1/2 justify-around items-center gap-12" aria-hidden="true">
+                        <span class="hover:text-slate-600 transition-colors duration-300">Lockheed Martin</span>
+                        <span class="hover:text-slate-600 transition-colors duration-300">Oak Ridge</span>
+                        <span class="hover:text-slate-600 transition-colors duration-300">U.S. Army</span>
+                        <span class="hover:text-slate-600 transition-colors duration-300">General Dynamics</span>
+                        <span class="hover:text-slate-600 transition-colors duration-300">Raytheon</span>
+                        <span class="hover:text-slate-600 transition-colors duration-300">NASA</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
