@@ -96,30 +96,64 @@
         </div>
     </div>
 
-    <!-- Enhanced Large Hero Section with Background Image Layout -->
-    <section class="relative bg-slate-900 bg-cover bg-center bg-no-repeat py-28 md:py-48 px-4 flex items-center justify-center min-h-[550px] md:min-h-[700px]" style="background-image: url('https://www.produplicator.com/cdn/shop/files/HDD_Duplicator.jpg?v=1770739680&width=2000');">
-        <!-- Overlay Layer for Content Separation -->
-        <div class="absolute inset-0 bg-gradient-to-r from-slate-950/80 via-slate-950/60 to-transparent"></div>
+    <!-- Hero Section Container -->
+<section class="relative min-h-[60vh] flex items-center justify-center bg-[#0B0F19] text-white overflow-hidden px-6 py-20 font-sans">
+  
+  <!-- Premium Background Glow/Mesh Elements -->
+  <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-[120px] pointer-events-none"></div>
+  <div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-cyan-500/10 rounded-full blur-[100px] pointer-events-none"></div>
+
+  <!-- Content Wrapper -->
+  <div class="relative z-10 max-w-4xl mx-auto text-center space-y-8">
+    
+    <!-- Neon Accent Tagline (Builds Hook Interest) -->
+    <div class="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/30 rounded-full px-4 py-1.5 text-xs sm:text-sm font-semibold uppercase tracking-wider text-blue-400 backdrop-blur-sm animate-fade-in">
+      <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+      Premium Hardware Solutions
+    </div>
+
+    <!-- Main Headline (H1) -->
+    <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white leading-[1.15]">
+      Expert Support You Can <span class="bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-500 bg-clip-text text-transparent">Rely On</span>
+    </h1>
+
+    <!-- Subheadline / Value Prop (Clean & Scannable) -->
+    <p class="max-w-2xl mx-auto text-base sm:text-lg md:text-xl text-gray-400 leading-relaxed font-light">
+      Quality Equipment. Competitive Pricing. Dedicated Customer Service.<br class="hidden sm:inline" /> 
+      Discover our advanced standalone duplication environments.
+    </p>
+
+    <!-- High-Converting CTA Button Container -->
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+      
+      <!-- Primary Magnetic Button (Shop Catalog) -->
+      <a href="#catalog" class="group relative inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-semibold text-base rounded-xl transition-all duration-300 transform hover:-translate-y-1 hover:shadow-[0_0_30px_rgba(37,99,235,0.5)] active:scale-95 w-full sm:w-auto overflow-hidden">
+        <!-- Subtle internal gleam effect on hover -->
+        <span class="absolute inset-0 w-full h-full bg-gradient-to-r from-white/0 via-white/20 to-white/0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"></span>
         
-        <div class="relative max-w-4xl mx-auto text-center md:text-left z-10 w-full">
-            <div class="max-w-2xl bg-slate-950/50 p-6 md:p-10 rounded-2xl backdrop-blur-[2px] border border-white/5">
-                <h1 class="text-3xl md:text-6xl font-extrabold tracking-tight text-white mb-4 leading-tight">
-                    Expert Support You Can Rely On
-                </h1>
-                <p class="text-gray-200 text-sm md:text-lg mb-8 font-normal leading-relaxed max-w-xl">
-                    Quality Equipment. Competitive Pricing. Dedicated Customer Service. Discover our advanced standalone duplication environments.
-                </p>
-                <div class="flex flex-col sm:flex-row items-center gap-3.5">
-                    <a href="#" class="w-full sm:w-auto text-center bg-[#0052cc] text-white font-bold text-xs md:text-sm px-8 py-3.5 rounded hover:bg-blue-700 transition shadow-md tracking-wide uppercase">
-                        Shop Catalog
-                    </a>
-                    <a href="#" class="w-full sm:w-auto text-center border-2 border-white text-white font-bold text-xs md:text-sm px-8 py-3.5 rounded hover:bg-white hover:text-slate-900 transition tracking-wide uppercase">
-                        Contact Us
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
+        <span>Shop Catalog</span>
+        
+        <!-- Interactive slide arrow icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transform transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+        </svg>
+      </a>
+
+      <!-- Secondary Ghost Button (Contact Us) -->
+      <a href="#contact" class="inline-flex items-center justify-center px-8 py-4 bg-white/5 hover:bg-white/10 text-white font-medium text-base rounded-xl border border-white/10 hover:border-white/20 transition-all duration-200 backdrop-blur-md w-full sm:w-auto active:scale-98">
+        Contact Us
+      </a>
+      
+    </div>
+
+    <!-- Micro-Social Proof (Optional Bonus to increase trust right at the click decision point) -->
+    <div class="pt-2 text-xs text-gray-500 tracking-wide font-medium flex items-center justify-center gap-1.5">
+      <div class="flex text-yellow-500 gap-0.5">★ ★ ★ ★ ★</div>
+      <span>Trusted industry grade performance</span>
+    </div>
+
+  </div>
+</section>
 
     <!-- Core Highlights Grid -->
     <section class="max-w-6xl mx-auto px-4 -mt-10 md:-mt-12 mb-12 md:mb-16 relative z-20">
