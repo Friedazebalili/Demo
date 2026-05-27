@@ -110,28 +110,52 @@
                     <span class="text-xs text-slateMuted font-medium">(61 Verified Reviews)</span>
                 </div>
 
-                <div class="border-t border-b border-borderLight py-4 space-y-1">
+                <div class="border-t border-b border-borderLight py-4 space-y-2">
                     <div class="flex items-baseline gap-3">
                         <span class="text-3xl font-bold tracking-tight text-brandBlue">$4,408.80</span>
                         <span class="text-xs text-slateMuted line-through">$4,999.00</span>
                     </div>
-                    <p class="text-xs font-medium text-emerald-600 flex items-center gap-1.5">
-                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block"></span> Standard Logistics Delivery Freight Included
-                    </p>
-                </div>
-
-                <div class="flex items-center gap-3">
-                    <div class="flex items-center bg-slate-50 border border-borderLight rounded-md h-11 px-3">
-                        <button onclick="adjustQty(-1)" class="text-slateMuted hover:text-slateDark text-base font-medium px-1.5 focus:outline-none">-</button>
-                        <input id="qty-field" type="text" value="1" class="w-8 bg-transparent text-center text-xs font-semibold text-slateDark focus:outline-none" readonly>
-                        <button onclick="adjustQty(1)" class="text-slateMuted hover:text-slateDark text-base font-medium px-1.5 focus:outline-none">+</button>
+                    
+                    <div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs">
+                        <p class="font-medium text-emerald-600 flex items-center gap-1.5">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block"></span> Standard Freight Included
+                        </p>
+                        <span class="text-borderLight hidden sm:inline">|</span>
+                        <p class="text-amber-600 font-medium flex items-center gap-1">
+                            <i data-lucide="package" class="w-3.5 h-3.5"></i> Only 3 Units Left In Stock
+                        </p>
                     </div>
-                    <button class="flex-1 bg-brandBlue hover:bg-slateDark text-white font-medium text-xs uppercase tracking-widest h-11 rounded-md transition shadow-sm">
-                        Add to Configuration
-                    </button>
                 </div>
 
-                <p class="text-xs text-slateMuted leading-relaxed">
+                <div class="space-y-3">
+                    <div class="flex items-center gap-3">
+                        <div class="flex items-center bg-slate-50 border border-borderLight rounded-md h-12 px-3">
+                            <button onclick="adjustQty(-1)" class="text-slateMuted hover:text-slateDark text-base font-medium px-1.5 focus:outline-none">-</button>
+                            <input id="qty-field" type="text" value="1" class="w-8 bg-transparent text-center text-xs font-semibold text-slateDark focus:outline-none" readonly>
+                            <button onclick="adjustQty(1)" class="text-slateMuted hover:text-slateDark text-base font-medium px-1.5 focus:outline-none">+</button>
+                        </div>
+                        
+                        <button class="flex-1 bg-white hover:bg-slate-50 text-brandBlue border-2 border-brandBlue font-semibold text-xs uppercase tracking-widest h-12 rounded-md transition">
+                            Add to Cart
+                        </button>
+                    </div>
+
+                    <button class="w-full bg-brandBlue hover:bg-slateDark text-white font-semibold text-xs uppercase tracking-widest h-12 rounded-md transition shadow-sm">
+                        Buy It Now
+                    </button>
+
+                    <div class="pt-2 border-t border-dashed border-borderLight flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-slateMuted">
+                        <span class="flex items-center gap-1"><i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-500"></i> Secure corporate processing guaranteed</span>
+                        <div class="flex items-center gap-3 opacity-60 grayscale hover:opacity-100 transition duration-300">
+                            <svg class="h-4 w-auto" viewBox="0 0 36 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="36" height="24" rx="2" fill="#141B4D"/><path d="M13.7 15.3l1.1-6.7h1.7l-1.1 6.7h-1.7zm6.7-6.5c-.3-.5-.9-.7-1.6-.7h-2.9l-.2.9h.8c.4 0 .7.1.8.3.1.1.1.4 0 .7l-.8 4.3h1.7l.8-4.3c.2-.7.2-1.2 0-1.2zm5.7-.2h-1.6c-.5 0-.9.3-1.1.7l-2.3 5.7h1.8l.4-1.1h2.2l.2 1.1h1.6l-1.2-6.4zm-2.3 3.6l.7-2 1.2 2h-1.9zM10.8 8.8H8.2L8 9.8c.6.1 1.1.4 1.5.8l.2-.9V8.8zm-1.3 2c-.2-.4-.6-.7-1.2-.9l-.1.5c.4.1.7.3.9.6l.4-.2z" fill="white"/></svg>
+                            <svg class="h-4 w-auto" viewBox="0 0 36 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="36" height="24" rx="2" fill="#222222"/><circle cx="15" cy="12" r="7" fill="#EB001B"/><circle cx="21" cy="12" r="7" fill="#F79E1B" fill-opacity="0.8"/></svg>
+                            <svg class="h-4 w-auto" viewBox="0 0 36 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="36" height="24" rx="2" fill="#007BC1"/><path d="M7 14.5l.8-2.3h2.4l.8 2.3h1.5L10 7.5H8.8L6 14.5h1zm2-3.5l.8 2.2H8.2L9 11zm9.5-3.5h-3.5v7h1.5v-2.2h2v-1.3h-2v-1.2h2V7.5zm5.5 0h-3.5v7h3.5v-1.3h-2v-1.2h2v-1.3h-2v-1.2h2V7.5z" fill="white"/></svg>
+                            <svg class="h-4 w-auto" viewBox="0 0 36 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="36" height="24" rx="2" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/><path d="M13.2 11.2v2.5h-.7l-.1-.8h-.1c-.2.4-.5.7-.9.7a1.3 1.3 0 01-1.4-1.4c0-.9.8-1.3 2.2-1.3h.2v-.2c0-.5-.3-.7-.8-.7-.4 0-.8.1-1.1.3l-.2-.5c.4-.2.9-.4 1.4-.4 1 0 1.5.5 1.5 1.4zm-.7.6h-.2c-.9 0-1.5.2-1.5.8 0 .4.3.6.7.6.5 0 .9-.3 1-.7v-.3zm4-.6l-.9 2.3h-.7l.3-.7-1-2.7h.7l.7 2h.1l.6-2h.6zm3.3-1c0-.3 0-.5-.1-.7h-2.1v1.3h1.2c-.1.3-.2.6-.5.8v.6h.8c.4-.4.7-1 .7-1.9zm-2.2 2.2c.6 0 1.1-.2 1.4-.5l-.8-.6c-.2.1-.4.2-.6.2-.5 0-.9-.3-1-.8h-.8v.6c.3.7 1 .1 1.8.1zm-1-1.7c0-.2.1-.4.1-.5v-.6h-.8c-.1.3-.1.6-.1.8s0 .5.1.8h.8v-.5z" fill="#5F6368"/></svg>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="text-xs text-slateMuted leading-relaxed pt-1">
                     An industrial high-performance FPGA standalone structural duplication engine. Achieve sector cloning speeds reaching <span class="text-slateDark font-medium">36 GB/min</span> across cross-interface M.2 drives natively without setup desktop systems.
                 </p>
             </div>
@@ -159,23 +183,23 @@
                     <div class="space-y-2">
                         <h4 class="text-xs font-semibold uppercase tracking-wider text-slateDark">NVME SIZE COMPATIBILITY</h4>
                         <p class="text-xs text-slateMuted leading-relaxed">Integrated universal frame guides natively securing drive parameters across length form metrics extending 2230, 2242, 2260, 2280, alongside 22110 slots safely.</p>
-                        </div>
+                    </div>
                     <div class="space-y-2">
                         <h4 class="text-xs font-semibold uppercase tracking-wider text-slateDark">FLEXIBLE CROSS INTERFACE DUPLICATION</h4>
                         <p class="text-xs text-slateMuted leading-relaxed">Cross-execute clone parameters dynamically across varied technology paths, deploying direct bit transfers natively between PCIe NVMe media and M.2 SATA chips.</p>
-                        </div>
+                    </div>
                     <div class="space-y-2">
                         <h4 class="text-xs font-semibold uppercase tracking-wider text-slateDark">DOWNLOADABLE & PRINTABLE EVENT LOG</h4>
                         <p class="text-xs text-slateMuted leading-relaxed">Telemetry output cycles monitoring. Aggregated run sheets automatically document target system status indicators, pass ratios, and specific run times.</p>
-                        </div>
+                    </div>
                     <div class="space-y-2">
                         <h4 class="text-xs font-semibold uppercase tracking-wider text-slateDark">CUSTOMIZABLE SATA HDD RACK</h4>
                         <p class="text-xs text-slateMuted leading-relaxed">Expands peripheral support parameters, allowing operators to link legacy 2.5" or 3.5" standard mechanical array layers via built-in bridge slots.</p>
-                        </div>
+                    </div>
                     <div class="space-y-2 md:col-span-2 lg:col-span-2">
                         <h4 class="text-xs font-semibold uppercase tracking-wider text-slateDark">DAISY CHAIN MULTIPLE NVME DUPLICATORS</h4>
                         <p class="text-xs text-slateMuted leading-relaxed">Interconnect distinct physical duplication hubs sequentially in a unified layout network to scale multi-channel operation workloads instantly on industrial factory floors.</p>
-                        </div>
+                    </div>
                 </div>
             </div>
 
