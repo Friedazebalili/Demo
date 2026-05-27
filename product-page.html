@@ -74,29 +74,29 @@
     </header>
 
     <main class="max-w-7xl mx-auto px-6 py-12">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
-            <div class="lg:col-span-7 space-y-6">
-                <div class="w-full aspect-square bg-slate-50 rounded-lg flex items-center justify-center p-12">
+            <div class="lg:col-span-6 space-y-4">
+                <div class="w-full h-[320px] sm:h-[400px] lg:h-[460px] bg-slate-50 rounded-lg flex items-center justify-center p-8 border border-borderLight">
                     <img id="main-viewframe" src="https://www.produplicator.com/cdn/shop/files/HDD_Duplicator.jpg?v=1770739680&width=2000" alt="Systor Duplicator System Layout" class="max-h-full max-w-full object-contain mix-blend-darken">
                 </div>
-                <div class="flex gap-4">
-                    <button onclick="swapImage(this.children[0].src)" class="w-20 aspect-square bg-slate-50 rounded border border-brandBlue p-2 focus:outline-none transition">
+                <div class="flex gap-3">
+                    <button onclick="swapImage(this.children[0].src)" class="w-16 h-16 bg-slate-50 rounded border border-brandBlue p-1.5 focus:outline-none transition">
                         <img src="https://www.produplicator.com/cdn/shop/files/HDD_Duplicator.jpg?v=1770739680&width=2000" class="w-full h-full object-contain mix-blend-darken">
                     </button>
-                    <button onclick="swapImage(this.children[0].src)" class="w-20 aspect-square bg-slate-50 rounded border border-borderLight p-2 focus:outline-none hover:border-slateMuted transition">
+                    <button onclick="swapImage(this.children[0].src)" class="w-16 h-16 bg-slate-50 rounded border border-borderLight p-1.5 focus:outline-none hover:border-slateMuted transition">
                         <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=300&q=80" class="w-full h-full object-cover rounded">
                     </button>
-                    <button onclick="swapImage(this.children[0].src)" class="w-20 aspect-square bg-slate-50 rounded border border-borderLight p-2 focus:outline-none hover:border-slateMuted transition">
+                    <button onclick="swapImage(this.children[0].src)" class="w-16 h-16 bg-slate-50 rounded border border-borderLight p-1.5 focus:outline-none hover:border-slateMuted transition">
                         <img src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=300&q=80" class="w-full h-full object-cover rounded">
                     </button>
                 </div>
             </div>
 
-            <div class="lg:col-span-5 space-y-8 lg:pt-4">
+            <div class="lg:col-span-6 space-y-6">
                 <div class="space-y-2">
                     <p class="text-[10px] font-bold uppercase tracking-widest text-brandBlue">Enterprise Duplication Suite</p>
-                    <h1 class="text-3xl font-light tracking-tight text-slateDark leading-tight">
+                    <h1 class="text-2xl md:text-3xl font-light tracking-tight text-slateDark leading-tight">
                         Systor 1 to 4 M.2 NVMe & SATA <br><span class="font-semibold">Duplicator & Sanitizer</span>
                     </h1>
                     <div class="flex items-center gap-4 text-[11px] text-slateMuted pt-1">
@@ -105,25 +105,33 @@
                     </div>
                 </div>
 
-                <div class="space-y-1">
-                    <div class="text-3xl font-bold tracking-tight text-brandBlue">$4,408.80</div>
+                <div class="flex items-center gap-2">
+                    <div class="flex text-amber-400 gap-0.5"><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i></div>
+                    <span class="text-xs text-slateMuted font-medium">(61 Verified Reviews)</span>
+                </div>
+
+                <div class="border-t border-b border-borderLight py-4 space-y-1">
+                    <div class="flex items-baseline gap-3">
+                        <span class="text-3xl font-bold tracking-tight text-brandBlue">$4,408.80</span>
+                        <span class="text-xs text-slateMuted line-through">$4,999.00</span>
+                    </div>
                     <p class="text-xs font-medium text-emerald-600 flex items-center gap-1.5">
                         <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block"></span> Standard Logistics Delivery Freight Included
                     </p>
                 </div>
 
-                <div class="flex items-center gap-3 pt-2">
-                    <div class="flex items-center bg-slate-50 border border-borderLight rounded-md h-12 px-3">
-                        <button onclick="adjustQty(-1)" class="text-slateMuted hover:text-slateDark text-base font-medium px-2 focus:outline-none">-</button>
+                <div class="flex items-center gap-3">
+                    <div class="flex items-center bg-slate-50 border border-borderLight rounded-md h-11 px-3">
+                        <button onclick="adjustQty(-1)" class="text-slateMuted hover:text-slateDark text-base font-medium px-1.5 focus:outline-none">-</button>
                         <input id="qty-field" type="text" value="1" class="w-8 bg-transparent text-center text-xs font-semibold text-slateDark focus:outline-none" readonly>
-                        <button onclick="adjustQty(1)" class="text-slateMuted hover:text-slateDark text-base font-medium px-2 focus:outline-none">+</button>
+                        <button onclick="adjustQty(1)" class="text-slateMuted hover:text-slateDark text-base font-medium px-1.5 focus:outline-none">+</button>
                     </div>
-                    <button class="flex-1 bg-brandBlue hover:bg-slateDark text-white font-medium text-xs uppercase tracking-widest h-12 rounded-md transition shadow-sm">
+                    <button class="flex-1 bg-brandBlue hover:bg-slateDark text-white font-medium text-xs uppercase tracking-widest h-11 rounded-md transition shadow-sm">
                         Add to Configuration
                     </button>
                 </div>
 
-                <p class="text-xs text-slateMuted leading-relaxed pt-2">
+                <p class="text-xs text-slateMuted leading-relaxed">
                     An industrial high-performance FPGA standalone structural duplication engine. Achieve sector cloning speeds reaching <span class="text-slateDark font-medium">36 GB/min</span> across cross-interface M.2 drives natively without setup desktop systems.
                 </p>
             </div>
@@ -148,38 +156,31 @@
             
             <div id="section-features" class="tab-panel active space-y-12">
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-10">
-                    
                     <div class="space-y-2">
                         <h4 class="text-xs font-semibold uppercase tracking-wider text-slateDark">NVME SIZE COMPATIBILITY</h4>
                         <p class="text-xs text-slateMuted leading-relaxed">Integrated universal frame guides natively securing drive parameters across length form metrics extending 2230, 2242, 2260, 2280, alongside 22110 slots safely.</p>
                         </div>
-
                     <div class="space-y-2">
                         <h4 class="text-xs font-semibold uppercase tracking-wider text-slateDark">FLEXIBLE CROSS INTERFACE DUPLICATION</h4>
                         <p class="text-xs text-slateMuted leading-relaxed">Cross-execute clone parameters dynamically across varied technology paths, deploying direct bit transfers natively between PCIe NVMe media and M.2 SATA chips.</p>
                         </div>
-
                     <div class="space-y-2">
                         <h4 class="text-xs font-semibold uppercase tracking-wider text-slateDark">DOWNLOADABLE & PRINTABLE EVENT LOG</h4>
                         <p class="text-xs text-slateMuted leading-relaxed">Telemetry output cycles monitoring. Aggregated run sheets automatically document target system status indicators, pass ratios, and specific run times.</p>
                         </div>
-
                     <div class="space-y-2">
                         <h4 class="text-xs font-semibold uppercase tracking-wider text-slateDark">CUSTOMIZABLE SATA HDD RACK</h4>
                         <p class="text-xs text-slateMuted leading-relaxed">Expands peripheral support parameters, allowing operators to link legacy 2.5" or 3.5" standard mechanical array layers via built-in bridge slots.</p>
                         </div>
-
                     <div class="space-y-2 md:col-span-2 lg:col-span-2">
                         <h4 class="text-xs font-semibold uppercase tracking-wider text-slateDark">DAISY CHAIN MULTIPLE NVME DUPLICATORS</h4>
                         <p class="text-xs text-slateMuted leading-relaxed">Interconnect distinct physical duplication hubs sequentially in a unified layout network to scale multi-channel operation workloads instantly on industrial factory floors.</p>
                         </div>
-
                 </div>
             </div>
 
             <div id="section-functions" class="tab-panel space-y-10">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                    
                     <div class="space-y-4">
                         <div class="border-b border-borderLight pb-2">
                             <h3 class="text-xs font-bold uppercase tracking-widest text-brandBlue">INTELLIGENT DUPLICATION (COPY MODES)</h3>
@@ -190,7 +191,6 @@
                             <li><strong class="text-slateDark font-medium block mb-0.5">Whole Media:</strong> Complete binary sector-by-sector cloning execution beginning straight from structural block zero to the device edge.</li>
                         </ul>
                     </div>
-
                     <div class="space-y-4">
                         <div class="border-b border-borderLight pb-2">
                             <h3 class="text-xs font-bold uppercase tracking-widest text-brandBlue">SANITIZATION METHODS (ERASE MODES)</h3>
@@ -200,12 +200,10 @@
                             <li><strong class="text-slateDark font-medium block mb-0.5">DoD 5220.22-M Compliance:</strong> Multi-pass military-tier structural overwrite routines ensuring strict corporate media security clearance benchmarks.</li>
                         </ul>
                     </div>
-
                     <div class="md:col-span-2 border-t border-borderLight pt-6 space-y-1.5">
                         <h4 class="text-xs font-semibold uppercase tracking-wider text-slateDark">COMPARE FUNCTION + CRC CHECKSUM</h4>
                         <p class="text-xs text-slateMuted leading-relaxed">Eliminates output anomalies by verifying data transfers using rigorous cyclic redundancy checksum logic layers directly executed at the hardware register level.</p>
                     </div>
-
                 </div>
             </div>
 
@@ -241,7 +239,6 @@
                     </table>
                 </div>
             </div>
-
         </div>
     </section>
 
@@ -273,7 +270,6 @@
     </footer>
 
     <script>
-        // Initiate Lucide Vectors
         lucide.createIcons();
 
         // Responsive Drawer Navigation Hooks
@@ -303,17 +299,14 @@
             qtyBox.value = current;
         }
 
-        // Horizontal Category Tab Swapping Operations Engine
+        // Tab Switching Operations Engine
         function switchMasterSection(blockPanelId) {
-            // Hide all active content views
             const views = document.getElementsByClassName('tab-panel');
             for (let i = 0; i < views.length; i++) {
                 views[i].classList.remove('active');
             }
-            // Enable designated layout container
             document.getElementById(blockPanelId).classList.add('active');
 
-            // Refactor trigger navigation highlights style metrics dynamically
             const elements = document.getElementsByClassName('master-tab-trigger');
             for (let i = 0; i < elements.length; i++) {
                 const triggerItem = elements[i];
