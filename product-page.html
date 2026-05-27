@@ -12,11 +12,11 @@
                 extend: {
                     colors: {
                         brand: {
-                            dark: '#0B132B',
-                            card: '#1C2541',
-                            accent: '#D4AF37',
-                            muted: '#5BC0BE',
-                            textMuted: '#A5A1B8'
+                            blue: '#0052cc',
+                            darkText: '#1e293b',
+                            mutedText: '#64748b',
+                            lightBg: '#f8fafc',
+                            border: '#e2e8f0'
                         }
                     }
                 }
@@ -30,34 +30,40 @@
         .tab-content.active { display: block; }
     </style>
 </head>
-<body class="bg-[#0A0F1D] text-white font-sans antialiased overflow-x-hidden">
+<body class="bg-white text-brand-darkText font-sans antialiased overflow-x-hidden">
 
     <div class="bg-[#0052cc] text-white text-center py-2 text-[10px] md:text-xs font-semibold tracking-wider uppercase px-4">
         Extra 10% Off On First Order
     </div>
 
-    <header class="bg-[#0A0F1D] border-b border-gray-800 sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between gap-4">
+    <header class="bg-white border-b border-gray-200 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 h-20 lg:h-24 flex items-center justify-between gap-4">
+            
             <div class="flex items-center gap-3">
-                <button id="menu-open" class="lg:hidden p-1 text-gray-400 hover:text-white" aria-label="Open Menu">
+                <button id="menu-open" class="lg:hidden p-1 text-gray-600 hover:text-[#0052cc] focus:outline-none" aria-label="Open Menu">
                     <i data-lucide="menu" class="w-6 h-6"></i>
                 </button>
                 <a href="#" class="flex items-center flex-shrink-0">
-                    <span class="text-xl font-black tracking-wider text-white">PRO<span class="text-[#0052cc]">DUPLICATOR</span></span>
+                    <img src="https://www.produplicator.com/cdn/shop/files/Produplicator_-_500_x_260_180x.png?v=1776179483" alt="ProDuplicator Logo" class="h-10 lg:h-14 w-auto object-contain">
                 </a>
             </div>
 
-            <nav class="hidden lg:flex items-center gap-6 text-xs font-medium text-gray-400 tracking-wider">
-                <a href="#" class="hover:text-white flex items-center gap-1"><i data-lucide="hard-drive" class="w-3.5 h-3.5"></i> M.2 Duplicators</a>
-                <a href="#" class="hover:text-white flex items-center gap-1"><i data-lucide="database" class="w-3.5 h-3.5"></i> SSD Duplicators</a>
-                <a href="#" class="hover:text-white flex items-center gap-1"><i data-lucide="folder-open" class="w-3.5 h-3.5"></i> HDD Duplicators</a>
-                <a href="#" class="hover:text-white flex items-center gap-1"><i data-lucide="usb" class="w-3.5 h-3.5"></i> USB Duplicators</a>
-                <a href="#" class="hover:text-white flex items-center gap-1"><i data-lucide="shield-alert" class="w-3.5 h-3.5"></i> Sanitizers</a>
+            <nav class="hidden lg:flex items-center gap-6 text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                <a href="#" class="hover:text-[#0052cc] transition">M.2 NVMe PCIe SATA</a>
+                <a href="#" class="hover:text-[#0052cc] transition">Hard Drive HDD/SSD</a>
+                <a href="#" class="hover:text-[#0052cc] transition">Flash Media</a>
+                <a href="#" class="hover:text-[#0052cc] transition">CD DVD BD Blu-Ray</a>
+                <a href="#" class="hover:text-[#0052cc] transition">Media & Consumables</a>
             </nav>
 
-            <div class="flex items-center gap-4">
-                <button class="text-gray-400 hover:text-white"><i data-lucide="search" class="w-5 h-5"></i></button>
-                <button class="text-gray-400 hover:text-white relative">
+            <div class="flex items-center gap-3 md:gap-4 flex-1 justify-end max-w-xs">
+                <button class="sm:hidden text-gray-600 hover:text-[#0052cc]"><i data-lucide="search" class="w-5 h-5"></i></button>
+                <div class="relative w-full hidden sm:block">
+                    <input type="text" placeholder="Search the store..." class="w-full bg-gray-100 border border-gray-300 rounded-md py-1.5 pl-3 pr-9 text-sm focus:outline-none focus:border-[#0052cc]">
+                    <i data-lucide="search" class="w-4 h-4 text-gray-400 absolute right-3 top-2.5"></i>
+                </div>
+                <button class="text-gray-600 hover:text-[#0052cc]"><i data-lucide="user" class="w-5 h-5"></i></button>
+                <button class="text-gray-600 hover:text-[#0052cc] relative">
                     <i data-lucide="shopping-cart" class="w-5 h-5"></i>
                     <span class="absolute -top-1 -right-1 bg-[#0052cc] text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center">0</span>
                 </button>
@@ -65,27 +71,44 @@
         </div>
     </header>
 
-    <div class="max-w-7xl mx-auto px-4 pt-6 text-xs text-brand-textMuted flex items-center gap-2">
-        <a href="#" class="hover:text-white">Home</a> <i data-lucide="chevron-right" class="w-3 h-3"></i> 
-        <a href="#" class="hover:text-white">M.2 Duplicators</a> <i data-lucide="chevron-right" class="w-3 h-3"></i> 
-        <span class="text-white truncate">SYSTOR 1 to 4 M.2 SATA & NVMe Duplicator</span>
+    <div id="mobile-menu" class="fixed inset-0 z-50 hidden" role="dialog" aria-modal="true">
+        <div id="menu-close-backdrop" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm"></div>
+        <div class="fixed inset-y-0 left-0 w-full max-w-xs bg-white shadow-xl flex flex-col z-10">
+            <div class="p-4 border-b border-gray-200 flex items-center justify-between">
+                <img src="https://www.produplicator.com/cdn/shop/files/Produplicator_-_500_x_260_180x.png?v=1776179483" alt="ProDuplicator Logo" class="h-12 w-auto object-contain">
+                <button id="menu-close" class="p-1 text-gray-500 hover:text-slate-900"><i data-lucide="x" class="w-6 h-6"></i></button>
+            </div>
+            <nav class="flex-1 overflow-y-auto p-4 space-y-1">
+                <a href="#" class="block px-3 py-2.5 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-[#0052cc] transition">M.2 NVMe PCIe SATA</a>
+                <a href="#" class="block px-3 py-2.5 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-[#0052cc] transition">Hard Drive HDD/SSD</a>
+                <a href="#" class="block px-3 py-2.5 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-[#0052cc] transition">Flash Media</a>
+                <a href="#" class="block px-3 py-2.5 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-[#0052cc] transition">CD DVD BD Blu-Ray</a>
+                <a href="#" class="block px-3 py-2.5 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-[#0052cc] transition">Media & Consumables</a>
+            </nav>
+        </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 pt-6 text-xs text-brand-mutedText flex items-center gap-2">
+        <a href="#" class="hover:text-brand-blue transition">Home</a> <i data-lucide="chevron-right" class="w-3 h-3"></i> 
+        <a href="#" class="hover:text-brand-blue transition">M.2 Duplicators</a> <i data-lucide="chevron-right" class="w-3 h-3"></i> 
+        <span class="text-brand-darkText font-medium truncate">SYSTOR 1 to 4 M.2 SATA & NVMe Duplicator</span>
     </div>
 
     <main class="max-w-7xl mx-auto px-4 py-8">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             
             <div class="lg:col-span-6 space-y-4">
-                <div class="w-full aspect-square bg-brand-card rounded-xl border border-gray-800 flex items-center justify-center p-8 overflow-hidden">
+                <div class="w-full aspect-square bg-brand-lightBg rounded-xl border border-brand-border flex items-center justify-center p-8 overflow-hidden">
                     <img id="main-product-image" src="https://www.produplicator.com/cdn/shop/files/HDD_Duplicator.jpg?v=1770739680&width=2000" alt="SYSTOR Duplicator Main Image" class="w-full h-full object-contain rounded-lg">
                 </div>
                 <div class="grid grid-cols-3 gap-4">
-                    <button onclick="changeImage(this.children[0].src)" class="aspect-square bg-brand-card rounded-lg border-2 border-[#0052cc] p-2 focus:outline-none">
+                    <button onclick="changeImage(this.children[0].src)" class="aspect-square bg-white rounded-lg border-2 border-brand-blue p-2 focus:outline-none">
                         <img src="https://www.produplicator.com/cdn/shop/files/HDD_Duplicator.jpg?v=1770739680&width=2000" class="w-full h-full object-contain rounded">
                     </button>
-                    <button onclick="changeImage(this.children[0].src)" class="aspect-square bg-brand-card rounded-lg border border-gray-800 p-2 focus:outline-none hover:border-gray-700">
+                    <button onclick="changeImage(this.children[0].src)" class="aspect-square bg-brand-lightBg rounded-lg border border-brand-border p-2 focus:outline-none hover:border-gray-400 transition">
                         <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover rounded">
                     </button>
-                    <button onclick="changeImage(this.children[0].src)" class="aspect-square bg-brand-card rounded-lg border border-gray-800 p-2 focus:outline-none hover:border-gray-700">
+                    <button onclick="changeImage(this.children[0].src)" class="aspect-square bg-brand-lightBg rounded-lg border border-brand-border p-2 focus:outline-none hover:border-gray-400 transition">
                         <img src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover rounded">
                     </button>
                 </div>
@@ -93,85 +116,85 @@
 
             <div class="lg:col-span-6 space-y-6">
                 <div>
-                    <h1 class="text-2xl md:text-4xl font-extrabold tracking-tight text-white mb-2">
+                    <h1 class="text-2xl md:text-4xl font-extrabold tracking-tight text-brand-darkText mb-2">
                         SYSTOR 1 to 4 M.2 SATA & NVMe Duplicator & Sanitizer
                     </h1>
-                    <p class="text-xs text-brand-textMuted mb-3">Model: SYSNVME-YL06PRO04 &nbsp;|&nbsp; SKU: EP-NVME-14</p>
+                    <p class="text-xs text-brand-mutedText mb-3">Model: SYSNVME-YL06PRO04 &nbsp;|&nbsp; SKU: EP-NVME-14</p>
                     
                     <div class="flex items-center gap-2 mb-4">
-                        <div class="flex text-brand-accent"><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i></div>
-                        <span class="text-xs text-brand-textMuted">(61 verified reviews)</span>
+                        <div class="flex text-amber-500"><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i></div>
+                        <span class="text-xs text-brand-mutedText">(61 verified reviews)</span>
                     </div>
 
-                    <div class="text-3xl font-black text-white mb-1">$4,408.80</div>
-                    <p class="text-xs text-emerald-400 font-medium flex items-center gap-1.5 mb-6">
-                        <span class="w-2 h-2 rounded-full bg-emerald-400 inline-block animate-pulse"></span> Free Shipping • In Stock • Ships within 2-3 business days
+                    <div class="text-3xl font-black text-brand-blue mb-1">$4,408.80</div>
+                    <p class="text-xs text-emerald-600 font-semibold flex items-center gap-1.5 mb-6">
+                        <span class="w-2 h-2 rounded-full bg-emerald-500 inline-block animate-pulse"></span> Free Shipping • In Stock • Ships within 2-3 business days
                     </p>
                 </div>
 
-                <div class="flex items-center gap-4 bg-brand-card p-4 rounded-xl border border-gray-800">
-                    <div class="flex items-center bg-[#0A0F1D] border border-gray-700 rounded-lg">
-                        <button onclick="updateQty(-1)" class="px-3 py-2 text-gray-400 hover:text-white text-sm font-bold">-</button>
-                        <input id="product-qty" type="text" value="1" class="w-10 bg-transparent text-center text-xs font-bold text-white focus:outline-none" readonly>
-                        <button onclick="updateQty(1)" class="px-3 py-2 text-gray-400 hover:text-white text-sm font-bold">+</button>
+                <div class="flex items-center gap-4 bg-brand-lightBg p-4 rounded-xl border border-brand-border">
+                    <div class="flex items-center bg-white border border-brand-border rounded-lg">
+                        <button onclick="updateQty(-1)" class="px-3 py-2 text-brand-mutedText hover:text-brand-darkText text-sm font-bold transition">-</button>
+                        <input id="product-qty" type="text" value="1" class="w-10 bg-transparent text-center text-xs font-bold text-brand-darkText focus:outline-none" readonly>
+                        <button onclick="updateQty(1)" class="px-3 py-2 text-brand-mutedText hover:text-brand-darkText text-sm font-bold transition">+</button>
                     </div>
-                    <button class="flex-1 bg-brand-accent hover:bg-yellow-600 text-slate-950 font-bold text-xs md:text-sm py-3 rounded-lg transition tracking-wide uppercase flex items-center justify-center gap-2 shadow-lg">
+                    <button class="flex-1 bg-brand-blue hover:bg-blue-800 text-white font-bold text-xs md:text-sm py-3 rounded-lg transition tracking-wide uppercase flex items-center justify-center gap-2 shadow-sm">
                         <i data-lucide="shopping-cart" class="w-4 h-4"></i> Add to Cart
                     </button>
                 </div>
 
-                <div class="bg-brand-card rounded-xl border border-gray-800 overflow-hidden">
-                    <div class="flex border-b border-gray-800 bg-[#121B33]">
-                        <button onclick="switchTab('tab-features')" id="btn-tab-features" class="flex-1 py-3 px-4 text-xs font-bold uppercase tracking-wider text-brand-accent border-b-2 border-brand-accent transition focus:outline-none">
+                <div class="bg-white rounded-xl border border-brand-border overflow-hidden shadow-sm">
+                    <div class="flex border-b border-brand-border bg-brand-lightBg">
+                        <button onclick="switchTab('tab-features')" id="btn-tab-features" class="flex-1 py-3 px-4 text-xs font-bold uppercase tracking-wider text-brand-blue border-b-2 border-brand-blue transition focus:outline-none">
                             Key Features
                         </button>
-                        <button onclick="switchTab('tab-description')" id="btn-tab-description" class="flex-1 py-3 px-4 text-xs font-bold uppercase tracking-wider text-gray-400 hover:text-white transition focus:outline-none">
+                        <button onclick="switchTab('tab-description')" id="btn-tab-description" class="flex-1 py-3 px-4 text-xs font-bold uppercase tracking-wider text-brand-mutedText hover:text-brand-darkText transition focus:outline-none">
                             Overview
                         </button>
-                        <button onclick="switchTab('tab-sanitization')" id="btn-tab-sanitization" class="flex-1 py-3 px-4 text-xs font-bold uppercase tracking-wider text-gray-400 hover:text-white transition focus:outline-none">
+                        <button onclick="switchTab('tab-sanitization')" id="btn-tab-sanitization" class="flex-1 py-3 px-4 text-xs font-bold uppercase tracking-wider text-brand-mutedText hover:text-brand-darkText transition focus:outline-none">
                             Erasure Modes
                         </button>
                     </div>
 
-                    <div class="p-5 md:p-6 text-xs md:text-sm leading-relaxed text-gray-300">
+                    <div class="p-5 md:p-6 text-xs md:text-sm leading-relaxed text-slate-600">
                         <div id="tab-features" class="tab-content active space-y-3">
                             <div class="flex items-start gap-2.5">
-                                <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-accent mt-0.5 flex-shrink-0"></i>
-                                <p><strong class="text-white">High Transfer Speeds:</strong> High-performance cloning throughput up to 36GB/min rate across channels.</p>
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-blue mt-0.5 flex-shrink-0"></i>
+                                <p><strong class="text-brand-darkText">High Transfer Speeds:</strong> High-performance cloning throughput up to 36GB/min rate across channels.</p>
                             </div>
                             <div class="flex items-start gap-2.5">
-                                <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-accent mt-0.5 flex-shrink-0"></i>
-                                <p><strong class="text-white">Dual Cross-Interface:</strong> Native, simultaneous cross-duplication for PCIe M.2 and SATA SSDs.</p>
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-blue mt-0.5 flex-shrink-0"></i>
+                                <p><strong class="text-brand-darkText">Dual Cross-Interface:</strong> Native, simultaneous cross-duplication for PCIe M.2 and SATA SSDs.</p>
                             </div>
                             <div class="flex items-start gap-2.5">
-                                <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-accent mt-0.5 flex-shrink-0"></i>
-                                <p><strong class="text-white">Standalone Architecture:</strong> Fully synchronized cloning without external PC required.</p>
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-blue mt-0.5 flex-shrink-0"></i>
+                                <p><strong class="text-brand-darkText">Standalone Architecture:</strong> Fully synchronized cloning without external PC configuration overhead.</p>
                             </div>
                             <div class="flex items-start gap-2.5">
-                                <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-accent mt-0.5 flex-shrink-0"></i>
-                                <p><strong class="text-white">Forensic Erasure Engines:</strong> Full multi-pass data sanitization compliant with DoD standards.</p>
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-blue mt-0.5 flex-shrink-0"></i>
+                                <p><strong class="text-brand-darkText">Forensic Erasure Engines:</strong> Full multi-pass data sanitization compliant with institutional DoD standards.</p>
                             </div>
                         </div>
 
                         <div id="tab-description" class="tab-content space-y-3">
-                            <p>The ProDuplicator SYSTOR series represents the gold standard in physical architecture cloning. Configured explicitly for hardware engineering labs, corporate IT data governance workflows, and forensic processing pipelines.</p>
-                            <p>Featuring a rugged, heat-resilient open-platform structural array design, it handles continuous operational executions while ensuring precise, sector-by-sector verification parameters without processing overhead.</p>
+                            <p>The ProDuplicator SYSTOR series represents the absolute gold standard in automated physical duplication deployment frameworks. Configured explicitly for mission-critical corporate IT infrastructure data governance, media production houses, and computer forensic data processing pipelines.</p>
+                            <p>Featuring a rugged, open-platform chassis structural design, it handles continuous operational executions while ensuring high-fidelity sector-by-sector verification arrays seamlessly.</p>
                         </div>
 
                         <div id="tab-sanitization" class="tab-content space-y-4">
-                            <p class="text-brand-textMuted">Equipped with standard high-tier erasure routines to safely overwrite secure media arrays:</p>
+                            <p class="text-brand-mutedText">Equipped with native high-tier sanitization sub-routines to securely clear drive configurations:</p>
                             <div class="grid grid-cols-2 gap-3 text-[11px]">
-                                <div class="bg-[#0A0F1D] p-2.5 rounded border border-gray-800">
-                                    <span class="text-white font-bold block mb-0.5">Quick Erase</span> Overwrites index configurations in seconds.
+                                <div class="bg-brand-lightBg p-2.5 rounded border border-brand-border">
+                                    <span class="text-brand-darkText font-bold block mb-0.5">Quick Erase</span> Overwrites drive index tables in seconds.
                                 </div>
-                                <div class="bg-[#0A0F1D] p-2.5 rounded border border-gray-800">
-                                    <span class="text-white font-bold block mb-0.5">Full Erase</span> Complete standalone single-pass zero-fill execution.
+                                <div class="bg-brand-lightBg p-2.5 rounded border border-brand-border">
+                                    <span class="text-brand-darkText font-bold block mb-0.5">Full Erase</span> Complete hardware-level single-pass zero-fill execution.
                                 </div>
-                                <div class="bg-[#0A0F1D] p-2.5 rounded border border-gray-800">
-                                    <span class="text-white font-bold block mb-0.5">DoD 5220.22-M</span> 3-pass institutional compliant erasure validation protocol.
+                                <div class="bg-brand-lightBg p-2.5 rounded border border-brand-border">
+                                    <span class="text-brand-darkText font-bold block mb-0.5">DoD 5220.22-M</span> Institutional 3-pass sanitization compliance protocol.
                                 </div>
-                                <div class="bg-[#0A0F1D] p-2.5 rounded border border-gray-800">
-                                    <span class="text-white font-bold block mb-0.5">Secure Erase</span> Accesses nested drive control registers safely.
+                                <div class="bg-brand-lightBg p-2.5 rounded border border-brand-border">
+                                    <span class="text-brand-darkText font-bold block mb-0.5">Secure Erase</span> Accesses nested drive control registers securely.
                                 </div>
                             </div>
                         </div>
@@ -183,34 +206,34 @@
     </main>
 
     <section class="max-w-7xl mx-auto px-4 py-8">
-        <div class="bg-brand-card rounded-xl border border-gray-800 p-6 md:p-8">
-            <h3 class="text-base md:text-lg font-bold tracking-wider uppercase border-b border-gray-800 pb-4 mb-6 text-white flex items-center gap-2">
-                <i data-lucide="sliders" class="w-4 h-4 text-brand-accent"></i> Technical Specifications
+        <div class="bg-brand-lightBg rounded-xl border border-brand-border p-6 md:p-8">
+            <h3 class="text-xs md:text-sm font-bold tracking-wider uppercase border-b border-brand-border pb-4 mb-6 text-brand-darkText flex items-center gap-2">
+                <i data-lucide="sliders" class="w-4 h-4 text-brand-blue"></i> Technical Specifications
             </h3>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4 text-xs md:text-sm">
-                <div class="flex justify-between py-2.5 border-b border-gray-800/60">
-                    <span class="text-brand-textMuted">Target Capacity</span>
-                    <span class="font-semibold text-white">1 to 4 Drives Slot Layout</span>
+                <div class="flex justify-between py-2.5 border-b border-brand-border">
+                    <span class="text-brand-mutedText">Target Capacity Layout</span>
+                    <span class="font-semibold text-brand-darkText">1 to 4 Physical Slot Targets</span>
                 </div>
-                <div class="flex justify-between py-2.5 border-b border-gray-800/60">
-                    <span class="text-brand-textMuted">Supported Interfaces</span>
-                    <span class="font-semibold text-white">PCIe M.2 (NVMe/AHCI) & M.2 SATA SSD</span>
+                <div class="flex justify-between py-2.5 border-b border-brand-border">
+                    <span class="text-brand-mutedText">Supported Media Interfaces</span>
+                    <span class="font-semibold text-brand-darkText">PCIe M.2 (NVMe/AHCI) & M.2 SATA SSD</span>
                 </div>
-                <div class="flex justify-between py-2.5 border-b border-gray-800/60">
-                    <span class="text-brand-textMuted">Max Performance Rate</span>
-                    <span class="font-semibold text-white">Up to 36 GB/min cross-channel</span>
+                <div class="flex justify-between py-2.5 border-b border-brand-border">
+                    <span class="text-brand-mutedText">Max Performance Speed</span>
+                    <span class="font-semibold text-brand-darkText">Up to 36 GB/min synchronous processing</span>
                 </div>
-                <div class="flex justify-between py-2.5 border-b border-gray-800/60">
-                    <span class="text-brand-textMuted">Operation Architecture</span>
-                    <span class="font-semibold text-white">Standalone FPGA Engine Controller</span>
+                <div class="flex justify-between py-2.5 border-b border-brand-border">
+                    <span class="text-brand-mutedText">Operation Architecture</span>
+                    <span class="font-semibold text-brand-darkText">Standalone FPGA Engine Controller</span>
                 </div>
-                <div class="flex justify-between py-2.5 border-b border-gray-800/60 md:border-b-0">
-                    <span class="text-brand-textMuted">Display Parameters</span>
-                    <span class="font-semibold text-white">Backlit Monochrome Real-time LCD Screen</span>
+                <div class="flex justify-between py-2.5 border-b border-brand-border md:border-b-0">
+                    <span class="text-brand-mutedText">Display Indicators</span>
+                    <span class="font-semibold text-brand-darkText">Backlit Monochrome Real-time LCD Panel</span>
                 </div>
                 <div class="flex justify-between py-2.5 md:border-b-0">
-                    <span class="text-brand-textMuted">Power Input Requirements</span>
-                    <span class="font-semibold text-white">Universal AC 115V-230V Compliance Switching</span>
+                    <span class="text-brand-mutedText">Power Module Input</span>
+                    <span class="font-semibold text-brand-darkText">Universal AC 115V-230V Compliant Switcher</span>
                 </div>
             </div>
         </div>
@@ -218,65 +241,78 @@
 
     <section class="max-w-7xl mx-auto px-4 py-12">
         <div class="flex items-center justify-between mb-6">
-            <h3 class="text-sm md:text-base font-bold uppercase tracking-wider text-white">You May Also Like</h3>
-            <a href="#" class="text-xs text-brand-accent hover:underline flex items-center gap-1">View All Catalog Products <i data-lucide="chevron-right" class="w-3 h-3"></i></a>
+            <h3 class="text-xs md:text-sm font-bold uppercase tracking-wider text-brand-darkText">You May Also Like</h3>
+            <a href="#" class="text-xs text-brand-blue hover:underline flex items-center gap-1 font-semibold">View All Systems Catalog <i data-lucide="chevron-right" class="w-3 h-3"></i></a>
         </div>
         <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
-            <div class="bg-brand-card border border-gray-800 rounded-xl p-4 flex flex-col shadow-sm group hover:border-gray-700 transition">
-                <div class="w-full aspect-square bg-[#0A0F1D] border border-gray-800 rounded flex items-center justify-center p-4 mb-3">
-                    <i data-lucide="server" class="w-12 h-12 text-[#0052cc]/70 stroke-[1.25]"></i>
+            <div class="bg-white border border-brand-border rounded-xl p-4 flex flex-col shadow-sm group hover:border-gray-400 transition">
+                <div class="w-full aspect-square bg-brand-lightBg rounded flex items-center justify-center p-4 mb-3">
+                    <i data-lucide="server" class="w-12 h-12 text-brand-blue/50 stroke-[1.25]"></i>
                 </div>
-                <h4 class="font-semibold text-xs text-white line-clamp-1 mb-1">Epson 1 to 1 NVMe/SATA M.2 Duplicator</h4>
-                <p class="text-[10px] text-brand-textMuted mb-2">SKU: EP-NVME-11</p>
-                <div class="text-sm font-bold text-white mt-auto">$1,808.80</div>
+                <h4 class="font-bold text-xs text-brand-darkText line-clamp-1 mb-1">Epson 1 to 1 NVMe/SATA M.2 Duplicator</h4>
+                <p class="text-[10px] text-brand-mutedText mb-2">SKU: EP-NVME-11</p>
+                <div class="text-sm font-extrabold text-brand-blue mt-auto">$1,808.80</div>
             </div>
-            <div class="bg-brand-card border border-gray-800 rounded-xl p-4 flex flex-col shadow-sm group hover:border-gray-700 transition">
-                <div class="w-full aspect-square bg-[#0A0F1D] border border-gray-800 rounded flex items-center justify-center p-4 mb-3">
-                    <i data-lucide="server" class="w-12 h-12 text-[#0052cc]/70 stroke-[1.25]"></i>
+            <div class="bg-white border border-brand-border rounded-xl p-4 flex flex-col shadow-sm group hover:border-gray-400 transition">
+                <div class="w-full aspect-square bg-brand-lightBg rounded flex items-center justify-center p-4 mb-3">
+                    <i data-lucide="server" class="w-12 h-12 text-brand-blue/50 stroke-[1.25]"></i>
                 </div>
-                <h4 class="font-semibold text-xs text-white line-clamp-1 mb-1">Epson 1 to 15 M.2 SATA/NVMe Duplicator</h4>
-                <p class="text-[10px] text-brand-textMuted mb-2">SKU: EP-NVME-115</p>
-                <div class="text-sm font-bold text-white mt-auto">$14,835.80</div>
+                <h4 class="font-bold text-xs text-brand-darkText line-clamp-1 mb-1">Epson 1 to 15 M.2 SATA/NVMe Duplicator</h4>
+                <p class="text-[10px] text-brand-mutedText mb-2">SKU: EP-NVME-115</p>
+                <div class="text-sm font-extrabold text-brand-blue mt-auto">$14,835.80</div>
             </div>
-            <div class="bg-brand-card border border-gray-800 rounded-xl p-4 flex flex-col shadow-sm group hover:border-gray-700 transition">
-                <div class="w-full aspect-square bg-[#0A0F1D] border border-gray-800 rounded flex items-center justify-center p-4 mb-3">
-                    <i data-lucide="shield-alert" class="w-12 h-12 text-[#0052cc]/70 stroke-[1.25]"></i>
+            <div class="bg-white border border-brand-border rounded-xl p-4 flex flex-col shadow-sm group hover:border-gray-400 transition">
+                <div class="w-full aspect-square bg-brand-lightBg rounded flex items-center justify-center p-4 mb-3">
+                    <i data-lucide="shield-alert" class="w-12 h-12 text-brand-blue/50 stroke-[1.25]"></i>
                 </div>
-                <h4 class="font-semibold text-xs text-white line-clamp-1 mb-1">Universal Drive Cross-Sanitizer Platform</h4>
-                <p class="text-[10px] text-brand-textMuted mb-2">SKU: EP-SAN-UNIV</p>
-                <div class="text-sm font-bold text-white mt-auto">$599.99</div>
+                <h4 class="font-bold text-xs text-brand-darkText line-clamp-1 mb-1">Universal Drive Cross-Sanitizer Platform</h4>
+                <p class="text-[10px] text-brand-mutedText mb-2">SKU: EP-SAN-UNIV</p>
+                <div class="text-sm font-extrabold text-brand-blue mt-auto">$599.99</div>
             </div>
-            <div class="bg-brand-card border border-gray-800 rounded-xl p-4 flex flex-col shadow-sm group hover:border-gray-700 transition">
-                <div class="w-full aspect-square bg-[#0A0F1D] border border-gray-800 rounded flex items-center justify-center p-4 mb-3">
-                    <i data-lucide="layers" class="w-12 h-12 text-[#0052cc]/70 stroke-[1.25]"></i>
+            <div class="bg-white border border-brand-border rounded-xl p-4 flex flex-col shadow-sm group hover:border-gray-400 transition">
+                <div class="w-full aspect-square bg-brand-lightBg rounded flex items-center justify-center p-4 mb-3">
+                    <i data-lucide="layers" class="w-12 h-12 text-brand-blue/50 stroke-[1.25]"></i>
                 </div>
-                <h4 class="font-semibold text-xs text-white line-clamp-1 mb-1">PCIe Adapter Hardware Board Expansion Kit</h4>
-                <p class="text-[10px] text-brand-textMuted mb-2">SKU: EP-ACC-ADP</p>
-                <div class="text-sm font-bold text-white mt-auto">$149.99</div>
+                <h4 class="font-bold text-xs text-brand-darkText line-clamp-1 mb-1">PCIe Adapter Hardware Board Expansion Kit</h4>
+                <p class="text-[10px] text-brand-mutedText mb-2">SKU: EP-ACC-ADP</p>
+                <div class="text-sm font-extrabold text-brand-blue mt-auto">$149.99</div>
             </div>
         </div>
     </section>
 
-    <footer class="bg-[#0A0F1D] text-brand-textMuted text-xs border-t border-gray-800 py-8">
+    <footer class="bg-white text-brand-mutedText text-xs border-t border-brand-border py-8">
         <div class="max-w-7xl mx-auto px-4 text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p>&copy; 2026, ProDuplicator. Layout matching Figma premium guidelines.</p>
+            <p>&copy; 2026, ProDuplicator. Powered by Shopify.</p>
             <div class="flex items-center gap-4 text-[11px]">
-                <a href="#" class="hover:text-white transition">Privacy Governance</a>
-                <a href="#" class="hover:text-white transition">Terms of Execution</a>
+                <a href="#" class="hover:text-brand-darkText transition">Privacy Governance</a>
+                <a href="#" class="hover:text-brand-darkText transition">Terms of Platform Execution</a>
             </div>
         </div>
     </footer>
 
     <script>
-        // Init Lucide Dynamic Vector Assets
+        // Init Lucide Elements
         lucide.createIcons();
 
-        // Image Gallery Selector Logic
+        // Responsive Drawer Navigation Toggling Engine
+        const menuOpenBtn = document.getElementById('menu-open');
+        const menuCloseBtn = document.getElementById('menu-close');
+        const menuCloseBackdrop = document.getElementById('menu-close-backdrop');
+        const mobileMenuInstance = document.getElementById('mobile-menu');
+
+        function toggleMenu() {
+            mobileMenuInstance.classList.toggle('hidden');
+        }
+        menuOpenBtn.addEventListener('click', toggleMenu);
+        menuCloseBtn.addEventListener('click', toggleMenu);
+        menuCloseBackdrop.addEventListener('click', toggleMenu);
+
+        // Product Main Image Swapper Function
         function changeImage(src) {
             document.getElementById('main-product-image').src = src;
         }
 
-        // Segmented Buy Box Custom Qty Counters
+        // Add to Cart Counter Control Routine
         function updateQty(amt) {
             const qtyInput = document.getElementById('product-qty');
             let currentVal = parseInt(qtyInput.value) || 1;
@@ -285,27 +321,23 @@
             qtyInput.value = currentVal;
         }
 
-        // Highly Optimized Tab Switching Layout Engine
+        // Product Descriptive Tab Switching Routing Component
         function switchTab(tabId) {
-            // Hide all tab containers inside right showcase block
             const tabs = document.getElementsByClassName('tab-content');
             for (let i = 0; i < tabs.length; i++) {
                 tabs[i].classList.remove('active');
             }
-            
-            // Set targeted container visibility state parameter
             document.getElementById(tabId).classList.add('active');
 
-            // Toggle custom button active states to mimic premium design system
             const buttons = ['btn-tab-features', 'btn-tab-description', 'btn-tab-sanitization'];
             buttons.forEach(id => {
                 const btn = document.getElementById(id);
                 if (id === 'btn-' + tabId) {
-                    btn.classList.add('text-brand-accent', 'border-brand-accent');
-                    btn.classList.remove('text-gray-400');
+                    btn.classList.add('text-brand-blue', 'border-brand-blue');
+                    btn.classList.remove('text-brand-mutedText');
                 } else {
-                    btn.classList.remove('text-brand-accent', 'border-brand-accent');
-                    btn.classList.add('text-gray-400');
+                    btn.classList.remove('text-brand-blue', 'border-brand-blue');
+                    btn.classList.add('text-brand-mutedText');
                 }
             });
         }
