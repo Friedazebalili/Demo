@@ -165,8 +165,8 @@
     <section class="max-w-7xl mx-auto px-6 py-16 border-t border-borderLight">
         
         <div class="flex gap-10 border-b border-borderLight pb-3 mb-10 overflow-x-auto no-scrollbar">
-            <button onclick="switchMasterSection('section-features')" id="tab-link-section-features" class="master-tab-trigger text-xs font-bold uppercase tracking-widest text-brandBlue border-b-2 border-brandBlue pb-3 -mb-[14px] transition-all focus:outline-none whitespace-nowrap">
-                PRODUCT FEATURES
+            <button onclick="switchMasterSection('section-description')" id="tab-link-section-description" class="master-tab-trigger text-xs font-bold uppercase tracking-widest text-brandBlue border-b-2 border-brandBlue pb-3 -mb-[14px] transition-all focus:outline-none whitespace-nowrap">
+                DESCRIPTION
             </button>
             <button onclick="switchMasterSection('section-functions')" id="tab-link-section-functions" class="master-tab-trigger text-xs font-semibold uppercase tracking-widest text-slateMuted hover:text-slateDark pb-3 -mb-[14px] transition-all focus:outline-none whitespace-nowrap">
                 PRODUCT FUNCTIONS
@@ -178,27 +178,95 @@
 
         <div class="min-h-[250px]">
             
-            <div id="section-features" class="tab-panel active space-y-12">
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-10">
-                    <div class="space-y-2">
-                        <h4 class="text-xs font-semibold uppercase tracking-wider text-slateDark">NVME SIZE COMPATIBILITY</h4>
-                        <p class="text-xs text-slateMuted leading-relaxed">Integrated universal frame guides natively securing drive parameters across length form metrics extending 2230, 2242, 2260, 2280, alongside 22110 slots safely.</p>
+            <div id="section-description" class="tab-panel active space-y-10">
+                <div class="max-w-4xl space-y-4">
+                    <h3 class="text-sm font-bold uppercase tracking-wider text-slateDark">Overview</h3>
+                    <p class="text-xs text-slateMuted leading-relaxed">
+                        Systor M.2 NVMe PCIe/SATA SSD/HDD duplicators are completely standalone units that can clone or sanitize a number of different media types. Easily insert and copy (or erase) M.2 or SATA solid state SSD drives or HDD hard disk drives with a single touch of a button. These duplicators consistently perform copy sessions with no speed degradation even when the number of target devices increase. Various copying and erasing modes help in managing different task requirements for duplicating and wiping your storage media. These high-speed, high-performance M2 copiers are the perfect solution for business (small to enterprise), education, and government entities (military, law enforcement, etc.) where copying and erasing device data needs to be accomplished with precision and minimal time.
+                    </p>
+                    <p class="text-[11px] text-slateMuted italic">
+                        * Duplication speed will vary depending on read/write transfer rates of master (source) and target (blank) drives.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-10 border-t border-borderLight pt-8">
+                    <div class="space-y-3">
+                        <h4 class="text-xs font-bold uppercase tracking-wider text-slateDark flex items-center gap-2">
+                            <i data-lucide="expand" class="w-4 h-4 text-brandBlue"></i> NVME SIZE COMPATIBILITY
+                        </h4>
+                        <div class="space-y-1">
+                            <p class="text-xs text-slateDark font-medium">Compatible sizes:</p>
+                            <ul class="text-xs text-slateMuted space-y-1 pl-4 list-disc">
+                                <li>2230</li>
+                                <li>2242</li>
+                                <li>2260</li>
+                                <li>2280</li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="space-y-2">
-                        <h4 class="text-xs font-semibold uppercase tracking-wider text-slateDark">FLEXIBLE CROSS INTERFACE DUPLICATION</h4>
-                        <p class="text-xs text-slateMuted leading-relaxed">Cross-execute clone parameters dynamically across varied technology paths, deploying direct bit transfers natively between PCIe NVMe media and M.2 SATA chips.</p>
+
+                    <div class="space-y-3">
+                        <h4 class="text-xs font-bold uppercase tracking-wider text-slateDark flex items-center gap-2">
+                            <i data-lucide="git-commit" class="w-4 h-4 text-brandBlue"></i> FLEXIBLE CROSS INTERFACE DUPLICATION
+                        </h4>
+                        <ul class="text-xs text-slateMuted space-y-1 pl-4 list-disc">
+                            <li>NVMe M.2</li>
+                            <li>SATA M.2</li>
+                            <li>SATA 3.5" HDD</li>
+                            <li>SATA 2.5" HDD</li>
+                            <li>SATA 2.5" SSD</li>
+                        </ul>
                     </div>
+
                     <div class="space-y-2">
-                        <h4 class="text-xs font-semibold uppercase tracking-wider text-slateDark">DOWNLOADABLE & PRINTABLE EVENT LOG</h4>
-                        <p class="text-xs text-slateMuted leading-relaxed">Telemetry output cycles monitoring. Aggregated run sheets automatically document target system status indicators, pass ratios, and specific run times.</p>
+                        <h4 class="text-xs font-bold uppercase tracking-wider text-slateDark flex items-center gap-2">
+                            <i data-lucide="file-text" class="w-4 h-4 text-brandBlue"></i> DOWNLOADABLE & PRINTABLE EVENT LOG
+                        </h4>
+                        <p class="text-xs text-slateMuted leading-relaxed">
+                            Assists users with monitoring, recording, and managing the entire duplication process. View and analyze detailed information for each port such as job status, date/time stamps, and drive identification numbers.
+                        </p>
+                        <p class="text-[11px] text-slateMuted italic pt-1">
+                            Connect the Log File Printer* for event log printouts. <br>* Sold separately
+                        </p>
                     </div>
+
                     <div class="space-y-2">
-                        <h4 class="text-xs font-semibold uppercase tracking-wider text-slateDark">CUSTOMIZABLE SATA HDD RACK</h4>
-                        <p class="text-xs text-slateMuted leading-relaxed">Expands peripheral support parameters, allowing operators to link legacy 2.5" or 3.5" standard mechanical array layers via built-in bridge slots.</p>
+                        <h4 class="text-xs font-bold uppercase tracking-wider text-slateDark flex items-center gap-2">
+                            <i data-lucide="refresh-cw" class="w-4 h-4 text-brandBlue"></i> ENABLE SOURCE PORT ERASE
+                        </h4>
+                        <p class="text-xs text-slateMuted leading-relaxed">
+                            Increase the number of executable slots during wiping jobs by enabling erasing of drives inserted in the source port.
+                        </p>
                     </div>
-                    <div class="space-y-2 md:col-span-2 lg:col-span-2">
-                        <h4 class="text-xs font-semibold uppercase tracking-wider text-slateDark">DAISY CHAIN MULTIPLE NVME DUPLICATORS</h4>
-                        <p class="text-xs text-slateMuted leading-relaxed">Interconnect distinct physical duplication hubs sequentially in a unified layout network to scale multi-channel operation workloads instantly on industrial factory floors.</p>
+
+                    <div class="space-y-2">
+                        <h4 class="text-xs font-bold uppercase tracking-wider text-slateDark flex items-center gap-2">
+                            <i data-lucide="check-square" class="w-4 h-4 text-brandBlue"></i> COMPARE FUNCTION + CRC CHECKSUM
+                        </h4>
+                        <p class="text-xs text-slateMuted leading-relaxed">
+                            Performs bit-by-bit cyclic redundancy check (CRC) to ensure copies are identical for every duplication session.
+                        </p>
+                    </div>
+
+                    <div class="space-y-2">
+                        <h4 class="text-xs font-bold uppercase tracking-wider text-slateDark flex items-center gap-2">
+                            <i data-lucide="layers" class="w-4 h-4 text-brandBlue"></i> CUSTOMIZABLE SATA HDD RACK
+                        </h4>
+                        <p class="text-xs text-slateMuted leading-relaxed">
+                            Customize the configuration of the SATA HDD rack to best utilize space in your work area. Slot dividers keep your HDDs in place during duplication.
+                        </p>
+                        <div class="text-[11px] text-slateMuted pt-1">
+                            <span class="font-medium text-slateDark">Other functions:</span> Quality check, DCO Erase mode
+                        </div>
+                    </div>
+
+                    <div class="space-y-2 md:col-span-2 lg:col-span-3 border-t border-borderLight pt-6">
+                        <h4 class="text-xs font-bold uppercase tracking-wider text-slateDark flex items-center gap-2">
+                            <i data-lucide="cpu" class="w-4 h-4 text-brandBlue"></i> DAISY CHAIN MULTIPLE NVME DUPLICATORS
+                        </h4>
+                        <p class="text-xs text-slateMuted leading-relaxed">
+                            Connect multiple NVMe duplicators together to increase the amount of copies you can create at the same time from one source slot of the duplicator. <span class="text-amber-600 font-medium">Note: Only daisy chain same speed models.</span>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -209,54 +277,70 @@
                         <div class="border-b border-borderLight pb-2">
                             <h3 class="text-xs font-bold uppercase tracking-widest text-brandBlue">INTELLIGENT DUPLICATION (COPY MODES)</h3>
                         </div>
-                        <ul class="space-y-3 text-xs text-slateMuted">
-                            <li><strong class="text-slateDark font-medium block mb-0.5">System and Files:</strong> Maps directory footprints exclusively to replicate loaded information arrays, leaving empty target sectors clean. Parses FAT, NTFS, and Linux EXT filesystems.</li>
-                            <li><strong class="text-slateDark font-medium block mb-0.5">All Partitions:</strong> Clones comprehensive partition boundary frameworks verbatim regardless of volume capacity fill densities.</li>
-                            <li><strong class="text-slateDark font-medium block mb-0.5">Whole Media:</strong> Complete binary sector-by-sector cloning execution beginning straight from structural block zero to the device edge.</li>
+                        <ul class="space-y-4 text-xs text-slateMuted">
+                            <li>
+                                <strong class="text-slateDark font-semibold block mb-0.5">System and Files (Quick Copy Mode):</strong> 
+                                Copies only the data area and skips empty space, reducing the copy duration time.
+                            </li>
+                            <li>
+                                <strong class="text-slateDark font-semibold block mb-0.5">All Partitions:</strong> 
+                                Can be set to copy or skip HPA, DCO, unknown partitions, modified formats, etc.
+                            </li>
+                            <li>
+                                <strong class="text-slateDark font-semibold block mb-0.5">Whole Media:</strong> 
+                                Copies from the initial sector to the end, bit-by-bit. There are no format limitations in this mode. Supports all systems and proprietary formats, along with various brands.
+                            </li>
+                            <li>
+                                <strong class="text-slateDark font-semibold block mb-0.5">Percentage Copy:</strong> 
+                                Set a selected percentage of source/master capacity to copy.
+                            </li>
                         </ul>
                     </div>
+
                     <div class="space-y-4">
                         <div class="border-b border-borderLight pb-2">
                             <h3 class="text-xs font-bold uppercase tracking-widest text-brandBlue">SANITIZATION METHODS (ERASE MODES)</h3>
                         </div>
                         <ul class="space-y-3 text-xs text-slateMuted">
-                            <li><strong class="text-slateDark font-medium block mb-0.5">Enable Source Port Erase:</strong> Deploys specialized override protocols that safely configure and erase primary master index ports whenever custom wipes are initiated.</li>
-                            <li><strong class="text-slateDark font-medium block mb-0.5">DoD 5220.22-M Compliance:</strong> Multi-pass military-tier structural overwrite routines ensuring strict corporate media security clearance benchmarks.</li>
+                            <li><strong class="text-slateDark font-semibold block mb-0.5">Quick Erase:</strong> Erases the device's index table, and only takes a few seconds to complete.</li>
+                            <li><strong class="text-slateDark font-semibold block mb-0.5">Full Erase:</strong> Erase all data from the device by overwriting each sector.</li>
+                            <li><strong class="text-slateDark font-semibold block mb-0.5">DoD 3-pass Erase:</strong> Complies with the erasure standards of the U.S. Department of Defense (DoD) 5220.22-M.</li>
+                            <li><strong class="text-slateDark font-semibold block mb-0.5">DoD 7-pass Erase:</strong> Complies with the 7-pass erase standards of the U.S. Department of Defense (DoD) 5220.22-M ECE.</li>
+                            <li><strong class="text-slateDark font-semibold block mb-0.5">Secure Erase:</strong> Complies with standards of the National Institute of Standards and Technology (NIST) 800-88.</li>
+                            <li><strong class="text-slateDark font-semibold block mb-0.5">Enhanced Secure Erase:</strong> Complies with SSD erasure standards of the National Institute of Standards and Technology (NIST) 800-88.</li>
+                            <li><strong class="text-slateDark font-semibold block mb-0.5">Erase HPA:</strong> Remove the drives' HPA (Host Protected Area) to free up space.</li>
+                            <li><strong class="text-slateDark font-semibold block mb-0.5">Erase DCO:</strong> Remove the drives' DCO (Device Configuration Overlay) partition.</li>
                         </ul>
-                    </div>
-                    <div class="md:col-span-2 border-t border-borderLight pt-6 space-y-1.5">
-                        <h4 class="text-xs font-semibold uppercase tracking-wider text-slateDark">COMPARE FUNCTION + CRC CHECKSUM</h4>
-                        <p class="text-xs text-slateMuted leading-relaxed">Eliminates output anomalies by verifying data transfers using rigorous cyclic redundancy checksum logic layers directly executed at the hardware register level.</p>
                     </div>
                 </div>
             </div>
 
             <div id="section-specs" class="tab-panel">
-                <div class="max-w-3xl border border-borderLight rounded-md overflow-hidden">
+                <div class="max-w-3xl border border-borderLight rounded-md overflow-hidden bg-white shadow-xs">
                     <table class="w-full text-left border-collapse text-xs">
                         <tbody class="divide-y divide-borderLight text-slateMuted">
                             <tr class="hover:bg-slate-50 transition">
-                                <td class="p-4 font-medium text-slateDark w-1/3">Target Capacity Layout</td>
+                                <td class="p-4 font-semibold text-slateDark w-1/3 bg-slate-50/50">Target Capacity Layout</td>
                                 <td class="p-4">1 to 4 Physical Slot Targets</td>
                             </tr>
                             <tr class="hover:bg-slate-50 transition">
-                                <td class="p-4 font-medium text-slateDark">Supported Media Interfaces</td>
-                                <td class="p-4">PCIe M.2 (NVMe/AHCI) & M.2 SATA SSD</td>
+                                <td class="p-4 font-semibold text-slateDark bg-slate-50/50">Supported Media Interfaces</td>
+                                <td class="p-4">PCIe M.2 (NVMe/AHCI), M.2 SATA SSD, SATA 2.5"/3.5" HDD & SSD</td>
                             </tr>
                             <tr class="hover:bg-slate-50 transition">
-                                <td class="p-4 font-medium text-slateDark">Max Performance Speed</td>
+                                <td class="p-4 font-semibold text-slateDark bg-slate-50/50">Max Performance Speed</td>
                                 <td class="p-4">Up to 36 GB/min synchronous processing parameters</td>
                             </tr>
                             <tr class="hover:bg-slate-50 transition">
-                                <td class="p-4 font-medium text-slateDark">Operation Architecture</td>
-                                <td class="p-4">Standalone FPGA Engine Controller Node</td>
+                                <td class="p-4 font-semibold text-slateDark bg-slate-50/50">Operation Architecture</td>
+                                <td class="p-4">Standalone FPGA Engine Controller Node (No PC Required)</td>
                             </tr>
                             <tr class="hover:bg-slate-50 transition">
-                                <td class="p-4 font-medium text-slateDark">Display Indicators</td>
+                                <td class="p-4 font-semibold text-slateDark bg-slate-50/50">Display Indicators</td>
                                 <td class="p-4">Backlit Monochrome Real-time LCD Screen Panel</td>
                             </tr>
                             <tr class="hover:bg-slate-50 transition">
-                                <td class="p-4 font-medium text-slateDark">Power Module Input</td>
+                                <td class="p-4 font-semibold text-slateDark bg-slate-50/50">Power Module Input</td>
                                 <td class="p-4">Universal AC 115V-230V Auto-Switching Internals</td>
                             </tr>
                         </tbody>
