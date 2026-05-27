@@ -26,8 +26,8 @@
     <style>
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-        .tab-content { display: none; }
-        .tab-content.active { display: block; }
+        .tab-panel-node { display: none; }
+        .tab-panel-node.active { display: block; }
     </style>
 </head>
 <body class="bg-white text-brand-darkText font-sans antialiased overflow-x-hidden">
@@ -143,98 +143,144 @@
                     </button>
                 </div>
 
-                <div class="bg-white rounded-xl border border-brand-border overflow-hidden shadow-sm">
-                    <div class="flex border-b border-brand-border bg-brand-lightBg">
-                        <button onclick="switchTab('tab-features')" id="btn-tab-features" class="flex-1 py-3 px-4 text-xs font-bold uppercase tracking-wider text-brand-blue border-b-2 border-brand-blue transition focus:outline-none">
-                            Key Features
-                        </button>
-                        <button onclick="switchTab('tab-description')" id="btn-tab-description" class="flex-1 py-3 px-4 text-xs font-bold uppercase tracking-wider text-brand-mutedText hover:text-brand-darkText transition focus:outline-none">
-                            Overview
-                        </button>
-                        <button onclick="switchTab('tab-sanitization')" id="btn-tab-sanitization" class="flex-1 py-3 px-4 text-xs font-bold uppercase tracking-wider text-brand-mutedText hover:text-brand-darkText transition focus:outline-none">
-                            Erasure Modes
-                        </button>
-                    </div>
-
-                    <div class="p-5 md:p-6 text-xs md:text-sm leading-relaxed text-slate-600">
-                        <div id="tab-features" class="tab-content active space-y-3">
-                            <div class="flex items-start gap-2.5">
-                                <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-blue mt-0.5 flex-shrink-0"></i>
-                                <p><strong class="text-brand-darkText">High Transfer Speeds:</strong> High-performance cloning throughput up to 36GB/min rate across channels.</p>
-                            </div>
-                            <div class="flex items-start gap-2.5">
-                                <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-blue mt-0.5 flex-shrink-0"></i>
-                                <p><strong class="text-brand-darkText">Dual Cross-Interface:</strong> Native, simultaneous cross-duplication for PCIe M.2 and SATA SSDs.</p>
-                            </div>
-                            <div class="flex items-start gap-2.5">
-                                <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-blue mt-0.5 flex-shrink-0"></i>
-                                <p><strong class="text-brand-darkText">Standalone Architecture:</strong> Fully synchronized cloning without external PC configuration overhead.</p>
-                            </div>
-                            <div class="flex items-start gap-2.5">
-                                <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-blue mt-0.5 flex-shrink-0"></i>
-                                <p><strong class="text-brand-darkText">Forensic Erasure Engines:</strong> Full multi-pass data sanitization compliant with institutional DoD standards.</p>
-                            </div>
-                        </div>
-
-                        <div id="tab-description" class="tab-content space-y-3">
-                            <p>The ProDuplicator SYSTOR series represents the absolute gold standard in automated physical duplication deployment frameworks. Configured explicitly for mission-critical corporate IT infrastructure data governance, media production houses, and computer forensic data processing pipelines.</p>
-                            <p>Featuring a rugged, open-platform chassis structural design, it handles continuous operational executions while ensuring high-fidelity sector-by-sector verification arrays seamlessly.</p>
-                        </div>
-
-                        <div id="tab-sanitization" class="tab-content space-y-4">
-                            <p class="text-brand-mutedText">Equipped with native high-tier sanitization sub-routines to securely clear drive configurations:</p>
-                            <div class="grid grid-cols-2 gap-3 text-[11px]">
-                                <div class="bg-brand-lightBg p-2.5 rounded border border-brand-border">
-                                    <span class="text-brand-darkText font-bold block mb-0.5">Quick Erase</span> Overwrites drive index tables in seconds.
-                                </div>
-                                <div class="bg-brand-lightBg p-2.5 rounded border border-brand-border">
-                                    <span class="text-brand-darkText font-bold block mb-0.5">Full Erase</span> Complete hardware-level single-pass zero-fill execution.
-                                </div>
-                                <div class="bg-brand-lightBg p-2.5 rounded border border-brand-border">
-                                    <span class="text-brand-darkText font-bold block mb-0.5">DoD 5220.22-M</span> Institutional 3-pass sanitization compliance protocol.
-                                </div>
-                                <div class="bg-brand-lightBg p-2.5 rounded border border-brand-border">
-                                    <span class="text-brand-darkText font-bold block mb-0.5">Secure Erase</span> Accesses nested drive control registers securely.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="border-l-4 border-brand-blue bg-brand-lightBg p-4 rounded-r-xl">
+                    <p class="text-xs md:text-sm text-slate-600 leading-relaxed">
+                        The ProDuplicator SYSTOR series represents the absolute gold standard in automated physical duplication deployment frameworks. Configured explicitly for mission-critical corporate IT infrastructure data governance, media production houses, and computer forensic data processing pipelines.
+                    </p>
                 </div>
-
             </div>
         </div>
     </main>
 
-    <section class="max-w-7xl mx-auto px-4 py-8">
-        <div class="bg-brand-lightBg rounded-xl border border-brand-border p-6 md:p-8">
-            <h3 class="text-xs md:text-sm font-bold tracking-wider uppercase border-b border-brand-border pb-4 mb-6 text-brand-darkText flex items-center gap-2">
-                <i data-lucide="sliders" class="w-4 h-4 text-brand-blue"></i> Technical Specifications
-            </h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4 text-xs md:text-sm">
-                <div class="flex justify-between py-2.5 border-b border-brand-border">
-                    <span class="text-brand-mutedText">Target Capacity Layout</span>
-                    <span class="font-semibold text-brand-darkText">1 to 4 Physical Slot Targets</span>
+    <section class="max-w-7xl mx-auto px-4 py-12">
+        <div class="bg-white rounded-2xl border border-brand-border shadow-sm overflow-hidden grid grid-cols-1 md:grid-cols-12">
+            
+            <div class="md:col-span-4 bg-brand-lightBg border-b md:border-b-0 md:border-r border-brand-border flex md:flex-col overflow-x-auto no-scrollbar md:overflow-x-visible">
+                <button onclick="toggleFigmaTab('features-block')" id="trigger-features-block" class="figma-tab-trigger w-full px-6 py-4 md:py-5 text-left text-xs font-bold tracking-wider uppercase border-b-2 md:border-b-0 md:border-l-4 border-brand-blue text-brand-blue bg-white flex items-center gap-3 transition-all flex-shrink-0 whitespace-nowrap md:whitespace-normal focus:outline-none">
+                    <i data-lucide="layers" class="w-4 h-4"></i> Product Features
+                </button>
+                <button onclick="toggleFigmaTab('functions-block')" id="trigger-functions-block" class="figma-tab-trigger w-full px-6 py-4 md:py-5 text-left text-xs font-bold tracking-wider uppercase border-b-2 md:border-b-0 md:border-l-4 border-transparent text-brand-mutedText hover:text-brand-darkText flex items-center gap-3 transition-all flex-shrink-0 whitespace-nowrap md:whitespace-normal focus:outline-none">
+                    <i data-lucide="cpu" class="w-4 h-4"></i> Product Functions
+                </button>
+                <button onclick="toggleFigmaTab('specifications-block')" id="trigger-specifications-block" class="figma-tab-trigger w-full px-6 py-4 md:py-5 text-left text-xs font-bold tracking-wider uppercase border-b-2 md:border-b-0 md:border-l-4 border-transparent text-brand-mutedText hover:text-brand-darkText flex items-center gap-3 transition-all flex-shrink-0 whitespace-nowrap md:whitespace-normal focus:outline-none">
+                    <i data-lucide="sliders" class="w-4 h-4"></i> Product Specifications
+                </button>
+            </div>
+
+            <div class="md:col-span-8 p-6 md:p-10 bg-white">
+                
+                <div id="features-block" class="tab-panel-node active space-y-6 animate-fade-in">
+                    <div class="border-b border-brand-border pb-4">
+                        <h3 class="text-base md:text-lg font-extrabold uppercase tracking-wider text-brand-darkText">Core Engine Features</h3>
+                        <p class="text-xs text-brand-mutedText mt-1">Fully integrated hardware architecture capabilities built for high volume throughput cycles.</p>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="p-4 border border-brand-border rounded-xl bg-brand-lightBg space-y-1.5 hover:border-brand-blue/50 transition">
+                            <span class="text-xs font-bold text-brand-blue uppercase tracking-wider block">NVMe Size Compatibility</span>
+                            <p class="text-xs text-slate-600 leading-normal">Native structural optimization layouts supporting forms factors spanning M.2 lengths 2230, 2242, 2260, 2280, and 22110 slots.</p>
+                        </div>
+                        <div class="p-4 border border-brand-border rounded-xl bg-brand-lightBg space-y-1.5 hover:border-brand-blue/50 transition">
+                            <span class="text-xs font-bold text-brand-blue uppercase tracking-wider block">Flexible Cross Interface Duplication</span>
+                            <p class="text-xs text-slate-600 leading-normal">Cross-replicate natively across different communication pathways including cross-interface cloning between PCIe NVMe and SATA M.2 drives.</p>
+                        </div>
+                        <div class="p-4 border border-brand-border rounded-xl bg-brand-lightBg space-y-1.5 hover:border-brand-blue/50 transition">
+                            <span class="text-xs font-bold text-brand-blue uppercase tracking-wider block">Downloadable & Printable Event Log</span>
+                            <p class="text-xs text-slate-600 leading-normal">Maintains runtime execution logs directly capturing hardware serial indexes, completion timestamps, and sector check status logs.</p>
+                        </div>
+                        <div class="p-4 border border-brand-border rounded-xl bg-brand-lightBg space-y-1.5 hover:border-brand-blue/50 transition">
+                            <span class="text-xs font-bold text-brand-blue uppercase tracking-wider block">Customizable SATA HDD Rack</span>
+                            <p class="text-xs text-slate-600 leading-normal">Expands utility footprints to support legacy 2.5" or 3.5" standard mechanical hard drive nodes via standard pluggable bridge interface slots.</p>
+                        </div>
+                        <div class="p-4 border border-brand-border rounded-xl bg-brand-lightBg space-y-1.5 hover:border-brand-blue/50 transition sm:col-span-2">
+                            <span class="text-xs font-bold text-brand-blue uppercase tracking-wider block">Daisy Chain Multiple NVMe Duplicators</span>
+                            <p class="text-xs text-slate-600 leading-normal">Scale deployment installations by networking multiple independent physical duplicator array units together dynamically under master control systems.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="flex justify-between py-2.5 border-b border-brand-border">
-                    <span class="text-brand-mutedText">Supported Media Interfaces</span>
-                    <span class="font-semibold text-brand-darkText">PCIe M.2 (NVMe/AHCI) & M.2 SATA SSD</span>
+
+                <div id="functions-block" class="tab-panel-node space-y-6">
+                    <div class="border-b border-brand-border pb-4">
+                        <h3 class="text-base md:text-lg font-extrabold uppercase tracking-wider text-brand-darkText">Operational Function Matrices</h3>
+                        <p class="text-xs text-brand-mutedText mt-1">High fidelity firmware controls executing bit-level sector management logic paths directly on storage chips.</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="p-4 border border-brand-border rounded-xl">
+                            <h4 class="text-xs font-bold text-brand-darkText uppercase tracking-wider flex items-center gap-2 mb-2">
+                                <i data-lucide="copy" class="w-4 h-4 text-brand-blue"></i> Intelligent Duplication (Copy Modes)
+                            </h4>
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs text-slate-600">
+                                <div class="bg-brand-lightBg p-2.5 rounded border border-brand-border"><strong class="text-brand-darkText block mb-0.5">System and Files</strong> Copies data files only, bypassing empty sectors. Supports FAT, NTFS, EXT filesystems.</div>
+                                <div class="bg-brand-lightBg p-2.5 rounded border border-brand-border"><strong class="text-brand-darkText block mb-0.5">All Partitions</strong> Replicates all partition allocations bit-for-bit regardless of structural data density points.</div>
+                                <div class="bg-brand-lightBg p-2.5 rounded border border-brand-border"><strong class="text-brand-darkText block mb-0.5">Whole Media</strong> Sector-by-sector binary target duplication completely matching source data structure footprints.</div>
+                            </div>
+                        </div>
+
+                        <div class="p-4 border border-brand-border rounded-xl">
+                            <h4 class="text-xs font-bold text-brand-darkText uppercase tracking-wider flex items-center gap-2 mb-2">
+                                <i data-lucide="trash-2" class="w-4 h-4 text-brand-blue"></i> Sanitization Methods (Erase Modes)
+                            </h4>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-slate-600">
+                                <div class="bg-brand-lightBg p-2.5 rounded border border-brand-border"><strong class="text-brand-darkText block mb-0.5">Enable Source Port Erase</strong> Safely configure and clear target media across master data connection nodes securely via override tools.</div>
+                                <div class="bg-brand-lightBg p-2.5 rounded border border-brand-border"><strong class="text-brand-darkText block mb-0.5">DoD 5220.22-M Compliance</strong> Standard government-grade multi-pass sector data wipe framework verifying strict clearance layout structures.</div>
+                            </div>
+                        </div>
+
+                        <div class="p-4 border border-brand-border rounded-xl bg-brand-lightBg flex items-start gap-3">
+                            <i data-lucide="shield-check" class="w-5 h-5 text-brand-blue flex-shrink-0 mt-0.5"></i>
+                            <div>
+                                <span class="text-xs font-bold text-brand-darkText uppercase tracking-wider block">Compare Function + CRC Checksum</span>
+                                <p class="text-xs text-slate-600 mt-1 leading-normal">Bypasses typical file verification logic loops by performing a strict sector hardware cross-check loop generating matching cyclic redundancy check values instantly.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="flex justify-between py-2.5 border-b border-brand-border">
-                    <span class="text-brand-mutedText">Max Performance Speed</span>
-                    <span class="font-semibold text-brand-darkText">Up to 36 GB/min synchronous processing</span>
+
+                <div id="specifications-block" class="tab-panel-node space-y-6">
+                    <div class="border-b border-brand-border pb-4">
+                        <h3 class="text-base md:text-lg font-extrabold uppercase tracking-wider text-brand-darkText">Product Specifications Data</h3>
+                        <p class="text-xs text-brand-mutedText mt-1">Core physical parameters, engineering boundaries, and operational throughput matrices.</p>
+                    </div>
+
+                    <div class="border border-brand-border rounded-xl overflow-hidden shadow-sm">
+                        <table class="w-full text-left border-collapse text-xs md:text-sm">
+                            <thead>
+                                <tr class="border-b border-brand-border text-brand-darkText font-bold bg-brand-lightBg">
+                                    <th class="p-4 tracking-wider uppercase text-[10px] text-brand-mutedText">Specification Parameter Group</th>
+                                    <th class="p-4 tracking-wider uppercase text-[10px] text-brand-mutedText">Operational Baseline Value Matrix</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-brand-border text-slate-600">
+                                <tr class="hover:bg-brand-lightBg/50 transition">
+                                    <td class="p-4 font-semibold text-brand-darkText">Target Capacity Layout</td>
+                                    <td class="p-4">1 to 4 Physical Slot Targets</td>
+                                </tr>
+                                <tr class="hover:bg-brand-lightBg/50 transition">
+                                    <td class="p-4 font-semibold text-brand-darkText">Supported Media Interfaces</td>
+                                    <td class="p-4">PCIe M.2 (NVMe/AHCI) & M.2 SATA SSD</td>
+                                </tr>
+                                <tr class="hover:bg-brand-lightBg/50 transition">
+                                    <td class="p-4 font-semibold text-brand-darkText">Max Performance Speed</td>
+                                    <td class="p-4">Up to 36 GB/min synchronous processing</td>
+                                </tr>
+                                <tr class="hover:bg-brand-lightBg/50 transition">
+                                    <td class="p-4 font-semibold text-brand-darkText">Operation Architecture</td>
+                                    <td class="p-4">Standalone FPGA Engine Controller</td>
+                                </tr>
+                                <tr class="hover:bg-brand-lightBg/50 transition">
+                                    <td class="p-4 font-semibold text-brand-darkText">Display Indicators</td>
+                                    <td class="p-4">Backlit Monochrome Real-time LCD Panel</td>
+                                </tr>
+                                <tr class="hover:bg-brand-lightBg/50 transition">
+                                    <td class="p-4 font-semibold text-brand-darkText">Power Module Input</td>
+                                    <td class="p-4">Universal AC 115V-230V Compliant Switcher</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-                <div class="flex justify-between py-2.5 border-b border-brand-border">
-                    <span class="text-brand-mutedText">Operation Architecture</span>
-                    <span class="font-semibold text-brand-darkText">Standalone FPGA Engine Controller</span>
-                </div>
-                <div class="flex justify-between py-2.5 border-b border-brand-border md:border-b-0">
-                    <span class="text-brand-mutedText">Display Indicators</span>
-                    <span class="font-semibold text-brand-darkText">Backlit Monochrome Real-time LCD Panel</span>
-                </div>
-                <div class="flex justify-between py-2.5 md:border-b-0">
-                    <span class="text-brand-mutedText">Power Module Input</span>
-                    <span class="font-semibold text-brand-darkText">Universal AC 115V-230V Compliant Switcher</span>
-                </div>
+
             </div>
         </div>
     </section>
@@ -321,25 +367,28 @@
             qtyInput.value = currentVal;
         }
 
-        // Product Descriptive Tab Switching Routing Component
-        function switchTab(tabId) {
-            const tabs = document.getElementsByClassName('tab-content');
-            for (let i = 0; i < tabs.length; i++) {
-                tabs[i].classList.remove('active');
+        // NEW: Premium Left-Hand Vertical Side Tab Swapper Engine
+        function toggleFigmaTab(panelId) {
+            // Hide all tab text panel block nodes
+            const panels = document.getElementsByClassName('tab-panel-node');
+            for (let i = 0; i < panels.length; i++) {
+                panels[i].classList.remove('active');
             }
-            document.getElementById(tabId).classList.add('active');
+            // Display targeted content block node
+            document.getElementById(panelId).classList.add('active');
 
-            const buttons = ['btn-tab-features', 'btn-tab-description', 'btn-tab-sanitization'];
-            buttons.forEach(id => {
-                const btn = document.getElementById(id);
-                if (id === 'btn-' + tabId) {
-                    btn.classList.add('text-brand-blue', 'border-brand-blue');
-                    btn.classList.remove('text-brand-mutedText');
+            // Toggle side panel active selector accent borders dynamically
+            const triggers = document.getElementsByClassName('figma-tab-trigger');
+            for (let i = 0; i < triggers.length; i++) {
+                const currentTrigger = triggers[i];
+                if (currentTrigger.id === 'trigger-' + panelId) {
+                    currentTrigger.classList.add('border-brand-blue', 'text-brand-blue', 'bg-white');
+                    currentTrigger.classList.remove('border-transparent', 'text-brand-mutedText');
                 } else {
-                    btn.classList.remove('text-brand-blue', 'border-brand-blue');
-                    btn.classList.add('text-brand-mutedText');
+                    currentTrigger.classList.remove('border-brand-blue', 'text-brand-blue', 'bg-white');
+                    currentTrigger.classList.add('border-transparent', 'text-brand-mutedText');
                 }
-            });
+            }
         }
     </script>
 </body>
