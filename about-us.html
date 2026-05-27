@@ -11,7 +11,7 @@
             theme: {
                 extend: {
                     animation: {
-                        'infinite-scroll': 'infinite-scroll 25s linear infinite',
+                        'infinite-scroll': 'infinite-scroll 30s linear infinite',
                     },
                     keyframes: {
                         'infinite-scroll': {
@@ -28,13 +28,15 @@
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans antialiased overflow-x-hidden">
+<body class="bg-slate-50 text-slate-800 font-sans antialiased overflow-x-hidden">
 
-    <div class="bg-[#0052cc] text-white text-center py-1.5 text-[10px] md:text-xs font-semibold tracking-wider uppercase px-4">
+    <!-- Promo Banner -->
+    <div class="bg-[#0052cc] text-white text-center py-2 text-[10px] md:text-xs font-semibold tracking-wider uppercase px-4">
         Extra 10% Off On First Order
     </div>
 
-    <header class="bg-white border-b border-gray-200 sticky top-0 z-50">
+    <!-- Main Navigation Header -->
+    <header class="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 h-20 lg:h-24 flex items-center justify-between gap-4">
             <div class="flex items-center gap-3">
                 <button id="menu-open" class="lg:hidden p-1 text-gray-600 hover:text-[#0052cc] focus:outline-none" aria-label="Open Menu">
@@ -45,259 +47,327 @@
                 </a>
             </div>
 
-            <nav class="hidden lg:flex items-center gap-6 text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                <a href="https://friedazebalili.github.io/Demo/product-category.html" class="hover:text-[#0052cc] transition">M.2 NVMe PCIe SATA</a>
-                <a href="https://friedazebalili.github.io/Demo/product-category.html" class="hover:text-[#0052cc] transition">Hard Drive HDD/SSD</a>
-                <a href="https://friedazebalili.github.io/Demo/product-category.html" class="hover:text-[#0052cc] transition">Flash Media</a>
-                <a href="https://friedazebalili.github.io/Demo/product-category.html" class="hover:text-[#0052cc] transition">CD DVD BD Blu-Ray</a>
-                <a href="https://friedazebalili.github.io/Demo/product-category.html" class="hover:text-[#0052cc] transition">Media & Consumables</a>
+            <nav class="hidden lg:flex items-center gap-6 text-xs font-bold text-slate-600 uppercase tracking-wider">
+                <a href="https://friedazebalili.github.io/Demo/product-category.html" class="hover:text-[#0052cc] transition-colors duration-150">M.2 NVMe PCIe SATA</a>
+                <a href="https://friedazebalili.github.io/Demo/product-category.html" class="hover:text-[#0052cc] transition-colors duration-150">Hard Drive HDD/SSD</a>
+                <a href="https://friedazebalili.github.io/Demo/product-category.html" class="hover:text-[#0052cc] transition-colors duration-150">Flash Media</a>
+                <a href="https://friedazebalili.github.io/Demo/product-category.html" class="hover:text-[#0052cc] transition-colors duration-150">CD DVD BD Blu-Ray</a>
+                <a href="https://friedazebalili.github.io/Demo/product-category.html" class="hover:text-[#0052cc] transition-colors duration-150">Media & Consumables</a>
             </nav>
 
             <div class="flex items-center gap-3 md:gap-4 flex-1 justify-end max-w-xs">
                 <button class="sm:hidden text-gray-600 hover:text-[#0052cc]"><i data-lucide="search" class="w-5 h-5"></i></button>
                 <div class="relative w-full hidden sm:block">
-                    <input type="text" placeholder="Search the store..." class="w-full bg-gray-100 border border-gray-300 rounded-md py-1.5 pl-3 pr-9 text-sm focus:outline-none focus:border-[#0052cc]">
-                    <i data-lucide="search" class="w-4 h-4 text-gray-400 absolute right-3 top-2.5"></i>
+                    <input type="text" placeholder="Search the store..." class="w-full bg-slate-100 border border-slate-200 rounded-md py-2 pl-3 pr-9 text-sm focus:outline-none focus:border-[#0052cc] focus:bg-white transition-all">
+                    <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute right-3 top-3"></i>
                 </div>
                 <button class="text-gray-600 hover:text-[#0052cc]"><i data-lucide="user" class="w-5 h-5"></i></button>
                 <button class="text-gray-600 hover:text-[#0052cc] relative">
                     <i data-lucide="shopping-cart" class="w-5 h-5"></i>
-                    <span class="absolute -top-1 -right-1 bg-[#0052cc] text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center">0</span>
+                    <span class="absolute -top-1 -right-1 bg-[#0052cc] text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">0</span>
                 </button>
             </div>
         </div>
     </header>
 
+    <!-- Mobile Drawer Menu -->
     <div id="mobile-menu" class="fixed inset-0 z-50 hidden" role="dialog" aria-modal="true">
-        <div id="menu-close-backdrop" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm"></div>
-        <div class="fixed inset-y-0 left-0 w-full max-w-xs bg-white shadow-xl flex flex-col z-10 transform transition-transform duration-300">
-            <div class="p-4 border-b border-gray-200 flex items-center justify-between">
+        <div id="menu-close-backdrop" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm"></div>
+        <div class="fixed inset-y-0 left-0 w-full max-w-xs bg-white shadow-2xl flex flex-col z-10 transform transition-transform duration-300">
+            <div class="p-4 border-b border-slate-100 flex items-center justify-between">
                 <img src="https://www.produplicator.com/cdn/shop/files/Produplicator_-_500_x_260_180x.png?v=1776179483" alt="ProDuplicator Logo" class="h-12 w-auto object-contain">
-                <button id="menu-close" class="p-1 text-gray-500 hover:text-slate-900"><i data-lucide="x" class="w-6 h-6"></i></button>
+                <button id="menu-close" class="p-2 text-slate-500 hover:text-slate-900"><i data-lucide="x" class="w-6 h-6"></i></button>
             </div>
             <nav class="flex-1 overflow-y-auto p-4 space-y-1">
-                <a href="#" class="block px-3 py-2.5 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-[#0052cc] transition">M.2 NVMe PCIe SATA</a>
-                <a href="#" class="block px-3 py-2.5 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-[#0052cc] transition">Hard Drive HDD/SSD</a>
-                <a href="#" class="block px-3 py-2.5 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-[#0052cc] transition">Flash Media</a>
-                <a href="#" class="block px-3 py-2.5 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-[#0052cc] transition">CD DVD BD Blu-Ray</a>
-                <a href="#" class="block px-3 py-2.5 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-[#0052cc] transition">Media & Consumables</a>
+                <a href="https://friedazebalili.github.io/Demo/product-category.html" class="block px-3 py-3 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-50 hover:text-[#0052cc]">M.2 NVMe PCIe SATA</a>
+                <a href="https://friedazebalili.github.io/Demo/product-category.html" class="block px-3 py-3 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-50 hover:text-[#0052cc]">Hard Drive HDD/SSD</a>
+                <a href="https://friedazebalili.github.io/Demo/product-category.html" class="block px-3 py-3 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-50 hover:text-[#0052cc]">Flash Media</a>
+                <a href="https://friedazebalili.github.io/Demo/product-category.html" class="block px-3 py-3 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-50 hover:text-[#0052cc]">CD DVD BD Blu-Ray</a>
+                <a href="https://friedazebalili.github.io/Demo/product-category.html" class="block px-3 py-3 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-50 hover:text-[#0052cc]">Media & Consumables</a>
             </nav>
-            <div class="p-4 border-t border-gray-200 bg-gray-50 space-y-2">
-                <a href="#" class="block w-full text-center bg-[#0052cc] text-white py-2 rounded text-xs font-semibold">Shop Catalog</a>
-                <a href="#" class="block w-full text-center border border-gray-300 text-gray-600 py-2 rounded text-xs font-semibold bg-white">Contact Support</a>
+            <div class="p-4 border-t border-slate-100 bg-slate-50 space-y-2">
+                <a href="https://friedazebalili.github.io/Demo/product-category.html" class="block w-full text-center bg-[#0052cc] text-white py-2.5 rounded-md text-xs font-bold tracking-wider uppercase">Shop Catalog</a>
             </div>
         </div>
     </div>
 
-    <!-- Clean Corporate Hero Section using #4B83C0 and native hardware graphics -->
-    <section class="bg-[#4B83C0] text-white py-16 md:py-20 px-4 relative overflow-hidden border-b border-blue-700/20">
+    <!-- Corporate Identity Hero Section -->
+    <section class="bg-[#4B83C0] text-white py-16 md:py-24 px-4 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]"></div>
         <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
-            <div class="lg:col-span-7 text-left">
-                <p class="text-xs font-bold uppercase tracking-widest text-blue-100 mb-3 flex items-center gap-2">
-                    <span class="w-2 h-2 rounded-full bg-green-400 inline-block"></span> Hardware Manufacturing & Duplication Specialist
+            <div class="lg:col-span-7 space-y-6">
+                <span class="inline-flex items-center gap-2 bg-white/10 border border-white/20 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-blue-50">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400"></span> Enterprise Infrastructure Specialists
+                </span>
+                <h1 class="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-tight">
+                    Welcome to ProDuplicator
+                </h1>
+                <p class="text-blue-50 text-sm md:text-base leading-relaxed max-w-2xl font-medium">
+                    At ProDuplicator, we engineering high-speed standalone duplicators and professional forensic-grade diagnostic equipment for flash memories, high-capacity hard drives, and secure optical media formats. We bridge hardware precision with operational efficiency.
                 </p>
-                <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight mb-6 text-white">Welcome to ProDuplicator!</h1>
-                <p class="text-blue-50 text-sm md:text-base leading-relaxed font-normal max-w-3xl">
-                    At ProDuplicator, we specialize in high-quality duplicators and professional equipment for flash memory, hard drives, and optical discs. Our mission is to provide businesses, organizations, and individuals with reliable, high-speed, and efficient solutions for data duplication and media production.
-                </p>
+                <div class="pt-2">
+                    <a href="https://friedazebalili.github.io/Demo/product-category.html" class="inline-flex items-center gap-2 bg-white text-[#0052cc] px-6 py-3 rounded-md text-sm font-bold uppercase tracking-wider hover:bg-blue-50 transition-all shadow-md">
+                        Explore Hardware Systems <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
             </div>
             
-            <!-- Custom Styled Professional Hardware Representation -->
-            <div class="lg:col-span-5 hidden lg:grid grid-cols-2 gap-4">
-                <div class="bg-white/5 border border-white/10 rounded-xl p-5 text-center flex flex-col items-center justify-center">
-                    <i data-lucide="hard-drive" class="w-10 h-10 text-blue-100 mb-2"></i>
-                    <span class="text-xs font-semibold tracking-wider text-white uppercase">M.2 & SSD Storage</span>
+            <!-- Tech Spec Highlighting Panel -->
+            <div class="lg:col-span-5 grid grid-cols-2 gap-4">
+                <div class="bg-white/10 backdrop-blur-sm border border-white/10 rounded-xl p-6 text-left">
+                    <h4 class="text-2xl font-black text-white mb-1">0%</h4>
+                    <p class="text-[11px] font-bold uppercase tracking-wider text-blue-100">PC Dependencies</p>
+                    <p class="text-xs text-blue-50/80 mt-1 leading-normal">Pure standalone FPGA-driven engines protect operations against network environments.</p>
                 </div>
-                <div class="bg-white/5 border border-white/10 rounded-xl p-5 text-center flex flex-col items-center justify-center">
-                    <i data-lucide="disc" class="w-10 h-10 text-blue-100 mb-2"></i>
-                    <span class="text-xs font-semibold tracking-wider text-white uppercase">Optical Media</span>
+                <div class="bg-white/10 backdrop-blur-sm border border-white/10 rounded-xl p-6 text-left">
+                    <h4 class="text-2xl font-black text-white mb-1">600+</h4>
+                    <p class="text-[11px] font-bold uppercase tracking-wider text-blue-100">MB/s Per Port</p>
+                    <p class="text-xs text-blue-50/80 mt-1 leading-normal">Uncompromised bandwidth targets sustained fully across complex massive concurrent clones.</p>
                 </div>
-                <div class="bg-white/5 border border-white/10 rounded-xl p-5 text-center flex flex-col items-center justify-center">
-                    <i data-lucide="cpu" class="w-10 h-10 text-blue-100 mb-2"></i>
-                    <span class="text-xs font-semibold tracking-wider text-white uppercase">Standalone Chips</span>
+                <div class="bg-white/10 backdrop-blur-sm border border-white/10 rounded-xl p-6 text-left">
+                    <h4 class="text-2xl font-black text-white mb-1">100%</h4>
+                    <p class="text-[11px] font-bold uppercase tracking-wider text-blue-100">Bit-by-Bit Audit</p>
+                    <p class="text-xs text-blue-50/80 mt-1 leading-normal">CRC check routines verify structural content validation and verification.</p>
                 </div>
-                <div class="bg-white/5 border border-white/10 rounded-xl p-5 text-center flex flex-col items-center justify-center">
-                    <i data-lucide="copy" class="w-10 h-10 text-blue-100 mb-2"></i>
-                    <span class="text-xs font-semibold tracking-wider text-white uppercase">1-to-Many Cloning</span>
+                <div class="bg-white/10 backdrop-blur-sm border border-white/10 rounded-xl p-6 text-left">
+                    <h4 class="text-2xl font-black text-white mb-1">24/7</h4>
+                    <p class="text-[11px] font-bold uppercase tracking-wider text-blue-100">Continuous Run</p>
+                    <p class="text-xs text-blue-50/80 mt-1 leading-normal">Industrial thermal cooling configurations designed explicitly for heavy production lines.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Content-First Feature Grid Section -->
+    <!-- PREMIUM "WHY BUY FROM US" SPLIT SECTION -->
+    <section class="py-16 md:py-24 bg-white border-b border-slate-100 px-4">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            <!-- Left Side: Highly Styled Context-Appropriate Hardware Photography Layout -->
+            <div class="lg:col-span-6 relative">
+                <div class="absolute -inset-2 bg-gradient-to-r from-[#0052cc] to-[#4B83C0] rounded-2xl opacity-10 blur-xl"></div>
+                <div class="relative overflow-hidden rounded-xl border border-slate-200 bg-slate-900 aspect-[4/3] group shadow-lg">
+                    <!-- High-quality hardware photography visualization representing industrial Flash/NVMe workflows -->
+                    <img src="https://images.unsplash.com/photo-1591405351990-4726e331f141?auto=format&fit=crop&w=1000&q=80" 
+                         alt="Industrial hardware components manufacturing duplication engineering center" 
+                         class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-90">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+                    
+                    <!-- Dynamic floating label matching high-end e-commerce pages -->
+                    <div class="absolute bottom-6 left-6 right-6 bg-white/95 backdrop-blur-md p-4 rounded-lg border border-slate-200/50 flex items-center justify-between shadow-lg">
+                        <div>
+                            <p class="text-xs font-black text-slate-900 uppercase tracking-wider">ProDuplicator Lab Systems</p>
+                            <p class="text-[11px] text-slate-500 font-medium">Verified industrial hardware compliance verified</p>
+                        </div>
+                        <span class="bg-slate-100 text-slate-800 text-[10px] font-bold px-2.5 py-1 rounded border border-slate-200 uppercase tracking-wider">Since 1997</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side: Clean Structured Technical Arguments -->
+            <div class="lg:col-span-6 space-y-6">
+                <div>
+                    <p class="text-xs font-black text-[#0052cc] uppercase tracking-widest mb-2">The ProDuplicator Advantage</p>
+                    <h2 class="text-2xl md:text-4xl font-extrabold tracking-tight text-slate-900 leading-tight">
+                        Why Mission-Critical Teams Depend on Our Systems
+                    </h2>
+                </div>
+                
+                <p class="text-sm text-slate-500 leading-relaxed font-medium">
+                    We construct more than simple deployment chassis systems. Our hardware delivers architectural verification layers to protect sensitive workflows across sectors.
+                </p>
+
+                <div class="space-y-4 pt-2">
+                    <div class="flex items-start gap-4 p-4 rounded-xl hover:bg-slate-50 transition-colors duration-150 border border-transparent hover:border-slate-100">
+                        <div class="w-10 h-10 rounded-lg bg-blue-50 text-[#0052cc] flex items-center justify-center shrink-0">
+                            <i data-lucide="shield-check" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-bold text-slate-900 mb-1">Defense & Aerospace Grade Protocols</h4>
+                            <p class="text-xs text-slate-500 leading-relaxed">Built to conform perfectly with secure data erasure standards and multi-pass patterns required by government agencies.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4 p-4 rounded-xl hover:bg-slate-50 transition-colors duration-150 border border-transparent hover:border-slate-100">
+                        <div class="w-10 h-10 rounded-lg bg-blue-50 text-[#0052cc] flex items-center justify-center shrink-0">
+                            <i data-lucide="refresh-cw" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-bold text-slate-900 mb-1">Asynchronous Mode Architecture</h4>
+                            <p class="text-xs text-slate-500 leading-relaxed">No waiting for cycles to finish. Slots run independently so operators can swap drives on-the-fly continuously without pausing lines.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4 p-4 rounded-xl hover:bg-slate-50 transition-colors duration-150 border border-transparent hover:border-slate-100">
+                        <div class="w-10 h-10 rounded-lg bg-blue-50 text-[#0052cc] flex items-center justify-center shrink-0">
+                            <i data-lucide="badge-check" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-bold text-slate-900 mb-1">Comprehensive Warranty Architecture</h4>
+                            <p class="text-xs text-slate-500 leading-relaxed">Backed fully by premium domestic parts access, rapid verification protocols, and live phone assistance directly with technicians.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Structural Feature Grid Details Section -->
     <section class="max-w-7xl mx-auto px-4 py-16 md:py-24">
+        <div class="text-center max-w-2xl mx-auto mb-12 md:mb-16">
+            <h3 class="text-xl md:text-3xl font-extrabold tracking-tight text-slate-900">Engineered for Technical Infrastructure Performance</h3>
+            <p class="text-xs md:text-sm text-slate-500 mt-2">Professional duplication requires structural hardware synchronization to completely bypass traditional operating system latency bottlenecks.</p>
+        </div>
+
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-            
-            <div class="bg-white border border-gray-200 rounded-xl p-6 md:p-8 flex gap-5 shadow-sm hover:border-blue-400 transition duration-200">
-                <div class="p-3 bg-blue-50 text-[#0052cc] rounded-lg h-fit flex-shrink-0">
-                    <i data-lucide="zap" class="w-5 h-5 stroke-[2]"></i>
-                </div>
+            <div class="bg-white border border-slate-200 rounded-xl p-6 md:p-8 flex gap-5 shadow-sm hover:border-blue-400 hover:shadow-md transition-all duration-200">
+                <div class="p-3 bg-blue-50 text-[#0052cc] rounded-lg h-fit flex-shrink-0"><i data-lucide="zap" class="w-5 h-5 stroke-[2]"></i></div>
                 <div>
-                    <h3 class="font-bold text-base md:text-lg text-slate-900 tracking-tight mb-2">High Performance & Speed</h3>
-                    <p class="text-xs md:text-sm text-gray-500 leading-relaxed">Our duplicators are engineered with advanced hardware to deliver maximum data transfer rates, drastically reducing production times without compromising accuracy.</p>
+                    <h3 class="font-bold text-base text-slate-900 mb-2">High Performance & Speed</h3>
+                    <p class="text-xs md:text-sm text-slate-500 leading-relaxed">Our duplicators are engineered with advanced hardware to deliver maximum data transfer rates, drastically reducing production times without compromising accuracy.</p>
                 </div>
             </div>
 
-            <div class="bg-white border border-gray-200 rounded-xl p-6 md:p-8 flex gap-5 shadow-sm hover:border-blue-400 transition duration-200">
-                <div class="p-3 bg-blue-50 text-[#0052cc] rounded-lg h-fit flex-shrink-0">
-                    <i data-lucide="cpu" class="w-5 h-5 stroke-[2]"></i>
-                </div>
+            <div class="bg-white border border-slate-200 rounded-xl p-6 md:p-8 flex gap-5 shadow-sm hover:border-blue-400 hover:shadow-md transition-all duration-200">
+                <div class="p-3 bg-blue-50 text-[#0052cc] rounded-lg h-fit flex-shrink-0"><i data-lucide="cpu" class="w-5 h-5 stroke-[2]"></i></div>
                 <div>
-                    <h3 class="font-bold text-base md:text-lg text-slate-900 tracking-tight mb-2">Standalone Operations</h3>
-                    <p class="text-xs md:text-sm text-gray-500 leading-relaxed">No PC or complex software installations required. Our systems operate independently, ensuring a secure, hassle-free, and virus-free duplicating process.</p>
+                    <h3 class="font-bold text-base text-slate-900 mb-2">Standalone Operations</h3>
+                    <p class="text-xs md:text-sm text-slate-500 leading-relaxed">No PC or complex software installations required. Our systems operate independently, ensuring a secure, hassle-free, and virus-free duplicating process.</p>
                 </div>
             </div>
 
-            <div class="bg-white border border-gray-200 rounded-xl p-6 md:p-8 flex gap-5 shadow-sm hover:border-blue-400 transition duration-200">
-                <div class="p-3 bg-blue-50 text-[#0052cc] rounded-lg h-fit flex-shrink-0">
-                    <i data-lucide="layers" class="w-5 h-5 stroke-[2]"></i>
-                </div>
+            <div class="bg-white border border-slate-200 rounded-xl p-6 md:p-8 flex gap-5 shadow-sm hover:border-blue-400 hover:shadow-md transition-all duration-200">
+                <div class="p-3 bg-blue-50 text-[#0052cc] rounded-lg h-fit flex-shrink-0"><i data-lucide="layers" class="w-5 h-5 stroke-[2]"></i></div>
                 <div>
-                    <h3 class="font-bold text-base md:text-lg text-slate-900 tracking-tight mb-2">Diverse Media Support</h3>
-                    <p class="text-xs md:text-sm text-gray-500 leading-relaxed">Whether you need to clone M.2 NVMe SSDs, USB drives, SD cards, or Blu-ray discs, we offer dedicated and versatile hardware options tailored to your workflow requirements.</p>
+                    <h3 class="font-bold text-base text-slate-900 mb-2">Diverse Media Support</h3>
+                    <p class="text-xs md:text-sm text-slate-500 leading-relaxed">Whether you need to clone M.2 NVMe SSDs, USB drives, SD cards, or Blu-ray discs, we offer dedicated and versatile hardware options tailored to your workflow requirements.</p>
                 </div>
             </div>
 
-            <div class="bg-white border border-gray-200 rounded-xl p-6 md:p-8 flex gap-5 shadow-sm hover:border-blue-400 transition duration-200">
-                <div class="p-3 bg-blue-50 text-[#0052cc] rounded-lg h-fit flex-shrink-0">
-                    <i data-lucide="headphones" class="w-5 h-5 stroke-[2]"></i>
-                </div>
+            <div class="bg-white border border-slate-200 rounded-xl p-6 md:p-8 flex gap-5 shadow-sm hover:border-blue-400 hover:shadow-md transition-all duration-200">
+                <div class="p-3 bg-blue-50 text-[#0052cc] rounded-lg h-fit flex-shrink-0"><i data-lucide="headphones" class="w-5 h-5 stroke-[2]"></i></div>
                 <div>
-                    <h3 class="font-bold text-base md:text-lg text-slate-900 tracking-tight mb-2">Expert Technical Care</h3>
-                    <p class="text-xs md:text-sm text-gray-500 leading-relaxed">Every ProDuplicator machine is backed by an experienced technical support team ready to assist with configurations, setup guidance, and ongoing hardware care.</p>
+                    <h3 class="font-bold text-base text-slate-900 mb-2">Expert Technical Care</h3>
+                    <p class="text-xs md:text-sm text-slate-500 leading-relaxed">Every ProDuplicator machine is backed by an experienced technical support team ready to assist with configurations, setup guidance, and ongoing hardware care.</p>
                 </div>
             </div>
-
         </div>
     </section>
 
-   <section class="bg-white border-y border-gray-100 py-20 md:py-32 text-center px-4 mb-16 md:mb-20 overflow-hidden">
+    <!-- Global Trust & Infinite Client Logo Loop -->
+    <section class="bg-white border-y border-slate-100 py-16 md:py-24 text-center px-4 overflow-hidden">
         <div class="max-w-6xl mx-auto">
-            <p class="text-sm md:text-base font-bold text-blue-600 uppercase tracking-widest mb-4">Trusted Worldwide Since 1997</p>
-            <h3 class="text-2xl md:text-4xl font-bold text-slate-900 max-w-4xl mx-auto leading-snug mb-12 md:mb-20 px-2">
+            <p class="text-xs font-black text-blue-600 uppercase tracking-widest mb-3">Trusted Worldwide Since 1997</p>
+            <h3 class="text-xl md:text-3xl font-black text-slate-900 max-w-3xl mx-auto leading-snug mb-12">
                 Delivering Industry-Leading Media Duplication, Testing, Erasure, Recovery, and Computer Forensics Solutions
             </h3>
-            <div class="relative w-full overflow-hidden before:absolute before:left-0 before:top-0 before:z-10 before:h-full before:w-12 md:before:w-20 before:bg-gradient-to-r before:from-white before:to-transparent after:absolute after:right-0 after:top-0 after:z-10 after:h-full after:w-12 md:after:w-20 after:bg-gradient-to-l after:from-white after:to-transparent">
-                <div class="flex w-[200%] animate-infinite-scroll items-center select-none">
-                    
-                    <div class="flex w-1/2 justify-around items-center gap-4 sm:gap-8 px-2">
-                        <img src="https://1000logos.net/wp-content/uploads/2020/04/Lockheed-Martin-Logo.jpg" alt="Lockheed Martin" class="h-12 sm:h-20 w-auto object-contain max-w-[140px] sm:max-w-[220px]">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/64/Warner_Bros_logo.svg" alt="Warner Bros" class="h-14 sm:h-20 w-auto object-contain max-w-[100px] sm:max-w-[150px]">
-                        <img src="https://media.defense.gov/2020/Mar/10/2002265419/-1/-1/0/200310-A-UM169-001.PNG" alt="U.S. Army" class="h-16 sm:h-24 w-auto object-contain max-w-[100px] sm:max-w-[160px]">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/e/e5/NASA_logo.svg" alt="NASA" class="h-14 sm:h-20 w-auto object-contain max-w-[100px] sm:max-w-[150px]">
-                        <img src="https://1000logos.net/wp-content/uploads/2020/09/Raytheon-Emblem.jpg" alt="Raytheon" class="h-10 sm:h-16 w-auto object-contain max-w-[140px] sm:max-w-[220px]">
-                        <img src="https://www.abbott-pm.com/files/content/ClientLogos/GeneralDynamicsLogo.png" alt="GeneralDynamics" class="h-10 sm:h-16 w-auto object-contain max-w-[140px] sm:max-w-[220px]">
+            
+            <div class="relative w-full overflow-hidden before:absolute before:left-0 before:top-0 before:z-10 before:h-full before:w-16 before:bg-gradient-to-r before:from-white before:to-transparent after:absolute after:right-0 after:top-0 after:z-10 after:h-full after:w-16 after:bg-gradient-to-l after:from-white after:to-transparent">
+                <div class="flex w-[200%] animate-infinite-scroll items-center select-none py-2">
+                    <div class="flex w-1/2 justify-around items-center gap-8 px-4">
+                        <img src="https://1000logos.net/wp-content/uploads/2020/04/Lockheed-Martin-Logo.jpg" alt="Lockheed Martin" class="h-10 sm:h-14 w-auto object-contain mix-blend-multiply opacity-60 hover:opacity-100 transition-opacity">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/64/Warner_Bros_logo.svg" alt="Warner Bros" class="h-12 sm:h-16 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity">
+                        <img src="https://media.defense.gov/2020/Mar/10/2002265419/-1/-1/0/200310-A-UM169-001.PNG" alt="U.S. Army" class="h-12 sm:h-16 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/e/e5/NASA_logo.svg" alt="NASA" class="h-12 sm:h-16 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity">
+                        <img src="https://1000logos.net/wp-content/uploads/2020/09/Raytheon-Emblem.jpg" alt="Raytheon" class="h-8 sm:h-12 w-auto object-contain mix-blend-multiply opacity-60 hover:opacity-100 transition-opacity">
                     </div>
-
-                    <div class="flex w-1/2 justify-around items-center gap-4 sm:gap-8 px-2" aria-hidden="true">
-                        <img src="https://1000logos.net/wp-content/uploads/2020/04/Lockheed-Martin-Logo.jpg" alt="Lockheed Martin" class="h-12 sm:h-20 w-auto object-contain max-w-[140px] sm:max-w-[220px]">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/64/Warner_Bros_logo.svg" alt="Warner Bros" class="h-14 sm:h-20 w-auto object-contain max-w-[100px] sm:max-w-[150px]">
-                        <img src="https://media.defense.gov/2020/Mar/10/2002265419/-1/-1/0/200310-A-UM169-001.PNG" alt="U.S. Army" class="h-16 sm:h-24 w-auto object-contain max-w-[100px] sm:max-w-[160px]">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/e/e5/NASA_logo.svg" alt="NASA" class="h-14 sm:h-20 w-auto object-contain max-w-[100px] sm:max-w-[150px]">
-                        <img src="https://1000logos.net/wp-content/uploads/2020/09/Raytheon-Emblem.jpg" alt="Raytheon" class="h-10 sm:h-16 w-auto object-contain max-w-[140px] sm:max-w-[220px]">
-                        <img src="https://www.abbott-pm.com/files/content/ClientLogos/GeneralDynamicsLogo.png" alt="General Dynamics" class="h-10 sm:h-16 w-auto object-contain max-w-[140px] sm:max-w-[220px]">
+                    <div class="flex w-1/2 justify-around items-center gap-8 px-4" aria-hidden="true">
+                        <img src="https://1000logos.net/wp-content/uploads/2020/04/Lockheed-Martin-Logo.jpg" alt="Lockheed Martin" class="h-10 sm:h-14 w-auto object-contain mix-blend-multiply opacity-60 hover:opacity-100 transition-opacity">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/64/Warner_Bros_logo.svg" alt="Warner Bros" class="h-12 sm:h-16 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity">
+                        <img src="https://media.defense.gov/2020/Mar/10/2002265419/-1/-1/0/200310-A-UM169-001.PNG" alt="U.S. Army" class="h-12 sm:h-16 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/e/e5/NASA_logo.svg" alt="NASA" class="h-12 sm:h-16 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity">
+                        <img src="https://1000logos.net/wp-content/uploads/2020/09/Raytheon-Emblem.jpg" alt="Raytheon" class="h-8 sm:h-12 w-auto object-contain mix-blend-multiply opacity-60 hover:opacity-100 transition-opacity">
                     </div>
-
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="bg-gray-50 border-b border-gray-200 py-12 md:py-16 px-4 text-center">
-        <h2 class="text-lg md:text-xl font-bold text-slate-900 mb-1.5">What Our Customers Say</h2>
-        <div class="flex items-center justify-center gap-1 mb-8 md:mb-10 text-xs md:text-sm font-semibold">
-            <div class="flex text-amber-400"><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i></div>
-            <span class="text-slate-900 ml-1">4.8</span> <span class="text-gray-400 font-normal text-[11px] ml-1">based on 61 verified reviews</span>
+    <!-- Verified Client Reviews Section -->
+    <section class="bg-slate-50 border-b border-slate-200 py-16 px-4 text-center">
+        <h2 class="text-xl font-extrabold text-slate-900 mb-2">Proven Field Deployment</h2>
+        <div class="flex items-center justify-center gap-1 mb-10 text-xs font-bold">
+            <div class="flex text-amber-400"><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i></div>
+            <span class="text-slate-900 ml-1">4.8 Rating</span> <span class="text-slate-400 font-normal ml-1">across verified deployment architectures</span>
         </div>
 
-        <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 text-left">
-            <div class="bg-white p-4 md:p-5 border border-gray-200 rounded-lg flex flex-col justify-between shadow-sm">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-left">
+            <div class="bg-white p-5 border border-slate-200 rounded-xl flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow">
                 <div>
-                    <div class="flex text-amber-400 mb-2"><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i></div>
+                    <div class="flex text-amber-400 mb-3"><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i></div>
                     <h5 class="font-bold text-xs text-slate-900 mb-1">Rock solid configurations</h5>
-                    <p class="text-[11px] text-gray-500 leading-relaxed mb-4">We run the 1-to-15 NVMe unit daily across hundreds of drives. Zero failures in 18 months and perfect compliance processing.</p>
+                    <p class="text-[12px] text-slate-500 leading-relaxed mb-4">We run the 1-to-15 NVMe unit daily across hundreds of drives. Zero failures in 18 months and perfect compliance processing.</p>
                 </div>
                 <div>
-                    <p class="text-xs font-semibold text-slate-900">David P.</p>
-                    <p class="text-[10px] text-blue-600 font-medium">Verified Purchase</p>
+                    <p class="text-xs font-bold text-slate-900">David P.</p>
+                    <p class="text-[10px] text-blue-600 font-bold uppercase tracking-wider">Verified Enterprise Buyer</p>
                 </div>
             </div>
-            <div class="bg-white p-4 md:p-5 border border-gray-200 rounded-lg flex flex-col justify-between shadow-sm">
+            <div class="bg-white p-5 border border-slate-200 rounded-xl flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow">
                 <div>
-                    <div class="flex text-amber-400 mb-2"><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i></div>
+                    <div class="flex text-amber-400 mb-3"><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i></div>
                     <h5 class="font-bold text-xs text-slate-900 mb-1">Cut cloning time in half</h5>
-                    <p class="text-[11px] text-gray-500 leading-relaxed mb-4">Switched from a PC-based workflow to standalone. Setup took minutes and throughput jumped instantly. Highly optimized hardware.</p>
+                    <p class="text-[12px] text-slate-500 leading-relaxed mb-4">Switched from a PC-based workflow to standalone. Setup took minutes and throughput jumped instantly. Highly optimized hardware.</p>
                 </div>
                 <div>
-                    <p class="text-xs font-semibold text-slate-900">Nate C.</p>
-                    <p class="text-[10px] text-blue-600 font-medium">Verified Purchase</p>
+                    <p class="text-xs font-bold text-slate-900">Nate C.</p>
+                    <p class="text-[10px] text-blue-600 font-bold uppercase tracking-wider">Verified Tech Lead</p>
                 </div>
             </div>
-            <div class="bg-white p-4 md:p-5 border border-gray-200 rounded-lg flex flex-col justify-between shadow-sm">
+            <div class="bg-white p-5 border border-slate-200 rounded-xl flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow">
                 <div>
-                    <div class="flex text-amber-400 mb-2"><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i></div>
+                    <div class="flex text-amber-400 mb-3"><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i></div>
                     <h5 class="font-bold text-xs text-slate-900 mb-1">Reliable engineering support</h5>
-                    <p class="text-[11px] text-gray-500 leading-relaxed mb-4">Support tech actually picked up the phone and guided our hardware questions. Incredible client relations management.</p>
+                    <p class="text-[12px] text-slate-500 leading-relaxed mb-4">Support tech actually picked up the phone and guided our hardware questions. Incredible client relations management.</p>
                 </div>
                 <div>
-                    <p class="text-xs font-semibold text-slate-900">James T.</p>
-                    <p class="text-[10px] text-blue-600 font-medium">Verified Purchase</p>
+                    <p class="text-xs font-bold text-slate-900">James T.</p>
+                    <p class="text-[10px] text-blue-600 font-bold uppercase tracking-wider">Verified Purchase</p>
                 </div>
             </div>
-            <div class="bg-white p-4 md:p-5 border border-gray-200 rounded-lg flex flex-col justify-between shadow-sm">
+            <div class="bg-white p-5 border border-slate-200 rounded-xl flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow">
                 <div>
-                    <div class="flex text-amber-400 mb-2"><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i></div>
+                    <div class="flex text-amber-400 mb-3"><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i></div>
                     <h5 class="font-bold text-xs text-slate-900 mb-1">Excellent overall build quality</h5>
-                    <p class="text-[11px] text-gray-500 leading-relaxed mb-4">Solid metal chassis, explicit parameters display layout, and highly reactive responsive input elements. Exceptional.</p>
+                    <p class="text-[12px] text-slate-500 leading-relaxed mb-4">Solid metal chassis, explicit parameters display layout, and highly reactive responsive input elements. Exceptional.</p>
                 </div>
                 <div>
-                    <p class="text-xs font-semibold text-slate-900">Priya S.</p>
-                    <p class="text-[10px] text-blue-600 font-medium">Verified Purchase</p>
+                    <p class="text-xs font-bold text-slate-900">Priya S.</p>
+                    <p class="text-[10px] text-blue-600 font-bold uppercase tracking-wider">Verified SysAdmin</p>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Industrial Footer -->
     <footer class="bg-[#091526] text-slate-300 font-sans pt-16 pb-12">
         <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-12 gap-y-10 md:gap-x-8 lg:gap-x-12 items-start">
-            
-            <div class="md:col-span-4 space-y-5 text-[13px] leading-relaxed max-w-sm">
-                <p class="text-slate-400">
-                    Your trusted partner for enterprise-grade duplication hardware. Delivering speed, reliability, and precision since 2010.
+            <div class="md:col-span-4 space-y-4 text-[13px] leading-relaxed max-w-sm">
+                <p class="text-slate-400 font-medium">
+                    Your trusted partner for enterprise-grade duplication hardware. Delivering validation speed, absolute reliability, and physical data sector precision since 2010.
                 </p>
-                <div class="space-y-3 pt-2 text-slate-300">
-                    <p class="flex items-center gap-3">
-                        <i data-lucide="phone" class="w-4 h-4 text-slate-400"></i>
-                        <span>1-800-DUPLICATE (387-5422)</span>
-                    </p>
-                    <p class="flex items-center gap-3">
-                        <i data-lucide="mail" class="w-4 h-4 text-slate-400"></i>
-                        <a href="mailto:sales@produplicator.com" class="hover:text-white transition">sales@produplicator.com</a>
-                    </p>
-                    <p class="flex items-start gap-3">
-                        <i data-lucide="map-pin" class="w-4 h-4 text-slate-400 mt-0.5"></i>
-                        <span>123 Tech Drive, Silicon Valley, CA 94025</span>
-                    </p>
+                <div class="space-y-3 pt-2 text-slate-300 font-semibold">
+                    <p class="flex items-center gap-3"><i data-lucide="phone" class="w-4 h-4 text-slate-400"></i><span>1-800-DUPLICATE (387-5422)</span></p>
+                    <p class="flex items-center gap-3"><i data-lucide="mail" class="w-4 h-4 text-slate-400"></i><a href="mailto:sales@produplicator.com" class="hover:text-white transition">sales@produplicator.com</a></p>
+                    <p class="flex items-start gap-3"><i data-lucide="map-pin" class="w-4 h-4 text-slate-400 mt-0.5"></i><span>123 Tech Drive, Silicon Valley, CA 94025</span></p>
                 </div>
             </div>
 
             <div class="md:col-span-8 grid grid-cols-3 gap-x-4 sm:gap-x-8">
                 <div class="space-y-4">
-                    <h4 class="text-white text-sm font-semibold tracking-wide">Shop</h4>
-                    <ul class="space-y-3 text-[13px] text-slate-400">
+                    <h4 class="text-white text-xs font-bold tracking-wider uppercase">Shop</h4>
+                    <ul class="space-y-3 text-[13px] text-slate-400 font-medium">
                         <li><a href="https://friedazebalili.github.io/Demo/product-category.html" class="hover:text-white transition">HDD/SSD Duplicators</a></li>
                         <li><a href="https://friedazebalili.github.io/Demo/product-category.html" class="hover:text-white transition">USB Duplicators</a></li>
                         <li><a href="https://friedazebalili.github.io/Demo/product-category.html" class="hover:text-white transition">DVD/CD Duplicators</a></li>
                         <li><a href="https://friedazebalili.github.io/Demo/product-category.html" class="hover:text-white transition">Data Sanitizers</a></li>
-                        <li><a href="https://friedazebalili.github.io/Demo/product-category.html" class="hover:text-white transition">Accessories</a></li>
                     </ul>
                 </div>
 
                 <div class="space-y-4">
-                    <h4 class="text-white text-sm font-semibold tracking-wide">Support</h4>
-                    <ul class="space-y-3 text-[13px] text-slate-400">
+                    <h4 class="text-white text-xs font-bold tracking-wider uppercase">Support</h4>
+                    <ul class="space-y-3 text-[13px] text-slate-400 font-medium">
                         <li><a href="https://friedazebalili.github.io/Demo/product-category.html" class="hover:text-white transition">Help Center</a></li>
-                        <li><a href="https://friedazebalili.github.io/Demo/product-category.html" class="hover:text-white transition">FAQs</a></li>
                         <li><a href="https://friedazebalili.github.io/Demo/product-category.html" class="hover:text-white transition">Warranty & Returns</a></li>
                         <li><a href="https://friedazebalili.github.io/Demo/product-category.html" class="hover:text-white transition">Contact Us</a></li>
                         <li><a href="https://friedazebalili.github.io/Demo/product-category.html" class="hover:text-white transition">Product Manuals</a></li>
@@ -305,11 +375,10 @@
                 </div>
 
                 <div class="space-y-4">
-                    <h4 class="text-white text-sm font-semibold tracking-wide">Company</h4>
-                    <ul class="space-y-3 text-[13px] text-slate-400">
+                    <h4 class="text-white text-xs font-bold tracking-wider uppercase">Company</h4>
+                    <ul class="space-y-3 text-[13px] text-slate-400 font-medium">
                         <li><a href="https://friedazebalili.github.io/Demo/about-us.html" class="hover:text-white transition">About Us</a></li>
                         <li><a href="https://friedazebalili.github.io/Demo/about-us.html" class="hover:text-white transition">Careers</a></li>
-                        <li><a href="https://friedazebalili.github.io/Demo/about-us.html" class="hover:text-white transition">Press & Media</a></li>
                         <li><a href="https://friedazebalili.github.io/Demo/about-us.html" class="hover:text-white transition">Privacy Policy</a></li>
                         <li><a href="https://friedazebalili.github.io/Demo/about-us.html" class="hover:text-white transition">Terms of Service</a></li>
                     </ul>
@@ -318,15 +387,17 @@
         </div>
 
         <div class="max-w-7xl mx-auto px-6 mt-12 pt-8 border-t border-[#12253f]">
-            <p class="text-[12px] text-slate-500 font-medium">
+            <p class="text-[12px] text-slate-500 font-semibold">
                 &copy; 2026 ProDuplicator. All rights reserved.
             </p>
         </div>
     </footer>
 
     <script>
+        // Init Lucide Vectors
         lucide.createIcons();
 
+        // Mobile Menu Elements Handles
         const menuOpenBtn = document.getElementById('menu-open');
         const menuCloseBtn = document.getElementById('menu-close');
         const menuCloseBackdrop = document.getElementById('menu-close-backdrop');
