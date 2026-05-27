@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Epson M.2 SATA/NVMe Duplicator Array - ProDuplicator</title>
+    <title>SYSTOR 1 to 4 M.2 SATA & NVMe Duplicator - ProDuplicator</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <script>
@@ -12,23 +12,11 @@
                 extend: {
                     colors: {
                         brand: {
-                            blue: '#0052cc',
-                            navy: '#0f172a',
-                            lightBg: '#f8fafc'
-                        }
-                    },
-                    animation: {
-                        'drawer-fade-in': 'fadeIn 0.25s ease-out forwards',
-                        'drawer-slide-in': 'slideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards'
-                    },
-                    keyframes: {
-                        fadeIn: {
-                            from: { opacity: 0 },
-                            to: { opacity: 1 }
-                        },
-                        slideIn: {
-                            from: { transform: 'translateX(100%)' },
-                            to: { transform: 'translateX(0)' }
+                            dark: '#0B132B',
+                            card: '#1C2541',
+                            accent: '#D4AF37',
+                            muted: '#5BC0BE',
+                            textMuted: '#A5A1B8'
                         }
                     }
                 }
@@ -42,659 +30,285 @@
         .tab-content.active { display: block; }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans antialiased overflow-x-hidden">
+<body class="bg-[#0A0F1D] text-white font-sans antialiased overflow-x-hidden">
 
-    <div class="bg-[#0052cc] text-white text-center py-1.5 text-[10px] md:text-xs font-semibold tracking-wider uppercase px-4">
+    <div class="bg-[#0052cc] text-white text-center py-2 text-[10px] md:text-xs font-semibold tracking-wider uppercase px-4">
         Extra 10% Off On First Order
     </div>
 
-    <header class="bg-white border-b border-gray-200 sticky top-0 z-40">
-        <div class="max-w-7xl mx-auto px-4 h-20 lg:h-24 flex items-center justify-between gap-4">
+    <header class="bg-[#0A0F1D] border-b border-gray-800 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between gap-4">
             <div class="flex items-center gap-3">
-                <button id="menu-open" class="lg:hidden p-1 text-gray-600 hover:text-[#0052cc] focus:outline-none" aria-label="Open Menu">
+                <button id="menu-open" class="lg:hidden p-1 text-gray-400 hover:text-white" aria-label="Open Menu">
                     <i data-lucide="menu" class="w-6 h-6"></i>
                 </button>
                 <a href="#" class="flex items-center flex-shrink-0">
-                    <img src="https://www.produplicator.com/cdn/shop/files/Produplicator_-_500_x_260_180x.png?v=1776179483" alt="ProDuplicator Logo" class="h-10 lg:h-14 w-auto object-contain">
+                    <span class="text-xl font-black tracking-wider text-white">PRO<span class="text-[#0052cc]">DUPLICATOR</span></span>
                 </a>
             </div>
 
-            <nav class="hidden lg:flex items-center gap-6 text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                <a href="#" class="hover:text-[#0052cc] transition">M.2 NVMe PCIe SATA</a>
-                <a href="#" class="hover:text-[#0052cc] transition">Hard Drive HDD/SSD</a>
-                <a href="#" class="hover:text-[#0052cc] transition">Flash Media</a>
-                <a href="#" class="hover:text-[#0052cc] transition">CD DVD BD Blu-Ray</a>
-                <a href="#" class="hover:text-[#0052cc] transition">Media & Consumables</a>
+            <nav class="hidden lg:flex items-center gap-6 text-xs font-medium text-gray-400 tracking-wider">
+                <a href="#" class="hover:text-white flex items-center gap-1"><i data-lucide="hard-drive" class="w-3.5 h-3.5"></i> M.2 Duplicators</a>
+                <a href="#" class="hover:text-white flex items-center gap-1"><i data-lucide="database" class="w-3.5 h-3.5"></i> SSD Duplicators</a>
+                <a href="#" class="hover:text-white flex items-center gap-1"><i data-lucide="folder-open" class="w-3.5 h-3.5"></i> HDD Duplicators</a>
+                <a href="#" class="hover:text-white flex items-center gap-1"><i data-lucide="usb" class="w-3.5 h-3.5"></i> USB Duplicators</a>
+                <a href="#" class="hover:text-white flex items-center gap-1"><i data-lucide="shield-alert" class="w-3.5 h-3.5"></i> Sanitizers</a>
             </nav>
 
-            <div class="flex items-center gap-3 md:gap-4 flex-1 justify-end max-w-xs">
-                <button class="sm:hidden text-gray-600 hover:text-[#0052cc]"><i data-lucide="search" class="w-5 h-5"></i></button>
-                <div class="relative w-full hidden sm:block">
-                    <input type="text" placeholder="Search the store..." class="w-full bg-gray-100 border border-gray-300 rounded-md py-1.5 pl-3 pr-9 text-sm focus:outline-none focus:border-[#0052cc]">
-                    <i data-lucide="search" class="w-4 h-4 text-gray-400 absolute right-3 top-2.5"></i>
-                </div>
-                <button class="text-gray-600 hover:text-[#0052cc]"><i data-lucide="user" class="w-5 h-5"></i></button>
-                <button id="cart-trigger-btn" class="text-gray-600 hover:text-[#0052cc] relative">
+            <div class="flex items-center gap-4">
+                <button class="text-gray-400 hover:text-white"><i data-lucide="search" class="w-5 h-5"></i></button>
+                <button class="text-gray-400 hover:text-white relative">
                     <i data-lucide="shopping-cart" class="w-5 h-5"></i>
-                    <span id="header-cart-badge" class="absolute -top-1 -right-1 bg-[#0052cc] text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">0</span>
+                    <span class="absolute -top-1 -right-1 bg-[#0052cc] text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center">0</span>
                 </button>
             </div>
         </div>
     </header>
 
-    <div id="mobile-menu" class="fixed inset-0 z-50 hidden" role="dialog" aria-modal="true">
-        <div id="menu-close-backdrop" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm"></div>
-        <div class="fixed inset-y-0 left-0 w-full max-w-xs bg-white shadow-xl flex flex-col z-10 transform transition-transform duration-300">
-            <div class="p-4 border-b border-gray-200 flex items-center justify-between">
-                <img src="https://www.produplicator.com/cdn/shop/files/Produplicator_-_500_x_260_180x.png?v=1776179483" alt="ProDuplicator Logo" class="h-12 w-auto object-contain">
-                <button id="menu-close" class="p-1 text-gray-500 hover:text-slate-900"><i data-lucide="x" class="w-6 h-6"></i></button>
-            </div>
-            <nav class="flex-1 overflow-y-auto p-4 space-y-1">
-                <a href="#" class="block px-3 py-2.5 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-[#0052cc] transition">M.2 NVMe PCIe SATA</a>
-                <a href="#" class="block px-3 py-2.5 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-[#0052cc] transition">Hard Drive HDD/SSD</a>
-                <a href="#" class="block px-3 py-2.5 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-[#0052cc] transition">Flash Media</a>
-                <a href="#" class="block px-3 py-2.5 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-[#0052cc] transition">CD DVD BD Blu-Ray</a>
-                <a href="#" class="block px-3 py-2.5 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-[#0052cc] transition">Media & Consumables</a>
-            </nav>
-            <div class="p-4 border-t border-gray-200 bg-gray-50 space-y-2">
-                <a href="#" class="block w-full text-center bg-[#0052cc] text-white py-2 rounded text-xs font-semibold">Shop Catalog</a>
-                <a href="#" class="block w-full text-center border border-gray-300 text-gray-600 py-2 rounded text-xs font-semibold bg-white">Contact Support</a>
-            </div>
-        </div>
+    <div class="max-w-7xl mx-auto px-4 pt-6 text-xs text-brand-textMuted flex items-center gap-2">
+        <a href="#" class="hover:text-white">Home</a> <i data-lucide="chevron-right" class="w-3 h-3"></i> 
+        <a href="#" class="hover:text-white">M.2 Duplicators</a> <i data-lucide="chevron-right" class="w-3 h-3"></i> 
+        <span class="text-white truncate">SYSTOR 1 to 4 M.2 SATA & NVMe Duplicator</span>
     </div>
 
-    <nav class="max-w-7xl mx-auto px-4 pt-6 md:pt-8 text-xs text-gray-400 flex items-center gap-2 flex-wrap">
-        <a href="#" class="hover:text-slate-900 transition">Home</a>
-        <i data-lucide="chevron-right" class="w-3 h-3"></i>
-        <a href="#" class="hover:text-slate-900 transition">M.2 NVMe PCIe SSD Duplicators</a>
-        <i data-lucide="chevron-right" class="w-3 h-3"></i>
-        <span class="text-slate-900 font-medium select-none truncate max-w-xs md:max-w-none" id="breadcrumb-title">Epson 1 to 1 NVMe/SATA M.2 Duplicator</span>
-    </nav>
-
-    <main class="max-w-7xl mx-auto px-4 py-8 md:py-12">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+    <main class="max-w-7xl mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             
-            <div class="lg:col-span-7 space-y-4">
-                <div class="w-full aspect-square bg-white border border-gray-200 rounded-xl flex items-center justify-center p-8 md:p-12 relative group shadow-sm">
-                    <div class="absolute top-4 left-4 z-10 flex flex-col gap-2">
-                        <span class="bg-blue-50 text-[#0052cc] font-bold text-[9px] md:text-[10px] tracking-wider px-2.5 py-1 rounded uppercase">
-                            Free Shipping
-                        </span>
-                        <span class="bg-slate-900 text-white font-bold text-[9px] md:text-[10px] tracking-wider px-2.5 py-1 rounded uppercase">
-                            1-Year Warranty
-                        </span>
-                    </div>
-                    <div class="text-blue-500/80 transition-all duration-300 transform group-hover:scale-105">
-                        <i data-lucide="server" id="main-product-icon" class="w-40 h-40 md:w-56 md:h-56 stroke-[1.25]"></i>
-                    </div>
+            <div class="lg:col-span-6 space-y-4">
+                <div class="w-full aspect-square bg-brand-card rounded-xl border border-gray-800 flex items-center justify-center p-8 overflow-hidden">
+                    <img id="main-product-image" src="https://www.produplicator.com/cdn/shop/files/HDD_Duplicator.jpg?v=1770739680&width=2000" alt="SYSTOR Duplicator Main Image" class="w-full h-full object-contain rounded-lg">
                 </div>
-                
-                <div class="grid grid-cols-4 gap-3">
-                    <button class="thumb-btn aspect-square bg-white border-2 border-[#0052cc] rounded-lg flex items-center justify-center p-3 text-blue-500 transition shadow-sm">
-                        <i data-lucide="server" class="w-8 h-8 stroke-[1.5]"></i>
+                <div class="grid grid-cols-3 gap-4">
+                    <button onclick="changeImage(this.children[0].src)" class="aspect-square bg-brand-card rounded-lg border-2 border-[#0052cc] p-2 focus:outline-none">
+                        <img src="https://www.produplicator.com/cdn/shop/files/HDD_Duplicator.jpg?v=1770739680&width=2000" class="w-full h-full object-contain rounded">
                     </button>
-                    <button class="thumb-btn aspect-square bg-white border border-gray-200 rounded-lg flex items-center justify-center p-3 text-gray-400 hover:text-slate-700 hover:border-gray-300 transition shadow-sm">
-                        <i data-lucide="database" class="w-8 h-8 stroke-[1.5]"></i>
+                    <button onclick="changeImage(this.children[0].src)" class="aspect-square bg-brand-card rounded-lg border border-gray-800 p-2 focus:outline-none hover:border-gray-700">
+                        <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover rounded">
                     </button>
-                    <button class="thumb-btn aspect-square bg-white border border-gray-200 rounded-lg flex items-center justify-center p-3 text-gray-400 hover:text-slate-700 hover:border-gray-300 transition shadow-sm">
-                        <i data-lucide="cpu" class="w-8 h-8 stroke-[1.5]"></i>
-                    </button>
-                    <button class="thumb-btn aspect-square bg-white border border-gray-200 rounded-lg flex items-center justify-center p-3 text-gray-400 hover:text-slate-700 hover:border-gray-300 transition shadow-sm">
-                        <i data-lucide="shield" class="w-8 h-8 stroke-[1.5]"></i>
+                    <button onclick="changeImage(this.children[0].src)" class="aspect-square bg-brand-card rounded-lg border border-gray-800 p-2 focus:outline-none hover:border-gray-700">
+                        <img src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover rounded">
                     </button>
                 </div>
             </div>
 
-            <div class="lg:col-span-5 space-y-6 bg-white border border-gray-200 rounded-2xl p-6 md:p-8 shadow-sm">
+            <div class="lg:col-span-6 space-y-6">
                 <div>
-                    <span class="text-[10px] uppercase font-bold tracking-widest text-blue-600 block mb-1">Epson Series Professional</span>
-                    <h1 id="product-main-title" class="text-xl md:text-2xl lg:text-3xl font-bold tracking-tight text-slate-900 leading-snug">
-                        Epson 1 to 1 NVMe/SATA M.2 Duplicator
+                    <h1 class="text-2xl md:text-4xl font-extrabold tracking-tight text-white mb-2">
+                        SYSTOR 1 to 4 M.2 SATA & NVMe Duplicator & Sanitizer
                     </h1>
-                    <div class="flex items-center gap-2 mt-2">
-                        <p id="product-sku" class="text-[11px] text-gray-400">SKU: EP-NVME-11</p>
-                        <span class="text-gray-300 text-xs">|</span>
-                        <div class="flex items-center gap-1 text-amber-400">
-                            <div class="flex"><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i></div>
-                            <span class="text-slate-700 font-bold text-[11px] ml-0.5">4.8</span>
-                            <span class="text-gray-400 font-normal text-[11px]">(61 verified reviews)</span>
-                        </div>
+                    <p class="text-xs text-brand-textMuted mb-3">Model: SYSNVME-YL06PRO04 &nbsp;|&nbsp; SKU: EP-NVME-14</p>
+                    
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="flex text-brand-accent"><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i></div>
+                        <span class="text-xs text-brand-textMuted">(61 verified reviews)</span>
                     </div>
+
+                    <div class="text-3xl font-black text-white mb-1">$4,408.80</div>
+                    <p class="text-xs text-emerald-400 font-medium flex items-center gap-1.5 mb-6">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 inline-block animate-pulse"></span> Free Shipping • In Stock • Ships within 2-3 business days
+                    </p>
                 </div>
 
-                <div class="bg-slate-50 border border-gray-100 rounded-xl p-4 flex items-center justify-between">
-                    <div>
-                        <span class="text-[10px] text-gray-400 uppercase tracking-wider font-semibold block">Total Investment Price</span>
-                        <span id="product-live-price" class="text-2xl md:text-3xl font-black text-slate-900 tracking-tight block mt-0.5">$1,808.80</span>
+                <div class="flex items-center gap-4 bg-brand-card p-4 rounded-xl border border-gray-800">
+                    <div class="flex items-center bg-[#0A0F1D] border border-gray-700 rounded-lg">
+                        <button onclick="updateQty(-1)" class="px-3 py-2 text-gray-400 hover:text-white text-sm font-bold">-</button>
+                        <input id="product-qty" type="text" value="1" class="w-10 bg-transparent text-center text-xs font-bold text-white focus:outline-none" readonly>
+                        <button onclick="updateQty(1)" class="px-3 py-2 text-gray-400 hover:text-white text-sm font-bold">+</button>
                     </div>
-                    <div class="text-right">
-                        <span class="inline-flex items-center gap-1 text-[11px] text-emerald-600 font-bold bg-emerald-50 px-2.5 py-0.5 rounded-full">
-                            <i data-lucide="check-circle" class="w-3 h-3"></i> In Stock & Ready
-                        </span>
-                        <span class="text-[10px] text-gray-400 block mt-1">Dispatches within 24 hours</span>
-                    </div>
+                    <button class="flex-1 bg-brand-accent hover:bg-yellow-600 text-slate-950 font-bold text-xs md:text-sm py-3 rounded-lg transition tracking-wide uppercase flex items-center justify-center gap-2 shadow-lg">
+                        <i data-lucide="shopping-cart" class="w-4 h-4"></i> Add to Cart
+                    </button>
                 </div>
 
-                <div class="space-y-4 pt-2 border-t border-gray-100">
-                    <div>
-                        <div class="flex justify-between items-center mb-2">
-                            <label class="text-[11px] font-bold uppercase tracking-wider text-slate-900">Target Configuration</label>
-                            <span id="selected-target-label" class="text-xs text-gray-500 font-medium">1 to 1 Target Platform</span>
-                        </div>
-                        <div class="grid grid-cols-2 gap-2" id="target-variant-wrapper">
-                            <button data-variant-value="1-1" class="variant-opt-btn border-2 border-[#0052cc] bg-blue-50/20 text-slate-900 rounded-lg p-3 text-left transition relative flex flex-col justify-between">
-                                <span class="font-bold text-xs block">1 to 1 Target Array</span>
-                                <span class="text-[10px] text-gray-400 block mt-0.5">Compact Master Unit</span>
-                            </button>
-                            <button data-variant-value="1-4" class="variant-opt-btn border border-gray-200 hover:border-gray-300 text-slate-700 rounded-lg p-3 text-left transition relative flex flex-col justify-between">
-                                <span class="font-bold text-xs block">1 to 4 Target Array</span>
-                                <span class="text-[10px] text-gray-400 block mt-0.5">Mid-Tier Infrastructure</span>
-                            </button>
-                            <button data-variant-value="1-15" class="variant-opt-btn border border-gray-200 hover:border-gray-300 text-slate-700 rounded-lg p-3 text-left transition relative flex flex-col justify-between">
-                                <span class="font-bold text-xs block">1 to 15 Target Array</span>
-                                <span class="text-[10px] text-gray-400 block mt-0.5">Enterprise Operations</span>
-                            </button>
-                            <button data-variant-value="1-23" class="variant-opt-btn border border-gray-200 hover:border-gray-300 text-slate-700 rounded-lg p-3 text-left transition relative flex flex-col justify-between">
-                                <span class="font-bold text-xs block">1 to 23 Target Array</span>
-                                <span class="text-[10px] text-gray-400 block mt-0.5">High Volume Array Node</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="space-y-3 pt-4 border-t border-gray-100">
-                    <div class="flex items-center gap-3">
-                        <div class="w-32">
-                            <label class="sr-only">Quantity Procurement Selector</label>
-                            <div class="flex items-center border border-gray-300 rounded-lg bg-white overflow-hidden">
-                                <button id="qty-decrement" class="p-3 text-gray-500 hover:text-slate-900 transition flex items-center justify-center w-10"><i data-lucide="minus" class="w-3.5 h-3.5"></i></button>
-                                <input type="number" id="qty-display-input" value="1" min="1" class="w-full text-center text-xs font-bold bg-transparent border-none focus:outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none">
-                                <button id="qty-increment" class="p-3 text-gray-500 hover:text-slate-900 transition flex items-center justify-center w-10"><i data-lucide="plus" class="w-3.5 h-3.5"></i></button>
-                            </div>
-                        </div>
-                        <button id="add-to-cart-action-btn" class="flex-1 bg-[#0052cc] hover:bg-blue-700 text-white font-bold text-xs md:text-sm py-3.5 px-6 rounded-lg transition tracking-wide uppercase flex items-center justify-center gap-2 shadow-md">
-                            <i data-lucide="shopping-cart" class="w-4 h-4"></i> Add to System Configuration
+                <div class="bg-brand-card rounded-xl border border-gray-800 overflow-hidden">
+                    <div class="flex border-b border-gray-800 bg-[#121B33]">
+                        <button onclick="switchTab('tab-features')" id="btn-tab-features" class="flex-1 py-3 px-4 text-xs font-bold uppercase tracking-wider text-brand-accent border-b-2 border-brand-accent transition focus:outline-none">
+                            Key Features
+                        </button>
+                        <button onclick="switchTab('tab-description')" id="btn-tab-description" class="flex-1 py-3 px-4 text-xs font-bold uppercase tracking-wider text-gray-400 hover:text-white transition focus:outline-none">
+                            Overview
+                        </button>
+                        <button onclick="switchTab('tab-sanitization')" id="btn-tab-sanitization" class="flex-1 py-3 px-4 text-xs font-bold uppercase tracking-wider text-gray-400 hover:text-white transition focus:outline-none">
+                            Erasure Modes
                         </button>
                     </div>
-                    <button class="w-full border border-gray-300 hover:bg-gray-50 text-slate-700 font-bold text-xs md:text-sm py-3.5 px-6 rounded-lg transition tracking-wide uppercase flex items-center justify-center gap-2 bg-white">
-                        <i data-lucide="file-text" class="w-4 h-4"></i> Generate Institutional PO Quote
-                    </button>
+
+                    <div class="p-5 md:p-6 text-xs md:text-sm leading-relaxed text-gray-300">
+                        <div id="tab-features" class="tab-content active space-y-3">
+                            <div class="flex items-start gap-2.5">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-accent mt-0.5 flex-shrink-0"></i>
+                                <p><strong class="text-white">High Transfer Speeds:</strong> High-performance cloning throughput up to 36GB/min rate across channels.</p>
+                            </div>
+                            <div class="flex items-start gap-2.5">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-accent mt-0.5 flex-shrink-0"></i>
+                                <p><strong class="text-white">Dual Cross-Interface:</strong> Native, simultaneous cross-duplication for PCIe M.2 and SATA SSDs.</p>
+                            </div>
+                            <div class="flex items-start gap-2.5">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-accent mt-0.5 flex-shrink-0"></i>
+                                <p><strong class="text-white">Standalone Architecture:</strong> Fully synchronized cloning without external PC required.</p>
+                            </div>
+                            <div class="flex items-start gap-2.5">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-accent mt-0.5 flex-shrink-0"></i>
+                                <p><strong class="text-white">Forensic Erasure Engines:</strong> Full multi-pass data sanitization compliant with DoD standards.</p>
+                            </div>
+                        </div>
+
+                        <div id="tab-description" class="tab-content space-y-3">
+                            <p>The ProDuplicator SYSTOR series represents the gold standard in physical architecture cloning. Configured explicitly for hardware engineering labs, corporate IT data governance workflows, and forensic processing pipelines.</p>
+                            <p>Featuring a rugged, heat-resilient open-platform structural array design, it handles continuous operational executions while ensuring precise, sector-by-sector verification parameters without processing overhead.</p>
+                        </div>
+
+                        <div id="tab-sanitization" class="tab-content space-y-4">
+                            <p class="text-brand-textMuted">Equipped with standard high-tier erasure routines to safely overwrite secure media arrays:</p>
+                            <div class="grid grid-cols-2 gap-3 text-[11px]">
+                                <div class="bg-[#0A0F1D] p-2.5 rounded border border-gray-800">
+                                    <span class="text-white font-bold block mb-0.5">Quick Erase</span> Overwrites index configurations in seconds.
+                                </div>
+                                <div class="bg-[#0A0F1D] p-2.5 rounded border border-gray-800">
+                                    <span class="text-white font-bold block mb-0.5">Full Erase</span> Complete standalone single-pass zero-fill execution.
+                                </div>
+                                <div class="bg-[#0A0F1D] p-2.5 rounded border border-gray-800">
+                                    <span class="text-white font-bold block mb-0.5">DoD 5220.22-M</span> 3-pass institutional compliant erasure validation protocol.
+                                </div>
+                                <div class="bg-[#0A0F1D] p-2.5 rounded border border-gray-800">
+                                    <span class="text-white font-bold block mb-0.5">Secure Erase</span> Accesses nested drive control registers safely.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="grid grid-cols-2 gap-3 pt-4 border-t border-gray-100 text-[11px] text-gray-500">
-                    <div class="flex items-center gap-2"><i data-lucide="zap" class="w-4 h-4 text-blue-500"></i> Up to 16GB/min execution rate</div>
-                    <div class="flex items-center gap-2"><i data-lucide="refresh-cw" class="w-4 h-4 text-blue-500"></i> 24/7 continuous cloning layout</div>
-                    <div class="flex items-center gap-2"><i data-lucide="shield-check" class="w-4 h-4 text-blue-500"></i> 1-Year hardware chassis warranty</div>
-                    <div class="flex items-center gap-2"><i data-lucide="headphones" class="w-4 h-4 text-blue-500"></i> Lifetime engineering care tier</div>
-                </div>
             </div>
         </div>
-
-        <section class="mt-12 md:mt-16 bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm">
-            <div class="border-b border-gray-200 bg-gray-50 flex items-center overflow-x-auto no-scrollbar">
-                <button data-target-tab="tab-description" class="tab-toggle-link px-6 py-4 text-xs font-bold tracking-wider uppercase text-[#0052cc] border-b-2 border-[#0052cc] transition whitespace-nowrap">
-                    System Description
-                </button>
-                <button data-target-tab="tab-specifications" class="tab-toggle-link px-6 py-4 text-xs font-bold tracking-wider uppercase text-gray-400 hover:text-slate-900 border-b-2 border-transparent transition whitespace-nowrap">
-                    Technical Specifications
-                </button>
-                <button data-target-tab="tab-compliance" class="tab-toggle-link px-6 py-4 text-xs font-bold tracking-wider uppercase text-gray-400 hover:text-slate-900 border-b-2 border-transparent transition whitespace-nowrap">
-                    Compliance & Forensic Governance
-                </button>
-            </div>
-            
-            <div class="p-6 md:p-8">
-                <div id="tab-description" class="tab-content active space-y-4 text-sm leading-relaxed text-gray-600">
-                    <h3 class="text-base font-bold text-slate-900">High-Fidelity Standalone Synchronized Media Cloning</h3>
-                    <p>
-                        The ProDuplicator Epson Series platform provides high-performance standalone hardware platforms explicitly engineered for reliable synchronized media replication, diagnostic system configuration validation, and secure cryptographic erasure procedures. Designed to bypass host-OS vulnerabilities, these systems process operations directly at hardware-level transfer rates up to 16GB/min without computational throttling.
-                    </p>
-                    <p>
-                        Whether executing massive IT environment provisioning sequences or maintaining compliance processing pipelines for secure institutional databases, the hardware's architecture ensures bit-for-bit diagnostic verification metrics to safeguard the digital asset pipeline with zero operational data loss.
-                    </p>
-                </div>
-
-                <div id="tab-specifications" class="tab-content space-y-4">
-                    <div class="overflow-x-auto">
-                        <table class="w-full text-left border-collapse text-xs md:text-sm">
-                            <thead>
-                                <tr class="border-b border-gray-200 text-slate-900 font-bold bg-slate-50/50">
-                                    <th class="p-3">Specification Parameter Group</th>
-                                    <th class="p-3">Operational Baseline Value Matrix</th>
-                                </tr>
-                            </thead>
-                            <tbody class="divide-y divide-gray-100 text-gray-600">
-                                <tr>
-                                    <td class="p-3 font-semibold text-slate-900">Supported Media Layer Drive Interface</td>
-                                    <td class="p-3">M.2 NVMe (PCIe Gen 3 / Gen 4 Dual Native Nodes) & M.2 SATA Keys</td>
-                                </tr>
-                                <tr>
-                                    <td class="p-3 font-semibold text-slate-900">Peak Hardware Execution Throughput</td>
-                                    <td class="p-3">Synchronized array rates processing up to 16 Gigabytes per minute</td>
-                                </tr>
-                                <tr>
-                                    <td class="p-3 font-semibold text-slate-900">Operational Continuity Duty Cycle</td>
-                                    <td class="p-3">Continuous 24/7 execution layout supported via automated internal cooling</td>
-                                </tr>
-                                <tr>
-                                    <td class="p-3 font-semibold text-slate-900">Diagnostic Verification Parameters</td>
-                                    <td class="p-3">Bit-by-bit hardware verification algorithms with multi-zone CRC validation passes</td>
-                                </tr>
-                                <tr>
-                                    <td class="p-3 font-semibold text-slate-900">Structural Build Engineering Layout</td>
-                                    <td class="p-3">Rugged solid-metal structural chassis array with reactive responsive controls</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-                <div id="tab-compliance" class="tab-content space-y-4 text-sm leading-relaxed text-gray-600">
-                    <h3 class="text-base font-bold text-slate-900">Secure Forensic Sanitization Standards</h3>
-                    <p>
-                        Engineered for precise operational accountability inside federal, defense, enterprise data center, and institutional networks, our platforms deliver native hardware execution support for international sanitization compliance benchmarks, including DoD 5220.22-M erasure validation matrices and secure cryptographic drive erasure parameters.
-                    </p>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
-                        <div class="border border-gray-100 rounded-xl p-4 bg-slate-50/50">
-                            <h4 class="font-bold text-xs text-slate-900 uppercase tracking-wider mb-1 flex items-center gap-1.5">
-                                <i data-lucide="building" class="w-3.5 h-3.5 text-blue-600"></i> Defense Engineering Operations
-                            </h4>
-                            <p class="text-xs text-gray-500">Trusted inside Lockheed Martin, U.S. Army, and Raytheon systems infrastructure for secure database distribution routines.</p>
-                        </div>
-                        <div class="border border-gray-100 rounded-xl p-4 bg-slate-50/50">
-                            <h4 class="font-bold text-xs text-slate-900 uppercase tracking-wider mb-1 flex items-center gap-1.5">
-                                <i data-lucide="file-check" class="w-3.5 h-3.5 text-blue-600"></i> Automated Audit Logging
-                            </h4>
-                            <p class="text-xs text-gray-500">Generates hardware execution parameters logs required to clear structural data sanitation compliance milestones.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
     </main>
 
-    <div id="shopify-cart-drawer" class="fixed inset-0 z-50 hidden" role="dialog" aria-modal="true">
-        <div id="cart-drawer-overlay" class="fixed inset-0 bg-slate-950/40 backdrop-blur-xs animate-drawer-fade-in"></div>
-        <div class="fixed inset-y-0 right-0 w-full max-w-md bg-white shadow-2xl flex flex-col z-10 transform translate-x-full animate-drawer-slide-in">
-            
-            <div class="p-4 md:p-6 border-b border-gray-200 flex items-center justify-between bg-slate-50">
-                <div class="flex items-center gap-2">
-                    <i data-lucide="shopping-basket" class="w-5 h-5 text-[#0052cc]"></i>
-                    <h2 class="font-bold text-sm md:text-base text-slate-900 uppercase tracking-wide">Configured System Order</h2>
-                </div>
-                <button id="cart-drawer-close-btn" class="p-1.5 text-gray-400 hover:text-slate-900 rounded-lg hover:bg-gray-100 transition">
-                    <i data-lucide="x" class="w-5 h-5"></i>
-                </button>
-            </div>
-
-            <div class="flex-1 overflow-y-auto p-4 md:p-6 space-y-4" id="cart-items-matrix-container">
-                <div id="cart-empty-state" class="text-center py-16 px-4 space-y-3">
-                    <div class="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mx-auto text-gray-400">
-                        <i data-lucide="shopping-cart" class="w-6 h-6"></i>
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-xs text-slate-900 uppercase tracking-wider">No Active Hardware Configured</h4>
-                        <p class="text-xs text-gray-400 mt-1 max-w-xs mx-auto">Select a configuration node value path from the options array parameters matrix to populate inventory values.</p>
-                    </div>
-                </div>
-
-                <div id="cart-active-item-node" class="hidden border border-gray-200 rounded-xl p-4 bg-white shadow-sm flex gap-4 relative items-start">
-                    <div class="p-2 bg-slate-50 border border-gray-100 rounded-lg text-blue-500">
-                        <i data-lucide="server" class="w-8 h-8 stroke-[1.25]"></i>
-                    </div>
-                    <div class="flex-1 min-w-0">
-                        <h4 id="cart-item-title-display" class="font-bold text-xs text-slate-900 truncate">Epson 1 to 1 NVMe/SATA M.2 Duplicator</h4>
-                        <p id="cart-item-sku-display" class="text-[10px] text-gray-400 mt-0.5">SKU: EP-NVME-11</p>
-                        <div class="flex items-center justify-between mt-3">
-                            <span id="cart-item-qty-display" class="text-xs font-semibold text-slate-700 bg-gray-100 px-2.5 py-0.5 rounded">Qty: 1</span>
-                            <span id="cart-item-price-display" class="text-xs font-bold text-slate-900">$1,808.80</span>
-                        </div>
-                    </div>
-                    <button id="cart-item-purge-action" class="text-gray-400 hover:text-rose-600 transition absolute top-3 right-3 p-1">
-                        <i data-lucide="trash-2" class="w-4 h-4"></i>
-                    </button>
-                </div>
-            </div>
-
-            <div id="cart-financial-footer" class="p-4 md:p-6 border-t border-gray-200 bg-slate-50 space-y-4 hidden">
-                <div class="space-y-1.5 text-xs">
-                    <div class="flex justify-between text-gray-500">
-                        <span>Hardware Procurement Subtotal</span>
-                        <span id="footer-calc-subtotal" class="font-medium text-slate-900">$1,808.80</span>
-                    </div>
-                    <div class="flex justify-between text-gray-500">
-                        <span>Freight Logistic Dispatches</span>
-                        <span class="font-semibold text-emerald-600 uppercase text-[10px] bg-emerald-50 px-2 py-0.5 rounded">Free Standard Shipping</span>
-                    </div>
-                    <div class="border-t border-gray-200 my-2 pt-2 flex justify-between text-sm font-bold text-slate-900">
-                        <span>Estimated System Total</span>
-                        <span id="footer-calc-total">$1,808.80</span>
-                    </div>
-                </div>
-                <div class="space-y-2">
-                    <button class="w-full bg-[#0052cc] hover:bg-blue-700 text-white font-bold text-xs md:text-sm py-3.5 px-4 rounded-lg transition tracking-wide uppercase flex items-center justify-center gap-2 shadow-sm">
-                        Proceed to Secure Checkout <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                    </button>
-                    <p class="text-[10px] text-center text-gray-400 leading-relaxed">Tax data points and specific enterprise volume discounts calculated dynamically during structural execution stages.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <section class="bg-white border-y border-gray-100 py-10 md:py-16 text-center px-4 overflow-hidden mt-8">
-        <div class="max-w-5xl mx-auto">
-            <p class="text-[10px] md:text-xs font-bold text-blue-600 uppercase tracking-widest mb-2.5">Trusted Worldwide Since 1997</p>
-            <h3 class="text-base md:text-xl font-bold text-slate-900 max-w-3xl mx-auto leading-snug mb-4 px-2">
-                Delivering Industry-Leading Media Duplication, Testing, Erasure, Recovery, and Computer Forensics Solutions
+    <section class="max-w-7xl mx-auto px-4 py-8">
+        <div class="bg-brand-card rounded-xl border border-gray-800 p-6 md:p-8">
+            <h3 class="text-base md:text-lg font-bold tracking-wider uppercase border-b border-gray-800 pb-4 mb-6 text-white flex items-center gap-2">
+                <i data-lucide="sliders" class="w-4 h-4 text-brand-accent"></i> Technical Specifications
             </h3>
-            <p class="text-xs text-gray-400 max-w-lg mx-auto mb-6">Our duplication arrays support synchronization validation metrics across defense labs, forensic firms, and enterprise clouds.</p>
-            <div class="flex flex-wrap justify-center items-center gap-6 md:gap-12 font-black text-slate-300 uppercase text-xs tracking-widest select-none">
-                <span>Lockheed Martin</span><span>Oak Ridge</span><span>U.S. Army</span><span>General Dynamics</span><span>Raytheon</span><span>NASA</span>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4 text-xs md:text-sm">
+                <div class="flex justify-between py-2.5 border-b border-gray-800/60">
+                    <span class="text-brand-textMuted">Target Capacity</span>
+                    <span class="font-semibold text-white">1 to 4 Drives Slot Layout</span>
+                </div>
+                <div class="flex justify-between py-2.5 border-b border-gray-800/60">
+                    <span class="text-brand-textMuted">Supported Interfaces</span>
+                    <span class="font-semibold text-white">PCIe M.2 (NVMe/AHCI) & M.2 SATA SSD</span>
+                </div>
+                <div class="flex justify-between py-2.5 border-b border-gray-800/60">
+                    <span class="text-brand-textMuted">Max Performance Rate</span>
+                    <span class="font-semibold text-white">Up to 36 GB/min cross-channel</span>
+                </div>
+                <div class="flex justify-between py-2.5 border-b border-gray-800/60">
+                    <span class="text-brand-textMuted">Operation Architecture</span>
+                    <span class="font-semibold text-white">Standalone FPGA Engine Controller</span>
+                </div>
+                <div class="flex justify-between py-2.5 border-b border-gray-800/60 md:border-b-0">
+                    <span class="text-brand-textMuted">Display Parameters</span>
+                    <span class="font-semibold text-white">Backlit Monochrome Real-time LCD Screen</span>
+                </div>
+                <div class="flex justify-between py-2.5 md:border-b-0">
+                    <span class="text-brand-textMuted">Power Input Requirements</span>
+                    <span class="font-semibold text-white">Universal AC 115V-230V Compliance Switching</span>
+                </div>
             </div>
         </div>
     </section>
 
-    <footer class="bg-white text-slate-600 text-xs border-t border-gray-200 pt-16 pb-8">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 pb-12 border-b border-gray-200 items-start">
-                <div class="lg:col-span-4 space-y-4">
-                    <a href="#" class="block">
-                        <img src="https://www.produplicator.com/cdn/shop/files/Produplicator_-_500_x_260_180x.png?v=1776179483" alt="ProDuplicator Logo" class="h-9 w-auto object-contain">
-                    </a>
-                    <p class="text-gray-500 leading-relaxed max-w-sm text-[11px]">
-                        Providing industry-grade duplication deployment frameworks, drive array erasure engines, and enterprise media engineering configurations safely since 1997.
-                    </p>
+    <section class="max-w-7xl mx-auto px-4 py-12">
+        <div class="flex items-center justify-between mb-6">
+            <h3 class="text-sm md:text-base font-bold uppercase tracking-wider text-white">You May Also Like</h3>
+            <a href="#" class="text-xs text-brand-accent hover:underline flex items-center gap-1">View All Catalog Products <i data-lucide="chevron-right" class="w-3 h-3"></i></a>
+        </div>
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+            <div class="bg-brand-card border border-gray-800 rounded-xl p-4 flex flex-col shadow-sm group hover:border-gray-700 transition">
+                <div class="w-full aspect-square bg-[#0A0F1D] border border-gray-800 rounded flex items-center justify-center p-4 mb-3">
+                    <i data-lucide="server" class="w-12 h-12 text-[#0052cc]/70 stroke-[1.25]"></i>
                 </div>
-                <div class="lg:col-span-8 lg:justify-self-end w-full max-w-md">
-                    <h4 class="text-slate-900 font-semibold tracking-wider uppercase text-[11px] mb-2">Subscribe to our emails</h4>
-                    <form class="relative flex items-center">
-                        <input type="email" placeholder="Email address" class="w-full bg-white border border-gray-300 rounded px-3 py-2.5 text-xs focus:outline-none focus:border-slate-900 focus:ring-1 focus:ring-slate-900 text-slate-950 placeholder:text-gray-400" required>
-                        <button type="submit" class="absolute right-2 p-1.5 text-slate-600 hover:text-slate-950 transition" aria-label="Subscribe">
-                            <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                        </button>
-                    </form>
-                </div>
+                <h4 class="font-semibold text-xs text-white line-clamp-1 mb-1">Epson 1 to 1 NVMe/SATA M.2 Duplicator</h4>
+                <p class="text-[10px] text-brand-textMuted mb-2">SKU: EP-NVME-11</p>
+                <div class="text-sm font-bold text-white mt-auto">$1,808.80</div>
             </div>
-
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 py-12 text-[11px]">
-                <div>
-                    <h5 class="text-slate-900 font-semibold tracking-wider uppercase text-[10px] mb-4">Shop Hardware</h5>
-                    <ul class="space-y-2.5">
-                        <li><a href="#" class="hover:text-slate-950 underline-offset-4 hover:underline transition">M.2 NVMe Duplicators</a></li>
-                        <li><a href="#" class="hover:text-slate-950 underline-offset-4 hover:underline transition">Hard Drive HDD/SSD</a></li>
-                        <li><a href="#" class="hover:text-slate-950 underline-offset-4 hover:underline transition">Flash Memory Storage Tools</a></li>
-                    </ul>
+            <div class="bg-brand-card border border-gray-800 rounded-xl p-4 flex flex-col shadow-sm group hover:border-gray-700 transition">
+                <div class="w-full aspect-square bg-[#0A0F1D] border border-gray-800 rounded flex items-center justify-center p-4 mb-3">
+                    <i data-lucide="server" class="w-12 h-12 text-[#0052cc]/70 stroke-[1.25]"></i>
                 </div>
-                <div>
-                    <h5 class="text-slate-900 font-semibold tracking-wider uppercase text-[10px] mb-4">Customer Support</h5>
-                    <ul class="space-y-2.5">
-                        <li><a href="#" class="hover:text-slate-950 underline-offset-4 hover:underline transition">Contact Support Hub</a></li>
-                        <li><a href="#" class="hover:text-slate-950 underline-offset-4 hover:underline transition">Product Knowledge Base</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h5 class="text-slate-900 font-semibold tracking-wider uppercase text-[10px] mb-4">Our Services</h5>
-                    <ul class="space-y-2.5">
-                        <li><a href="#" class="hover:text-slate-950 underline-offset-4 hover:underline transition">Government Procurement (PO)</a></li>
-                        <li><a href="#" class="hover:text-slate-950 underline-offset-4 hover:underline transition">1-Year Hardware Warranty Plans</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h5 class="text-slate-900 font-semibold tracking-wider uppercase text-[10px] mb-4">Corporate Guidelines</h5>
-                    <ul class="space-y-2.5">
-                        <li><a href="#" class="hover:text-slate-950 underline-offset-4 hover:underline transition">About Our Engineering Lab</a></li>
-                        <li><a href="#" class="hover:text-slate-950 underline-offset-4 hover:underline transition">Privacy & Data Governance</a></li>
-                    </ul>
-                </div>
+                <h4 class="font-semibold text-xs text-white line-clamp-1 mb-1">Epson 1 to 15 M.2 SATA/NVMe Duplicator</h4>
+                <p class="text-[10px] text-brand-textMuted mb-2">SKU: EP-NVME-115</p>
+                <div class="text-sm font-bold text-white mt-auto">$14,835.80</div>
             </div>
+            <div class="bg-brand-card border border-gray-800 rounded-xl p-4 flex flex-col shadow-sm group hover:border-gray-700 transition">
+                <div class="w-full aspect-square bg-[#0A0F1D] border border-gray-800 rounded flex items-center justify-center p-4 mb-3">
+                    <i data-lucide="shield-alert" class="w-12 h-12 text-[#0052cc]/70 stroke-[1.25]"></i>
+                </div>
+                <h4 class="font-semibold text-xs text-white line-clamp-1 mb-1">Universal Drive Cross-Sanitizer Platform</h4>
+                <p class="text-[10px] text-brand-textMuted mb-2">SKU: EP-SAN-UNIV</p>
+                <div class="text-sm font-bold text-white mt-auto">$599.99</div>
+            </div>
+            <div class="bg-brand-card border border-gray-800 rounded-xl p-4 flex flex-col shadow-sm group hover:border-gray-700 transition">
+                <div class="w-full aspect-square bg-[#0A0F1D] border border-gray-800 rounded flex items-center justify-center p-4 mb-3">
+                    <i data-lucide="layers" class="w-12 h-12 text-[#0052cc]/70 stroke-[1.25]"></i>
+                </div>
+                <h4 class="font-semibold text-xs text-white line-clamp-1 mb-1">PCIe Adapter Hardware Board Expansion Kit</h4>
+                <p class="text-[10px] text-brand-textMuted mb-2">SKU: EP-ACC-ADP</p>
+                <div class="text-sm font-bold text-white mt-auto">$149.99</div>
+            </div>
+        </div>
+    </section>
 
-            <div class="border-t border-gray-200 pt-8 flex flex-col md:flex-row items-center justify-between gap-6 text-[10px] text-gray-400">
-                <div class="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 text-center sm:text-left">
-                    <p>&copy; 2026, ProDuplicator. Powered by Shopify.</p>
-                    <div class="flex items-center gap-3 text-[9px] uppercase tracking-wider font-medium text-gray-500">
-                        <a href="#" class="hover:text-slate-950 transition">Refund Policy</a>
-                        <a href="#" class="hover:text-slate-950 transition">Privacy Policy</a>
-                    </div>
-                </div>
-                <div class="flex items-center flex-wrap gap-2 justify-center" aria-label="Available Payment Methods">
-                    <div class="flex items-center justify-center border border-gray-200 bg-white rounded px-2 py-1 h-7 w-12 flex-shrink-0"><span class="text-[9px] font-bold text-[#1A1F71]">VISA</span></div>
-                    <div class="flex items-center justify-center border border-gray-200 bg-white rounded px-2 py-1 h-7 w-12 flex-shrink-0"><span class="text-[9px] font-bold text-[#FF5F00]">MC</span></div>
-                    <div class="flex items-center justify-center border border-gray-200 bg-white rounded px-2 py-1 h-7 w-12 flex-shrink-0"><span class="text-[9px] font-bold text-[#0070CD]">AMEX</span></div>
-                    <div class="flex items-center justify-center border border-gray-200 bg-white rounded px-2 py-1 h-7 w-12 flex-shrink-0"><span class="text-[9px] font-bold text-slate-900">G-Pay</span></div>
-                </div>
+    <footer class="bg-[#0A0F1D] text-brand-textMuted text-xs border-t border-gray-800 py-8">
+        <div class="max-w-7xl mx-auto px-4 text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p>&copy; 2026, ProDuplicator. Layout matching Figma premium guidelines.</p>
+            <div class="flex items-center gap-4 text-[11px]">
+                <a href="#" class="hover:text-white transition">Privacy Governance</a>
+                <a href="#" class="hover:text-white transition">Terms of Execution</a>
             </div>
         </div>
     </footer>
 
     <script>
-        // Init Lucide Layout Icons
+        // Init Lucide Dynamic Vector Assets
         lucide.createIcons();
 
-        // Structural Hardware Data Object Matrix (Shopify Variant Logic)
-        const productDataMatrix = {
-            '1-1': {
-                title: 'Epson 1 to 1 NVMe/SATA M.2 Duplicator',
-                sku: 'SKU: EP-NVME-11',
-                price: 1808.80,
-                label: '1 to 1 Target Platform Configuration Node',
-                icon: 'server'
-            },
-            '1-4': {
-                title: 'Epson 1 to 4 M.2 SATA/NVMe Duplicator',
-                sku: 'SKU: EP-NVME-14',
-                price: 4408.80,
-                label: '1 to 4 Target Infrastructure Matrix',
-                icon: 'server'
-            },
-            '1-15': {
-                title: 'Epson 1 to 15 M.2 SATA/NVMe Duplicator',
-                sku: 'SKU: EP-NVME-115',
-                price: 14835.80,
-                label: '1 to 15 Target Enterprise Cluster Array Node',
-                icon: 'database'
-            },
-            '1-23': {
-                title: 'Epson 1 to 23 M.2 SATA/NVMe Array',
-                sku: 'SKU: EP-NVME-123',
-                price: 21571.80,
-                label: '1 to 23 Target Massive Production Topology Node',
-                icon: 'cpu'
-            }
-        };
-
-        // Reactive Application State
-        let selectedVariantKey = '1-1';
-        let targetedProcurementQty = 1;
-        let cartActiveSystemInstance = null;
-
-        // DOM Element Reference Matrix
-        const mainTitleNode = document.getElementById('product-main-title');
-        const breadcrumbTitleNode = document.getElementById('breadcrumb-title');
-        const skuNode = document.getElementById('product-sku');
-        const livePriceNode = document.getElementById('product-live-price');
-        const targetLabelNode = document.getElementById('selected-target-label');
-        const variantButtons = document.querySelectorAll('#target-variant-wrapper button');
-        const mainProductIcon = document.getElementById('main-product-icon');
-
-        const qtyInput = document.getElementById('qty-display-input');
-        const qtyIncrementBtn = document.getElementById('qty-increment');
-        const qtyDecrementBtn = document.getElementById('qty-decrement');
-        const addToCartActionBtn = document.getElementById('add-to-cart-action-btn');
-
-        const shopifyCartDrawerNode = document.getElementById('shopify-cart-drawer');
-        const cartTriggerBtn = document.getElementById('cart-trigger-btn');
-        const cartDrawerCloseBtn = document.getElementById('cart-drawer-close-btn');
-        const cartDrawerOverlay = document.getElementById('cart-drawer-overlay');
-        const headerCartBadge = document.getElementById('header-cart-badge');
-
-        const cartEmptyStateNode = document.getElementById('cart-empty-state');
-        const cartActiveItemNode = document.getElementById('cart-active-item-node');
-        const cartFinancialFooterNode = document.getElementById('cart-financial-footer');
-        const cartItemTitleDisplay = document.getElementById('cart-item-title-display');
-        const cartItemSkuDisplay = document.getElementById('cart-item-sku-display');
-        const cartItemQtyDisplay = document.getElementById('cart-item-qty-display');
-        const cartItemPriceDisplay = document.getElementById('cart-item-price-display');
-        const cartItemPurgeAction = document.getElementById('cart-item-purge-action');
-        const footerCalcSubtotal = document.getElementById('footer-calc-subtotal');
-        const footerCalcTotal = document.getElementById('footer-calc-total');
-
-        // Format Numerical Currency
-        function formatInvestmentPrice(num) {
-            return '$' + num.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        // Image Gallery Selector Logic
+        function changeImage(src) {
+            document.getElementById('main-product-image').src = src;
         }
 
-        // Synchronize Variant DOM Array Selection State
-        function updateSelectedVariantView(variantKey) {
-            selectedVariantKey = variantKey;
-            const dataNode = productDataMatrix[variantKey];
+        // Segmented Buy Box Custom Qty Counters
+        function updateQty(amt) {
+            const qtyInput = document.getElementById('product-qty');
+            let currentVal = parseInt(qtyInput.value) || 1;
+            currentVal += amt;
+            if(currentVal < 1) currentVal = 1;
+            qtyInput.value = currentVal;
+        }
 
-            // Map UI Values
-            mainTitleNode.textContent = dataNode.title;
-            breadcrumbTitleNode.textContent = dataNode.title;
-            skuNode.textContent = dataNode.sku;
-            livePriceNode.textContent = formatInvestmentPrice(dataNode.price);
-            targetLabelNode.textContent = dataNode.label;
+        // Highly Optimized Tab Switching Layout Engine
+        function switchTab(tabId) {
+            // Hide all tab containers inside right showcase block
+            const tabs = document.getElementsByClassName('tab-content');
+            for (let i = 0; i < tabs.length; i++) {
+                tabs[i].classList.remove('active');
+            }
+            
+            // Set targeted container visibility state parameter
+            document.getElementById(tabId).classList.add('active');
 
-            // Update Dynamic Hero Icon State to convey model scaling changes 
-            mainProductIcon.setAttribute('data-lucide', dataNode.icon);
-            lucide.createIcons();
-
-            // Toggle CSS selection styling classes
-            variantButtons.forEach(btn => {
-                if (btn.getAttribute('data-variant-value') === variantKey) {
-                    btn.classList.add('border-[#0052cc]', 'bg-blue-50/20');
-                    btn.classList.remove('border-gray-200');
+            // Toggle custom button active states to mimic premium design system
+            const buttons = ['btn-tab-features', 'btn-tab-description', 'btn-tab-sanitization'];
+            buttons.forEach(id => {
+                const btn = document.getElementById(id);
+                if (id === 'btn-' + tabId) {
+                    btn.classList.add('text-brand-accent', 'border-brand-accent');
+                    btn.classList.remove('text-gray-400');
                 } else {
-                    btn.classList.remove('border-[#0052cc]', 'bg-blue-50/20');
-                    btn.classList.add('border-gray-200');
+                    btn.classList.remove('text-brand-accent', 'border-brand-accent');
+                    btn.classList.add('text-gray-400');
                 }
             });
         }
-
-        // Attach Click Listeners to Shopify Option Triggers
-        variantButtons.forEach(btn => {
-            btn.addEventListener('click', () => {
-                updateSelectedVariantView(btn.getAttribute('data-variant-value'));
-            });
-        });
-
-        // Quantity Box Component Operational Parameters Modifiers
-        qtyIncrementBtn.addEventListener('click', () => {
-            targetedProcurementQty++;
-            qtyInput.value = targetedProcurementQty;
-        });
-
-        qtyDecrementBtn.addEventListener('click', () => {
-            if (targetedProcurementQty > 1) {
-                targetedProcurementQty--;
-                qtyInput.value = targetedProcurementQty;
-            }
-        });
-
-        qtyInput.addEventListener('change', (e) => {
-            let userVal = parseInt(e.target.value);
-            if (isNaN(userVal) || userVal < 1) {
-                targetedProcurementQty = 1;
-            } else {
-                targetedProcurementQty = userVal;
-            }
-            qtyInput.value = targetedProcurementQty;
-        });
-
-        // Interactive Drawer Matrix View Operations Toggles
-        function toggleCartDrawerState(forceClose = false) {
-            if (forceClose) {
-                shopifyCartDrawerNode.classList.add('hidden');
-            } else {
-                shopifyCartDrawerNode.classList.toggle('hidden');
-            }
-        }
-
-        cartTriggerBtn.addEventListener('click', () => toggleCartDrawerState());
-        cartDrawerCloseBtn.addEventListener('click', () => toggleCartDrawerState(true));
-        cartDrawerOverlay.addEventListener('click', () => toggleCartDrawerState(true));
-
-        // Render Current Line-Item Configurations State Logic inside the Cart Matrix
-        function synchronizeCartDrawerUI() {
-            if (!cartActiveSystemInstance) {
-                // Display Empty Context State View Blocks
-                headerCartBadge.textContent = '0';
-                cartEmptyStateNode.classList.remove('hidden');
-                cartActiveItemNode.classList.add('hidden');
-                cartFinancialFooterNode.classList.add('hidden');
-            } else {
-                // Populate Valid Selected Line Item Parameters
-                const activeData = productDataMatrix[cartActiveSystemInstance.variantId];
-                const aggregateCost = activeData.price * cartActiveSystemInstance.quantity;
-
-                headerCartBadge.textContent = cartActiveSystemInstance.quantity;
-                cartItemTitleDisplay.textContent = activeData.title;
-                cartItemSkuDisplay.textContent = activeData.sku;
-                cartItemQtyDisplay.textContent = `Qty: ${cartActiveSystemInstance.quantity}`;
-                cartItemPriceDisplay.textContent = formatInvestmentPrice(aggregateCost);
-
-                footerCalcSubtotal.textContent = formatInvestmentPrice(aggregateCost);
-                footerCalcTotal.textContent = formatInvestmentPrice(aggregateCost);
-
-                cartEmptyStateNode.classList.add('hidden');
-                cartActiveItemNode.classList.remove('hidden');
-                cartFinancialFooterNode.classList.remove('hidden');
-            }
-        }
-
-        // Action Trigger: Inject Items array structure safely inside operational scope
-        addToCartActionBtn.addEventListener('click', () => {
-            cartActiveSystemInstance = {
-                variantId: selectedVariantKey,
-                quantity: targetedProcurementQty
-            };
-            synchronizeCartDrawerUI();
-            toggleCartDrawerState();
-        });
-
-        // Purge Execution Step Callback
-        cartItemPurgeAction.addEventListener('click', () => {
-            cartActiveSystemInstance = null;
-            synchronizeCartDrawerUI();
-        });
-
-        // Document Tab Toggles Context Switching Engine System Logic
-        const tabToggleLinks = document.querySelectorAll('.tab-toggle-link');
-        const tabContentContainers = document.querySelectorAll('.tab-content');
-
-        tabToggleLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                const targetedTabId = link.getAttribute('data-target-tab');
-
-                tabToggleLinks.forEach(btn => {
-                    btn.classList.remove('text-[#0052cc]', 'border-[#0052cc]');
-                    btn.classList.add('text-gray-400', 'border-transparent');
-                });
-                link.classList.add('text-[#0052cc]', 'border-[#0052cc]');
-                link.classList.remove('text-gray-400', 'border-transparent');
-
-                tabContentContainers.forEach(container => {
-                    if (container.id === targetedTabId) {
-                        container.classList.add('active');
-                    } else {
-                        container.classList.remove('active');
-                    }
-                });
-            });
-        });
-
-        // Mobile Menu Drawer Context Open/Close Handlers
-        const menuOpenBtn = document.getElementById('menu-open');
-        const menuCloseBtn = document.getElementById('menu-close');
-        const menuCloseBackdrop = document.getElementById('menu-close-backdrop');
-        const mobileMenuInstance = document.getElementById('mobile-menu');
-
-        function toggleMobileMenu() {
-            mobileMenuInstance.classList.toggle('hidden');
-        }
-        menuOpenBtn.addEventListener('click', toggleMobileMenu);
-        menuCloseBtn.addEventListener('click', toggleMobileMenu);
-        menuCloseBackdrop.addEventListener('click', toggleMobileMenu);
     </script>
 </body>
 </html>
