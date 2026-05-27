@@ -6,6 +6,8 @@
     <title>M.2 PCIe SATA NVMe Duplicators & Sanitizers - ProDuplicator</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
@@ -16,76 +18,630 @@
                         slateDark: '#0f172a',
                         slateMuted: '#64748b',
                         borderLight: '#e2e8f0',
-                        footerBg: '#091526'
+                        footerBg: '#091526',
+                        footerBorder: '#12253f'
                     },
-                    fontFamily: { sans: ['Inter', 'sans-serif'] }
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif']
+                    }
                 }
             }
         }
     </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
 </head>
 <body class="bg-white text-slateDark antialiased">
 
-    <header class="border-b border-gray-200">
-        <div class="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between">
-            <img src="https://www.produplicator.com/cdn/shop/files/Produplicator_-_500_x_260_180x.png?v=1776179483" alt="ProDuplicator Logo" class="h-12 w-auto">
-            <nav class="flex gap-8 text-xs font-semibold uppercase tracking-wider text-gray-600">
-                <a href="#" class="hover:text-brandBlue">M.2 Duplicators</a>
-                <a href="#" class="hover:text-brandBlue">SSD Duplicators</a>
-                <a href="#" class="hover:text-brandBlue">HDD Duplicators</a>
-                <a href="#" class="hover:text-brandBlue">USB Duplicators</a>
-                <a href="#" class="hover:text-brandBlue">Sanitizers</a>
-                <a href="#" class="hover:text-brandBlue">Accessories</a>
+    <div class="bg-brandBlue text-white text-center py-2 text-[11px] font-medium tracking-widest uppercase">
+        Extra 10% Off On Your First Order
+    </div>
+
+    <header class="bg-white border-b border-gray-200 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 h-20 lg:h-24 flex items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+                <button id="menu-open" class="lg:hidden p-1 text-gray-600 hover:text-[#0052cc] focus:outline-none" aria-label="Open Menu">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+                <a href="#" class="flex items-center flex-shrink-0">
+                    <img src="https://www.produplicator.com/cdn/shop/files/Produplicator_-_500_x_260_180x.png?v=1776179483" alt="ProDuplicator Logo" class="h-10 lg:h-14 w-auto object-contain">
+                </a>
+            </div>
+
+            <nav class="hidden lg:flex items-center gap-6 text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                <a href="#" class="hover:text-[#0052cc] transition text-brandBlue">M.2 NVMe PCIe SATA</a>
+                <a href="#" class="hover:text-[#0052cc] transition">Hard Drive HDD/SSD</a>
+                <a href="#" class="hover:text-[#0052cc] transition">Flash Media</a>
+                <a href="#" class="hover:text-[#0052cc] transition">CD DVD BD Blu-Ray</a>
+                <a href="#" class="hover:text-[#0052cc] transition">Media & Consumables</a>
             </nav>
-            <div class="flex items-center gap-4 text-gray-600">
-                <i data-lucide="shopping-cart" class="w-5 h-5"></i>
-                <i data-lucide="user" class="w-5 h-5"></i>
-                <div class="bg-gray-100 border border-gray-300 rounded-md py-1.5 px-3 text-xs">Search products...</div>
+
+            <div class="flex items-center gap-3 md:gap-4 flex-1 justify-end max-w-xs">
+                <button class="sm:hidden text-gray-600 hover:text-[#0052cc]"><i data-lucide="search" class="w-5 h-5"></i></button>
+                <div class="relative w-full hidden sm:block">
+                    <input type="text" placeholder="Search the store..." class="w-full bg-gray-100 border border-gray-300 rounded-md py-1.5 pl-3 pr-9 text-sm focus:outline-none focus:border-[#0052cc]">
+                    <i data-lucide="search" class="w-4 h-4 text-gray-400 absolute right-3 top-2.5"></i>
+                </div>
+                <button class="text-gray-600 hover:text-[#0052cc]"><i data-lucide="user" class="w-5 h-5"></i></button>
+                <button class="text-gray-600 hover:text-[#0052cc] relative">
+                    <i data-lucide="shopping-cart" class="w-5 h-5"></i>
+                    <span class="absolute -top-1 -right-1 bg-[#0052cc] text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center">0</span>
+                </button>
             </div>
         </div>
     </header>
 
-    <main class="max-w-7xl mx-auto px-6 py-12">
-        <p class="text-[10px] uppercase tracking-widest text-slateMuted mb-2">Home / M.2 PCIe SATA NVMe Duplicators & Sanitizers</p>
-        <h1 class="text-3xl font-bold text-slateDark mb-4">M.2 PCIe SATA NVMe Duplicators & Sanitizers</h1>
-        <p class="text-sm text-slateMuted mb-8 max-w-2xl">High-performance duplicators and sanitizers for M.2 PCIe, SATA, and NVMe drives. Built for speed, reliability, and professional use.</p>
+    <main class="max-w-7xl mx-auto px-6 py-10 space-y-12">
+        
+        <div class="space-y-3 border-b border-borderLight pb-8">
+            <nav class="text-[10px] uppercase font-bold tracking-widest text-slateMuted flex items-center gap-2">
+                <a href="#" class="hover:text-brandBlue">Home</a> <span>/</span> <span class="text-slateDark">M.2 PCIe SATA NVMe Duplicators & Sanitizers</span>
+            </nav>
+            <h1 class="text-2xl md:text-3xl font-light tracking-tight text-slateDark">
+                M.2 PCIe SATA NVMe <span class="font-semibold">Duplicators & Sanitizers</span>
+            </h1>
+            <p class="text-xs text-slateMuted max-w-4xl leading-relaxed">
+                High-performance duplicators and sanitizers for M.2 PCIe, SATA, and NVMe drives. Built for speed, reliability, and professional use.
+            </p>
 
-        <div class="grid grid-cols-4 gap-6 mb-16 p-6 border border-borderLight rounded-lg">
-            <div class="flex items-center gap-4"><i data-lucide="zap" class="text-brandBlue w-8 h-8"></i><div><p class="text-xs font-bold uppercase">Blazing Fast</p><p class="text-[10px] text-slateMuted">Up to 24GB/min</p></div></div>
-            <div class="flex items-center gap-4"><i data-lucide="layout-grid" class="text-brandBlue w-8 h-8"></i><div><p class="text-xs font-bold uppercase">Multiple Interfaces</p><p class="text-[10px] text-slateMuted">PCIe, SATA & NVMe</p></div></div>
-            <div class="flex items-center gap-4"><i data-lucide="clock" class="text-brandBlue w-8 h-8"></i><div><p class="text-xs font-bold uppercase">Enterprise Grade</p><p class="text-[10px] text-slateMuted">Built for 24/7 operation</p></div></div>
-            <div class="flex items-center gap-4"><i data-lucide="shield-check" class="text-brandBlue w-8 h-8"></i><div><p class="text-xs font-bold uppercase">Secure & Reliable</p><p class="text-[10px] text-slateMuted">Data-safe & verified</p></div></div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 pt-6 text-[11px] text-slateMuted">
+                <div class="flex items-center gap-2.5"><i data-lucide="zap" class="w-4 h-4 text-brandBlue"></i> <span><strong>Blazing Fast Transfer</strong><br>Up to 24GB/min</span></div>
+                <div class="flex items-center gap-2.5"><i data-lucide="shuffle" class="w-4 h-4 text-brandBlue"></i> <span><strong>Multiple Interfaces</strong><br>PCIe, SATA & NVMe</span></div>
+                <div class="flex items-center gap-2.5"><i data-lucide="shield" class="w-4 h-4 text-brandBlue"></i> <span><strong>Enterprise Grade</strong><br>Built for 24/7 operation</span></div>
+                <div class="flex items-center gap-2.5"><i data-lucide="lock" class="w-4 h-4 text-brandBlue"></i> <span><strong>Secure & Reliable</strong><br>Data-safe & verified</span></div>
+            </div>
         </div>
 
-        <section class="mb-12">
-            <div class="flex items-center justify-between border-b border-borderLight pb-4 mb-6">
+        <section class="space-y-6">
+            <div class="flex justify-between items-end border-b border-borderLight pb-2">
                 <div>
-                    <h2 class="text-xl font-bold">NX Series – 24GB/min (M.2)</h2>
+                    <h2 class="text-base font-semibold text-slateDark uppercase tracking-wide">NX Series – 24GB/min (M.2)</h2>
                     <p class="text-xs text-slateMuted">High-speed duplicators for M.2 PCIe NVMe drives.</p>
                 </div>
-                <button class="text-xs font-bold text-brandBlue uppercase border border-brandBlue px-4 py-2 rounded">View All NX Series</button>
+                <a href="#" class="text-[11px] font-bold tracking-wider text-brandBlue hover:underline uppercase whitespace-nowrap">View All NX Series</a>
             </div>
-            
-            <div class="grid grid-cols-5 gap-6">
-                <div class="border border-borderLight p-4 rounded-lg hover:shadow-md transition">
-                    <img src="https://cdn.shopify.com/s/files/1/1482/1392/files/13157045066828693100.jpg?v=1772476507" class="w-full h-40 object-contain mb-4">
-                    <h3 class="text-xs font-semibold mb-1">SYSTOR 1 to 3 M.2 NVMe PCIe SSD Duplicator – NX300</h3>
-                    <p class="text-[10px] text-slateMuted mb-2">PCIe NVMe (M.2)</p>
-                    <p class="text-brandBlue font-bold text-sm">From $1,479.00</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+                <div class="border border-borderLight rounded-lg p-4 bg-white flex flex-col justify-between hover:shadow-sm transition">
+                    <div class="space-y-3">
+                        <div class="w-full h-36 bg-slate-50 rounded flex items-center justify-center p-4">
+                            <img src="https://cdn.shopify.com/s/files/1/1482/1392/files/13157045066828693100.jpg?v=1772476507" class="max-h-full max-w-full object-contain mix-blend-darken">
+                        </div>
+                        <h3 class="text-xs font-semibold text-slateDark leading-snug line-clamp-3">SYSOR 1 to 3 M.2 NVMe PCIe SSD Duplicator – NX300</h3>
+                        <p class="text-[10px] uppercase font-bold text-slateMuted tracking-wider">PCIe NVMe (M.2)</p>
+                    </div>
+                    <div class="pt-4 mt-3 border-t border-borderLight flex items-center justify-between">
+                        <span class="text-sm font-bold text-brandBlue">From $1,479.00</span>
+                        <button class="text-slateMuted hover:text-brandBlue transition" aria-label="Add to Cart"><i data-lucide="shopping-cart" class="w-4 h-4"></i></button>
+                    </div>
                 </div>
+                <div class="border border-borderLight rounded-lg p-4 bg-white flex flex-col justify-between hover:shadow-sm transition">
+                    <div class="space-y-3">
+                        <div class="w-full h-36 bg-slate-50 rounded flex items-center justify-center p-4">
+                            <img src="https://cdn.shopify.com/s/files/1/1482/1392/files/13157045066828693100.jpg?v=1772476507" class="max-h-full max-w-full object-contain mix-blend-darken">
+                        </div>
+                        <h3 class="text-xs font-semibold text-slateDark leading-snug line-clamp-3">SYSOR 1 to 7 M.2 NVMe PCIe SSD Duplicator – NX700</h3>
+                        <p class="text-[10px] uppercase font-bold text-slateMuted tracking-wider">PCIe NVMe (M.2)</p>
+                    </div>
+                    <div class="pt-4 mt-3 border-t border-borderLight flex items-center justify-between">
+                        <span class="text-sm font-bold text-brandBlue">From $3,349.00</span>
+                        <button class="text-slateMuted hover:text-brandBlue transition" aria-label="Add to Cart"><i data-lucide="shopping-cart" class="w-4 h-4"></i></button>
+                    </div>
                 </div>
+                <div class="border border-borderLight rounded-lg p-4 bg-white flex flex-col justify-between hover:shadow-sm transition">
+                    <div class="space-y-3">
+                        <div class="w-full h-36 bg-slate-50 rounded flex items-center justify-center p-4">
+                            <img src="https://cdn.shopify.com/s/files/1/1482/1392/files/13157045066828693100.jpg?v=1772476507" class="max-h-full max-w-full object-contain mix-blend-darken">
+                        </div>
+                        <h3 class="text-xs font-semibold text-slateDark leading-snug line-clamp-3">SYSOR 1 to 15 M.2 NVMe PCIe SSD Duplicator – NX1500</h3>
+                        <p class="text-[10px] uppercase font-bold text-slateMuted tracking-wider">PCIe NVMe (M.2)</p>
+                    </div>
+                    <div class="pt-4 mt-3 border-t border-borderLight flex items-center justify-between">
+                        <span class="text-sm font-bold text-brandBlue">From $3,489.00</span>
+                        <button class="text-slateMuted hover:text-brandBlue transition" aria-label="Add to Cart"><i data-lucide="shopping-cart" class="w-4 h-4"></i></button>
+                    </div>
+                </div>
+                <div class="border border-borderLight rounded-lg p-4 bg-white flex flex-col justify-between hover:shadow-sm transition">
+                    <div class="space-y-3">
+                        <div class="w-full h-36 bg-slate-50 rounded flex items-center justify-center p-4">
+                            <img src="https://cdn.shopify.com/s/files/1/1482/1392/files/13157045066828693100.jpg?v=1772476507" class="max-h-full max-w-full object-contain mix-blend-darken">
+                        </div>
+                        <h3 class="text-xs font-semibold text-slateDark leading-snug line-clamp-3">SYSOR 1 to 23 M.2 NVMe PCIe SSD Duplicator – NX2300</h3>
+                        <p class="text-[10px] uppercase font-bold text-slateMuted tracking-wider">PCIe NVMe (M.2)</p>
+                    </div>
+                    <div class="pt-4 mt-3 border-t border-borderLight flex items-center justify-between">
+                        <span class="text-sm font-bold text-brandBlue">From $5,359.00</span>
+                        <button class="text-slateMuted hover:text-brandBlue transition" aria-label="Add to Cart"><i data-lucide="shopping-cart" class="w-4 h-4"></i></button>
+                    </div>
+                </div>
+                <div class="border border-borderLight rounded-lg p-4 bg-white flex flex-col justify-between hover:shadow-sm transition">
+                    <div class="space-y-3">
+                        <div class="w-full h-36 bg-slate-50 rounded flex items-center justify-center p-4">
+                            <img src="https://cdn.shopify.com/s/files/1/1482/1392/files/13157045066828693100.jpg?v=1772476507" class="max-h-full max-w-full object-contain mix-blend-darken">
+                        </div>
+                        <h3 class="text-xs font-semibold text-slateDark leading-snug line-clamp-3">SYSOR 1 to 31 M.2 NVMe PCIe SSD Duplicator – NX3100</h3>
+                        <p class="text-[10px] uppercase font-bold text-slateMuted tracking-wider">PCIe NVMe (M.2)</p>
+                    </div>
+                    <div class="pt-4 mt-3 border-t border-borderLight flex items-center justify-between">
+                        <span class="text-sm font-bold text-brandBlue">From $6,259.00</span>
+                        <button class="text-slateMuted hover:text-brandBlue transition" aria-label="Add to Cart"><i data-lucide="shopping-cart" class="w-4 h-4"></i></button>
+                    </div>
+                </div>
+            </div>
         </section>
+
+        <section class="space-y-6">
+            <div class="flex justify-between items-end border-b border-borderLight pb-2">
+                <div>
+                    <h2 class="text-base font-semibold text-slateDark uppercase tracking-wide">YL Series – 36GB/min (M.2 & SATA SSD/HDD)</h2>
+                    <p class="text-xs text-slateMuted">Versatile duplicators for M.2 and SATA SSD/HDD.</p>
+                </div>
+                <a href="#" class="text-[11px] font-bold tracking-wider text-brandBlue hover:underline uppercase whitespace-nowrap">View All YL Series</a>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="border border-borderLight rounded-lg p-4 bg-white flex flex-col justify-between hover:shadow-sm transition">
+                    <div class="space-y-3">
+                        <div class="w-full h-36 bg-slate-50 rounded flex items-center justify-center p-4">
+                            <img src="https://cdn.shopify.com/s/files/1/1482/1392/files/7755882217002259843.jpg?v=1772475784" class="max-h-full max-w-full object-contain mix-blend-darken">
+                        </div>
+                        <h3 class="text-xs font-semibold text-slateDark leading-snug line-clamp-3">SYSOR 1 to 5 M.2 SATA SSD HDD Duplicator – YL5</h3>
+                        <p class="text-[10px] uppercase font-bold text-slateMuted tracking-wider">M.2 & SATA</p>
+                    </div>
+                    <div class="pt-4 mt-3 border-t border-borderLight flex items-center justify-between">
+                        <span class="text-sm font-bold text-brandBlue">From $1,649.00</span>
+                        <button class="text-slateMuted hover:text-brandBlue transition" aria-label="Add to Cart"><i data-lucide="shopping-cart" class="w-4 h-4"></i></button>
+                    </div>
+                </div>
+                <div class="border border-borderLight rounded-lg p-4 bg-white flex flex-col justify-between hover:shadow-sm transition">
+                    <div class="space-y-3">
+                        <div class="w-full h-36 bg-slate-50 rounded flex items-center justify-center p-4">
+                            <img src="https://cdn.shopify.com/s/files/1/1482/1392/files/7755882217002259843.jpg?v=1772475784" class="max-h-full max-w-full object-contain mix-blend-darken">
+                        </div>
+                        <h3 class="text-xs font-semibold text-slateDark leading-snug line-clamp-3">SYSOR 1 to 11 M.2 SATA SSD HDD Duplicator – YL11</h3>
+                        <p class="text-[10px] uppercase font-bold text-slateMuted tracking-wider">M.2 & SATA</p>
+                    </div>
+                    <div class="pt-4 mt-3 border-t border-borderLight flex items-center justify-between">
+                        <span class="text-sm font-bold text-brandBlue">From $2,599.00</span>
+                        <button class="text-slateMuted hover:text-brandBlue transition" aria-label="Add to Cart"><i data-lucide="shopping-cart" class="w-4 h-4"></i></button>
+                    </div>
+                </div>
+                <div class="border border-borderLight rounded-lg p-4 bg-white flex flex-col justify-between hover:shadow-sm transition">
+                    <div class="space-y-3">
+                        <div class="w-full h-36 bg-slate-50 rounded flex items-center justify-center p-4">
+                            <img src="https://cdn.shopify.com/s/files/1/1482/1392/files/7755882217002259843.jpg?v=1772475784" class="max-h-full max-w-full object-contain mix-blend-darken">
+                        </div>
+                        <h3 class="text-xs font-semibold text-slateDark leading-snug line-clamp-3">SYSOR 1 to 15 M.2 SATA SSD HDD Duplicator – YL15</h3>
+                        <p class="text-[10px] uppercase font-bold text-slateMuted tracking-wider">M.2 & SATA</p>
+                    </div>
+                    <div class="pt-4 mt-3 border-t border-borderLight flex items-center justify-between">
+                        <span class="text-sm font-bold text-brandBlue">From $3,499.00</span>
+                        <button class="text-slateMuted hover:text-brandBlue transition" aria-label="Add to Cart"><i data-lucide="shopping-cart" class="w-4 h-4"></i></button>
+                    </div>
+                </div>
+                <div class="border border-borderLight rounded-lg p-4 bg-white flex flex-col justify-between hover:shadow-sm transition">
+                    <div class="space-y-3">
+                        <div class="w-full h-36 bg-slate-50 rounded flex items-center justify-center p-4">
+                            <img src="https://cdn.shopify.com/s/files/1/1482/1392/files/7755882217002259843.jpg?v=1772475784" class="max-h-full max-w-full object-contain mix-blend-darken">
+                        </div>
+                        <h3 class="text-xs font-semibold text-slateDark leading-snug line-clamp-3">SYSOR 1 to 23 M.2 SATA SSD HDD Duplicator – YL23</h3>
+                        <p class="text-[10px] uppercase font-bold text-slateMuted tracking-wider">M.2 & SATA</p>
+                    </div>
+                    <div class="pt-4 mt-3 border-t border-borderLight flex items-center justify-between">
+                        <span class="text-sm font-bold text-brandBlue">From $4,499.00</span>
+                        <button class="text-slateMuted hover:text-brandBlue transition" aria-label="Add to Cart"><i data-lucide="shopping-cart" class="w-4 h-4"></i></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="space-y-6">
+            <div class="flex justify-between items-end border-b border-borderLight pb-2">
+                <div>
+                    <h2 class="text-base font-semibold text-slateDark uppercase tracking-wide">YL Series – 18GB/min (M.2 & SATA SSD/HDD)</h2>
+                    <p class="text-xs text-slateMuted">Efficient duplicators for M.2 and SATA SSD/HDD.</p>
+                </div>
+                <a href="#" class="text-[11px] font-bold tracking-wider text-brandBlue hover:underline uppercase whitespace-nowrap">View All YL Series</a>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="border border-borderLight rounded-lg p-4 bg-white flex flex-col justify-between hover:shadow-sm transition">
+                    <div class="space-y-3">
+                        <div class="w-full h-36 bg-slate-50 rounded flex items-center justify-center p-4">
+                            <img src="https://cdn.shopify.com/s/files/1/1482/1392/files/7755882217002259843.jpg?v=1772475784" class="max-h-full max-w-full object-contain mix-blend-darken">
+                        </div>
+                        <h3 class="text-xs font-semibold text-slateDark leading-snug line-clamp-3">SYSOR 1 to 5 M.2 SATA SSD HDD Duplicator – YL5-18</h3>
+                        <p class="text-[10px] uppercase font-bold text-slateMuted tracking-wider">M.2 & SATA</p>
+                    </div>
+                    <div class="pt-4 mt-3 border-t border-borderLight flex items-center justify-between">
+                        <span class="text-sm font-bold text-brandBlue">From $1,299.00</span>
+                        <button class="text-slateMuted hover:text-brandBlue transition" aria-label="Add to Cart"><i data-lucide="shopping-cart" class="w-4 h-4"></i></button>
+                    </div>
+                </div>
+                <div class="border border-borderLight rounded-lg p-4 bg-white flex flex-col justify-between hover:shadow-sm transition">
+                    <div class="space-y-3">
+                        <div class="w-full h-36 bg-slate-50 rounded flex items-center justify-center p-4">
+                            <img src="https://cdn.shopify.com/s/files/1/1482/1392/files/7755882217002259843.jpg?v=1772475784" class="max-h-full max-w-full object-contain mix-blend-darken">
+                        </div>
+                        <h3 class="text-xs font-semibold text-slateDark leading-snug line-clamp-3">SYSOR 1 to 11 M.2 SATA SSD HDD Duplicator – YL11-18</h3>
+                        <p class="text-[10px] uppercase font-bold text-slateMuted tracking-wider">M.2 & SATA</p>
+                    </div>
+                    <div class="pt-4 mt-3 border-t border-borderLight flex items-center justify-between">
+                        <span class="text-sm font-bold text-brandBlue">From $2,049.00</span>
+                        <button class="text-slateMuted hover:text-brandBlue transition" aria-label="Add to Cart"><i data-lucide="shopping-cart" class="w-4 h-4"></i></button>
+                    </div>
+                </div>
+                <div class="border border-borderLight rounded-lg p-4 bg-white flex flex-col justify-between hover:shadow-sm transition">
+                    <div class="space-y-3">
+                        <div class="w-full h-36 bg-slate-50 rounded flex items-center justify-center p-4">
+                            <img src="https://cdn.shopify.com/s/files/1/1482/1392/files/7755882217002259843.jpg?v=1772475784" class="max-h-full max-w-full object-contain mix-blend-darken">
+                        </div>
+                        <h3 class="text-xs font-semibold text-slateDark leading-snug line-clamp-3">SYSOR 1 to 15 M.2 SATA SSD HDD Duplicator – YL15-18</h3>
+                        <p class="text-[10px] uppercase font-bold text-slateMuted tracking-wider">M.2 & SATA</p>
+                    </div>
+                    <div class="pt-4 mt-3 border-t border-borderLight flex items-center justify-between">
+                        <span class="text-sm font-bold text-brandBlue">From $2,949.00</span>
+                        <button class="text-slateMuted hover:text-brandBlue transition" aria-label="Add to Cart"><i data-lucide="shopping-cart" class="w-4 h-4"></i></button>
+                    </div>
+                </div>
+                <div class="border border-borderLight rounded-lg p-4 bg-white flex flex-col justify-between hover:shadow-sm transition">
+                    <div class="space-y-3">
+                        <div class="w-full h-36 bg-slate-50 rounded flex items-center justify-center p-4">
+                            <img src="https://cdn.shopify.com/s/files/1/1482/1392/files/7755882217002259843.jpg?v=1772475784" class="max-h-full max-w-full object-contain mix-blend-darken">
+                        </div>
+                        <h3 class="text-xs font-semibold text-slateDark leading-snug line-clamp-3">SYSOR 1 to 23 M.2 SATA SSD HDD Duplicator – YL23-18</h3>
+                        <p class="text-[10px] uppercase font-bold text-slateMuted tracking-wider">M.2 & SATA</p>
+                    </div>
+                    <div class="pt-4 mt-3 border-t border-borderLight flex items-center justify-between">
+                        <span class="text-sm font-bold text-brandBlue">From $3,749.00</span>
+                        <button class="text-slateMuted hover:text-brandBlue transition" aria-label="Add to Cart"><i data-lucide="shopping-cart" class="w-4 h-4"></i></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            <section class="lg:col-span-8 space-y-6">
+                <div class="flex justify-between items-end border-b border-borderLight pb-2">
+                    <div>
+                        <h2 class="text-base font-semibold text-slateDark uppercase tracking-wide">M2 Series – 12GB/min (M.2)</h2>
+                        <p class="text-xs text-slateMuted">Reliable duplicators for M.2 SATA SSDs.</p>
+                    </div>
+                    <a href="#" class="text-[11px] font-bold tracking-wider text-brandBlue hover:underline uppercase whitespace-nowrap">View All M2 Series</a>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div class="border border-borderLight rounded-lg p-4 bg-white flex flex-col justify-between hover:shadow-sm transition">
+                        <div class="space-y-3">
+                            <div class="w-full h-36 bg-slate-50 rounded flex items-center justify-center p-4">
+                                <img src="https://cdn.shopify.com/s/files/1/1482/1392/files/14236066498620462574_45a288e7-da11-4785-ad23-45525292f3ea.jpg?v=1772474939" class="max-h-full max-w-full object-contain mix-blend-darken">
+                            </div>
+                            <h3 class="text-xs font-semibold text-slateDark leading-snug line-clamp-3">SYSOR 1 to 15 M.2 SATA SSD Duplicator – M215</h3>
+                            <p class="text-[10px] uppercase font-bold text-slateMuted tracking-wider">M.2 SATA</p>
+                        </div>
+                        <div class="pt-4 mt-3 border-t border-borderLight flex items-center justify-between">
+                            <span class="text-sm font-bold text-brandBlue">From $2,599.00</span>
+                            <button class="text-slateMuted hover:text-brandBlue transition" aria-label="Add to Cart"><i data-lucide="shopping-cart" class="w-4 h-4"></i></button>
+                        </div>
+                    </div>
+                    <div class="border border-borderLight rounded-lg p-4 bg-white flex flex-col justify-between hover:shadow-sm transition">
+                        <div class="space-y-3">
+                            <div class="w-full h-36 bg-slate-50 rounded flex items-center justify-center p-4">
+                                <img src="https://cdn.shopify.com/s/files/1/1482/1392/files/14236066498620462574_45a288e7-da11-4785-ad23-45525292f3ea.jpg?v=1772474939" class="max-h-full max-w-full object-contain mix-blend-darken">
+                            </div>
+                            <h3 class="text-xs font-semibold text-slateDark leading-snug line-clamp-3">SYSOR 1 to 23 M.2 SATA SSD Duplicator – M223</h3>
+                            <p class="text-[10px] uppercase font-bold text-slateMuted tracking-wider">M.2 SATA</p>
+                        </div>
+                        <div class="pt-4 mt-3 border-t border-borderLight flex items-center justify-between">
+                            <span class="text-sm font-bold text-brandBlue">From $3,799.00</span>
+                            <button class="text-slateMuted hover:text-brandBlue transition" aria-label="Add to Cart"><i data-lucide="shopping-cart" class="w-4 h-4"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="lg:col-span-4 space-y-6">
+                <div class="flex justify-between items-end border-b border-borderLight pb-2">
+                    <div>
+                        <h2 class="text-base font-semibold text-slateDark uppercase tracking-wide">M2 Series – 9GB/min (M.2)</h2>
+                        <p class="text-xs text-slateMuted">Cost-effective systems.</p>
+                    </div>
+                    <a href="#" class="text-[11px] font-bold tracking-wider text-brandBlue hover:underline uppercase whitespace-nowrap">View All</a>
+                </div>
+                <div class="border border-borderLight rounded-lg p-4 bg-white flex flex-col justify-between hover:shadow-sm transition h-[278px]">
+                    <div class="space-y-3">
+                        <div class="w-full h-36 bg-slate-50 rounded flex items-center justify-center p-4">
+                            <img src="https://cdn.shopify.com/s/files/1/1482/1392/files/14236066498620462574_45a288e7-da11-4785-ad23-45525292f3ea.jpg?v=1772474939" class="max-h-full max-w-full object-contain mix-blend-darken">
+                        </div>
+                        <h3 class="text-xs font-semibold text-slateDark leading-snug line-clamp-2">SYSOR 1 to 15 M.2 SATA SSD Duplicator – M215-9</h3>
+                        <p class="text-[10px] uppercase font-bold text-slateMuted tracking-wider">M.2 SATA</p>
+                    </div>
+                    <div class="pt-4 mt-3 border-t border-borderLight flex items-center justify-between">
+                        <span class="text-sm font-bold text-brandBlue">From $1,649.00</span>
+                        <button class="text-slateMuted hover:text-brandBlue transition" aria-label="Add to Cart"><i data-lucide="shopping-cart" class="w-4 h-4"></i></button>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <section class="space-y-6">
+            <div class="flex justify-between items-end border-b border-borderLight pb-2">
+                <div>
+                    <h2 class="text-base font-semibold text-slateDark uppercase tracking-wide">HC Series – 24GB/min (M.2 & SATA SSD/HDD)</h2>
+                    <p class="text-xs text-slateMuted">High-capacity duplicators for mixed drive types.</p>
+                </div>
+                <a href="#" class="text-[11px] font-bold tracking-wider text-brandBlue hover:underline uppercase whitespace-nowrap">View All HC Series</a>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-3xl">
+                <div class="border border-borderLight rounded-lg p-4 bg-white flex flex-col justify-between hover:shadow-sm transition">
+                    <div class="space-y-3">
+                        <div class="w-full h-36 bg-slate-50 rounded flex items-center justify-center p-4">
+                            <img src="https://cdn.shopify.com/s/files/1/1482/1392/files/7755882217002259843.jpg?v=1772475784" class="max-h-full max-w-full object-contain mix-blend-darken">
+                        </div>
+                        <h3 class="text-xs font-semibold text-slateDark leading-snug line-clamp-3">SYSOR 1 to 11 M.2 SATA SSD HDD Duplicator – HC11</h3>
+                        <p class="text-[10px] uppercase font-bold text-slateMuted tracking-wider">M.2 & SATA</p>
+                    </div>
+                    <div class="pt-4 mt-3 border-t border-borderLight flex items-center justify-between">
+                        <span class="text-sm font-bold text-brandBlue">From $2,599.00</span>
+                        <button class="text-slateMuted hover:text-brandBlue transition" aria-label="Add to Cart"><i data-lucide="shopping-cart" class="w-4 h-4"></i></button>
+                    </div>
+                </div>
+                <div class="border border-borderLight rounded-lg p-4 bg-white flex flex-col justify-between hover:shadow-sm transition">
+                    <div class="space-y-3">
+                        <div class="w-full h-36 bg-slate-50 rounded flex items-center justify-center p-4">
+                            <img src="https://cdn.shopify.com/s/files/1/1482/1392/files/7755882217002259843.jpg?v=1772475784" class="max-h-full max-w-full object-contain mix-blend-darken">
+                        </div>
+                        <h3 class="text-xs font-semibold text-slateDark leading-snug line-clamp-3">SYSOR 1 to 23 M.2 SATA SSD HDD Duplicator – HC23</h3>
+                        <p class="text-[10px] uppercase font-bold text-slateMuted tracking-wider">M.2 & SATA</p>
+                    </div>
+                    <div class="pt-4 mt-3 border-t border-borderLight flex items-center justify-between">
+                        <span class="text-sm font-bold text-brandBlue">From $3,699.00</span>
+                        <button class="text-slateMuted hover:text-brandBlue transition" aria-label="Add to Cart"><i data-lucide="shopping-cart" class="w-4 h-4"></i></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="space-y-6">
+            <div class="flex justify-between items-end border-b border-borderLight pb-2">
+                <div>
+                    <h2 class="text-base font-semibold text-slateDark uppercase tracking-wide">XW Series – 18GB/min (M.2 & SATA SSD/HDD)</h2>
+                    <p class="text-xs text-slateMuted">Powerful duplicators for mixed drive types.</p>
+                </div>
+                <a href="#" class="text-[11px] font-bold tracking-wider text-brandBlue hover:underline uppercase whitespace-nowrap">View All XW Series</a>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="border border-borderLight rounded-lg p-4 bg-white flex flex-col justify-between hover:shadow-sm transition">
+                    <div class="space-y-3">
+                        <div class="w-full h-36 bg-slate-50 rounded flex items-center justify-center p-4">
+                            <img src="https://cdn.shopify.com/s/files/1/1482/1392/files/14236066498620462574.jpg?v=1772475698" class="max-h-full max-w-full object-contain mix-blend-darken">
+                        </div>
+                        <h3 class="text-xs font-semibold text-slateDark leading-snug line-clamp-3">SYSOR 1 to 7 M.2 SATA SSD HDD Duplicator – XW7</h3>
+                        <p class="text-[10px] uppercase font-bold text-slateMuted tracking-wider">M.2 & SATA</p>
+                    </div>
+                    <div class="pt-4 mt-3 border-t border-borderLight flex items-center justify-between">
+                        <span class="text-sm font-bold text-brandBlue">From $1,499.00</span>
+                        <button class="text-slateMuted hover:text-brandBlue transition" aria-label="Add to Cart"><i data-lucide="shopping-cart" class="w-4 h-4"></i></button>
+                    </div>
+                </div>
+                <div class="border border-borderLight rounded-lg p-4 bg-white flex flex-col justify-between hover:shadow-sm transition">
+                    <div class="space-y-3">
+                        <div class="w-full h-36 bg-slate-50 rounded flex items-center justify-center p-4">
+                            <img src="https://cdn.shopify.com/s/files/1/1482/1392/files/14236066498620462574.jpg?v=1772475698" class="max-h-full max-w-full object-contain mix-blend-darken">
+                        </div>
+                        <h3 class="text-xs font-semibold text-slateDark leading-snug line-clamp-3">SYSOR 1 to 15 M.2 SATA SSD HDD Duplicator – XW15</h3>
+                        <p class="text-[10px] uppercase font-bold text-slateMuted tracking-wider">M.2 & SATA</p>
+                    </div>
+                    <div class="pt-4 mt-3 border-t border-borderLight flex items-center justify-between">
+                        <span class="text-sm font-bold text-brandBlue">From $2,499.00</span>
+                        <button class="text-slateMuted hover:text-brandBlue transition" aria-label="Add to Cart"><i data-lucide="shopping-cart" class="w-4 h-4"></i></button>
+                    </div>
+                </div>
+                <div class="border border-borderLight rounded-lg p-4 bg-white flex flex-col justify-between hover:shadow-sm transition">
+                    <div class="space-y-3">
+                        <div class="w-full h-36 bg-slate-50 rounded flex items-center justify-center p-4">
+                            <img src="https://cdn.shopify.com/s/files/1/1482/1392/files/14236066498620462574.jpg?v=1772475698" class="max-h-full max-w-full object-contain mix-blend-darken">
+                        </div>
+                        <h3 class="text-xs font-semibold text-slateDark leading-snug line-clamp-3">SYSOR 1 to 23 M.2 SATA SSD HDD Duplicator – XW23</h3>
+                        <p class="text-[10px] uppercase font-bold text-slateMuted tracking-wider">M.2 & SATA</p>
+                    </div>
+                    <div class="pt-4 mt-3 border-t border-borderLight flex items-center justify-between">
+                        <span class="text-sm font-bold text-brandBlue">From $3,499.00</span>
+                        <button class="text-slateMuted hover:text-brandBlue transition" aria-label="Add to Cart"><i data-lucide="shopping-cart" class="w-4 h-4"></i></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="space-y-6">
+            <div class="flex justify-between items-end border-b border-borderLight pb-2">
+                <div>
+                    <h2 class="text-base font-semibold text-slateDark uppercase tracking-wide">XW Series – 9GB/min (M.2 & SATA SSD/HDD)</h2>
+                    <p class="text-xs text-slateMuted">Affordable duplicators for mixed drive types.</p>
+                </div>
+                <a href="#" class="text-[11px] font-bold tracking-wider text-brandBlue hover:underline uppercase whitespace-nowrap">View All XW Series</a>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="border border-borderLight rounded-lg p-4 bg-white flex flex-col justify-between hover:shadow-sm transition">
+                    <div class="space-y-3">
+                        <div class="w-full h-36 bg-slate-50 rounded flex items-center justify-center p-4">
+                            <img src="https://cdn.shopify.com/s/files/1/1482/1392/files/14236066498620462574.jpg?v=1772475698" class="max-h-full max-w-full object-contain mix-blend-darken">
+                        </div>
+                        <h3 class="text-xs font-semibold text-slateDark leading-snug line-clamp-3">SYSOR 1 to 7 M.2 SATA SSD HDD Duplicator – XW7-9</h3>
+                        <p class="text-[10px] uppercase font-bold text-slateMuted tracking-wider">M.2 & SATA</p>
+                    </div>
+                    <div class="pt-4 mt-3 border-t border-borderLight flex items-center justify-between">
+                        <span class="text-sm font-bold text-brandBlue">From $1,299.00</span>
+                        <button class="text-slateMuted hover:text-brandBlue transition" aria-label="Add to Cart"><i data-lucide="shopping-cart" class="w-4 h-4"></i></button>
+                    </div>
+                </div>
+                <div class="border border-borderLight rounded-lg p-4 bg-white flex flex-col justify-between hover:shadow-sm transition">
+                    <div class="space-y-3">
+                        <div class="w-full h-36 bg-slate-50 rounded flex items-center justify-center p-4">
+                            <img src="https://cdn.shopify.com/s/files/1/1482/1392/files/14236066498620462574.jpg?v=1772475698" class="max-h-full max-w-full object-contain mix-blend-darken">
+                        </div>
+                        <h3 class="text-xs font-semibold text-slateDark leading-snug line-clamp-3">SYSOR 1 to 15 M.2 SATA SSD HDD Duplicator – XW15-9</h3>
+                        <p class="text-[10px] uppercase font-bold text-slateMuted tracking-wider">M.2 & SATA</p>
+                    </div>
+                    <div class="pt-4 mt-3 border-t border-borderLight flex items-center justify-between">
+                        <span class="text-sm font-bold text-brandBlue">From $2,199.00</span>
+                        <button class="text-slateMuted hover:text-brandBlue transition" aria-label="Add to Cart"><i data-lucide="shopping-cart" class="w-4 h-4"></i></button>
+                    </div>
+                </div>
+                <div class="border border-borderLight rounded-lg p-4 bg-white flex flex-col justify-between hover:shadow-sm transition">
+                    <div class="space-y-3">
+                        <div class="w-full h-36 bg-slate-50 rounded flex items-center justify-center p-4">
+                            <img src="https://cdn.shopify.com/s/files/1/1482/1392/files/14236066498620462574.jpg?v=1772475698" class="max-h-full max-w-full object-contain mix-blend-darken">
+                        </div>
+                        <h3 class="text-xs font-semibold text-slateDark leading-snug line-clamp-3">SYSOR 1 to 23 M.2 SATA SSD HDD Duplicator – XW23-9</h3>
+                        <p class="text-[10px] uppercase font-bold text-slateMuted tracking-wider">M.2 & SATA</p>
+                    </div>
+                    <div class="pt-4 mt-3 border-t border-borderLight flex items-center justify-between">
+                        <span class="text-sm font-bold text-brandBlue">From $3,099.00</span>
+                        <button class="text-slateMuted hover:text-brandBlue transition" aria-label="Add to Cart"><i data-lucide="shopping-cart" class="w-4 h-4"></i></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="space-y-6">
+            <div class="flex justify-between items-end border-b border-borderLight pb-2">
+                <div>
+                    <h2 class="text-base font-semibold text-slateDark uppercase tracking-wide">SF Series (M.2 & SATA SSD/HDD)</h2>
+                    <p class="text-xs text-slateMuted">Sanitizers for secure data erasure.</p>
+                </div>
+                <a href="#" class="text-[11px] font-bold tracking-wider text-brandBlue hover:underline uppercase whitespace-nowrap">View All SF Series</a>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-3xl">
+                <div class="border border-borderLight rounded-lg p-4 bg-white flex flex-col justify-between hover:shadow-sm transition">
+                    <div class="space-y-3">
+                        <div class="w-full h-36 bg-slate-50 rounded flex items-center justify-center p-4">
+                            <img src="https://cdn.shopify.com/s/files/1/1482/1392/files/14236066498620462574_45a288e7-da11-4785-ad23-45525292f3ea.jpg?v=1772474939" class="max-h-full max-w-full object-contain mix-blend-darken">
+                        </div>
+                        <h3 class="text-xs font-semibold text-slateDark leading-snug line-clamp-3">SYSOR M.2 & SATA Degauss Sanitizer – SF100</h3>
+                        <p class="text-[10px] uppercase font-bold text-slateMuted tracking-wider">M.2 & SATA</p>
+                    </div>
+                    <div class="pt-4 mt-3 border-t border-borderLight flex items-center justify-between">
+                        <span class="text-sm font-bold text-brandBlue">From $1,049.00</span>
+                        <button class="text-slateMuted hover:text-brandBlue transition" aria-label="Add to Cart"><i data-lucide="shopping-cart" class="w-4 h-4"></i></button>
+                    </div>
+                </div>
+                <div class="border border-borderLight rounded-lg p-4 bg-white flex flex-col justify-between hover:shadow-sm transition">
+                    <div class="space-y-3">
+                        <div class="w-full h-36 bg-slate-50 rounded flex items-center justify-center p-4">
+                            <img src="https://cdn.shopify.com/s/files/1/1482/1392/files/14236066498620462574_45a288e7-da11-4785-ad23-45525292f3ea.jpg?v=1772474939" class="max-h-full max-w-full object-contain mix-blend-darken">
+                        </div>
+                        <h3 class="text-xs font-semibold text-slateDark leading-snug line-clamp-3">SYSOR M.2 & SATA Sanitizer – SF200</h3>
+                        <p class="text-[10px] uppercase font-bold text-slateMuted tracking-wider">M.2 & SATA</p>
+                    </div>
+                    <div class="pt-4 mt-3 border-t border-borderLight flex items-center justify-between">
+                        <span class="text-sm font-bold text-brandBlue">From $1,749.00</span>
+                        <button class="text-slateMuted hover:text-brandBlue transition" aria-label="Add to Cart"><i data-lucide="shopping-cart" class="w-4 h-4"></i></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
 
-    <footer class="bg-gray-50 border-t border-borderLight py-12">
-        <div class="max-w-7xl mx-auto px-6 grid grid-cols-4 gap-8">
-            <div class="flex items-center gap-3"><i data-lucide="truck" class="text-brandBlue"></i><div><p class="text-xs font-bold">Free Shipping</p><p class="text-[10px] text-slateMuted">On all orders</p></div></div>
-            <div class="flex items-center gap-3"><i data-lucide="headphones" class="text-brandBlue"></i><div><p class="text-xs font-bold">Expert Support</p><p class="text-[10px] text-slateMuted">24/7 technical support</p></div></div>
-            <div class="flex items-center gap-3"><i data-lucide="credit-card" class="text-brandBlue"></i><div><p class="text-xs font-bold">Secure Payments</p><p class="text-[10px] text-slateMuted">100% secure checkout</p></div></div>
-            <div class="flex items-center gap-3"><i data-lucide="shield" class="text-brandBlue"></i><div><p class="text-xs font-bold">1 Year Warranty</p><p class="text-[10px] text-slateMuted">Backed by our guarantee</p></div></div>
+    <div id="mobile-navigation-tray" class="fixed inset-0 z-50 hidden" role="dialog" aria-modal="true">
+        <div id="tray-backdrop" class="fixed inset-0 bg-slate-900/10 backdrop-blur-xs"></div>
+        <div class="fixed inset-y-0 left-0 w-full max-w-xs bg-white p-6 z-10 flex flex-col space-y-6">
+            <div class="flex items-center justify-between border-b border-borderLight pb-4">
+                <img src="https://www.produplicator.com/cdn/shop/files/Produplicator_-_500_x_260_180x.png?v=1776179483" alt="Logo" class="h-8 w-auto object-contain">
+                <button id="menu-close" class="p-1 text-slateMuted"><i data-lucide="x" class="w-5 h-5"></i></button>
+            </div>
+            <nav class="flex flex-col gap-4 text-xs font-semibold uppercase tracking-wider text-slateMuted">
+                <a href="#" class="text-slateDark">M.2 NVMe PCIe SATA</a>
+                <a href="#">Hard Drive HDD/SSD</a>
+                <a href="#">Flash Media</a>
+                <a href="#">CD DVD BD Blu-Ray</a>
+                <a href="#">Media & Consumables</a>
+            </nav>
+        </div>
+    </div>
+
+    <footer class="bg-[#091526] text-slate-300 font-sans pt-16 pb-12 border-t border-[#12253f]">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-12 gap-y-10 md:gap-x-8 lg:gap-x-12 items-start">
+            
+            <div class="md:col-span-4 space-y-5 text-[13px] leading-relaxed max-w-sm">
+                <p class="text-slate-400">
+                    Your trusted partner for enterprise-grade duplication hardware. Delivering speed, reliability, and precision since 2010.
+                </p>
+                <div class="space-y-3 pt-2 text-slate-300">
+                    <p class="flex items-center gap-3">
+                        <i data-lucide="phone" class="w-4 h-4 text-slate-400"></i>
+                        <span>1-800-DUPLICATE (387-5422)</span>
+                    </p>
+                    <p class="flex items-center gap-3">
+                        <i data-lucide="mail" class="w-4 h-4 text-slate-400"></i>
+                        <a href="mailto:sales@produplicator.com" class="hover:text-white transition">sales@produplicator.com</a>
+                    </p>
+                    <p class="flex items-start gap-3">
+                        <i data-lucide="map-pin" class="w-4 h-4 text-slate-400 mt-0.5"></i>
+                        <span>123 Tech Drive, Silicon Valley, CA 94025</span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="md:col-span-8 grid grid-cols-3 gap-x-4 sm:gap-x-8">
+                <div class="space-y-4">
+                    <h4 class="text-white text-sm font-semibold tracking-wide">Shop</h4>
+                    <ul class="space-y-3 text-[13px] text-slate-400">
+                        <li><a href="#" class="hover:text-white transition">HDD/SSD Duplicators</a></li>
+                        <li><a href="#" class="hover:text-white transition">USB Duplicators</a></li>
+                        <li><a href="#" class="hover:text-white transition">DVD/CD Duplicators</a></li>
+                        <li><a href="#" class="hover:text-white transition">Data Sanitizers</a></li>
+                        <li><a href="#" class="hover:text-white transition">Accessories</a></li>
+                    </ul>
+                </div>
+
+                <div class="space-y-4">
+                    <h4 class="text-white text-sm font-semibold tracking-wide">Support</h4>
+                    <ul class="space-y-3 text-[13px] text-slate-400">
+                        <li><a href="#" class="hover:text-white transition">Help Center</a></li>
+                        <li><a href="#" class="hover:text-white transition">FAQs</a></li>
+                        <li><a href="#" class="hover:text-white transition">Warranty & Returns</a></li>
+                        <li><a href="#" class="hover:text-white transition">Contact Us</a></li>
+                        <li><a href="#" class="hover:text-white transition">Product Manuals</a></li>
+                    </ul>
+                </div>
+
+                <div class="space-y-4">
+                    <h4 class="text-white text-sm font-semibold tracking-wide">Company</h4>
+                    <ul class="space-y-3 text-[13px] text-slate-400">
+                        <li><a href="#" class="hover:text-white transition">About Us</a></li>
+                        <li><a href="#" class="hover:text-white transition">Careers</a></li>
+                        <li><a href="#" class="hover:text-white transition">Press & Media</a></li>
+                        <li><a href="#" class="hover:text-white transition">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-white transition">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 mt-12 pt-8 border-t border-[#12253f]">
+            <p class="text-[12px] text-slate-500 font-medium">
+                &copy; 2026 ProDuplicator. All rights reserved.
+            </p>
         </div>
     </footer>
 
-    <script>lucide.createIcons();</script>
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Responsive Drawer Toggle Hook setups
+        const openBtn = document.getElementById('menu-open');
+        const closeBtn = document.getElementById('menu-close');
+        const backdropNode = document.getElementById('tray-backdrop');
+        const trayContainer = document.getElementById('mobile-navigation-tray');
+
+        function toggleDrawer() {
+            trayContainer.classList.toggle('hidden');
+        }
+        if(openBtn && closeBtn && backdropNode) {
+            openBtn.addEventListener('click', toggleDrawer);
+            closeBtn.addEventListener('click', toggleDrawer);
+            backdropNode.addEventListener('click', toggleDrawer);
+        }
+    </script>
 </body>
 </html>
