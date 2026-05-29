@@ -16,7 +16,7 @@
                     colors: {
                         brandBlue: '#0052cc',
                         slateDark: '#0f172a',
-                        slateMuted: '#64748b',
+                        slateMuted: '#27374D', /* Darker gray for significantly improved readability */
                         borderLight: '#e2e8f0',
                         footerBg: '#091526',
                         footerBorder: '#12253f'
@@ -38,11 +38,11 @@
 </head>
 <body class="bg-white text-slateDark antialiased">
 
-  <div class="bg-[#4C85C0] text-white text-center py-2 text-[10px] md:text-xs font-semibold tracking-wider uppercase px-4">
+    <div class="bg-[#4C85C0] text-white text-center py-2 text-[10px] md:text-xs font-semibold tracking-wider uppercase px-4">
         Extra 10% Off On First Order
     </div>
 
-     <header class="bg-white border-b border-gray-200 sticky top-0 z-50">
+    <header class="bg-white border-b border-gray-200 sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 h-20 lg:h-24 flex items-center justify-between gap-4">
             <div class="flex items-center gap-3">
                 <button id="menu-open" class="lg:hidden p-1 text-gray-600 hover:text-[#0052cc] focus:outline-none" aria-label="Open Menu">
@@ -76,13 +76,17 @@
         </div>
     </header>
 
-
     <main class="max-w-7xl mx-auto px-6 py-12">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
             <div class="lg:col-span-6 space-y-4">
-                <div class="w-full h-[320px] sm:h-[400px] lg:h-[460px] bg-slate-50 rounded-lg flex items-center justify-center p-2 sm:p-4 border border-borderLight">
+                <div class="w-full h-[320px] sm:h-[400px] lg:h-[460px] bg-slate-50 rounded-lg flex items-center justify-center p-2 sm:p-4 border border-borderLight relative group">
                     <img id="main-viewframe" src="https://cdn.shopify.com/s/files/1/1482/1392/files/13157045066828693100.jpg?v=1772476507" alt="Systor Duplicator System Layout" class="max-h-full max-w-full object-contain mix-blend-darken">
+                    
+                    <!-- Full Screen / Lightbox Trigger Button -->
+                    <button onclick="openLightbox()" class="absolute bottom-4 right-4 bg-white/90 hover:bg-white text-slateDark p-2.5 rounded-full shadow-md border border-borderLight transition flex items-center justify-center backdrop-blur-xs hover:scale-105" aria-label="View Fullscreen Gallery">
+                        <i data-lucide="maximize" class="w-4 h-4"></i>
+                    </button>
                 </div>
                 <div class="flex gap-3">
                     <button onclick="swapImage(this.children[0].src)" class="w-16 h-16 bg-slate-50 rounded border border-brandBlue p-1.5 focus:outline-none transition">
@@ -107,28 +111,28 @@
                         Systor 1 to 4 M.2 NVMe & SATA <br><span class="font-semibold">Duplicator & Sanitizer</span>
                     </h1>
                     <div class="flex items-center gap-4 text-[11px] text-slateMuted pt-1">
-                        <span>Model: <span class="text-slateDark font-medium">SYSNVME-YL06PRO04</span></span>
-                        <span>SKU: <span class="text-slateDark font-medium">EP-NVME-14</span></span>
+                        <span>Model: <span class="text-slateDark font-semibold">SYSNVME-YL06PRO04</span></span>
+                        <span>SKU: <span class="text-slateDark font-semibold">EP-NVME-14</span></span>
                     </div>
                 </div>
 
                 <div class="flex items-center gap-2">
-                    <div class="flex text-amber-400 gap-0.5"><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i></div>
-                    <span class="text-xs text-slateMuted font-medium">(61 Verified Reviews)</span>
+                    <div class="flex text-amber-500 gap-0.5"><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i></div>
+                    <span class="text-xs text-slateMuted font-bold">(61 Verified Reviews)</span>
                 </div>
 
                 <div class="border-t border-b border-borderLight py-4 space-y-2">
                     <div class="flex items-baseline gap-3">
                         <span class="text-3xl font-bold tracking-tight text-brandBlue">$4,408.80</span>
-                        <span class="text-xs text-slateMuted line-through">$4,999.00</span>
+                        <span class="text-xs text-slateMuted line-through font-semibold">$4,999.00</span>
                     </div>
                     
                     <div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs">
-                        <p class="font-medium text-emerald-600 flex items-center gap-1.5">
-                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block"></span> Standard Freight Included
+                        <p class="font-bold text-emerald-700 flex items-center gap-1.5">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-600 inline-block"></span> Standard Freight Included
                         </p>
                         <span class="text-borderLight hidden sm:inline">|</span>
-                        <p class="text-amber-600 font-medium flex items-center gap-1">
+                        <p class="text-amber-700 font-bold flex items-center gap-1">
                             <i data-lucide="package" class="w-3.5 h-3.5"></i> Only 3 Units Left In Stock
                         </p>
                     </div>
@@ -137,23 +141,23 @@
                 <div class="space-y-3">
                     <div class="flex items-center gap-3">
                         <div class="flex items-center bg-slate-50 border border-borderLight rounded-md h-12 px-3">
-                            <button onclick="adjustQty(-1)" class="text-slateMuted hover:text-slateDark text-base font-medium px-1.5 focus:outline-none">-</button>
-                            <input id="qty-field" type="text" value="1" class="w-8 bg-transparent text-center text-xs font-semibold text-slateDark focus:outline-none" readonly>
-                            <button onclick="adjustQty(1)" class="text-slateMuted hover:text-slateDark text-base font-medium px-1.5 focus:outline-none">+</button>
+                            <button onclick="adjustQty(-1)" class="text-slateMuted hover:text-slateDark text-base font-bold px-1.5 focus:outline-none">-</button>
+                            <input id="qty-field" type="text" value="1" class="w-8 bg-transparent text-center text-xs font-bold text-slateDark focus:outline-none" readonly>
+                            <button onclick="adjustQty(1)" class="text-slateMuted hover:text-slateDark text-base font-bold px-1.5 focus:outline-none">+</button>
                         </div>
                         
-                        <button class="flex-1 bg-white hover:bg-slate-50 text-brandBlue border-2 border-brandBlue font-semibold text-xs uppercase tracking-widest h-12 rounded-md transition">
+                        <button class="flex-1 bg-white hover:bg-slate-50 text-brandBlue border-2 border-brandBlue font-bold text-xs uppercase tracking-widest h-12 rounded-md transition">
                             Add to Cart
                         </button>
                     </div>
 
-                    <button class="w-full bg-brandBlue hover:bg-slateDark text-white font-semibold text-xs uppercase tracking-widest h-12 rounded-md transition shadow-sm">
+                    <button class="w-full bg-brandBlue hover:bg-slateDark text-white font-bold text-xs uppercase tracking-widest h-12 rounded-md transition shadow-sm">
                         Buy It Now
                     </button>
 
-                    <div class="pt-2 border-t border-dashed border-borderLight flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-slateMuted">
-                        <span class="flex items-center gap-1"><i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-500"></i> Secure corporate processing guaranteed</span>
-                        <div class="flex items-center gap-3 opacity-60 grayscale hover:opacity-100 transition duration-300">
+                    <div class="pt-2 border-t border-dashed border-borderLight flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-slateMuted font-medium">
+                        <span class="flex items-center gap-1"><i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-600"></i> Secure corporate processing guaranteed</span>
+                        <div class="flex items-center gap-3 opacity-80 grayscale hover:opacity-100 transition duration-300">
                             <svg class="h-4 w-auto" viewBox="0 0 36 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="36" height="24" rx="2" fill="#141B4D"/><path d="M13.7 15.3l1.1-6.7h1.7l-1.1 6.7h-1.7zm6.7-6.5c-.3-.5-.9-.7-1.6-.7h-2.9l-.2.9h.8c.4 0 .7.1.8.3.1.1.1.4 0 .7l-.8 4.3h1.7l.8-4.3c.2-.7.2-1.2 0-1.2zm5.7-.2h-1.6c-.5 0-.9.3-1.1.7l-2.3 5.7h1.8l.4-1.1h2.2l.2 1.1h1.6l-1.2-6.4zm-2.3 3.6l.7-2 1.2 2h-1.9zM10.8 8.8H8.2L8 9.8c.6.1 1.1.4 1.5.8l.2-.9V8.8zm-1.3 2c-.2-.4-.6-.7-1.2-.9l-.1.5c.4.1.7.3.9.6l.4-.2z" fill="white"/></svg>
                             <svg class="h-4 w-auto" viewBox="0 0 36 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="36" height="24" rx="2" fill="#222222"/><circle cx="15" cy="12" r="7" fill="#EB001B"/><circle cx="21" cy="12" r="7" fill="#F79E1B" fill-opacity="0.8"/></svg>
                             <svg class="h-4 w-auto" viewBox="0 0 36 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="36" height="24" rx="2" fill="#007BC1"/><path d="M7 14.5l.8-2.3h2.4l.8 2.3h1.5L10 7.5H8.8L6 14.5h1zm2-3.5l.8 2.2H8.2L9 11zm9.5-3.5h-3.5v7h1.5v-2.2h2v-1.3h-2v-1.2h2V7.5zm5.5 0h-3.5v7h3.5v-1.3h-2v-1.2h2v-1.3h-2v-1.2h2V7.5z" fill="white"/></svg>
@@ -162,8 +166,8 @@
                     </div>
                 </div>
 
-                <p class="text-xs text-slateMuted leading-relaxed pt-1">
-                    An industrial high-performance FPGA standalone structural duplication engine. Achieve sector cloning speeds reaching <span class="text-slateDark font-medium">36 GB/min</span> across cross-interface M.2 drives natively without setup desktop systems.
+                <p class="text-xs text-slateMuted font-medium leading-relaxed pt-1">
+                    An industrial high-performance FPGA standalone structural duplication engine. Achieve sector cloning speeds reaching <span class="text-slateDark font-bold">36 GB/min</span> across cross-interface M.2 drives natively without setup desktop systems.
                 </p>
             </div>
         </div>
@@ -181,6 +185,10 @@
             <button onclick="switchMasterSection('section-specs')" id="tab-link-section-specs" class="master-tab-trigger text-xs font-semibold uppercase tracking-widest text-slateMuted hover:text-slateDark pb-3 -mb-[14px] transition-all focus:outline-none whitespace-nowrap">
                 PRODUCT SPECIFICATIONS
             </button>
+            <!-- Added Review Tab -->
+            <button onclick="switchMasterSection('section-reviews')" id="tab-link-section-reviews" class="master-tab-trigger text-xs font-semibold uppercase tracking-widest text-slateMuted hover:text-slateDark pb-3 -mb-[14px] transition-all focus:outline-none whitespace-nowrap">
+                REVIEWS (61)
+            </button>
         </div>
 
         <div class="min-h-[250px]">
@@ -188,10 +196,10 @@
             <div id="section-description" class="tab-panel active space-y-10">
                 <div class="max-w-4xl space-y-4">
                     <h3 class="text-sm font-bold uppercase tracking-wider text-slateDark">Overview</h3>
-                    <p class="text-xs text-slateMuted leading-relaxed">
+                    <p class="text-xs text-slateMuted font-medium leading-relaxed">
                         Systor M.2 NVMe PCIe/SATA SSD/HDD duplicators are completely standalone units that can clone or sanitize a number of different media types. Easily insert and copy (or erase) M.2 or SATA solid state SSD drives or HDD hard disk drives with a single touch of a button. These duplicators consistently perform copy sessions with no speed degradation even when the number of target devices increase. Various copying and erasing modes help in managing different task requirements for duplicating and wiping your storage media. These high-speed, high-performance M2 copiers are the perfect solution for business (small to enterprise), education, and government entities (military, law enforcement, etc.) where copying and erasing device data needs to be accomplished with precision and minimal time.
                     </p>
-                    <p class="text-[11px] text-slateMuted italic">
+                    <p class="text-[11px] text-slateMuted font-bold italic">
                         * Duplication speed will vary depending on read/write transfer rates of master (source) and target (blank) drives.
                     </p>
                 </div>
@@ -202,8 +210,8 @@
                             <i data-lucide="expand" class="w-4 h-4 text-brandBlue"></i> NVME SIZE COMPATIBILITY
                         </h4>
                         <div class="space-y-1">
-                            <p class="text-xs text-slateDark font-medium">Compatible sizes:</p>
-                            <ul class="text-xs text-slateMuted space-y-1 pl-4 list-disc">
+                            <p class="text-xs text-slateDark font-bold">Compatible sizes:</p>
+                            <ul class="text-xs text-slateMuted font-medium space-y-1 pl-4 list-disc">
                                 <li>2230</li>
                                 <li>2242</li>
                                 <li>2260</li>
@@ -216,7 +224,7 @@
                         <h4 class="text-xs font-bold uppercase tracking-wider text-slateDark flex items-center gap-2">
                             <i data-lucide="git-commit" class="w-4 h-4 text-brandBlue"></i> FLEXIBLE CROSS INTERFACE DUPLICATION
                         </h4>
-                        <ul class="text-xs text-slateMuted space-y-1 pl-4 list-disc">
+                        <ul class="text-xs text-slateMuted font-medium space-y-1 pl-4 list-disc">
                             <li>NVMe M.2</li>
                             <li>SATA M.2</li>
                             <li>SATA 3.5" HDD</li>
@@ -229,10 +237,10 @@
                         <h4 class="text-xs font-bold uppercase tracking-wider text-slateDark flex items-center gap-2">
                             <i data-lucide="file-text" class="w-4 h-4 text-brandBlue"></i> DOWNLOADABLE & PRINTABLE EVENT LOG
                         </h4>
-                        <p class="text-xs text-slateMuted leading-relaxed">
+                        <p class="text-xs text-slateMuted font-medium leading-relaxed">
                             Assists users with monitoring, recording, and managing the entire duplication process. View and analyze detailed information for each port such as job status, date/time stamps, and drive identification numbers.
                         </p>
-                        <p class="text-[11px] text-slateMuted italic pt-1">
+                        <p class="text-[11px] text-slateMuted font-bold italic pt-1">
                             Connect the Log File Printer* for event log printouts. <br>* Sold separately
                         </p>
                     </div>
@@ -241,7 +249,7 @@
                         <h4 class="text-xs font-bold uppercase tracking-wider text-slateDark flex items-center gap-2">
                             <i data-lucide="refresh-cw" class="w-4 h-4 text-brandBlue"></i> ENABLE SOURCE PORT ERASE
                         </h4>
-                        <p class="text-xs text-slateMuted leading-relaxed">
+                        <p class="text-xs text-slateMuted font-medium leading-relaxed">
                             Increase the number of executable slots during wiping jobs by enabling erasing of drives inserted in the source port.
                         </p>
                     </div>
@@ -250,7 +258,7 @@
                         <h4 class="text-xs font-bold uppercase tracking-wider text-slateDark flex items-center gap-2">
                             <i data-lucide="check-square" class="w-4 h-4 text-brandBlue"></i> COMPARE FUNCTION + CRC CHECKSUM
                         </h4>
-                        <p class="text-xs text-slateMuted leading-relaxed">
+                        <p class="text-xs text-slateMuted font-medium leading-relaxed">
                             Performs bit-by-bit cyclic redundancy check (CRC) to ensure copies are identical for every duplication session.
                         </p>
                     </div>
@@ -259,11 +267,11 @@
                         <h4 class="text-xs font-bold uppercase tracking-wider text-slateDark flex items-center gap-2">
                             <i data-lucide="layers" class="w-4 h-4 text-brandBlue"></i> CUSTOMIZABLE SATA HDD RACK
                         </h4>
-                        <p class="text-xs text-slateMuted leading-relaxed">
+                        <p class="text-xs text-slateMuted font-medium leading-relaxed">
                             Customize the configuration of the SATA HDD rack to best utilize space in your work area. Slot dividers keep your HDDs in place during duplication.
                         </p>
-                        <div class="text-[11px] text-slateMuted pt-1">
-                            <span class="font-medium text-slateDark">Other functions:</span> Quality check, DCO Erase mode
+                        <div class="text-[11px] text-slateMuted font-medium pt-1">
+                            <span class="font-bold text-slateDark">Other functions:</span> Quality check, DCO Erase mode
                         </div>
                     </div>
 
@@ -271,8 +279,8 @@
                         <h4 class="text-xs font-bold uppercase tracking-wider text-slateDark flex items-center gap-2">
                             <i data-lucide="cpu" class="w-4 h-4 text-brandBlue"></i> DAISY CHAIN MULTIPLE NVME DUPLICATORS
                         </h4>
-                        <p class="text-xs text-slateMuted leading-relaxed">
-                            Connect multiple NVMe duplicators together to increase the amount of copies you can create at the same time from one source slot of the duplicator. <span class="text-amber-600 font-medium">Note: Only daisy chain same speed models.</span>
+                        <p class="text-xs text-slateMuted font-medium leading-relaxed">
+                            Connect multiple NVMe duplicators together to increase the amount of copies you can create at the same time from one source slot of the duplicator. <span class="text-amber-700 font-bold">Note: Only daisy chain same speed models.</span>
                         </p>
                     </div>
                 </div>
@@ -284,21 +292,21 @@
                         <div class="border-b border-borderLight pb-2">
                             <h3 class="text-xs font-bold uppercase tracking-widest text-brandBlue">INTELLIGENT DUPLICATION (COPY MODES)</h3>
                         </div>
-                        <ul class="space-y-4 text-xs text-slateMuted">
+                        <ul class="space-y-4 text-xs text-slateMuted font-medium">
                             <li>
-                                <strong class="text-slateDark font-semibold block mb-0.5">System and Files (Quick Copy Mode):</strong> 
+                                <strong class="text-slateDark font-bold block mb-0.5">System and Files (Quick Copy Mode):</strong> 
                                 Copies only the data area and skips empty space, reducing the copy duration time.
                             </li>
                             <li>
-                                <strong class="text-slateDark font-semibold block mb-0.5">All Partitions:</strong> 
+                                <strong class="text-slateDark font-bold block mb-0.5">All Partitions:</strong> 
                                 Can be set to copy or skip HPA, DCO, unknown partitions, modified formats, etc.
                             </li>
                             <li>
-                                <strong class="text-slateDark font-semibold block mb-0.5">Whole Media:</strong> 
+                                <strong class="text-slateDark font-bold block mb-0.5">Whole Media:</strong> 
                                 Copies from the initial sector to the end, bit-by-bit. There are no format limitations in this mode. Supports all systems and proprietary formats, along with various brands.
                             </li>
                             <li>
-                                <strong class="text-slateDark font-semibold block mb-0.5">Percentage Copy:</strong> 
+                                <strong class="text-slateDark font-bold block mb-0.5">Percentage Copy:</strong> 
                                 Set a selected percentage of source/master capacity to copy.
                             </li>
                         </ul>
@@ -308,15 +316,15 @@
                         <div class="border-b border-borderLight pb-2">
                             <h3 class="text-xs font-bold uppercase tracking-widest text-brandBlue">SANITIZATION METHODS (ERASE MODES)</h3>
                         </div>
-                        <ul class="space-y-3 text-xs text-slateMuted">
-                            <li><strong class="text-slateDark font-semibold block mb-0.5">Quick Erase:</strong> Erases the device's index table, and only takes a few seconds to complete.</li>
-                            <li><strong class="text-slateDark font-semibold block mb-0.5">Full Erase:</strong> Erase all data from the device by overwriting each sector.</li>
-                            <li><strong class="text-slateDark font-semibold block mb-0.5">DoD 3-pass Erase:</strong> Complies with the erasure standards of the U.S. Department of Defense (DoD) 5220.22-M.</li>
-                            <li><strong class="text-slateDark font-semibold block mb-0.5">DoD 7-pass Erase:</strong> Complies with the 7-pass erase standards of the U.S. Department of Defense (DoD) 5220.22-M ECE.</li>
-                            <li><strong class="text-slateDark font-semibold block mb-0.5">Secure Erase:</strong> Complies with standards of the National Institute of Standards and Technology (NIST) 800-88.</li>
-                            <li><strong class="text-slateDark font-semibold block mb-0.5">Enhanced Secure Erase:</strong> Complies with SSD erasure standards of the National Institute of Standards and Technology (NIST) 800-88.</li>
-                            <li><strong class="text-slateDark font-semibold block mb-0.5">Erase HPA:</strong> Remove the drives' HPA (Host Protected Area) to free up space.</li>
-                            <li><strong class="text-slateDark font-semibold block mb-0.5">Erase DCO:</strong> Remove the drives' DCO (Device Configuration Overlay) partition.</li>
+                        <ul class="space-y-3 text-xs text-slateMuted font-medium">
+                            <li><strong class="text-slateDark font-bold block mb-0.5">Quick Erase:</strong> Erases the device's index table, and only takes a few seconds to complete.</li>
+                            <li><strong class="text-slateDark font-bold block mb-0.5">Full Erase:</strong> Erase all data from the device by overwriting each sector.</li>
+                            <li><strong class="text-slateDark font-bold block mb-0.5">DoD 3-pass Erase:</strong> Complies with the erasure standards of the U.S. Department of Defense (DoD) 5220.22-M.</li>
+                            <li><strong class="text-slateDark font-bold block mb-0.5">DoD 7-pass Erase:</strong> Complies with the 7-pass erase standards of the U.S. Department of Defense (DoD) 5220.22-M ECE.</li>
+                            <li><strong class="text-slateDark font-bold block mb-0.5">Secure Erase:</strong> Complies with standards of the National Institute of Standards and Technology (NIST) 800-88.</li>
+                            <li><strong class="text-slateDark font-bold block mb-0.5">Enhanced Secure Erase:</strong> Complies with SSD erasure standards of the National Institute of Standards and Technology (NIST) 800-88.</li>
+                            <li><strong class="text-slateDark font-bold block mb-0.5">Erase HPA:</strong> Remove the drives' HPA (Host Protected Area) to free up space.</li>
+                            <li><strong class="text-slateDark font-bold block mb-0.5">Erase DCO:</strong> Remove the drives' DCO (Device Configuration Overlay) partition.</li>
                         </ul>
                     </div>
                 </div>
@@ -325,35 +333,90 @@
             <div id="section-specs" class="tab-panel">
                 <div class="max-w-3xl border border-borderLight rounded-md overflow-hidden bg-white shadow-xs">
                     <table class="w-full text-left border-collapse text-xs">
-                        <tbody class="divide-y divide-borderLight text-slateMuted">
+                        <tbody class="divide-y divide-borderLight text-slateMuted font-medium">
                             <tr class="hover:bg-slate-50 transition">
-                                <td class="p-4 font-semibold text-slateDark w-1/3 bg-slate-50/50">Target Capacity Layout</td>
+                                <td class="p-4 font-bold text-slateDark w-1/3 bg-slate-50/50">Target Capacity Layout</td>
                                 <td class="p-4">1 to 4 Physical Slot Targets</td>
                             </tr>
                             <tr class="hover:bg-slate-50 transition">
-                                <td class="p-4 font-semibold text-slateDark bg-slate-50/50">Supported Media Interfaces</td>
+                                <td class="p-4 font-bold text-slateDark bg-slate-50/50">Supported Media Interfaces</td>
                                 <td class="p-4">PCIe M.2 (NVMe/AHCI), M.2 SATA SSD, SATA 2.5"/3.5" HDD & SSD</td>
                             </tr>
                             <tr class="hover:bg-slate-50 transition">
-                                <td class="p-4 font-semibold text-slateDark bg-slate-50/50">Max Performance Speed</td>
+                                <td class="p-4 font-bold text-slateDark bg-slate-50/50">Max Performance Speed</td>
                                 <td class="p-4">Up to 36 GB/min synchronous processing parameters</td>
                             </tr>
                             <tr class="hover:bg-slate-50 transition">
-                                <td class="p-4 font-semibold text-slateDark bg-slate-50/50">Operation Architecture</td>
+                                <td class="p-4 font-bold text-slateDark bg-slate-50/50">Operation Architecture</td>
                                 <td class="p-4">Standalone FPGA Engine Controller Node (No PC Required)</td>
                             </tr>
                             <tr class="hover:bg-slate-50 transition">
-                                <td class="p-4 font-semibold text-slateDark bg-slate-50/50">Display Indicators</td>
+                                <td class="p-4 font-bold text-slateDark bg-slate-50/50">Display Indicators</td>
                                 <td class="p-4">Backlit Monochrome Real-time LCD Screen Panel</td>
                             </tr>
                             <tr class="hover:bg-slate-50 transition">
-                                <td class="p-4 font-semibold text-slateDark bg-slate-50/50">Power Module Input</td>
+                                <td class="p-4 font-bold text-slateDark bg-slate-50/50">Power Module Input</td>
                                 <td class="p-4">Universal AC 115V-230V Auto-Switching Internals</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
+
+            <!-- New Reviews Panel Markup -->
+            <div id="section-reviews" class="tab-panel space-y-8">
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start border-b border-borderLight pb-8">
+                    <div class="md:col-span-4 text-center md:text-left space-y-2">
+                        <h4 class="text-3xl font-bold text-slateDark">4.9<span class="text-sm text-slateMuted font-semibold"> / 5.0</span></h4>
+                        <div class="flex justify-center md:justify-start text-amber-400 gap-0.5">
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        </div>
+                        <p class="text-xs text-slateMuted font-bold">Based on 61 verified enterprise reviews</p>
+                    </div>
+                    <div class="md:col-span-5 space-y-2">
+                        <div class="flex items-center gap-3 text-xs text-slateMuted font-medium">
+                            <span class="w-10">5 Star</span>
+                            <div class="flex-1 h-2 bg-gray-100 rounded overflow-hidden"><div class="h-full bg-amber-400 rounded" style="width: 92%"></div></div>
+                            <span class="w-8 text-right">92%</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-xs text-slateMuted font-medium">
+                            <span class="w-10">4 Star</span>
+                            <div class="flex-1 h-2 bg-gray-100 rounded overflow-hidden"><div class="h-full bg-amber-400 rounded" style="width: 8%"></div></div>
+                            <span class="w-8 text-right">8%</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-xs text-slateMuted font-medium">
+                            <span class="w-10">3 Star</span>
+                            <div class="flex-1 h-2 bg-gray-100 rounded overflow-hidden"><div class="h-full bg-amber-400" style="width: 0%"></div></div>
+                            <span class="w-8 text-right">0%</span>
+                        </div>
+                    </div>
+                    <div class="md:col-span-3 flex md:justify-end">
+                        <button class="bg-slateDark hover:bg-brandBlue text-white font-bold text-xs uppercase tracking-wider py-3 px-6 rounded-md transition w-full md:w-auto">Write A Review</button>
+                    </div>
+                </div>
+
+                <div class="divide-y divide-borderLight">
+                    <div class="py-6 space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold text-slateDark block">David K. — <span class="text-emerald-700 font-bold text-[10px] uppercase tracking-wide">Verified IT Specialist</span></span>
+                            <span class="text-xs text-slateMuted font-medium">05/14/2026</span>
+                        </div>
+                        <div class="flex text-amber-400 gap-0.5"><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i></div>
+                        <h5 class="text-xs font-bold text-slateDark">Flawless execution & incredible speeds</h5>
+                        <p class="text-xs text-slateMuted font-medium leading-relaxed">We sync enterprise deployment units daily. Getting full 36 GB/min native speeds without locking up specialized configuration setups is exactly what our labs needed.</p>
+                    </div>
+                    <div class="py-6 space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold text-slateDark block">Marcus G. — <span class="text-emerald-700 font-bold text-[10px] uppercase tracking-wide">Verified Buyer</span></span>
+                            <span class="text-xs text-slateMuted font-medium">04/29/2026</span>
+                        </div>
+                        <div class="flex text-amber-400 gap-0.5"><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i></div>
+                        <h5 class="text-xs font-bold text-slateDark">Solid hardware engineering</h5>
+                        <p class="text-xs text-slateMuted font-medium leading-relaxed">The modular framework tray behaves accurately under extended stress workflows. Logging mechanics map directly over standard internal networks smoothly.</p>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
 
@@ -381,26 +444,26 @@
                         <span class="absolute top-2.5 left-2.5 bg-brandBlue text-white text-[9px] font-bold px-2 py-0.5 rounded tracking-wide uppercase z-10">Best Value</span>
                         
                         <div class="absolute inset-0 bg-slate-900/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity duration-300 backdrop-blur-xs">
-                            <button onclick="addToCompare('SYS-1-7-NVME')" class="bg-white hover:bg-brandBlue text-slateDark hover:text-white font-semibold text-[10px] uppercase tracking-wider py-2 px-3.5 rounded shadow-md transition duration-200 flex items-center gap-1.5 transform translate-y-2 group-hover:translate-y-0 transition-transform">
+                            <button onclick="addToCompare('SYS-1-7-NVME')" class="bg-white hover:bg-brandBlue text-slateDark hover:text-white font-bold text-[10px] uppercase tracking-wider py-2 px-3.5 rounded shadow-md transition duration-200 flex items-center gap-1.5 transform translate-y-2 group-hover:translate-y-0 transition-transform">
                                 <i data-lucide="git-compare" class="w-3.5 h-3.5"></i> Compare Product
                             </button>
                         </div>
                     </div>
                     <div class="space-y-1">
                         <p class="text-[9px] font-bold uppercase tracking-widest text-slateMuted">Systor Systems</p>
-                        <a href="#" class="block text-xs font-medium text-slateDark hover:text-brandBlue transition line-clamp-2 leading-snug">
+                        <a href="#" class="block text-xs font-semibold text-slateDark hover:text-brandBlue transition line-clamp-2 leading-snug">
                             Systor 1 to 7 Standalone M.2 NVMe PCIe High-Speed Duplicator Target Node
                         </a>
                         <div class="flex items-center gap-1 pt-0.5">
                             <div class="flex text-amber-400 gap-0.5"><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i></div>
-                            <span class="text-[10px] text-slateMuted font-medium">(43)</span>
+                            <span class="text-[10px] text-slateMuted font-bold">(43)</span>
                         </div>
                     </div>
                 </div>
                 <div class="pt-4 mt-4 border-t border-borderLight flex items-center justify-between">
                     <div class="flex flex-col">
                         <span class="text-sm font-bold text-brandBlue">$6,120.00</span>
-                        <span class="text-[10px] text-slateMuted line-through">$6,850.00</span>
+                        <span class="text-[10px] text-slateMuted line-through font-semibold">$6,850.00</span>
                     </div>
                     <button class="bg-slate-50 hover:bg-brandBlue text-slateDark hover:text-white border border-borderLight hover:border-brandBlue p-2 rounded transition" aria-label="Add to Cart">
                         <i data-lucide="shopping-cart" class="w-3.5 h-3.5"></i>
@@ -414,19 +477,19 @@
                         <img id="rec-img-2" src="https://cdn.shopify.com/s/files/1/1482/1392/files/7755882217002259843.jpg?v=1772475784" alt="Systor 1 to 1 NVMe Copier" class="max-h-full max-w-full object-contain mix-blend-darken group-hover:scale-105 transition duration-300">
                         
                         <div class="absolute inset-0 bg-slate-900/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity duration-300 backdrop-blur-xs">
-                            <button onclick="addToCompare('SYS-1-1-NVME')" class="bg-white hover:bg-brandBlue text-slateDark hover:text-white font-semibold text-[10px] uppercase tracking-wider py-2 px-3.5 rounded shadow-md transition duration-200 flex items-center gap-1.5 transform translate-y-2 group-hover:translate-y-0 transition-transform">
+                            <button onclick="addToCompare('SYS-1-1-NVME')" class="bg-white hover:bg-brandBlue text-slateDark hover:text-white font-bold text-[10px] uppercase tracking-wider py-2 px-3.5 rounded shadow-md transition duration-200 flex items-center gap-1.5 transform translate-y-2 group-hover:translate-y-0 transition-transform">
                                 <i data-lucide="git-compare" class="w-3.5 h-3.5"></i> Compare Product
                             </button>
                         </div>
                     </div>
                     <div class="space-y-1">
                         <p class="text-[9px] font-bold uppercase tracking-widest text-slateMuted">Sanitizer Series</p>
-                        <a href="#" class="block text-xs font-medium text-slateDark hover:text-brandBlue transition line-clamp-2 leading-snug">
+                        <a href="#" class="block text-xs font-semibold text-slateDark hover:text-brandBlue transition line-clamp-2 leading-snug">
                             Systor Standalone 1 to 1 M.2 NVMe & SATA SSD Field Duplicator Wiping Unit
                         </a>
                         <div class="flex items-center gap-1 pt-0.5">
                             <div class="flex text-amber-400 gap-0.5"><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current" stroke-width="1"></i></div>
-                            <span class="text-[10px] text-slateMuted font-medium">(19)</span>
+                            <span class="text-[10px] text-slateMuted font-bold">(19)</span>
                         </div>
                     </div>
                 </div>
@@ -446,19 +509,19 @@
                         <img id="rec-img-3" src="https://cdn.shopify.com/s/files/1/1482/1392/files/14236066498620462574_45a288e7-da11-4785-ad23-45525292f3ea.jpg?v=1772474939" alt="Log File Ticket Printer" class="max-h-full max-w-full object-contain mix-blend-darken group-hover:scale-105 transition duration-300">
                         
                         <div class="absolute inset-0 bg-slate-900/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity duration-300 backdrop-blur-xs">
-                            <button onclick="addToCompare('EXT-LOG-PRINTER')" class="bg-white hover:bg-brandBlue text-slateDark hover:text-white font-semibold text-[10px] uppercase tracking-wider py-2 px-3.5 rounded shadow-md transition duration-200 flex items-center gap-1.5 transform translate-y-2 group-hover:translate-y-0 transition-transform">
+                            <button onclick="addToCompare('EXT-LOG-PRINTER')" class="bg-white hover:bg-brandBlue text-slateDark hover:text-white font-bold text-[10px] uppercase tracking-wider py-2 px-3.5 rounded shadow-md transition duration-200 flex items-center gap-1.5 transform translate-y-2 group-hover:translate-y-0 transition-transform">
                                 <i data-lucide="git-compare" class="w-3.5 h-3.5"></i> Compare Product
                             </button>
                         </div>
                     </div>
                     <div class="space-y-1">
                         <p class="text-[9px] font-bold uppercase tracking-widest text-slateMuted">Peripherals</p>
-                        <a href="#" class="block text-xs font-medium text-slateDark hover:text-brandBlue transition line-clamp-2 leading-snug">
+                        <a href="#" class="block text-xs font-semibold text-slateDark hover:text-brandBlue transition line-clamp-2 leading-snug">
                             External Log File Receipt Printer for FPGA Series Audit Verification
                         </a>
                         <div class="flex items-center gap-1 pt-0.5">
                             <div class="flex text-amber-400 gap-0.5"><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i></div>
-                            <span class="text-[10px] text-slateMuted font-medium">(8 Verified)</span>
+                            <span class="text-[10px] text-slateMuted font-bold">(8 Verified)</span>
                         </div>
                     </div>
                 </div>
@@ -479,26 +542,26 @@
                         <span class="absolute top-2.5 left-2.5 bg-amber-600 text-white text-[9px] font-bold px-2 py-0.5 rounded tracking-wide uppercase z-10">Promo</span>
                         
                         <div class="absolute inset-0 bg-slate-900/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity duration-300 backdrop-blur-xs">
-                            <button onclick="addToCompare('SYS-1-23-USB')" class="bg-white hover:bg-brandBlue text-slateDark hover:text-white font-semibold text-[10px] uppercase tracking-wider py-2 px-3.5 rounded shadow-md transition duration-200 flex items-center gap-1.5 transform translate-y-2 group-hover:translate-y-0 transition-transform">
+                            <button onclick="addToCompare('SYS-1-23-USB')" class="bg-white hover:bg-brandBlue text-slateDark hover:text-white font-bold text-[10px] uppercase tracking-wider py-2 px-3.5 rounded shadow-md transition duration-200 flex items-center gap-1.5 transform translate-y-2 group-hover:translate-y-0 transition-transform">
                                 <i data-lucide="git-compare" class="w-3.5 h-3.5"></i> Compare Product
                             </button>
                         </div>
                     </div>
                     <div class="space-y-1">
                         <p class="text-[9px] font-bold uppercase tracking-widest text-slateMuted">Flash Media</p>
-                        <a href="#" class="block text-xs font-medium text-slateDark hover:text-brandBlue transition line-clamp-2 leading-snug">
+                        <a href="#" class="block text-xs font-semibold text-slateDark hover:text-brandBlue transition line-clamp-2 leading-snug">
                             Systor 1 to 23 Standalone Intelligent USB 3.0 Flash Drive Memory Copier
                         </a>
                         <div class="flex items-center gap-1 pt-0.5">
                             <div class="flex text-amber-400 gap-0.5"><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i></div>
-                            <span class="text-[10px] text-slateMuted font-medium">(52)</span>
+                            <span class="text-[10px] text-slateMuted font-bold">(52)</span>
                         </div>
                     </div>
                 </div>
                 <div class="pt-4 mt-4 border-t border-borderLight flex items-center justify-between">
                     <div class="flex flex-col">
                         <span class="text-sm font-bold text-brandBlue">$2,150.00</span>
-                        <span class="text-[10px] text-slateMuted line-through">$2,400.00</span>
+                        <span class="text-[10px] text-slateMuted line-through font-semibold">$2,400.00</span>
                     </div>
                     <button class="bg-slate-50 hover:bg-brandBlue text-slateDark hover:text-white border border-borderLight hover:border-brandBlue p-2 rounded transition" aria-label="Add to Cart">
                         <i data-lucide="shopping-cart" class="w-3.5 h-3.5"></i>
@@ -515,13 +578,39 @@
                 <img src="https://www.produplicator.com/cdn/shop/files/Produplicator_-_500_x_260_180x.png?v=1776179483" alt="Logo" class="h-8 w-auto object-contain">
                 <button id="menu-close" class="p-1 text-slateMuted"><i data-lucide="x" class="w-5 h-5"></i></button>
             </div>
-            <nav class="flex flex-col gap-4 text-xs font-semibold uppercase tracking-wider text-slateMuted">
+            <nav class="flex flex-col gap-4 text-xs font-bold uppercase tracking-wider text-slateMuted">
                 <a href="#" class="text-slateDark">M.2 NVMe PCIe SATA</a>
                 <a href="#">Hard Drive HDD/SSD</a>
                 <a href="#">Flash Media</a>
                 <a href="#">CD DVD BD Blu-Ray</a>
                 <a href="#">Media & Consumables</a>
             </nav>
+        </div>
+    </div>
+
+    <!-- Interactive Lightbox Modal Interface Markup -->
+    <div id="custom-lightbox" class="fixed inset-0 bg-black/95 z-[100] hidden flex flex-col items-center justify-center p-4 backdrop-blur-sm">
+        <button onclick="closeLightbox()" class="absolute top-6 right-6 text-white/80 hover:text-white p-2 focus:outline-none transition" aria-label="Close Gallery">
+            <i data-lucide="x" class="w-6 h-6"></i>
+        </button>
+        
+        <div class="relative max-w-4xl w-full h-[70vh] flex items-center justify-center">
+            <button onclick="navigateLightbox(-1)" class="absolute left-0 md:-left-16 text-white/70 hover:text-white p-2 transition focus:outline-none" aria-label="Previous image">
+                <i data-lucide="chevron-left" class="w-8 h-8"></i>
+            </button>
+            
+            <img id="lightbox-img" src="" alt="Expanded Product Preview" class="max-w-full max-h-full object-contain rounded">
+            
+            <button onclick="navigateLightbox(1)" class="absolute right-0 md:-right-16 text-white/70 hover:text-white p-2 transition focus:outline-none" aria-label="Next image">
+                <i data-lucide="chevron-right" class="w-8 h-8"></i>
+            </button>
+        </div>
+
+        <div class="flex gap-2 mt-6 overflow-x-auto max-w-full px-4 no-scrollbar">
+            <button onclick="setLightboxImage(0)" class="lightbox-thumb w-14 h-14 bg-neutral-900 rounded border-2 border-brandBlue p-1 overflow-hidden transition"><img src="https://cdn.shopify.com/s/files/1/1482/1392/files/13157045066828693100.jpg?v=1772476507" class="w-full h-full object-contain"></button>
+            <button onclick="setLightboxImage(1)" class="lightbox-thumb w-14 h-14 bg-neutral-900 rounded border border-transparent p-1 overflow-hidden transition"><img src="https://cdn.shopify.com/s/files/1/1482/1392/files/7755882217002259843.jpg?v=1772475784" class="w-full h-full object-contain"></button>
+            <button onclick="setLightboxImage(2)" class="lightbox-thumb w-14 h-14 bg-neutral-900 rounded border border-transparent p-1 overflow-hidden transition"><img src="https://cdn.shopify.com/s/files/1/1482/1392/files/14236066498620462574_45a288e7-da11-4785-ad23-45525292f3ea.jpg?v=1772474939" class="w-full h-full object-contain"></button>
+            <button onclick="setLightboxImage(3)" class="lightbox-thumb w-14 h-14 bg-neutral-900 rounded border border-transparent p-1 overflow-hidden transition"><img src="https://cdn.shopify.com/s/files/1/1482/1392/files/14236066498620462574.jpg?v=1772475698" class="w-full h-full object-contain"></button>
         </div>
     </div>
 
@@ -585,7 +674,7 @@
         </div>
 
         <div class="max-w-7xl mx-auto px-6 mt-12 pt-8 border-t border-[#12253f]">
-            <p class="text-[12px] text-slate-500 font-medium">
+            <p class="text-[12px] text-slate-500 font-bold">
                 &copy; 2026 ProDuplicator. All rights reserved.
             </p>
         </div>
@@ -640,6 +729,53 @@
                     triggerItem.classList.add('border-transparent', 'text-slateMuted', 'font-semibold');
                 }
             }
+        }
+
+        // Global Photo Repository for Lightbox Functionality
+        const productPhotos = [
+            "https://cdn.shopify.com/s/files/1/1482/1392/files/13157045066828693100.jpg?v=1772476507",
+            "https://cdn.shopify.com/s/files/1/1482/1392/files/7755882217002259843.jpg?v=1772475784",
+            "https://cdn.shopify.com/s/files/1/1482/1392/files/14236066498620462574_45a288e7-da11-4785-ad23-45525292f3ea.jpg?v=1772474939",
+            "https://cdn.shopify.com/s/files/1/1482/1392/files/14236066498620462574.jpg?v=1772475698"
+        ];
+        let currentPhotoIndex = 0;
+
+        function openLightbox() {
+            const mainSrc = document.getElementById('main-viewframe').src;
+            const fallbackIndex = productPhotos.indexOf(mainSrc);
+            currentPhotoIndex = fallbackIndex !== -1 ? fallbackIndex : 0;
+            
+            setLightboxImage(currentPhotoIndex);
+            document.getElementById('custom-lightbox').classList.remove('hidden');
+            document.body.classList.add('overflow-hidden');
+        }
+
+        function closeLightbox() {
+            document.getElementById('custom-lightbox').classList.add('hidden');
+            document.body.classList.remove('overflow-hidden');
+        }
+
+        function setLightboxImage(idx) {
+            currentPhotoIndex = idx;
+            document.getElementById('lightbox-img').src = productPhotos[idx];
+            
+            const thumbnails = document.getElementsByClassName('lightbox-thumb');
+            for (let i = 0; i < thumbnails.length; i++) {
+                if (i === idx) {
+                    thumbnails[i].classList.add('border-brandBlue');
+                    thumbnails[i].classList.remove('border-transparent');
+                } else {
+                    thumbnails[i].classList.remove('border-brandBlue');
+                    thumbnails[i].classList.add('border-transparent');
+                }
+            }
+        }
+
+        function navigateLightbox(direction) {
+            let nextIndex = currentPhotoIndex + direction;
+            if (nextIndex >= productPhotos.length) nextIndex = 0;
+            if (nextIndex < 0) nextIndex = productPhotos.length - 1;
+            setLightboxImage(nextIndex);
         }
 
         // Compare Product Logic Hook
