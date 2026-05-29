@@ -127,13 +127,15 @@
                         <span class="text-xs text-slateMuted line-through font-semibold">$4,999.00</span>
                     </div>
                     
-                    <div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs">
-                       <span style="color: #64748b;">|</span>
-    <span style="display: inline-flex; align-items: center; gap: 5px;">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #00d2ff;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        1 Year Warranty
-    </span>
-                        <span class="text-borderLight hidden sm:inline">|</span>
+                    <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs">
+                        <p class="font-bold text-emerald-700 flex items-center gap-1.5">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-600 inline-block"></span> Standard Freight Included
+                        </p>
+                        <span class="text-gray-300 hidden sm:inline">|</span>
+                        <p class="font-bold text-brandBlue flex items-center gap-1">
+                            <i data-lucide="shield" class="w-3.5 h-3.5 text-brandBlue"></i> 1 Year Warranty
+                        </p>
+                        <span class="text-gray-300 hidden sm:inline">|</span>
                         <p class="text-amber-700 font-bold flex items-center gap-1">
                             <i data-lucide="package" class="w-3.5 h-3.5"></i> Only 3 Units Left In Stock
                         </p>
@@ -187,7 +189,6 @@
             <button onclick="switchMasterSection('section-specs')" id="tab-link-section-specs" class="master-tab-trigger text-xs font-semibold uppercase tracking-widest text-slateMuted hover:text-slateDark pb-3 -mb-[14px] transition-all focus:outline-none whitespace-nowrap">
                 PRODUCT SPECIFICATIONS
             </button>
-            <!-- Added Review Tab -->
             <button onclick="switchMasterSection('section-reviews')" id="tab-link-section-reviews" class="master-tab-trigger text-xs font-semibold uppercase tracking-widest text-slateMuted hover:text-slateDark pb-3 -mb-[14px] transition-all focus:outline-none whitespace-nowrap">
                 REVIEWS (61)
             </button>
@@ -365,7 +366,6 @@
                 </div>
             </div>
 
-            <!-- New Reviews Panel Markup -->
             <div id="section-reviews" class="tab-panel space-y-8">
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start border-b border-borderLight pb-8">
                     <div class="md:col-span-4 text-center md:text-left space-y-2">
