@@ -83,7 +83,6 @@
                 <div class="w-full h-[320px] sm:h-[400px] lg:h-[460px] bg-slate-50 rounded-lg flex items-center justify-center p-2 sm:p-4 border border-borderLight relative group">
                     <img id="main-viewframe" src="https://cdn.shopify.com/s/files/1/1482/1392/files/13157045066828693100.jpg?v=1772476507" alt="Systor Duplicator System Layout" class="max-h-full max-w-full object-contain mix-blend-darken">
                     
-                    <!-- Full Screen / Lightbox Trigger Button -->
                     <button onclick="openLightbox()" class="absolute bottom-4 right-4 bg-white/90 hover:bg-white text-slateDark p-2.5 rounded-full shadow-md border border-borderLight transition flex items-center justify-center backdrop-blur-xs hover:scale-105" aria-label="View Fullscreen Gallery">
                         <i data-lucide="maximize" class="w-4 h-4"></i>
                     </button>
@@ -334,6 +333,12 @@
             </div>
 
             <div id="section-specs" class="tab-panel">
+                <div class="max-w-3xl flex justify-end mb-4">
+                    <a href="#" download class="inline-flex items-center justify-center gap-2 bg-slateDark hover:bg-brandBlue text-white font-bold text-xs uppercase tracking-wider py-2.5 px-5 rounded-md transition shadow-sm">
+                        <i data-lucide="download" class="w-4 h-4"></i>
+                        DATA/SPEC SHEET
+                    </a>
+                </div>
                 <div class="max-w-3xl border border-borderLight rounded-md overflow-hidden bg-white shadow-xs">
                     <table class="w-full text-left border-collapse text-xs">
                         <tbody class="divide-y divide-borderLight text-slateMuted font-medium">
@@ -590,7 +595,6 @@
         </div>
     </div>
 
-    <!-- Interactive Lightbox Modal Interface Markup -->
     <div id="custom-lightbox" class="fixed inset-0 bg-black/95 z-[100] hidden flex flex-col items-center justify-center p-4 backdrop-blur-sm">
         <button onclick="closeLightbox()" class="absolute top-6 right-6 text-white/80 hover:text-white p-2 focus:outline-none transition" aria-label="Close Gallery">
             <i data-lucide="x" class="w-6 h-6"></i>
