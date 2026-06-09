@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-sacale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>M.2 PCIe SATA NVMe Duplicators & Sanitizers - ProDuplicator</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -96,9 +96,27 @@
             </div>
         </div>
 
-        <div class="flex flex-col lg:flex-row gap-8 items-start">
+        
+<!-- Mobile Filter & Sort Bar -->
+<div class="lg:hidden sticky top-16 z-30 bg-white border border-borderLight rounded-lg mb-4">
+    <div class="grid grid-cols-2">
+        <button id="openFilters"
+            class="flex items-center justify-center gap-2 py-3 border-r border-borderLight font-medium text-sm">
+            <i data-lucide="sliders-horizontal" class="w-4 h-4"></i>
+            Filters
+        </button>
+
+        <button
+            class="flex items-center justify-center gap-2 py-3 font-medium text-sm">
+            <i data-lucide="arrow-up-down" class="w-4 h-4"></i>
+            Sort
+        </button>
+    </div>
+</div>
+
+<div class="flex flex-col lg:flex-row gap-8 items-start">
             
-            <aside class="w-full lg:w-1/4 flex-shrink-0 bg-slate-50 p-5 rounded-lg border border-borderLight sticky top-28">
+            <aside class="hidden lg:block lg:w-1/4 flex-shrink-0 bg-slate-50 p-5 rounded-lg border border-borderLight sticky top-28">
                 
                 <div class="mb-6">
                     <h3 class="text-sm font-bold text-slateDark uppercase tracking-wider mb-4">Categories</h3>
@@ -676,7 +694,59 @@
         </div>
     </div>
 
-    <footer class="bg-[#091526] text-slate-300 font-sans pt-12 pb-12 border-t border-[#12253f]">
+    
+<!-- Mobile Filter Drawer -->
+<div id="mobile-filter-drawer" class="fixed inset-0 z-[999] hidden">
+<div id="filter-overlay" class="absolute inset-0 bg-black/50"></div>
+
+<div class="absolute bottom-0 left-0 right-0 bg-white rounded-t-3xl max-h-[85vh] overflow-y-auto">
+<div class="sticky top-0 bg-white border-b border-borderLight px-5 py-4 flex items-center justify-between">
+<h3 class="font-semibold text-base">Filters</h3>
+<button id="closeFilters">
+<i data-lucide="x" class="w-5 h-5"></i>
+</button>
+</div>
+
+<div class="p-5 space-y-8">
+<div>
+<h4 class="font-semibold mb-3">Categories</h4>
+<div class="space-y-3 text-sm">
+<label class="flex items-center gap-3"><input type="checkbox"> M.2 NVMe PCIe SATA</label>
+<label class="flex items-center gap-3"><input type="checkbox"> Hard Drive HDD/SSD</label>
+<label class="flex items-center gap-3"><input type="checkbox"> Flash Media</label>
+<label class="flex items-center gap-3"><input type="checkbox"> Blu-Ray Duplicators</label>
+</div>
+</div>
+
+<div>
+<h4 class="font-semibold mb-3">Price Range</h4>
+<div class="grid grid-cols-2 gap-3">
+<input type="number" placeholder="Min" class="border border-borderLight rounded-lg p-3 text-sm">
+<input type="number" placeholder="Max" class="border border-borderLight rounded-lg p-3 text-sm">
+</div>
+</div>
+
+<div>
+<h4 class="font-semibold mb-3">Speed</h4>
+<div class="flex flex-wrap gap-2">
+<button class="px-4 py-2 rounded-full border border-borderLight text-sm">36GB/min</button>
+<button class="px-4 py-2 rounded-full border border-borderLight text-sm">24GB/min</button>
+<button class="px-4 py-2 rounded-full border border-borderLight text-sm">18GB/min</button>
+<button class="px-4 py-2 rounded-full border border-borderLight text-sm">12GB/min</button>
+<button class="px-4 py-2 rounded-full border border-borderLight text-sm">9GB/min</button>
+</div>
+</div>
+</div>
+
+<div class="sticky bottom-0 bg-white border-t border-borderLight p-4 flex gap-3">
+<button class="flex-1 border border-borderLight rounded-lg py-3 font-medium">Clear</button>
+<button class="flex-1 bg-brandBlue text-white rounded-lg py-3 font-medium">Show Results</button>
+</div>
+</div>
+</div>
+
+
+<footer class="bg-[#091526] text-slate-300 font-sans pt-12 pb-12 border-t border-[#12253f]">
         <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-12 gap-y-10 md:gap-x-8 lg:gap-x-12 items-start">
             
             <div class="md:col-span-4 space-y-5 text-[13px] leading-relaxed max-w-sm">
@@ -761,5 +831,31 @@
             backdropNode.addEventListener('click', toggleDrawer);
         }
     </script>
+
+<script>
+const openFilters = document.getElementById('openFilters');
+const closeFilters = document.getElementById('closeFilters');
+const filterDrawer = document.getElementById('mobile-filter-drawer');
+const filterOverlay = document.getElementById('filter-overlay');
+
+if(openFilters){
+openFilters.addEventListener('click',()=>{
+filterDrawer.classList.remove('hidden');
+});
+}
+
+if(closeFilters){
+closeFilters.addEventListener('click',()=>{
+filterDrawer.classList.add('hidden');
+});
+}
+
+if(filterOverlay){
+filterOverlay.addEventListener('click',()=>{
+filterDrawer.classList.add('hidden');
+});
+}
+</script>
 </body>
+
 </html>
