@@ -26,6 +26,15 @@
     <style>
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        /* Utility styles for interactive CSS dropdown menus */
+        @media (min-width: 1024px) {
+            .nav-item:hover .dropdown-menu {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
+            }
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans antialiased overflow-x-hidden">
@@ -45,12 +54,75 @@
                 </a>
             </div>
 
-            <nav class="hidden lg:flex items-center gap-6 text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                <a href="https://friedazebalili.github.io/Demo/product-category.html" class="hover:text-[#0052cc] transition">M.2 NVMe PCIe SATA</a>
-                <a href="https://friedazebalili.github.io/Demo/product-category.html" class="hover:text-[#0052cc] transition">Hard Drive HDD/SSD</a>
-                <a href="https://friedazebalili.github.io/Demo/product-category.html" class="hover:text-[#0052cc] transition">Flash Media</a>
-                <a href="https://friedazebalili.github.io/Demo/product-category.html" class="hover:text-[#0052cc] transition">CD DVD BD Blu-Ray</a>
-                <a href="https://friedazebalili.github.io/Demo/product-category.html" class="hover:text-[#0052cc] transition">Media & Consumables</a>
+            <nav class="hidden lg:flex items-center gap-6 text-xs font-semibold text-gray-600 uppercase tracking-wider h-full">
+                
+                <div class="h-full flex items-center">
+                    <a href="/pages/m-2-nvme-pcie-hard-drive-duplicator" class="hover:text-[#0052cc] transition py-4">M.2 NVMe PCIe SATA</a>
+                </div>
+
+                <div class="nav-item relative h-full flex items-center">
+                    <a href="/pages/hard-drive-duplicator" class="hover:text-[#0052cc] transition py-4 flex items-center gap-1">
+                        Hard Drive HDD/SSD
+                        <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-gray-400"></i>
+                    </a>
+                    <div class="dropdown-menu absolute top-full left-0 w-72 bg-white border border-gray-200 shadow-xl rounded-b-md py-2 opacity-0 visibility-hidden transform translate-y-2 transition-all duration-200 z-50 pointer-events-auto">
+                        <a href="/pages/dual-port-hard-drive-duplicator" class="block px-4 py-2.5 text-[11px] text-gray-600 hover:bg-gray-50 hover:text-[#0052cc] transition normal-case font-medium">Tower SATA HDD/SSD Duplicators</a>
+                        <a href="/pages/flatbed-hdd-ssd-duplicator" class="block px-4 py-2.5 text-[11px] text-gray-600 hover:bg-gray-50 hover:text-[#0052cc] transition normal-case font-medium">Flatbed SATA HDD/SSD Duplicators</a>
+                        <a href="/pages/rackmount-hard-drive-duplicator" class="block px-4 py-2.5 text-[11px] text-gray-600 hover:bg-gray-50 hover:text-[#0052cc] transition normal-case font-medium">Rackmount SATA HDD/SSD Duplicators</a>
+                        <a href="/collections/2-5-external-usb-hdd-duplicator" class="block px-4 py-2.5 text-[11px] text-gray-600 hover:bg-gray-50 hover:text-[#0052cc] transition normal-case font-medium">External USB-Powered HDD/SSD Duplicators</a>
+                        <a href="/collections/frontpage" class="block px-4 py-2.5 text-[11px] text-gray-600 hover:bg-gray-50 hover:text-[#0052cc] transition normal-case font-medium">Daisy Chain SATA HDD/SSD Duplicators</a>
+                        <a href="/collections/portable-hard-drive-duplicator" class="block px-4 py-2.5 text-[11px] text-gray-600 hover:bg-gray-50 hover:text-[#0052cc] transition normal-case font-medium">Portable SATA HDD/SSD Duplicators</a>
+                        <a href="/collections/hard-drive-forensic-tools-1" class="block px-4 py-2.5 text-[11px] text-gray-600 hover:bg-gray-50 hover:text-[#0052cc] transition normal-case font-medium">Forensic SATA HDD/SSD Duplicators</a>
+                        <a href="/collections/hard-drive-destroyer-terminator" class="block px-4 py-2.5 text-[11px] text-gray-600 hover:bg-gray-50 hover:text-[#0052cc] transition normal-case font-medium">Hard Drive HDD/SSD Destroyer</a>
+                        <a href="/collections/hdd-adapter-kit" class="block px-4 py-2.5 text-[11px] text-gray-600 hover:bg-gray-50 hover:text-[#0052cc] transition normal-case font-medium">HDD/SSD Adapter Kits</a>
+                    </div>
+                </div>
+
+                <div class="nav-item relative h-full flex items-center">
+                    <a href="/pages/flash-memory-duplicator" class="hover:text-[#0052cc] transition py-4 flex items-center gap-1">
+                        Flash Media
+                        <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-gray-400"></i>
+                    </a>
+                    <div class="dropdown-menu absolute top-full left-0 w-80 bg-white border border-gray-200 shadow-xl rounded-b-md py-2 opacity-0 visibility-hidden transform translate-y-2 transition-all duration-200 z-50 pointer-events-auto">
+                        <a href="/collections/usb-3-1-duplicator" class="block px-4 py-2.5 text-[11px] text-gray-600 hover:bg-gray-50 hover:text-[#0052cc] transition normal-case font-medium">USB 3.0 Drive Duplicators - 300MB/sec</a>
+                        <a href="/collections/usb-3-1-100mb-s-duplicator" class="block px-4 py-2.5 text-[11px] text-gray-600 hover:bg-gray-50 hover:text-[#0052cc] transition normal-case font-medium">USB 3.0 Drive Duplicators - 100MB/sec</a>
+                        <a href="/collections/usb-drive-duplicator" class="block px-4 py-2.5 text-[11px] text-gray-600 hover:bg-gray-50 hover:text-[#0052cc] transition normal-case font-medium">USB 2.0 Drive Duplicators - 33MB/sec</a>
+                        <a href="/collections/sd-microsd-memory-card-duplicator" class="block px-4 py-2.5 text-[11px] text-gray-600 hover:bg-gray-50 hover:text-[#0052cc] transition normal-case font-medium">SD microSD Card Duplicators</a>
+                        <a href="/collections/compact-flash-cf-memory-card-duplicator" class="block px-4 py-2.5 text-[11px] text-gray-600 hover:bg-gray-50 hover:text-[#0052cc] transition normal-case font-medium">CF Card Duplicators</a>
+                        <a href="/collections/2-5-external-usb-hdd-duplicator" class="block px-4 py-2.5 text-[11px] text-gray-600 hover:bg-gray-50 hover:text-[#0052cc] transition normal-case font-medium">External USB-Powered HDD/SSD Duplicators</a>
+                        <a href="/pages/usata-cd-dvd-and-bd-duplicators" class="block px-4 py-2.5 text-[11px] text-gray-600 hover:bg-gray-50 hover:text-[#0052cc] transition normal-case font-medium">USB to Data CD DVD Blu-ray Disc Duplicators</a>
+                        <a href="/pages/multimedia-duplicator" class="block px-4 py-2.5 text-[11px] text-gray-600 hover:bg-gray-50 hover:text-[#0052cc] transition normal-case font-medium">Multi Flash Media Center Disc Duplicators</a>
+                        <a href="/pages/multimedia-plus-duplicator" class="block px-4 py-2.5 text-[11px] text-gray-600 hover:bg-gray-50 hover:text-[#0052cc] transition normal-case font-medium">Multi Flash Media Center Plus Disc Duplicators</a>
+                        <a href="/pages/all-in-one-usb-sd-cf-mmc-to-dvd-bd" class="block px-4 py-2.5 text-[11px] text-gray-600 hover:bg-gray-50 hover:text-[#0052cc] transition normal-case font-medium">All-In-One USB/SD/CF Combo Disc Duplicators</a>
+                        <a href="/collections/cfast-card-duplicator" class="block px-4 py-2.5 text-[11px] text-gray-600 hover:bg-gray-50 hover:text-[#0052cc] transition normal-case font-medium">CFast Card Duplicators</a>
+                        <a href="/collections/eusb-drive-duplicator" class="block px-4 py-2.5 text-[11px] text-gray-600 hover:bg-gray-50 hover:text-[#0052cc] transition normal-case font-medium">eUSB Drive Duplicators</a>
+                    </div>
+                </div>
+
+                <div class="nav-item relative h-full flex items-center">
+                    <a href="/pages/optical-disc-duplicator" class="hover:text-[#0052cc] transition py-4 flex items-center gap-1">
+                        CD DVD BD Blu-Ray
+                        <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-gray-400"></i>
+                    </a>
+                    <div class="dropdown-menu absolute top-full left-0 w-80 bg-white border border-gray-200 shadow-xl rounded-b-md py-2 opacity-0 visibility-hidden transform translate-y-2 transition-all duration-200 z-50 pointer-events-auto">
+                        <a href="/collections/m-disc-cd-dvd-duplicator" class="block px-4 py-2.5 text-[11px] text-gray-600 hover:bg-gray-50 hover:text-[#0052cc] transition normal-case font-medium">CD DVD Duplicators</a>
+                        <a href="/collections/blu-ray-bdxl-cd-dvd-duplicator" class="block px-4 py-2.5 text-[11px] text-gray-600 hover:bg-gray-50 hover:text-[#0052cc] transition normal-case font-medium">BD Blu-ray Disc Duplicators</a>
+                        <a href="/pages/usata-cd-dvd-and-bd-duplicators" class="block px-4 py-2.5 text-[11px] text-gray-600 hover:bg-gray-50 hover:text-[#0052cc] transition normal-case font-medium">USB to Data CD DVD Blu-ray Disc Duplicators</a>
+                        <a href="/pages/multimedia-duplicator" class="block px-4 py-2.5 text-[11px] text-gray-600 hover:bg-gray-50 hover:text-[#0052cc] transition normal-case font-medium">Multi Flash Media Center Disc Duplicators</a>
+                        <a href="/pages/multimedia-plus-duplicator" class="block px-4 py-2.5 text-[11px] text-gray-600 hover:bg-gray-50 hover:text-[#0052cc] transition normal-case font-medium">Multi Flash Media Center Plus Disc Duplicators</a>
+                        <a href="/pages/all-in-one-usb-sd-cf-mmc-to-dvd-bd" class="block px-4 py-2.5 text-[11px] text-gray-600 hover:bg-gray-50 hover:text-[#0052cc] transition normal-case font-medium">All-In-One USB/SD/CF Combo Disc Duplicators</a>
+                        <a href="/pages/cd-dvd-blu-ray-sata-daisy-chain-duplicator" class="block px-4 py-2.5 text-[11px] text-gray-600 hover:bg-gray-50 hover:text-[#0052cc] transition normal-case font-medium">Daisy Chain CD DVD BD Blu-ray Duplicators</a>
+                        <a href="/pages/produplicator-rackmount-optical-disc-drive-duplicator" class="block px-4 py-2.5 text-[11px] text-gray-600 hover:bg-gray-50 hover:text-[#0052cc] transition normal-case font-medium">Rackmount CD DVD Blu-ray Duplicators</a>
+                        <a href="/products/barebone-duplicator" class="block px-4 py-2.5 text-[11px] text-gray-600 hover:bg-gray-50 hover:text-[#0052cc] transition normal-case font-medium">Barebone Duplicators</a>
+                        <a href="/collections/cd-dvd-blu-ray-burners" class="block px-4 py-2.5 text-[11px] text-gray-600 hover:bg-gray-50 hover:text-[#0052cc] transition normal-case font-medium">CD DVD Blu-ray Burners</a>
+                        <a href="/collections/cd-dvd-options" class="block px-4 py-2.5 text-[11px] text-gray-600 hover:bg-gray-50 hover:text-[#0052cc] transition normal-case font-medium">CD DVD Blu-ray Duplicator Add-ons</a>
+                        <a href="/products/cd-dvd-copy-controller" class="block px-4 py-2.5 text-[11px] text-gray-600 hover:bg-gray-50 hover:text-[#0052cc] transition normal-case font-medium">CD DVD Copy Controllers</a>
+                    </div>
+                </div>
+
+                <div class="h-full flex items-center">
+                    <a href="/collections/consumables" class="hover:text-[#0052cc] transition py-4">Media & Consumables</a>
+                </div>
             </nav>
 
             <div class="flex items-center gap-3 md:gap-4 flex-1 justify-end max-w-xs">
@@ -75,12 +147,71 @@
                 <img src="https://www.produplicator.com/cdn/shop/files/Produplicator_-_500_x_260_180x.png?v=1776179483" alt="ProDuplicator Logo" class="h-12 w-auto object-contain">
                 <button id="menu-close" class="p-1 text-gray-500 hover:text-slate-900"><i data-lucide="x" class="w-6 h-6"></i></button>
             </div>
+            
             <nav class="flex-1 overflow-y-auto p-4 space-y-1">
-                <a href="https://friedazebalili.github.io/Demo/product-category.html" class="block px-3 py-2.5 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-[#0052cc] transition">M.2 NVMe PCIe SATA</a>
-                <a href="https://friedazebalili.github.io/Demo/product-category.html" class="block px-3 py-2.5 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-[#0052cc] transition">Hard Drive HDD/SSD</a>
-                <a href="https://friedazebalili.github.io/Demo/product-category.html" class="block px-3 py-2.5 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-[#0052cc] transition">Flash Media</a>
-                <a href="https://friedazebalili.github.io/Demo/product-category.html" class="block px-3 py-2.5 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-[#0052cc] transition">CD DVD BD Blu-Ray</a>
-                <a href="https://friedazebalili.github.io/Demo/product-category.html" class="block px-3 py-2.5 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-[#0052cc] transition">Media & Consumables</a>
+                <a href="/pages/m-2-nvme-pcie-hard-drive-duplicator" class="block px-3 py-2.5 rounded-md text-sm font-semibold text-gray-700 hover:bg-gray-50 hover:text-[#0052cc] transition">M.2 NVMe PCIe SATA</a>
+                
+                <div>
+                    <button class="mobile-accordion-btn w-full flex items-center justify-between px-3 py-2.5 rounded-md text-sm font-semibold text-gray-700 hover:bg-gray-50 hover:text-[#0052cc] transition">
+                        <span>Hard Drive HDD/SSD</span>
+                        <i data-lucide="chevron-down" class="w-4 h-4 text-gray-400 transform transition-transform duration-200"></i>
+                    </button>
+                    <div class="mobile-accordion-content hidden pl-4 pr-2 py-1 bg-gray-50/50 rounded-md mt-1 space-y-1 border-l border-gray-100">
+                        <a href="/pages/dual-port-hard-drive-duplicator" class="block px-3 py-2 rounded text-xs text-gray-600 hover:text-[#0052cc]">Tower SATA HDD/SSD Duplicators</a>
+                        <a href="/pages/flatbed-hdd-ssd-duplicator" class="block px-3 py-2 rounded text-xs text-gray-600 hover:text-[#0052cc]">Flatbed SATA HDD/SSD Duplicators</a>
+                        <a href="/pages/rackmount-hard-drive-duplicator" class="block px-3 py-2 rounded text-xs text-gray-600 hover:text-[#0052cc]">Rackmount SATA HDD/SSD Duplicators</a>
+                        <a href="/collections/2-5-external-usb-hdd-duplicator" class="block px-3 py-2 rounded text-xs text-gray-600 hover:text-[#0052cc]">External USB-Powered HDD/SSD Duplicators</a>
+                        <a href="/collections/frontpage" class="block px-3 py-2 rounded text-xs text-gray-600 hover:text-[#0052cc]">Daisy Chain SATA HDD/SSD Duplicators</a>
+                        <a href="/collections/portable-hard-drive-duplicator" class="block px-3 py-2 rounded text-xs text-gray-600 hover:text-[#0052cc]">Portable SATA HDD/SSD Duplicators</a>
+                        <a href="/collections/hard-drive-forensic-tools-1" class="block px-3 py-2 rounded text-xs text-gray-600 hover:text-[#0052cc]">Forensic SATA HDD/SSD Duplicators</a>
+                        <a href="/collections/hard-drive-destroyer-terminator" class="block px-3 py-2 rounded text-xs text-gray-600 hover:text-[#0052cc]">Hard Drive HDD/SSD Destroyer</a>
+                        <a href="/collections/hdd-adapter-kit" class="block px-3 py-2 rounded text-xs text-gray-600 hover:text-[#0052cc]">HDD/SSD Adapter Kits</a>
+                    </div>
+                </div>
+
+                <div>
+                    <button class="mobile-accordion-btn w-full flex items-center justify-between px-3 py-2.5 rounded-md text-sm font-semibold text-gray-700 hover:bg-gray-50 hover:text-[#0052cc] transition">
+                        <span>Flash Media</span>
+                        <i data-lucide="chevron-down" class="w-4 h-4 text-gray-400 transform transition-transform duration-200"></i>
+                    </button>
+                    <div class="mobile-accordion-content hidden pl-4 pr-2 py-1 bg-gray-50/50 rounded-md mt-1 space-y-1 border-l border-gray-100">
+                        <a href="/collections/usb-3-1-duplicator" class="block px-3 py-2 rounded text-xs text-gray-600 hover:text-[#0052cc]">USB 3.0 Drive Duplicators - 300MB/sec</a>
+                        <a href="/collections/usb-3-1-100mb-s-duplicator" class="block px-3 py-2 rounded text-xs text-gray-600 hover:text-[#0052cc]">USB 3.0 Drive Duplicators - 100MB/sec</a>
+                        <a href="/collections/usb-drive-duplicator" class="block px-3 py-2 rounded text-xs text-gray-600 hover:text-[#0052cc]">USB 2.0 Drive Duplicators - 33MB/sec</a>
+                        <a href="/collections/sd-microsd-memory-card-duplicator" class="block px-3 py-2 rounded text-xs text-gray-600 hover:text-[#0052cc]">SD microSD Card Duplicators</a>
+                        <a href="/collections/compact-flash-cf-memory-card-duplicator" class="block px-3 py-2 rounded text-xs text-gray-600 hover:text-[#0052cc]">CF Card Duplicators</a>
+                        <a href="/collections/2-5-external-usb-hdd-duplicator" class="block px-3 py-2 rounded text-xs text-gray-600 hover:text-[#0052cc]">External USB-Powered HDD/SSD Duplicators</a>
+                        <a href="/pages/usata-cd-dvd-and-bd-duplicators" class="block px-3 py-2 rounded text-xs text-gray-600 hover:text-[#0052cc]">USB to Data CD DVD Blu-ray Disc Duplicators</a>
+                        <a href="/pages/multimedia-duplicator" class="block px-3 py-2 rounded text-xs text-gray-600 hover:text-[#0052cc]">Multi Flash Media Center Disc Duplicators</a>
+                        <a href="/pages/multimedia-plus-duplicator" class="block px-3 py-2 rounded text-xs text-gray-600 hover:text-[#0052cc]">Multi Flash Media Center Plus Disc Duplicators</a>
+                        <a href="/pages/all-in-one-usb-sd-cf-mmc-to-dvd-bd" class="block px-3 py-2 rounded text-xs text-gray-600 hover:text-[#0052cc]">All-In-One USB/SD/CF Combo Disc Duplicators</a>
+                        <a href="/collections/cfast-card-duplicator" class="block px-3 py-2 rounded text-xs text-gray-600 hover:text-[#0052cc]">CFast Card Duplicators</a>
+                        <a href="/collections/eusb-drive-duplicator" class="block px-3 py-2 rounded text-xs text-gray-600 hover:text-[#0052cc]">eUSB Drive Duplicators</a>
+                    </div>
+                </div>
+
+                <div>
+                    <button class="mobile-accordion-btn w-full flex items-center justify-between px-3 py-2.5 rounded-md text-sm font-semibold text-gray-700 hover:bg-gray-50 hover:text-[#0052cc] transition">
+                        <span>CD DVD BD Blu-Ray</span>
+                        <i data-lucide="chevron-down" class="w-4 h-4 text-gray-400 transform transition-transform duration-200"></i>
+                    </button>
+                    <div class="mobile-accordion-content hidden pl-4 pr-2 py-1 bg-gray-50/50 rounded-md mt-1 space-y-1 border-l border-gray-100">
+                        <a href="/collections/m-disc-cd-dvd-duplicator" class="block px-3 py-2 rounded text-xs text-gray-600 hover:text-[#0052cc]">CD DVD Duplicators</a>
+                        <a href="/collections/blu-ray-bdxl-cd-dvd-duplicator" class="block px-3 py-2 rounded text-xs text-gray-600 hover:text-[#0052cc]">BD Blu-ray Disc Duplicators</a>
+                        <a href="/pages/usata-cd-dvd-and-bd-duplicators" class="block px-3 py-2 rounded text-xs text-gray-600 hover:text-[#0052cc]">USB to Data CD DVD Blu-ray Disc Duplicators</a>
+                        <a href="/pages/multimedia-duplicator" class="block px-3 py-2 rounded text-xs text-gray-600 hover:text-[#0052cc]">Multi Flash Media Center Disc Duplicators</a>
+                        <a href="/pages/multimedia-plus-duplicator" class="block px-3 py-2 rounded text-xs text-gray-600 hover:text-[#0052cc]">Multi Flash Media Center Plus Disc Duplicators</a>
+                        <a href="/pages/all-in-one-usb-sd-cf-mmc-to-dvd-bd" class="block px-3 py-2 rounded text-xs text-gray-600 hover:text-[#0052cc]">All-In-One USB/SD/CF Combo Disc Duplicators</a>
+                        <a href="/pages/cd-dvd-blu-ray-sata-daisy-chain-duplicator" class="block px-3 py-2 rounded text-xs text-gray-600 hover:text-[#0052cc]">Daisy Chain CD DVD BD Blu-ray Duplicators</a>
+                        <a href="/pages/produplicator-rackmount-optical-disc-drive-duplicator" class="block px-3 py-2 rounded text-xs text-gray-600 hover:text-[#0052cc]">Rackmount CD DVD Blu-ray Duplicators</a>
+                        <a href="/products/barebone-duplicator" class="block px-3 py-2 rounded text-xs text-gray-600 hover:text-[#0052cc]">Barebone Duplicators</a>
+                        <a href="/collections/cd-dvd-blu-ray-burners" class="block px-3 py-2 rounded text-xs text-gray-600 hover:text-[#0052cc]">CD DVD Blu-ray Burners</a>
+                        <a href="/collections/cd-dvd-options" class="block px-3 py-2 rounded text-xs text-gray-600 hover:text-[#0052cc]">CD DVD Blu-ray Duplicator Add-ons</a>
+                        <a href="/products/cd-dvd-copy-controller" class="block px-3 py-2 rounded text-xs text-gray-600 hover:text-[#0052cc]">CD DVD Copy Controllers</a>
+                    </div>
+                </div>
+
+                <a href="/collections/consumables" class="block px-3 py-2.5 rounded-md text-sm font-semibold text-gray-700 hover:bg-gray-50 hover:text-[#0052cc] transition">Media & Consumables</a>
             </nav>
             <div class="p-4 border-t border-gray-200 bg-gray-50 space-y-2">
                 <a href="https://friedazebalili.github.io/Demo/product-category.html" class="block w-full text-center bg-[#0052cc] text-white py-2 rounded text-xs font-semibold">Shop Catalog</a>
@@ -571,6 +702,20 @@
         menuOpenBtn.addEventListener('click', toggleMenu);
         menuCloseBtn.addEventListener('click', toggleMenu);
         menuCloseBackdrop.addEventListener('click', toggleMenu);
+
+        // Mobile Accordion Expansion Logic for Nested Submenus
+        const accordionButtons = document.querySelectorAll('.mobile-accordion-btn');
+        accordionButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const content = button.nextElementSibling;
+                const icon = button.querySelector('i');
+                
+                content.classList.toggle('hidden');
+                if(icon) {
+                    icon.classList.toggle('rotate-180');
+                }
+            });
+        });
     </script>
 </body>
 </html>
