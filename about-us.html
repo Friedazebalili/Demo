@@ -173,57 +173,60 @@
         </div>
     </section>
 
-    <!-- Dedicated Contact Section -->
+    <!-- Dedicated Contact Section (Unified Container) -->
     <section class="py-16 md:py-24 bg-[#f8fafc] border-t border-b border-slate-200 px-4">
-        <div class="max-w-5xl mx-auto">
+        <div class="max-w-4xl mx-auto">
             <div class="text-center mb-12">
                 <p class="text-blue-600 font-bold uppercase tracking-widest text-xs mb-3">Get In Touch</p>
                 <h2 class="text-3xl md:text-4xl font-black text-slate-900">Contact Our Experts</h2>
                 <p class="text-slate-500 mt-2 text-sm max-w-md mx-auto">Speak directly with duplication specialists for custom scaling, quotes, or support structures.</p>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-8 items-start">
-                <!-- Phone Info -->
-                <div class="bg-white p-8 rounded-2xl border border-slate-200/80 shadow-sm flex gap-4">
+            <!-- Single Consolidated Card Structure -->
+            <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden grid md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-slate-100">
+                
+                <!-- Phone Side -->
+                <div class="p-8 flex gap-4 items-start">
                     <div class="bg-blue-50 p-3 rounded-xl text-[#0052cc] shrink-0">
                         <i data-lucide="phone" class="w-6 h-6"></i>
                     </div>
-                    <div>
-                        <h3 class="text-lg font-bold text-slate-900 mb-3">Phone Line Contact</h3>
-                        <div class="space-y-2 text-sm">
-                            <p class="text-slate-600 flex justify-between gap-4">
-                                <span class="font-medium">Toll Free:</span>
-                                <a href="tel:866-817-4094" class="text-[#0052cc] font-semibold hover:underline">866-817-4094</a>
+                    <div class="flex-1">
+                        <h3 class="text-lg font-bold text-slate-900 mb-4">Phone Line Contact</h3>
+                        <div class="space-y-3 text-sm">
+                            <p class="text-slate-600 flex justify-between items-center border-b border-slate-50 pb-2">
+                                <span class="font-medium text-slate-500">Toll Free:</span>
+                                <a href="tel:866-817-4094" class="text-[#0052cc] font-bold hover:underline text-base">866-817-4094</a>
                             </p>
-                            <p class="text-slate-600 flex justify-between gap-4">
-                                <span class="font-medium">Local:</span>
-                                <a href="tel:909-444-3340" class="text-[#0052cc] font-semibold hover:underline">909-444-3340</a>
+                            <p class="text-slate-600 flex justify-between items-center">
+                                <span class="font-medium text-slate-500">Local:</span>
+                                <a href="tel:909-444-3340" class="text-[#0052cc] font-bold hover:underline text-base">909-444-3340</a>
                             </p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Email Info -->
-                <div class="bg-white p-8 rounded-2xl border border-slate-200/80 shadow-sm flex gap-4">
+                <!-- Email Side -->
+                <div class="p-8 flex gap-4 items-start">
                     <div class="bg-blue-50 p-3 rounded-xl text-[#0052cc] shrink-0">
                         <i data-lucide="mail" class="w-6 h-6"></i>
                     </div>
-                    <div class="w-full">
-                        <h3 class="text-lg font-bold text-slate-900 mb-3">Email Inquiries</h3>
+                    <div class="flex-1 w-full">
+                        <h3 class="text-lg font-bold text-slate-900 mb-4">Email Inquiries</h3>
                         <div class="space-y-4 text-sm">
                             <div>
                                 <p class="font-bold text-slate-800 text-xs uppercase tracking-wider mb-1">Sales Inquiries:</p>
-                                <a href="mailto:sales@produplicator.com" class="text-[#0052cc] font-semibold hover:underline block break-all">sales@produplicator.com</a>
+                                <a href="mailto:sales@produplicator.com" class="text-[#0052cc] font-semibold hover:underline block break-all text-base">sales@produplicator.com</a>
                                 <p class="text-slate-400 text-xs mt-0.5">For sales inquiries & general support</p>
                             </div>
-                            <div class="pt-2 border-t border-slate-100">
+                            <div class="pt-3 border-t border-slate-100">
                                 <p class="font-bold text-slate-800 text-xs uppercase tracking-wider mb-1">Technical Support:</p>
-                                <a href="mailto:techsupport@produplicator.com" class="text-[#0052cc] font-semibold hover:underline block break-all">techsupport@produplicator.com</a>
+                                <a href="mailto:techsupport@produplicator.com" class="text-[#0052cc] font-semibold hover:underline block break-all text-base">techsupport@produplicator.com</a>
                                 <p class="text-slate-400 text-xs mt-0.5">For technical support & RMA requests</p>
                             </div>
                         </div>
                     </div>
                 </div>
+
             </div>
 
             <!-- Business Hours Indicator -->
